@@ -25,36 +25,168 @@ cow.d = merge(mnc.d, trade.d, by=c("ccode","year"))
 
 # subset variables
 cow.d <- cow.d[c("ccode", "year", "milex", "milper", "irst", "pec")]
-#cow.d$statename <- as.character(cow.d$statename)
 
-# formatting df as "timeseries data as list (each entry is a matrix of a subsystem of variables)"
-# https://stackoverflow.com/questions/58191618/transform-a-data-frame-into-a-time-series-data-as-list?noredirect=1#58191656
-cow.d <- split(cow.d, cow.d$ccode)
+# Format Country Name
+country = data.frame(
+        statename = trade.d$statename,
+        ccode = trade.d$ccode,
+        year = trade.d$year
+)
+cow.d = merge(cow.d, country, by = c("ccode", "year"))
+cow.d$statename <- as.character(cow.d$statename)
+
+########################################################
+# GVARX
+########################################################
+# install.packages("GVARX")
+library(GVARX)
+# https://www.rdocumentation.org/packages/GVARX/versions/1.1/topics/grangerGVAR
+# data("tradeweightx")
+
+
+# rename time-ID and panel-ID vars.
+colnames(cow.d)[which(names(cow.d) == "statename")] <- "ID"
+colnames(cow.d)[which(names(cow.d) == "year")] <- "Time"
+
+
+# (1)
+# Be adviced, this function only computes Granger causality tests for 
+# BIVARIATE specifications. Will compute different models for both var types.
+
+# (2)
+# Weight matrix will be the COW Trade DF.
+
+# reorder time-ID and panel-ID vars.
+cow.d.1 = subset(cow.d,  select=c("ID", "Time","milper", "irst")) # complete var names: "statename", "year", "milex", "milper", "irst", "pec"
+
+# check if panels are "strictly balanced?
+p_load(plm)
+is.pbalanced(cow.d.1) # False
+
+
+dat = cow.d.1
+dat$Time = as.Date(as.character(dat$Time), "%Y")
+
+
+# pre dataset
+# dat.pre = dat#[dat$Time<=2019,]
+
+
+# balancing pre
+dat.test <- pdata.frame(dat, index=c("ID","Time"))
+dat.test = make.pbalanced(dat.test, balance.type = "shared.individuals", index = c('ID', 'Time') ) # shared.individuals / fill
+is.pbalanced(dat.test)
+# N
+unique(dat.test$ID)
+
+
+# weight matrix
+p_load(foreign)
+bilateral.d <- read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/Dyadic_COW_4.0.csv") 
+
+# keeping columns i'll need
+bilateral.d <- bilateral.d[c("ccode1", "ccode2",  "year", "importer1", "importer2", "flow1", "flow2")]
+
+# keeping obs that I'll need
+available.countries = c(unique(dat.test$ID))
+
+bilateral.d2 = subset(bilateral.d, ccode1 %in% c(available.countries) | ccode2 %in% c(available.countries))
+
+data("PriceVol")
+data("tradeweight1")
+data("tradeweightx")
+
+#Generate country-specific foreign variables
+Ft=GVAR_Ft(data=PriceVol,weight.matrix=tradeweight1)
+k=17
+head(Ft[[k]])
+tail(Ft[[k]])
+
+
+# post dataset
+#dat.post = dat[dat$Time>=1945,]
+# balancing post
+# dat.post <- pdata.frame(dat.post, index=c("ID","Time"))
+# dat.post = make.pbalanced(dat.post, balance.type = "shared.individuals", index = c('ID', 'Time') ) # shared.individuals / fill
+# is.pbalanced(dat.post)
+
+
+
+
+# balance dataframe
+# is.pbalanced(pdata.frame(cow.d.1, index = c("ID", "Time")))
+
+
+ID = as.vector(as.character(dat.test$ID))
+Time = as.character(as.Date(dat.test$Time, "%Y"))
+milper = as.vector(as.numeric(dat.test$milper))
+irst = as.vector(as.numeric(dat.test$irst))
+
+
+dat.test = data.frame(
+        ID = as.vector(as.character(dat.test$ID)),
+        Time = as.character(as.Date(dat.test$Time, "%Y")),
+        milper = as.vector(as.numeric(dat.test$milper)),
+        irst = as.vector(as.numeric(dat.test$irst))
+        )
+
+
+dat.test$Time = as.character(as.Date(dat.test$Time, "%Y"))
+dat.test$ID = as.character(dat.test$ID, as.character)
+
+
+
+# Parameters
+p = 2 # Domestic lags.
+FLag = 2 # Foreign lags.
+lag.max = 5 # Max number of lags for estimating country-specific VAR
+type = "both" # Model specificaiton for VAR. As in package vars, we have four selection: "none","const","trend", "both".
+ic = "AIC" # Information criteria for optimal lag.As in package vars, we have four selection: "AIC", "HQ", "SC", and "FPE".
+
+
+
+
+GC_OUTPUT = grangerGVAR(data=dat.test, p, FLag, type, lag.max, ic)
+
+###
+data("PriceVol")
+data("tradeweight1")
+data("tradeweightx")
+
+p=2
+FLag=2
+type="const"
+lag.max=15
+ic="SC"
+weight.matrix=tradeweightx
+
+GC_OUTPUT = grangerGVAR(data=PriceVol, p, FLag, type, lag.max, ic, weight.matrix)
+
 
 
 
 ########################################################
 # GVAR
 ########################################################
+# formatting df as "timeseries data as list (each entry is a matrix of a subsystem of variables)"
+cow.d <- split(cow.d, cow.d$ccode)
+
 
 # Transform DF into TS object
-
-
-cow.d = as.ts(cow.d, 
-              start = min(cow.d$year),
-              end = max(cow.d$year),
+cow = as.ts(cow, 
+              start = min(cow$year),
+              end = max(cow$year),
               frequency = 1 # 1 year
               )
 
-View(
-        list(
-                #cow.d[,"ccode"], 
-             cow.d[,c("year")]))
+names(cow) <- unique(country$statename)
+c.names <- names(cow)[-length(cow)]
 
+
+install.packages("GV")
 
 # install.packages("GVAR", repos="http://R-Forge.R-project.org")
 library(GVAR)
-
 
 
 data(pesaran26)
