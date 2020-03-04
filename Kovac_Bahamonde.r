@@ -59,12 +59,36 @@ colnames(cow.d)[which(names(cow.d) == "year")] <- "Time"
 # reorder time-ID and panel-ID vars.
 cow.d.1 = subset(cow.d,  select=c("ID", "Time","milper", "irst")) # complete var names: "statename", "year", "milex", "milper", "irst", "pec"
 
+# Rename "West Germany" to "Germany" only for 1946-1989 period.
+# cow.d.1$ID[cow.d.1$ID == "German Federal Republic"] <- "Germany"
+
+# Partion the DF into two smaller DF's:  (1) 1871-1913, and (2) 1946-today
+cow.d.1871.1913 = cow.d.1[cow.d.1$Time >= 1871 & cow.d.1$Time <= 1913,]
+cow.d.1946.today = cow.d.1[cow.d.1$Time >= 1955 & cow.d.1$Time <= max(cow.d.1$Time),]
+# trim 1945-1955 years for all: we want to have one Germany across time (and West Germany pops un in the database only since 1955). That's why
+
+## countries that entered into "cow.d.1871.1913" and "cow.d.1946.today"
+### unique(cow.d.1871.1913$ID)
+### unique(cow.d.1946.today$ID)
+
+
+# append both DF's
+cow.d.time.trimmed <- rbind(cow.d.1871.1913,cow.d.1946.today)
+
+# we want to have one Germany across time (and West Germany pops un in the database only since 1955). 
+cow.d.time.trimmed$ID[cow.d.time.trimmed$ID == "German Federal Republic" & cow.d.time.trimmed$Time >= 1955 & cow.d.time.trimmed$Time <=1989] <- "Germany"
+
+# drop if ID == "German Federal Republic" | ID == "German Federal Republic" // OTHERWISE, we would have duplicates (two Germanies in 1955 onwards).
+cow.d.time.trimmed <- cow.d.time.trimmed[!(cow.d.time.trimmed$ID == "German Federal Republic" | cow.d.time.trimmed$ID == "German Democratic Republic"),]
+
+
+
 # check if panels are "strictly balanced?
 p_load(plm)
-is.pbalanced(cow.d.1) # False
+is.pbalanced(cow.d.time.trimmed) # False
 
 
-dat = cow.d.1
+dat = cow.d.time.trimmed
 dat$Time = as.Date(as.character(dat$Time), "%Y")
 
 
@@ -80,21 +104,55 @@ is.pbalanced(dat.test)
 unique(dat.test$ID)
 
 
+
+##############################
 # weight matrix
+##############################
+
+
 p_load(foreign)
 bilateral.d <- read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/Dyadic_COW_4.0.csv") 
 
 # keeping columns i'll need
 bilateral.d <- bilateral.d[c("ccode1", "ccode2",  "year", "importer1", "importer2", "flow1", "flow2")]
 
-# keeping obs that I'll need
-available.countries = c(unique(dat.test$ID))
+# keep years that i'll need
+bilateral.d = subset(bilateral.d, year >= 1871 & year <= 1913 | year >= 1955 & year <= 2012)
 
-bilateral.d2 = subset(bilateral.d, ccode1 %in% c(available.countries) | ccode2 %in% c(available.countries))
+# keeping countries that I'll need
+available.countries = as.character(unique(dat.test$ID))
+bilateral.d2 = subset(bilateral.d, importer1 %in% c(available.countries) & importer2 %in% c(available.countries))
 
+
+# HERE (TEST AREA)
 data("PriceVol")
 data("tradeweight1")
 data("tradeweightx")
+
+p=2
+FLag=2
+type="const"
+lag.max=15
+ic="SC"
+weight.matrix=tradeweightx
+# HERE (TEST AREA)
+
+
+# 
+list("Text", 1, 2334)
+
+
+
+
+bilateral.d2[bilateral.d2$year==1871,]
+
+
+
+
+
+
+# 
+
 
 #Generate country-specific foreign variables
 Ft=GVAR_Ft(data=PriceVol,weight.matrix=tradeweight1)
