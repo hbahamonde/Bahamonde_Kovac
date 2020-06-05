@@ -109,6 +109,8 @@ unique(dat.test$ID)
 # weight matrix
 ##############################
 
+# loads pacman
+if (!require("pacman")) install.packages("pacman"); library(pacman) 
 
 p_load(foreign)
 bilateral.d <- read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/Dyadic_COW_4.0.csv") 
@@ -116,12 +118,34 @@ bilateral.d <- read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/Dyad
 # keeping columns i'll need
 bilateral.d <- bilateral.d[c("ccode1", "ccode2",  "year", "importer1", "importer2", "flow1", "flow2")]
 
+p_load(openxlsx) # use "openxlsx" not "xlsx" * function is the same (i.e. "write.xlsx"). Had also to detach "dplyr."
+write.xlsx(bilateral.d, "/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/dat.xlsx")
+
+
 # keep years that i'll need
 bilateral.d = subset(bilateral.d, year >= 1871 & year <= 1913 | year >= 1955 & year <= 2012)
 
 # keeping countries that I'll need
 available.countries = as.character(unique(dat.test$ID))
 bilateral.d2 = subset(bilateral.d, importer1 %in% c(available.countries) & importer2 %in% c(available.countries))
+
+# Replacing "-9.000" for "NA"
+## https://correlatesofwar.org/data-hosting
+# bilateral.d2$flow1[bilateral.d2$flow1 == -9.000] <- NA
+# bilateral.d2$flow2[bilateral.d2$flow2 == -9.000] <- NA
+#
+# Generating another column with the absolute market trade distance between the two countries
+options(scipen=1000000) 
+bilateral.d2$trade = as.numeric(round(abs(bilateral.d2$flow1-bilateral.d2$flow2), 4))
+
+
+
+
+
+
+
+
+
 
 
 # HERE (TEST AREA)
