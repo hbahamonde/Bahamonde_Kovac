@@ -118,8 +118,10 @@ bilateral.d <- read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/Dyad
 # keeping columns i'll need
 bilateral.d <- bilateral.d[c("ccode1", "ccode2",  "year", "importer1", "importer2", "flow1", "flow2")]
 
-p_load(openxlsx) # use "openxlsx" not "xlsx" * function is the same (i.e. "write.xlsx"). Had also to detach "dplyr."
-write.xlsx(bilateral.d, "/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/dat.xlsx")
+write.table(bilateral.d, "/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/dat.txt", sep="\t")
+
+# p_load(openxlsx) # use "openxlsx" not "xlsx" * function is the same (i.e. "write.xlsx"). Had also to detach "dplyr."
+# write.xlsx(bilateral.d, "/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/dat.xlsx")
 
 
 # keep years that i'll need
