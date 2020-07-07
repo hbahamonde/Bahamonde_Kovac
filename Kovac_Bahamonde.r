@@ -4,7 +4,7 @@ graphics.off()
 
 
 ##############################
-# weight matrix
+# Yearly weight data for weight matrix
 ##############################
 # cat("\014")
 # rm(list=ls())
@@ -21,6 +21,13 @@ bilateral.d$trade = as.numeric(round(abs(bilateral.d$flow1-bilateral.d$flow2), 4
 
 # keeping columns i'll need
 bilateral.d <- bilateral.d[c("year", "importer1", "importer2", "trade")]
+
+
+# Others adjustments PENDING
+
+# 1. Rename "West Germany" to "Germany" only for 1946-1989 period.
+# bilateral.d$importer1[bilateral.d$importer1 == "German Federal Republic"] <- "Germany"
+# bilateral.d$importer2[bilateral.d$importer2 == "German Federal Republic"] <- "Germany"
 
 trade = bilateral.d
 
@@ -43,8 +50,6 @@ for ( i in sequence){
         print(i)
         write.csv(ad_matrix,file_name)
         }
-
-# Generate List 
 
 ##############################
 ## First Period: 1871 to 1913
@@ -94,6 +99,7 @@ y.1910 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac
 y.1911 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1911.csv"))
 y.1912 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1912.csv"))
 y.1913 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1913.csv"))
+
 
 # 1. Sort column X (with countries) and Delete column X
 y.1871 = y.1871[order(y.1871$X), ] ; y.1871$X <- NULL
@@ -185,55 +191,54 @@ y.1911 = y.1911[ , order(names(y.1911))]
 y.1912 = y.1912[ , order(names(y.1912))]
 y.1913 = y.1913[ , order(names(y.1913))]
 
-
-
 ## Countries for which we have complete information
 full.info.countryes.first.time.span = c(Reduce(intersect, lapply(list(y.1871, y.1872, y.1873, y.1874, y.1875, y.1876, y.1877, y.1878, y.1879, y.1880, y.1881, y.1882, y.1883, y.1884, y.1885, y.1886, y.1887, y.1888, y.1889, y.1890, y.1891, y.1892, y.1893, y.1894, y.1895, y.1896, y.1897, y.1898, y.1899, y.1900, y.1901, y.1902, y.1903, y.1904, y.1905, y.1906, y.1907, y.1908, y.1909, y.1910, y.1911, y.1912, y.1913), names)))
 
 ## Keeping Columns for which we have complete information
-y.1871 = select(y.1871, full.info.countryes.first.time.span)
-y.1872 = select(y.1872, full.info.countryes.first.time.span)
-y.1873 = select(y.1873, full.info.countryes.first.time.span)
-y.1874 = select(y.1874, full.info.countryes.first.time.span)
-y.1875 = select(y.1875, full.info.countryes.first.time.span)
-y.1876 = select(y.1876, full.info.countryes.first.time.span)
-y.1877 = select(y.1877, full.info.countryes.first.time.span)
-y.1878 = select(y.1878, full.info.countryes.first.time.span)
-y.1879 = select(y.1879, full.info.countryes.first.time.span)
-y.1880 = select(y.1880, full.info.countryes.first.time.span)
-y.1881 = select(y.1881, full.info.countryes.first.time.span)
-y.1882 = select(y.1882, full.info.countryes.first.time.span)
-y.1883 = select(y.1883, full.info.countryes.first.time.span)
-y.1884 = select(y.1884, full.info.countryes.first.time.span)
-y.1885 = select(y.1885, full.info.countryes.first.time.span)
-y.1886 = select(y.1886, full.info.countryes.first.time.span)
-y.1887 = select(y.1887, full.info.countryes.first.time.span)
-y.1888 = select(y.1888, full.info.countryes.first.time.span)
-y.1889 = select(y.1889, full.info.countryes.first.time.span)
-y.1890 = select(y.1890, full.info.countryes.first.time.span)
-y.1891 = select(y.1891, full.info.countryes.first.time.span)
-y.1892 = select(y.1892, full.info.countryes.first.time.span)
-y.1893 = select(y.1893, full.info.countryes.first.time.span)
-y.1894 = select(y.1894, full.info.countryes.first.time.span)
-y.1895 = select(y.1895, full.info.countryes.first.time.span)
-y.1896 = select(y.1896, full.info.countryes.first.time.span)
-y.1897 = select(y.1897, full.info.countryes.first.time.span)
-y.1898 = select(y.1898, full.info.countryes.first.time.span)
-y.1899 = select(y.1899, full.info.countryes.first.time.span)
-y.1900 = select(y.1900, full.info.countryes.first.time.span)
-y.1901 = select(y.1901, full.info.countryes.first.time.span)
-y.1902 = select(y.1902, full.info.countryes.first.time.span)
-y.1903 = select(y.1903, full.info.countryes.first.time.span)
-y.1904 = select(y.1904, full.info.countryes.first.time.span)
-y.1905 = select(y.1905, full.info.countryes.first.time.span)
-y.1906 = select(y.1906, full.info.countryes.first.time.span)
-y.1907 = select(y.1907, full.info.countryes.first.time.span)
-y.1908 = select(y.1908, full.info.countryes.first.time.span)
-y.1909 = select(y.1909, full.info.countryes.first.time.span)
-y.1910 = select(y.1910, full.info.countryes.first.time.span)
-y.1911 = select(y.1911, full.info.countryes.first.time.span)
-y.1912 = select(y.1912, full.info.countryes.first.time.span)
-y.1913 = select(y.1913, full.info.countryes.first.time.span)
+p_load(dplyr)
+y.1871 = dplyr::select(y.1871, full.info.countryes.first.time.span)
+y.1872 = dplyr::select(y.1872, full.info.countryes.first.time.span)
+y.1873 = dplyr::select(y.1873, full.info.countryes.first.time.span)
+y.1874 = dplyr::select(y.1874, full.info.countryes.first.time.span)
+y.1875 = dplyr::select(y.1875, full.info.countryes.first.time.span)
+y.1876 = dplyr::select(y.1876, full.info.countryes.first.time.span)
+y.1877 = dplyr::select(y.1877, full.info.countryes.first.time.span)
+y.1878 = dplyr::select(y.1878, full.info.countryes.first.time.span)
+y.1879 = dplyr::select(y.1879, full.info.countryes.first.time.span)
+y.1880 = dplyr::select(y.1880, full.info.countryes.first.time.span)
+y.1881 = dplyr::select(y.1881, full.info.countryes.first.time.span)
+y.1882 = dplyr::select(y.1882, full.info.countryes.first.time.span)
+y.1883 = dplyr::select(y.1883, full.info.countryes.first.time.span)
+y.1884 = dplyr::select(y.1884, full.info.countryes.first.time.span)
+y.1885 = dplyr::select(y.1885, full.info.countryes.first.time.span)
+y.1886 = dplyr::select(y.1886, full.info.countryes.first.time.span)
+y.1887 = dplyr::select(y.1887, full.info.countryes.first.time.span)
+y.1888 = dplyr::select(y.1888, full.info.countryes.first.time.span)
+y.1889 = dplyr::select(y.1889, full.info.countryes.first.time.span)
+y.1890 = dplyr::select(y.1890, full.info.countryes.first.time.span)
+y.1891 = dplyr::select(y.1891, full.info.countryes.first.time.span)
+y.1892 = dplyr::select(y.1892, full.info.countryes.first.time.span)
+y.1893 = dplyr::select(y.1893, full.info.countryes.first.time.span)
+y.1894 = dplyr::select(y.1894, full.info.countryes.first.time.span)
+y.1895 = dplyr::select(y.1895, full.info.countryes.first.time.span)
+y.1896 = dplyr::select(y.1896, full.info.countryes.first.time.span)
+y.1897 = dplyr::select(y.1897, full.info.countryes.first.time.span)
+y.1898 = dplyr::select(y.1898, full.info.countryes.first.time.span)
+y.1899 = dplyr::select(y.1899, full.info.countryes.first.time.span)
+y.1900 = dplyr::select(y.1900, full.info.countryes.first.time.span)
+y.1901 = dplyr::select(y.1901, full.info.countryes.first.time.span)
+y.1902 = dplyr::select(y.1902, full.info.countryes.first.time.span)
+y.1903 = dplyr::select(y.1903, full.info.countryes.first.time.span)
+y.1904 = dplyr::select(y.1904, full.info.countryes.first.time.span)
+y.1905 = dplyr::select(y.1905, full.info.countryes.first.time.span)
+y.1906 = dplyr::select(y.1906, full.info.countryes.first.time.span)
+y.1907 = dplyr::select(y.1907, full.info.countryes.first.time.span)
+y.1908 = dplyr::select(y.1908, full.info.countryes.first.time.span)
+y.1909 = dplyr::select(y.1909, full.info.countryes.first.time.span)
+y.1910 = dplyr::select(y.1910, full.info.countryes.first.time.span)
+y.1911 = dplyr::select(y.1911, full.info.countryes.first.time.span)
+y.1912 = dplyr::select(y.1912, full.info.countryes.first.time.span)
+y.1913 = dplyr::select(y.1913, full.info.countryes.first.time.span)
 
 ## Keeping Rows for which we have complete information
 y.1871 = y.1871[1:length(full.info.countryes.first.time.span), ]
@@ -327,20 +332,13 @@ rownames(y.1912) <- NULL
 rownames(y.1913) <- NULL
 
 # Building WM for the first period
-wm.1 = list(y.1871, y.1872, y.1873, y.1874, y.1875, y.1876, y.1877, y.1878, y.1879, y.1880, y.1881, y.1882, y.1883, y.1884, y.1885, y.1886, y.1887, y.1888, y.1889, y.1890, y.1891, y.1892, y.1893, y.1894, y.1895, y.1896, y.1897, y.1898, y.1899, y.1900, y.1901, y.1902, y.1903, y.1904, y.1905, y.1906, y.1907, y.1908, y.1909, y.1910, y.1911, y.1912, y.1913)
-
-
-##############################
-## Second Period: 1955 to 2012
-##############################
-
-
-
-
+wm.1 = list(as.matrix(y.1871), as.matrix(y.1872), as.matrix(y.1873), as.matrix(y.1874), as.matrix(y.1875), as.matrix(y.1876), as.matrix(y.1877), as.matrix(y.1878), as.matrix(y.1879), as.matrix(y.1880), as.matrix(y.1881), as.matrix(y.1882), as.matrix(y.1883), as.matrix(y.1884), as.matrix(y.1885), as.matrix(y.1886), as.matrix(y.1887), as.matrix(y.1888), as.matrix(y.1889), as.matrix(y.1890), as.matrix(y.1891), as.matrix(y.1892), as.matrix(y.1893), as.matrix(y.1894), as.matrix(y.1895), as.matrix(y.1896), as.matrix(y.1897), as.matrix(y.1898), as.matrix(y.1899), as.matrix(y.1900), as.matrix(y.1901), as.matrix(y.1902), as.matrix(y.1903), as.matrix(y.1904), as.matrix(y.1905), as.matrix(y.1906), as.matrix(y.1907), as.matrix(y.1908), as.matrix(y.1909), as.matrix(y.1910), as.matrix(y.1911), as.matrix(y.1912), as.matrix(y.1913))
 
 ########################################################
 # Merge Trade-COW y National Material Capabilities-COW
 ########################################################
+# loads pacman
+if (!require("pacman")) install.packages("pacman"); library(pacman) 
 
 # load National Material Capabilities-COW
 p_load(foreign)
@@ -374,154 +372,66 @@ colnames(cow.d)[which(names(cow.d) == "year")] <- "Time"
 
 # reorder time-ID and panel-ID vars.
 cow.d.1 = subset(cow.d,  select=c("ID", "Time","milper", "irst")) # complete var names: "statename", "year", "milex", "milper", "irst", "pec"
-cow.d.1$ID <- gsub(' ', '.', cow.d.1$ID) # replace blank space with dot "." just like in full.info.countryes.first.time.span
-cow.d.1$ID <- gsub('-', '.', cow.d.1$ID) # replace blank space with dot "." just like in full.info.countryes.first.time.span
+cow.d.1$ID <- gsub(' ', '', cow.d.1$ID) # replace blank space with dot "" just like in full.info.countryes.first.time.span
+cow.d.1$ID <- gsub('-', '', cow.d.1$ID) # replace blank space with dot "" just like in full.info.countryes.first.time.span
 
 # Filter complete obs by country name
-cow.d.1 <- subset(cow.d.1, ID == "Argentina" | ID == "Austria.Hungary" | ID == "Belgium" | ID ==  "Bolivia" | ID == "Brazil" | ID == "Chile" | ID == "China" | ID == "Colombia" | ID == "Denmark" | ID == "Ecuador" | ID == "France" | ID == "Germany" | ID == "Greece" | ID == "Guatemala" | ID == "Haiti" | ID == "Iran" | ID == "Italy" | ID == "Japan" | ID == "Mexico" | ID == "Netherlands" | ID == "Peru" | ID == "Portugal" | ID == "Russia" | ID == "Spain" | ID == "Sweden" | ID == "Switzerland" | ID == "Turkey" | ID == "United.Kingdom" | ID == "United.States.of.America" | ID == "Venezuela")
+cow.d.1 <- subset(cow.d.1, ID == "Argentina" | ID == "AustriaHungary" | ID == "Belgium" | ID ==  "Bolivia" | ID == "Brazil" | ID == "Chile" | ID == "China" | ID == "Colombia" | ID == "Denmark" | ID == "Ecuador" | ID == "France" | ID == "Germany" | ID == "Greece" | ID == "Guatemala" | ID == "Haiti" | ID == "Iran" | ID == "Italy" | ID == "Japan" | ID == "Mexico" | ID == "Netherlands" | ID == "Peru" | ID == "Portugal" | ID == "Russia" | ID == "Spain" | ID == "Sweden" | ID == "Switzerland" | ID == "Turkey" | ID == "UnitedKingdom" | ID == "UnitedStatesofAmerica" | ID == "Venezuela")
 
 # Filter complete obs by year
 cow.d.1 <- subset(cow.d.1, Time >= 1871 & Time <= 1913)
 
-# check everything is alright
-# table(sort(full.info.countryes.first.time.span) == sort(unique(cow.d.1$ID)))
+# Reformat time variable
+cow.d.1$Time = as.character(cow.d.1$Time)
+cow.d.1$Time = as.Date(cow.d.1$Time,"%Y")
+cow.d.1$Time <- as.POSIXct(cow.d.1$Time, origin="1871", tz = "GMT",  tryFormats ="%Y", optional = T)
+
+# Sort df by country name and time
+cow.d.1 = cow.d.1[with(cow.d.1, order(ID, Time)),]
+rownames(cow.d.1) <- NULL
+
+## Checking if panels are balanced
+# p_load(plm)
+# plm::is.pbalanced(cow.d.1)    
 
 ########################################################
 # GVARX First Period
 ########################################################
 
-
-# loads pacman
-if (!require("pacman")) install.packages("pacman"); library(pacman) 
-
 # Install/load GVARX
 p_load(GVARX)
-# https://www.rdocumentation.org/packages/GVARX/versions/1.1/topics/grangerGVAR
+# https://www.rdocumentation.org/packages/GVARX/versions/1.3
 # data("tradeweightx")
 
-
-
-
-# (1)
 # Be adviced, this function only computes Granger causality tests for 
 # BIVARIATE specifications. Will compute different models for both var types.
 
-# (2)
-# Weight matrix will be the COW Trade DF.
+p=2 # The number of lag for Xt matrix
+FLag=2 # The number of lag for foreign variables in country-specific VAR
+lag.max=15 # The maximal number of lag for estimating country-specific VAR
+type="const" # Model specificaiton for VAR. As in package vars, we have four selection: "none","const","trend", "both".
+ic="SC" # Information criteria for optimal lag.As in package vars, we have four selection: "AIC", "HQ", "SC", and "FPE".
 
 
-# Rename "West Germany" to "Germany" only for 1946-1989 period.
-# cow.d.1$ID[cow.d.1$ID == "German Federal Republic"] <- "Germany"
-
-# Partion the DF into two smaller DF's:  (1) 1871-1913, and (2) 1946-today
-cow.d.1871.1913 = cow.d.1[cow.d.1$Time >= 1871 & cow.d.1$Time <= 1913,]
-cow.d.1946.today = cow.d.1[cow.d.1$Time >= 1955 & cow.d.1$Time <= max(cow.d.1$Time),]
-# trim 1945-1955 years for all: we want to have one Germany across time (and West Germany pops un in the database only since 1955). That's why
-
-## countries that entered into "cow.d.1871.1913" and "cow.d.1946.today"
-### unique(cow.d.1871.1913$ID)
-### unique(cow.d.1946.today$ID)
-
-
-# append both DF's
-cow.d.time.trimmed <- rbind(cow.d.1871.1913,cow.d.1946.today)
-
-# we want to have one Germany across time (and West Germany pops un in the database only since 1955). 
-cow.d.time.trimmed$ID[cow.d.time.trimmed$ID == "German Federal Republic" & cow.d.time.trimmed$Time >= 1955 & cow.d.time.trimmed$Time <=1989] <- "Germany"
-
-# drop if ID == "German Federal Republic" | ID == "German Federal Republic" // OTHERWISE, we would have duplicates (two Germanies in 1955 onwards).
-cow.d.time.trimmed <- cow.d.time.trimmed[!(cow.d.time.trimmed$ID == "German Federal Republic" | cow.d.time.trimmed$ID == "German Democratic Republic"),]
-
-
-
-# check if panels are "strictly balanced?
-p_load(plm)
-is.pbalanced(cow.d.time.trimmed) # False
-
-
-dat = cow.d.time.trimmed
-dat$Time = as.Date(as.character(dat$Time), "%Y")
-
-
-# pre dataset
-# dat.pre = dat#[dat$Time<=2019,]
-
-
-# balancing pre
-dat.test <- pdata.frame(dat, index=c("ID","Time"))
-dat.test = make.pbalanced(dat.test, balance.type = "shared.individuals", index = c('ID', 'Time') ) # shared.individuals / fill
-is.pbalanced(dat.test)
-# N
-unique(dat.test$ID)
-
-
-
-
-
-
+mainOUTPUT = GVECMest(
+        data = cow.d.1,
+        p = p,
+        FLag = FLag,
+        lag.max = lag.max,
+        type = type,
+        ic = ic,
+        weight.matrix=wm.1)
 
 
 
 
 
 ########################################################
-# GVAR
+# Others
 ########################################################
-# formatting df as "timeseries data as list (each entry is a matrix of a subsystem of variables)"
-cow.d <- split(cow.d, cow.d$ccode)
 
-
-# Transform DF into TS object
-cow = as.ts(cow, 
-              start = min(cow$year),
-              end = max(cow$year),
-              frequency = 1 # 1 year
-              )
-
-names(cow) <- unique(country$statename)
-c.names <- names(cow)[-length(cow)]
-
-
-install.packages("GV")
-
+# Other package
 # install.packages("GVAR", repos="http://R-Forge.R-project.org")
-library(GVAR)
+# library(GVAR)
 
 
-data(pesaran26)
-c.names <- names(Data)[-length(Data)]
-
-p <- c(2,2,2,1,2,2,1,2,2,2,2,1,2,1,1,2,2,2,2,2,2,1,2,2,2,2)
-q <- c(2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)
-lex <- q
-
-endo <- ord <- we <- d <- vector("list",length=length(c.names))
-names(endo) <- names(ord) <- names(we) <- names(d) <- c.names
-# base country: usa
-endo[[1]] <- c(1:3,5:7)
-ord[[1]] <- c(1:3,5:7)
-we[[1]] <- c(1:2,4)
-d[[1]] <- NULL
-# countries with 6 endogenous variables:
-for (j in c("EuroArea", "Japan", "UK", "Sweden", "Switzerland", "Norway", "Australia", "Canada", "NewZealand", "Korea", "Safrica")) {i <- which(c.names==j); endo[[i]] <- ord[[i]] <- 1:6}
-# countries with 5 endogenous variables:
-for (j in c("Argentina", "Chile", "Malaysia", "Philippines", "Singapore", "Thailand", "India")) {i <- which(c.names==j); endo[[i]] <- ord[[i]] <- 1:5}
-# countries with 4 endogenous variables:
-for (j in c("China", "Brazil", "Mexico", "Peru", "Indonesia", "Turkey")) {i <- which(c.names==j); endo[[i]] <- ord[[i]] <- c(1:2,4:5)}
-# Saudi Arabia
-endo[[21]] <- ord[[21]] <- c(1:2,4)
-
-# all countries but us
-for (i in 2:length(we))
-{
-        we[[i]] <- c(1:3,5,6)
-        d[[i]] <- 1
-}
-
-Case <- "IV"
-r <- c(2,1,1,4,3,3,3,2,2,1,2,3,3,4,4,3,3,4,1,2,3,3,2,1,1,1)
-
-res.GVAR <- GVAR(Data=Data,r=r,p=p,q=q,weight=weight,Case=Case,exo.var=TRUE,d=d,lex=lex,ord=ord,we=we,endo=endo,method="max.eigen")
-
-# view vecm models
-res.GVAR$we.vecms
