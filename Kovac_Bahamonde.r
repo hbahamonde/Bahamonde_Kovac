@@ -394,6 +394,76 @@ rownames(cow.d.1) <- NULL
 # p_load(plm)
 # plm::is.pbalanced(cow.d.1)    
 
+
+# Plot the data
+# Pending
+
+
+
+
+
+# Checking Panel stationarity
+
+## tests in "plm" package assume "the series under scrutiny are cross-sectionally independent"
+## tests in "punitroots" assume "cross-dependence across the panel units", which is what we believe
+## Kleiber2011, p. 2
+
+
+### Package
+## Dependencies
+# install.packages("fBasics")
+# install.packages("fUnitRoots")
+# install.packages("CADFtest")
+## Install package of interest
+# install.packages("punitroots")
+library(punitroots)
+
+# Need to melt data first to make them look like these data("OECDunemp")
+cow.d.1.irst = select(cow.d.1, "ID", "irst", "Time")
+cow.d.1.irst = data.frame(t(reshape(cow.d.1.irst, idvar = "ID", timevar = "Time", direction = "wide")))
+rownames(cow.d.1.irst) <- NULL
+colnames(cow.d.1.irst) <- c(as.character(lapply(cow.d.1.irst[1,] , as.character)))
+cow.d.1.irst = data.frame(cow.d.1.irst[-c(1), ])
+# cow.d.1.irst <- mutate_all(cow.d.1.irst, function(x) as.numeric(as.character(x)))
+# cow.d.1.irst=format(round(cow.d.1.irst,2),nsmall=2)
+#cow.d.1.irst[cow.d.1.irst == 0] <- 0.1
+# cow.d.1.irst = as.data.frame(sapply(cow.d.1.irst, function(x) log(x)))
+
+cow.d.1.milper = select(cow.d.1, "ID", "milper", "Time")
+cow.d.1.milper = data.frame(t(reshape(cow.d.1.milper, idvar = "ID", timevar = "Time", direction = "wide")))
+rownames(cow.d.1.milper) <- NULL
+colnames(cow.d.1.milper) <- c(as.character(lapply(cow.d.1.milper[1,] , as.character)))
+cow.d.1.milper = data.frame(cow.d.1.milper[-c(1), ])
+#
+# cow.d.1.milper <- mutate_all(cow.d.1.milper, function(x) as.numeric(as.character(x)))
+# cow.d.1.milper=format(round(cow.d.1.milper,2),nsmall=2)
+# cow.d.1.milper[cow.d.1.milper == 0] <- 0.1
+# cow.d.1.milper = as.data.frame(sapply(cow.d.1.milper, function(x) log(x)))
+
+
+
+#library(plm)
+#cow.d.1.milper = as.matrix(window(cow.d.1.milper, start = c(1871,1), end = c(1912,1)))
+#purtest(cow.d.1.milper, test = "ips", lags = "AIC", pmax = 5)
+
+
+
+## ?pCADFtest
+# This function implements the panel Covariate Augmented Dickey-Fuller (pCADF) test developed in Costantini and Lupi (2012). 
+# The panel unit root tests proposed in Choi (2001) and in Demetrescu et al. (2006) can also be performed using this function.
+cow.d.1.irst.station = pCADFtest(Y=cow.d.1.irst, type = "drift", criterion = "AIC")
+cow.d.1.milper.station = pCADFtest(Y = cow.d.1.milper, type = "drift", criterion = "BIC")
+
+summary(cow.d.1.irst.station)
+# 1. The line Correction for cross-correlation: TRUE states that cross-dependence has been detected and Hartung’s correction has been used in the combination of the p values as sug- gested in Demetrescu et al. (2006). Kleiber2011, 10
+# 2. unit root = NULL. Do we have enough to reject the null? p-value of 0.7404646 indicates that we have non-stationarity.
+
+
+summary(cow.d.1.milper.station)
+# 1. The line Correction for cross-correlation: TRUE states that cross-dependence has been detected and Hartung’s correction has been used in the combination of the p values as sug- gested in Demetrescu et al. (2006). Kleiber2011, 10
+# 2. unit root = NULL. Do we have enough to reject the null? p-value of 0.7404646 indicates that we have non-stationarity.
+
+
 ########################################################
 # GVARX First Period
 ########################################################
