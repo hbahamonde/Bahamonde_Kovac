@@ -334,6 +334,9 @@ rownames(y.1913) <- NULL
 # Building WM for the first period
 wm.1 = list(as.matrix(y.1871), as.matrix(y.1872), as.matrix(y.1873), as.matrix(y.1874), as.matrix(y.1875), as.matrix(y.1876), as.matrix(y.1877), as.matrix(y.1878), as.matrix(y.1879), as.matrix(y.1880), as.matrix(y.1881), as.matrix(y.1882), as.matrix(y.1883), as.matrix(y.1884), as.matrix(y.1885), as.matrix(y.1886), as.matrix(y.1887), as.matrix(y.1888), as.matrix(y.1889), as.matrix(y.1890), as.matrix(y.1891), as.matrix(y.1892), as.matrix(y.1893), as.matrix(y.1894), as.matrix(y.1895), as.matrix(y.1896), as.matrix(y.1897), as.matrix(y.1898), as.matrix(y.1899), as.matrix(y.1900), as.matrix(y.1901), as.matrix(y.1902), as.matrix(y.1903), as.matrix(y.1904), as.matrix(y.1905), as.matrix(y.1906), as.matrix(y.1907), as.matrix(y.1908), as.matrix(y.1909), as.matrix(y.1910), as.matrix(y.1911), as.matrix(y.1912), as.matrix(y.1913))
 
+# HERE
+## keep columns with complete cases only
+
 ########################################################
 # Merge Trade-COW y National Material Capabilities-COW
 ########################################################
@@ -376,7 +379,12 @@ cow.d.1$ID <- gsub(' ', '', cow.d.1$ID) # replace blank space with dot "" just l
 cow.d.1$ID <- gsub('-', '', cow.d.1$ID) # replace blank space with dot "" just like in full.info.countryes.first.time.span
 
 # Filter complete obs by country name
-cow.d.1 <- subset(cow.d.1, ID == "Argentina" | ID == "AustriaHungary" | ID == "Belgium" | ID ==  "Bolivia" | ID == "Brazil" | ID == "Chile" | ID == "China" | ID == "Colombia" | ID == "Denmark" | ID == "Ecuador" | ID == "France" | ID == "Germany" | ID == "Greece" | ID == "Guatemala" | ID == "Haiti" | ID == "Iran" | ID == "Italy" | ID == "Japan" | ID == "Mexico" | ID == "Netherlands" | ID == "Peru" | ID == "Portugal" | ID == "Russia" | ID == "Spain" | ID == "Sweden" | ID == "Switzerland" | ID == "Turkey" | ID == "UnitedKingdom" | ID == "UnitedStatesofAmerica" | ID == "Venezuela")
+### ALL POSSIBLE COUNTRIES 
+## cow.d.1 <- subset(cow.d.1, ID == "Argentina" | ID == "AustriaHungary" | ID == "Belgium" | ID ==  "Bolivia" | ID == "Brazil" | ID == "Chile" | ID == "China" | ID == "Colombia" | ID == "Denmark" | ID == "Ecuador" | ID == "France" | ID == "Germany" | ID == "Greece" | ID == "Guatemala" | ID == "Haiti" | ID == "Iran" | ID == "Italy" | ID == "Japan" | ID == "Mexico" | ID == "Netherlands" | ID == "Peru" | ID == "Portugal" | ID == "Russia" | ID == "Spain" | ID == "Sweden" | ID == "Switzerland" | ID == "Turkey" | ID == "UnitedKingdom" | ID == "UnitedStatesofAmerica" | ID == "Venezuela")
+
+### Only countries for which we have non-0 data
+cow.d.1 <- subset(cow.d.1, ID == "AustriaHungary" | ID == "Belgium" | ID == "China" | ID == "France" | ID == "Germany" | ID == "Italy" | ID == "Japan" | ID == "Mexico" | ID == "Russia" | ID == "Spain" | ID == "Sweden" | ID == "Turkey" | ID == "UnitedKingdom" | ID == "UnitedStatesofAmerica" )
+
 
 # Filter complete obs by year
 cow.d.1 <- subset(cow.d.1, Time >= 1871 & Time <= 1913)
@@ -390,6 +398,11 @@ cow.d.1$Time <- as.POSIXct(cow.d.1$Time, origin="1871", tz = "GMT",  tryFormats 
 cow.d.1 = cow.d.1[with(cow.d.1, order(ID, Time)),]
 rownames(cow.d.1) <- NULL
 
+# Exclude 0's (messes up with stationarity tests, singularity, non-invertible matrices, and everything else)
+#View(data.frame(cow.d.1[, colSums(cow.d.1 != 0) > 0]))
+#View(data.frame(cow.d.1[, !apply(cow.d.1 == 0, 2, all)]))
+# HERE
+
 ## Checking if panels are balanced
 # p_load(plm)
 # plm::is.pbalanced(cow.d.1)    
@@ -401,8 +414,10 @@ rownames(cow.d.1) <- NULL
 
 
 
-
+#############################
 # Checking Panel stationarity
+#############################
+
 
 ## tests in "plm" package assume "the series under scrutiny are cross-sectionally independent"
 ## tests in "punitroots" assume "cross-dependence across the panel units", which is what we believe
@@ -419,14 +434,16 @@ rownames(cow.d.1) <- NULL
 library(punitroots)
 
 # Need to melt data first to make them look like these data("OECDunemp")
+p_load(dplyr)
+
 cow.d.1.irst = select(cow.d.1, "ID", "irst", "Time")
 cow.d.1.irst = data.frame(t(reshape(cow.d.1.irst, idvar = "ID", timevar = "Time", direction = "wide")))
 rownames(cow.d.1.irst) <- NULL
 colnames(cow.d.1.irst) <- c(as.character(lapply(cow.d.1.irst[1,] , as.character)))
 cow.d.1.irst = data.frame(cow.d.1.irst[-c(1), ])
-# cow.d.1.irst <- mutate_all(cow.d.1.irst, function(x) as.numeric(as.character(x)))
-# cow.d.1.irst=format(round(cow.d.1.irst,2),nsmall=2)
-#cow.d.1.irst[cow.d.1.irst == 0] <- 0.1
+#
+cow.d.1.irst <- mutate_all(cow.d.1.irst, function(x) as.numeric(as.character(x)))
+cow.d.1.irst[cow.d.1.irst == 0] <- 0.1
 # cow.d.1.irst = as.data.frame(sapply(cow.d.1.irst, function(x) log(x)))
 
 cow.d.1.milper = select(cow.d.1, "ID", "milper", "Time")
@@ -435,23 +452,21 @@ rownames(cow.d.1.milper) <- NULL
 colnames(cow.d.1.milper) <- c(as.character(lapply(cow.d.1.milper[1,] , as.character)))
 cow.d.1.milper = data.frame(cow.d.1.milper[-c(1), ])
 #
-# cow.d.1.milper <- mutate_all(cow.d.1.milper, function(x) as.numeric(as.character(x)))
-# cow.d.1.milper=format(round(cow.d.1.milper,2),nsmall=2)
+cow.d.1.milper <- mutate_all(cow.d.1.milper, function(x) as.numeric(as.character(x)))
 # cow.d.1.milper[cow.d.1.milper == 0] <- 0.1
 # cow.d.1.milper = as.data.frame(sapply(cow.d.1.milper, function(x) log(x)))
 
 
-
-#library(plm)
-#cow.d.1.milper = as.matrix(window(cow.d.1.milper, start = c(1871,1), end = c(1912,1)))
-#purtest(cow.d.1.milper, test = "ips", lags = "AIC", pmax = 5)
+# library(plm)
+# cow.d.1.milper = as.matrix(window(cow.d.1.milper, start = c(1871,1), end = c(1912,1)))
+# purtest(cow.d.1.milper, test = "ips", lags = "AIC", pmax = 5)
 
 
 
 ## ?pCADFtest
 # This function implements the panel Covariate Augmented Dickey-Fuller (pCADF) test developed in Costantini and Lupi (2012). 
 # The panel unit root tests proposed in Choi (2001) and in Demetrescu et al. (2006) can also be performed using this function.
-cow.d.1.irst.station = pCADFtest(Y=cow.d.1.irst, type = "drift", criterion = "AIC")
+cow.d.1.irst.station = pCADFtest(Y=cow.d.1.irst[,2:3], type = "drift", criterion = "AIC")
 cow.d.1.milper.station = pCADFtest(Y = cow.d.1.milper, type = "drift", criterion = "BIC")
 
 summary(cow.d.1.irst.station)
@@ -462,6 +477,19 @@ summary(cow.d.1.irst.station)
 summary(cow.d.1.milper.station)
 # 1. The line Correction for cross-correlation: TRUE states that cross-dependence has been detected and Hartung’s correction has been used in the combination of the p values as sug- gested in Demetrescu et al. (2006). Kleiber2011, 10
 # 2. unit root = NULL. Do we have enough to reject the null? p-value of 0.7404646 indicates that we have non-stationarity.
+
+
+#############################
+# Differencing the series
+#############################
+
+cow.d.1.irst.diff = data.frame(diff(as.matrix(cow.d.1.irst)))
+cow.d.1.milper.diff = data.frame(diff(as.matrix(cow.d.1.milper)))
+
+#############################
+# Re-testing for stationarity
+#############################
+
 
 
 ########################################################
