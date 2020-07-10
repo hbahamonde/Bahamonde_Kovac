@@ -51,6 +51,80 @@ for ( i in sequence){
         write.csv(ad_matrix,file_name)
         }
 
+########################################################
+# Merge Trade-COW y National Material Capabilities-COW
+########################################################
+cat("\014")
+rm(list=ls())
+graphics.off()
+
+# loads pacman
+if (!require("pacman")) install.packages("pacman"); library(pacman) 
+
+# load National Material Capabilities-COW
+p_load(foreign)
+mnc.d <- read.dta("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/NMC_5_0.dta") 
+
+# load Trade-COW
+p_load(foreign)
+trade.d <- read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/National_COW_4.0.csv") 
+
+# merge
+cow.d = merge(mnc.d, trade.d, by=c("ccode","year"))
+
+# subset variables
+cow.d <- cow.d[c("ccode", "year", "milex", "milper", "irst", "pec")]
+
+# Format Country Name
+country = data.frame(
+        statename = trade.d$statename,
+        ccode = trade.d$ccode,
+        year = trade.d$year
+)
+cow.d = merge(cow.d, country, by = c("ccode", "year"))
+cow.d$statename <- as.character(cow.d$statename)
+
+
+# rename time-ID and panel-ID vars.
+colnames(cow.d)[which(names(cow.d) == "statename")] <- "ID"
+colnames(cow.d)[which(names(cow.d) == "year")] <- "Time"
+
+
+# reorder time-ID and panel-ID vars.
+cow.d.1 = subset(cow.d,  select=c("ID", "Time","milper", "irst")) # complete var names: "statename", "year", "milex", "milper", "irst", "pec"
+cow.d.1$ID <- gsub(' ', '.', cow.d.1$ID) # replace blank space with dot "" just like in full.info.countryes.first.time.span
+cow.d.1$ID <- gsub('-', '.', cow.d.1$ID) # replace blank space with dot "" just like in full.info.countryes.first.time.span
+
+# Filter complete obs by year
+cow.d.1 <- subset(cow.d.1, Time >= 1871 & Time <= 1913)
+
+# Filter countries for which we have complete data
+cow.d.1 = cow.d.1 %>% group_by(ID) %>% filter(milper != 0 & irst != 0)
+
+# Drop countries for which we don't have the complete series
+full.info.countryes.first.time.span = unique(cow.d.1[cow.d.1$ID %in% names(which(table(cow.d.1$ID) == as.numeric(length(1871:1913)))), ]$ID) # Countries for which we have complete rows
+
+# Filtering complete obs by country name
+cow.d.1 = data.frame(cow.d.1[cow.d.1$ID %in% full.info.countryes.first.time.span,])
+
+# Reformat time variable
+cow.d.1$Time = as.character(cow.d.1$Time)
+cow.d.1$Time = as.Date(cow.d.1$Time,"%Y")
+cow.d.1$Time <- as.POSIXct(cow.d.1$Time, origin="1871", tz = "GMT",  tryFormats ="%Y", optional = T)
+
+# Sort df by country name and time
+cow.d.1 = cow.d.1[with(cow.d.1, order(ID, Time)),]
+rownames(cow.d.1) <- NULL
+
+## Checking if panels are balanced
+# p_load(plm)
+# plm::is.pbalanced(cow.d.1)    
+
+
+# Plot the data
+# Pending
+
+
 ##############################
 ## First Period: 1871 to 1913
 ##############################
@@ -146,53 +220,51 @@ y.1911 = y.1911[order(y.1911$X), ] ; y.1911$X <- NULL
 y.1912 = y.1912[order(y.1912$X), ] ; y.1912$X <- NULL
 y.1913 = y.1913[order(y.1913$X), ] ; y.1913$X <- NULL
 
-# 2. Sort column names
-y.1871 = y.1871[ , order(names(y.1871))]
-y.1872 = y.1872[ , order(names(y.1872))]
-y.1873 = y.1873[ , order(names(y.1873))]
-y.1874 = y.1874[ , order(names(y.1874))]
-y.1875 = y.1875[ , order(names(y.1875))]
-y.1876 = y.1876[ , order(names(y.1876))]
-y.1877 = y.1877[ , order(names(y.1877))]
-y.1878 = y.1878[ , order(names(y.1878))]
-y.1879 = y.1879[ , order(names(y.1879))]
-y.1880 = y.1880[ , order(names(y.1880))]
-y.1881 = y.1881[ , order(names(y.1881))]
-y.1882 = y.1882[ , order(names(y.1882))]
-y.1883 = y.1883[ , order(names(y.1883))]
-y.1884 = y.1884[ , order(names(y.1884))]
-y.1885 = y.1885[ , order(names(y.1885))]
-y.1886 = y.1886[ , order(names(y.1886))]
-y.1887 = y.1887[ , order(names(y.1887))]
-y.1888 = y.1888[ , order(names(y.1888))]
-y.1889 = y.1889[ , order(names(y.1889))]
-y.1890 = y.1890[ , order(names(y.1890))]
-y.1891 = y.1891[ , order(names(y.1891))]
-y.1892 = y.1892[ , order(names(y.1892))]
-y.1893 = y.1893[ , order(names(y.1893))]
-y.1894 = y.1894[ , order(names(y.1894))]
-y.1895 = y.1895[ , order(names(y.1895))]
-y.1896 = y.1896[ , order(names(y.1896))]
-y.1897 = y.1897[ , order(names(y.1897))]
-y.1898 = y.1898[ , order(names(y.1898))]
-y.1899 = y.1899[ , order(names(y.1899))]
-y.1900 = y.1900[ , order(names(y.1900))]
-y.1901 = y.1901[ , order(names(y.1901))]
-y.1902 = y.1902[ , order(names(y.1902))]
-y.1903 = y.1903[ , order(names(y.1903))]
-y.1904 = y.1904[ , order(names(y.1904))]
-y.1905 = y.1905[ , order(names(y.1905))]
-y.1906 = y.1906[ , order(names(y.1906))]
-y.1907 = y.1907[ , order(names(y.1907))]
-y.1908 = y.1908[ , order(names(y.1908))]
-y.1909 = y.1909[ , order(names(y.1909))]
-y.1910 = y.1910[ , order(names(y.1910))]
-y.1911 = y.1911[ , order(names(y.1911))]
-y.1912 = y.1912[ , order(names(y.1912))]
-y.1913 = y.1913[ , order(names(y.1913))]
+# 2. Sort column names and delete columns (countries) for which we have complete missingness
+y.1871 = y.1871[ , order(names(y.1871))] # ; y.1871 = y.1871[ , colSums(y.1871 != 0) > 0]
+y.1872 = y.1872[ , order(names(y.1872))] # ; y.1872 = y.1872[ , colSums(y.1872 != 0) > 0]
+y.1873 = y.1873[ , order(names(y.1873))] # ; y.1873 = y.1873[ , colSums(y.1873 != 0) > 0]
+y.1874 = y.1874[ , order(names(y.1874))] # ; y.1874 = y.1874[ , colSums(y.1874 != 0) > 0]
+y.1875 = y.1875[ , order(names(y.1875))] # ; y.1875 = y.1875[ , colSums(y.1875 != 0) > 0]
+y.1876 = y.1876[ , order(names(y.1876))] # ; y.1876 = y.1876[ , colSums(y.1876 != 0) > 0]
+y.1877 = y.1877[ , order(names(y.1877))] # ; y.1877 = y.1877[ , colSums(y.1877 != 0) > 0]
+y.1878 = y.1878[ , order(names(y.1878))] # ; y.1878 = y.1878[ , colSums(y.1878 != 0) > 0]
+y.1879 = y.1879[ , order(names(y.1879))] # ; y.1879 = y.1879[ , colSums(y.1879 != 0) > 0]
+y.1880 = y.1880[ , order(names(y.1880))] # ; y.1880 = y.1880[ , colSums(y.1880 != 0) > 0]
+y.1881 = y.1881[ , order(names(y.1881))] # ; y.1881 = y.1881[ , colSums(y.1881 != 0) > 0]
+y.1882 = y.1882[ , order(names(y.1882))] # ; y.1882 = y.1882[ , colSums(y.1882 != 0) > 0]
+y.1883 = y.1883[ , order(names(y.1883))] # ; y.1883 = y.1883[ , colSums(y.1883 != 0) > 0]
+y.1884 = y.1884[ , order(names(y.1884))] # ; y.1884 = y.1884[ , colSums(y.1884 != 0) > 0]
+y.1885 = y.1885[ , order(names(y.1885))] # ; y.1885 = y.1885[ , colSums(y.1885 != 0) > 0]
+y.1886 = y.1886[ , order(names(y.1886))] # ; y.1886 = y.1886[ , colSums(y.1886 != 0) > 0]
+y.1887 = y.1887[ , order(names(y.1887))] # ; y.1887 = y.1887[ , colSums(y.1887 != 0) > 0]
+y.1888 = y.1888[ , order(names(y.1888))] # ; y.1888 = y.1888[ , colSums(y.1888 != 0) > 0]
+y.1889 = y.1889[ , order(names(y.1889))] # ; y.1889 = y.1889[ , colSums(y.1889 != 0) > 0]
+y.1890 = y.1890[ , order(names(y.1890))] # ; y.1890 = y.1890[ , colSums(y.1890 != 0) > 0]
+y.1891 = y.1891[ , order(names(y.1891))] # ; y.1891 = y.1891[ , colSums(y.1891 != 0) > 0]
+y.1892 = y.1892[ , order(names(y.1892))] # ; y.1892 = y.1892[ , colSums(y.1892 != 0) > 0]
+y.1893 = y.1893[ , order(names(y.1893))] # ; y.1893 = y.1893[ , colSums(y.1893 != 0) > 0]
+y.1894 = y.1894[ , order(names(y.1894))] # ; y.1894 = y.1894[ , colSums(y.1894 != 0) > 0]
+y.1895 = y.1895[ , order(names(y.1895))] # ; y.1895 = y.1895[ , colSums(y.1895 != 0) > 0]
+y.1896 = y.1896[ , order(names(y.1896))] # ; y.1896 = y.1896[ , colSums(y.1896 != 0) > 0]
+y.1897 = y.1897[ , order(names(y.1897))] # ; y.1897 = y.1897[ , colSums(y.1897 != 0) > 0]
+y.1898 = y.1898[ , order(names(y.1898))] # ; y.1898 = y.1898[ , colSums(y.1898 != 0) > 0]
+y.1899 = y.1899[ , order(names(y.1899))] # ; y.1899 = y.1899[ , colSums(y.1899 != 0) > 0]
+y.1900 = y.1900[ , order(names(y.1900))] # ; y.1900 = y.1900[ , colSums(y.1900 != 0) > 0]
+y.1901 = y.1901[ , order(names(y.1901))] # ; y.1901 = y.1901[ , colSums(y.1901 != 0) > 0]
+y.1902 = y.1902[ , order(names(y.1902))] # ; y.1902 = y.1902[ , colSums(y.1902 != 0) > 0]
+y.1903 = y.1903[ , order(names(y.1903))] # ; y.1903 = y.1903[ , colSums(y.1903 != 0) > 0]
+y.1904 = y.1904[ , order(names(y.1904))] # ; y.1904 = y.1904[ , colSums(y.1904 != 0) > 0]
+y.1905 = y.1905[ , order(names(y.1905))] # ; y.1905 = y.1905[ , colSums(y.1905 != 0) > 0]
+y.1906 = y.1906[ , order(names(y.1906))] # ; y.1906 = y.1906[ , colSums(y.1906 != 0) > 0]
+y.1907 = y.1907[ , order(names(y.1907))] # ; y.1907 = y.1907[ , colSums(y.1907 != 0) > 0]
+y.1908 = y.1908[ , order(names(y.1908))] # ; y.1908 = y.1908[ , colSums(y.1908 != 0) > 0]
+y.1909 = y.1909[ , order(names(y.1909))] # ; y.1909 = y.1909[ , colSums(y.1909 != 0) > 0]
+y.1910 = y.1910[ , order(names(y.1910))] # ; y.1910 = y.1910[ , colSums(y.1910 != 0) > 0]
+y.1911 = y.1911[ , order(names(y.1911))] # ; y.1911 = y.1911[ , colSums(y.1911 != 0) > 0]
+y.1912 = y.1912[ , order(names(y.1912))] # ; y.1912 = y.1912[ , colSums(y.1912 != 0) > 0]
+y.1913 = y.1913[ , order(names(y.1913))] # ; y.1913 = y.1913[ , colSums(y.1913 != 0) > 0]
 
-## Countries for which we have complete information
-full.info.countryes.first.time.span = c(Reduce(intersect, lapply(list(y.1871, y.1872, y.1873, y.1874, y.1875, y.1876, y.1877, y.1878, y.1879, y.1880, y.1881, y.1882, y.1883, y.1884, y.1885, y.1886, y.1887, y.1888, y.1889, y.1890, y.1891, y.1892, y.1893, y.1894, y.1895, y.1896, y.1897, y.1898, y.1899, y.1900, y.1901, y.1902, y.1903, y.1904, y.1905, y.1906, y.1907, y.1908, y.1909, y.1910, y.1911, y.1912, y.1913), names)))
 
 ## Keeping Columns for which we have complete information
 p_load(dplyr)
@@ -334,90 +406,11 @@ rownames(y.1913) <- NULL
 # Building WM for the first period
 wm.1 = list(as.matrix(y.1871), as.matrix(y.1872), as.matrix(y.1873), as.matrix(y.1874), as.matrix(y.1875), as.matrix(y.1876), as.matrix(y.1877), as.matrix(y.1878), as.matrix(y.1879), as.matrix(y.1880), as.matrix(y.1881), as.matrix(y.1882), as.matrix(y.1883), as.matrix(y.1884), as.matrix(y.1885), as.matrix(y.1886), as.matrix(y.1887), as.matrix(y.1888), as.matrix(y.1889), as.matrix(y.1890), as.matrix(y.1891), as.matrix(y.1892), as.matrix(y.1893), as.matrix(y.1894), as.matrix(y.1895), as.matrix(y.1896), as.matrix(y.1897), as.matrix(y.1898), as.matrix(y.1899), as.matrix(y.1900), as.matrix(y.1901), as.matrix(y.1902), as.matrix(y.1903), as.matrix(y.1904), as.matrix(y.1905), as.matrix(y.1906), as.matrix(y.1907), as.matrix(y.1908), as.matrix(y.1909), as.matrix(y.1910), as.matrix(y.1911), as.matrix(y.1912), as.matrix(y.1913))
 
-# HERE
-## keep columns with complete cases only
-
-########################################################
-# Merge Trade-COW y National Material Capabilities-COW
-########################################################
-# loads pacman
-if (!require("pacman")) install.packages("pacman"); library(pacman) 
-
-# load National Material Capabilities-COW
-p_load(foreign)
-mnc.d <- read.dta("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/NMC_5_0.dta") 
-
-
-# load Trade-COW
-p_load(foreign)
-trade.d <- read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/National_COW_4.0.csv") 
-
-# merge
-cow.d = merge(mnc.d, trade.d, by=c("ccode","year"))
-
-# subset variables
-cow.d <- cow.d[c("ccode", "year", "milex", "milper", "irst", "pec")]
-
-# Format Country Name
-country = data.frame(
-        statename = trade.d$statename,
-        ccode = trade.d$ccode,
-        year = trade.d$year
-)
-cow.d = merge(cow.d, country, by = c("ccode", "year"))
-cow.d$statename <- as.character(cow.d$statename)
-
-
-# rename time-ID and panel-ID vars.
-colnames(cow.d)[which(names(cow.d) == "statename")] <- "ID"
-colnames(cow.d)[which(names(cow.d) == "year")] <- "Time"
-
-
-# reorder time-ID and panel-ID vars.
-cow.d.1 = subset(cow.d,  select=c("ID", "Time","milper", "irst")) # complete var names: "statename", "year", "milex", "milper", "irst", "pec"
-cow.d.1$ID <- gsub(' ', '', cow.d.1$ID) # replace blank space with dot "" just like in full.info.countryes.first.time.span
-cow.d.1$ID <- gsub('-', '', cow.d.1$ID) # replace blank space with dot "" just like in full.info.countryes.first.time.span
-
-# Filter complete obs by country name
-### ALL POSSIBLE COUNTRIES 
-## cow.d.1 <- subset(cow.d.1, ID == "Argentina" | ID == "AustriaHungary" | ID == "Belgium" | ID ==  "Bolivia" | ID == "Brazil" | ID == "Chile" | ID == "China" | ID == "Colombia" | ID == "Denmark" | ID == "Ecuador" | ID == "France" | ID == "Germany" | ID == "Greece" | ID == "Guatemala" | ID == "Haiti" | ID == "Iran" | ID == "Italy" | ID == "Japan" | ID == "Mexico" | ID == "Netherlands" | ID == "Peru" | ID == "Portugal" | ID == "Russia" | ID == "Spain" | ID == "Sweden" | ID == "Switzerland" | ID == "Turkey" | ID == "UnitedKingdom" | ID == "UnitedStatesofAmerica" | ID == "Venezuela")
-
-### Only countries for which we have non-0 data
-cow.d.1 <- subset(cow.d.1, ID == "AustriaHungary" | ID == "Belgium" | ID == "China" | ID == "France" | ID == "Germany" | ID == "Italy" | ID == "Japan" | ID == "Mexico" | ID == "Russia" | ID == "Spain" | ID == "Sweden" | ID == "Turkey" | ID == "UnitedKingdom" | ID == "UnitedStatesofAmerica" )
-
-
-# Filter complete obs by year
-cow.d.1 <- subset(cow.d.1, Time >= 1871 & Time <= 1913)
-
-# Reformat time variable
-cow.d.1$Time = as.character(cow.d.1$Time)
-cow.d.1$Time = as.Date(cow.d.1$Time,"%Y")
-cow.d.1$Time <- as.POSIXct(cow.d.1$Time, origin="1871", tz = "GMT",  tryFormats ="%Y", optional = T)
-
-# Sort df by country name and time
-cow.d.1 = cow.d.1[with(cow.d.1, order(ID, Time)),]
-rownames(cow.d.1) <- NULL
-
-# Exclude 0's (messes up with stationarity tests, singularity, non-invertible matrices, and everything else)
-#View(data.frame(cow.d.1[, colSums(cow.d.1 != 0) > 0]))
-#View(data.frame(cow.d.1[, !apply(cow.d.1 == 0, 2, all)]))
-# HERE
-
-## Checking if panels are balanced
-# p_load(plm)
-# plm::is.pbalanced(cow.d.1)    
-
-
-# Plot the data
-# Pending
-
-
-
-
 #############################
 # Checking Panel stationarity
 #############################
 
+# "the GVAR methodology can be applied to stationary and/or integrated variables" Dees2007, p. 10
 
 ## tests in "plm" package assume "the series under scrutiny are cross-sectionally independent"
 ## tests in "punitroots" assume "cross-dependence across the panel units", which is what we believe
@@ -441,46 +434,33 @@ cow.d.1.irst = data.frame(t(reshape(cow.d.1.irst, idvar = "ID", timevar = "Time"
 rownames(cow.d.1.irst) <- NULL
 colnames(cow.d.1.irst) <- c(as.character(lapply(cow.d.1.irst[1,] , as.character)))
 cow.d.1.irst = data.frame(cow.d.1.irst[-c(1), ])
-#
 cow.d.1.irst <- mutate_all(cow.d.1.irst, function(x) as.numeric(as.character(x)))
-cow.d.1.irst[cow.d.1.irst == 0] <- 0.1
-# cow.d.1.irst = as.data.frame(sapply(cow.d.1.irst, function(x) log(x)))
 
 cow.d.1.milper = select(cow.d.1, "ID", "milper", "Time")
 cow.d.1.milper = data.frame(t(reshape(cow.d.1.milper, idvar = "ID", timevar = "Time", direction = "wide")))
 rownames(cow.d.1.milper) <- NULL
 colnames(cow.d.1.milper) <- c(as.character(lapply(cow.d.1.milper[1,] , as.character)))
 cow.d.1.milper = data.frame(cow.d.1.milper[-c(1), ])
-#
 cow.d.1.milper <- mutate_all(cow.d.1.milper, function(x) as.numeric(as.character(x)))
-# cow.d.1.milper[cow.d.1.milper == 0] <- 0.1
-# cow.d.1.milper = as.data.frame(sapply(cow.d.1.milper, function(x) log(x)))
-
-
-# library(plm)
-# cow.d.1.milper = as.matrix(window(cow.d.1.milper, start = c(1871,1), end = c(1912,1)))
-# purtest(cow.d.1.milper, test = "ips", lags = "AIC", pmax = 5)
-
-
 
 ## ?pCADFtest
 # This function implements the panel Covariate Augmented Dickey-Fuller (pCADF) test developed in Costantini and Lupi (2012). 
 # The panel unit root tests proposed in Choi (2001) and in Demetrescu et al. (2006) can also be performed using this function.
-cow.d.1.irst.station = pCADFtest(Y=cow.d.1.irst[,2:3], type = "drift", criterion = "AIC")
-cow.d.1.milper.station = pCADFtest(Y = cow.d.1.milper, type = "drift", criterion = "BIC")
+cow.d.1.irst.station = pCADFtest(Y=cow.d.1.irst, type = "drift", criterion = "AIC")
+cow.d.1.milper.station = pCADFtest(Y = cow.d.1.milper, type = "drift", criterion = "AIC")
 
 summary(cow.d.1.irst.station)
 # 1. The line Correction for cross-correlation: TRUE states that cross-dependence has been detected and Hartung’s correction has been used in the combination of the p values as sug- gested in Demetrescu et al. (2006). Kleiber2011, 10
-# 2. unit root = NULL. Do we have enough to reject the null? p-value of 0.7404646 indicates that we have non-stationarity.
+# 2. unit root = NULL. Do we have enough to reject the null? p-value of 1.00000 indicates that we have non-stationarity.
 
 
 summary(cow.d.1.milper.station)
 # 1. The line Correction for cross-correlation: TRUE states that cross-dependence has been detected and Hartung’s correction has been used in the combination of the p values as sug- gested in Demetrescu et al. (2006). Kleiber2011, 10
-# 2. unit root = NULL. Do we have enough to reject the null? p-value of 0.7404646 indicates that we have non-stationarity.
+# 2. unit root = NULL. Do we have enough to reject the null? p-value of 0.07191166 indicates that we have non-stationarity.
 
 
 #############################
-# Differencing the series
+# First Differencing the series
 #############################
 
 cow.d.1.irst.diff = data.frame(diff(as.matrix(cow.d.1.irst)))
@@ -490,7 +470,24 @@ cow.d.1.milper.diff = data.frame(diff(as.matrix(cow.d.1.milper)))
 # Re-testing for stationarity
 #############################
 
+options(scipen=9999999)
 
+cow.d.1.irst.diff.station = pCADFtest(Y=cow.d.1.irst.diff, type = "drift", criterion = "AIC") ; summary(cow.d.1.irst.diff.station)
+cow.d.1.milper.diff.station = pCADFtest(Y=cow.d.1.milper.diff, type = "drift", criterion = "AIC") ; summary(cow.d.1.milper.diff.station)
+
+# Really small p-values: series are stationary once they're first differenced
+
+
+#############################
+# Test Lag Structure
+#############################
+
+# Pending
+## Test for stability
+## Find lag structure package
+### This is neccesary to set "p" below.
+
+# Include in the paper a brief but detailed discussion, like FN # 31 in Box-Steffensmeier2014a, p. 120.
 
 ########################################################
 # GVARX First Period
@@ -506,8 +503,8 @@ p_load(GVARX)
 
 p=2 # The number of lag for Xt matrix
 FLag=2 # The number of lag for foreign variables in country-specific VAR
-lag.max=15 # The maximal number of lag for estimating country-specific VAR
-type="const" # Model specificaiton for VAR. As in package vars, we have four selection: "none","const","trend", "both".
+lag.max=5 # The maximal number of lag for estimating country-specific VAR
+type="trend" # Model specificaiton for VAR. As in package vars, we have four selection: "none","const","trend", "both".
 ic="SC" # Information criteria for optimal lag.As in package vars, we have four selection: "AIC", "HQ", "SC", and "FPE".
 
 
@@ -521,8 +518,26 @@ mainOUTPUT = GVECMest(
         weight.matrix=wm.1)
 
 
+# summary(mainOUTPUT$gvecm[[1]])
+
+## Look at the pr(F-statistic)
+# "the F test has the greatest power to determine the joint statistical significance of the coefficients on the lags of the variable hypothesized to Granger cause another variable. The null of no Granger causality is equivalent to the hypothesis that all these coefficients are jointly zero." Box-Steffensmeier2014a, p. 112
+# https://stats.stackexchange.com/questions/131261/granger-causality-interpretation-using-r/132527
 
 
+summary(mainOUTPUT$gvecm[[1]]) # Austria.Hungary (MILPER -> IRST) # F-statistic: 3.194 (p-value: 0.008879)
+summary(mainOUTPUT$gvecm[[2]]) # Belgium (MILPER -> IRON) # F-statistic: 4.641 (p-value: 0.0005612).
+summary(mainOUTPUT$gvecm[[3]]) # France (MILPER - IRON) INCONCLUSIVE
+
+
+## Present results like Table 4.5 in Box-Steffensmeier2014a, 121.
+
+
+## Other objects
+# mainOUTPUT$gvecm
+# coef(mainOUTPUT$gvecm[[1]])
+# mainOUTPUT$White[[1]] 
+# mainOUTPUT$NWHAC[[1]][1]
 
 ########################################################
 # Others
