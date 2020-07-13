@@ -411,6 +411,7 @@ wm.1 = list(as.matrix(y.1871), as.matrix(y.1872), as.matrix(y.1873), as.matrix(y
 #############################
 
 # "the GVAR methodology can be applied to stationary and/or integrated variables" Dees2007, p. 10
+# Granger models can be estimated with non-stationary data (Freeman1983, 334).
 
 ## tests in "plm" package assume "the series under scrutiny are cross-sectionally independent"
 ## tests in "punitroots" assume "cross-dependence across the panel units", which is what we believe
@@ -498,6 +499,8 @@ p_load(GVARX)
 # https://www.rdocumentation.org/packages/GVARX/versions/1.3
 # data("tradeweightx")
 
+# GVAR is developed by Pesaran2004
+
 # Be adviced, this function only computes Granger causality tests for 
 # BIVARIATE specifications. Will compute different models for both var types.
 
@@ -522,6 +525,8 @@ mainOUTPUT = GVECMest(
 
 ## Look at the pr(F-statistic)
 # "the F test has the greatest power to determine the joint statistical significance of the coefficients on the lags of the variable hypothesized to Granger cause another variable. The null of no Granger causality is equivalent to the hypothesis that all these coefficients are jointly zero." Box-Steffensmeier2014a, p. 112
+# F test tests if pi parameters ar jointly zero (Freeman1983, 333).
+# "tests for the joint significance of the estimated regression parameters, the ir,j's, were based on F statistic" (Freeman1983, 346)
 # https://stats.stackexchange.com/questions/131261/granger-causality-interpretation-using-r/132527
 
 
