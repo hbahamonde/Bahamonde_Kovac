@@ -535,6 +535,19 @@ summary(mainOUTPUT$gvecm[[2]]) # Belgium (MILPER -> IRON) # F-statistic: 4.641 (
 summary(mainOUTPUT$gvecm[[3]]) # France (MILPER - IRON) INCONCLUSIVE
 
 
+
+# Values for table (first country)
+unlist(list(summary(mainOUTPUT$gvecm[[1]])))[91] # F-statistic
+unlist(list(summary(mainOUTPUT$gvecm[[1]])))[87] # DF
+unlist(list(summary(mainOUTPUT$gvecm[[1]]))) # Trend
+
+# Values for table (second country)
+unlist(list(summary(mainOUTPUT$gvecm[[1]])))[246] # F-statistic
+unlist(list(summary(mainOUTPUT$gvecm[[1]])))[93] # DF
+
+
+test2 = unlist(list(summary(mainOUTPUT$gvecm[[1]])))
+
 ## Present results like Table 4.5 in Box-Steffensmeier2014a, 121.
 
 
