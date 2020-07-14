@@ -1,0 +1,226 @@
+\documentclass[onesided]{article}
+\usepackage{import}
+
+\subimport{/Users/hectorbahamonde/RU/Bibliografia_PoliSci/}{LaTeX_Paper_Packages_And_Style}
+
+% this below is to have endnotes at the end of the document.
+\let\footnote=\endnote 
+
+
+% DOCUMENT ID
+%\fancyhead[C]{Draft, please don't share without permission} % Custom header text
+
+
+
+
+% TITLE SECTION
+
+\title{\vspace{-15mm}\fontsize{18pt}{7pt}\selectfont\textbf{\input{/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/title.txt}\unskip}} % Article title
+
+
+\author[1]{
+
+\textsc{H\'ector Bahamonde}
+\thanks{\href{mailto:hector.bahamonde@uoh.cl}{hector.bahamonde@uoh.cl}; \href{http://www.hectorbahamonde.com}{\texttt{www.HectorBahamonde.com}}.}}
+
+
+
+\author[2]{
+
+\textsc{Name Lastname}
+\thanks{\href{mailto:hector.bahamonde@uoh.cl}{hector.bahamonde@uoh.cl}; 
+\href{http://www.hectorbahamonde.com}{\texttt{http://www.hectorbahamonde.com}}. \\
+We both thank Tsung-wu Ho.}}
+
+
+\affil[1]{Assistant Professor, O$'$Higgins University (Chile)}
+\affil[2]{Position, Institution}
+
+
+\date{\today}
+
+%----------------------------------------------------------------------------------------
+
+% BEGIN: add dollar sygn text mode
+\lstset{
+  mathescape = true,
+  basicstyle = \ttfamily}
+\newcommand{\dollar}{\mbox{\textdollar}}
+% END: add dollar sygn text mode
+
+
+\begin{document}
+\pagenumbering{gobble} 
+
+\maketitle % Insert title
+
+%\thispagestyle{fancy} % All pages have headers and footers
+
+%----------------------------------------------------------------------------------------
+% ABSTRACT
+%----------------------------------------------------------------------------------------
+\begin{abstract}
+\input{/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/abstract.txt}\unskip
+\end{abstract}
+
+
+\keywords{time series, IPE, IR}
+\\
+
+\begin{center}
+{\bf \input{/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/status.txt}\unskip} \\
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CONTENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% begin knitr stuff
+<<setup, include=FALSE, cache=FALSE>>=
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(knitr)
+
+@
+
+<<echo=FALSE, cache= F, warning = FALSE, message = F, eval=TRUE>>=
+read_chunk('/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/Bahamonde_Kovac.R')
+
+@
+
+
+<<abstract, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=FALSE, eval=TRUE>>=
+
+@
+
+% end knitr stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\clearpage
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Intro}
+
+
+\subsection{Presenting the GVAR Methodology}
+
+Here goes the ``theory'' part of the GVAR
+
+\section{Guns and Steel}
+
+\begin{table}[]
+\begin{tabular}{ccccll}
+\cline{2-6}
+\multicolumn{1}{c|}{}                            & \multicolumn{1}{c|}{}                        & \multicolumn{1}{c|}{\textbf{F-Test}}    & \multicolumn{1}{c|}{P-Value} & \multicolumn{1}{l|}{DF} & \multicolumn{1}{l|}{Obs} \\ \hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Austria-Hungary}} & \multicolumn{1}{c|}{Relationship 1} & \multicolumn{1}{c|}{Country 1} & \multicolumn{1}{c|}{10\%}    & \multicolumn{1}{l|}{}   & \multicolumn{1}{l|}{}    \\ \cline{2-6} 
+\multicolumn{1}{|c|}{}                           & \multicolumn{1}{c|}{Relationship 2}          & \multicolumn{1}{c|}{Country 2}          & \multicolumn{1}{c|}{30\%}    & \multicolumn{1}{l|}{}   & \multicolumn{1}{l|}{}    \\ \hline
+                                                 &                                              &                                         &                              &                         &                          \\
+                                                 &                                              &                                         &                              &                         &                          \\
+                                                 &                                              &                                         &                              &                         &                          \\
+                                                 &                                              &                                         &                              &                         &                          \\
+                                                 &                                              &                                         &                              &                         &                          \\
+                                                 &                                              &                                         &                              &                         &                          \\
+                                                 &                                              &                                         &                              &                         &                          \\
+                                                 &                                              &                                         &                              &                         &                          \\
+                                                 &                                              &                                         &                              &                         &                         
+\end{tabular}
+\end{table}
+
+
+
+
+% References
+\newpage
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\printbibliography
+
+
+<<bib:export, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=FALSE, eval=TRUE>>=
+
+@
+
+
+
+% EndNotes
+%\newpage
+%\pagenumbering{Roman}
+%\setcounter{page}{1}
+%\linespread{2} % 1.5, Line spacing - Palatino needs more space between lines
+%\theendnotes
+%\linespread{1.5} % 1.5, Line spacing - Palatino needs more space between lines
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% WORD COUNT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\newpage
+\pagenumbering{gobble}
+<<wordcount, echo=FALSE, cache=FALSE>>=
+library(knitr)
+
+comma <- function (x, ...) {
+  format(x, ..., big.mark = ",", scientific = FALSE, trim = TRUE)
+}
+
+# To dynamically extract name of the current file, use code below
+nameoffile <- current_input() # get name of file
+nof2 <-  strsplit(nameoffile,"\\.")[[1]][1] # extract name, drop extension
+noftex <- paste(nof2, ".tex", sep="") # add .tex extension
+systemcall <- paste("system('texcount -inc -incbib -total -sum ", noftex, "', intern=TRUE)", sep="") # paste together texcount system command
+texcount.out <- eval(parse(text=systemcall)) # run texcount on current last compiled .tex file
+
+sum.row <- grep("Sum count", texcount.out, value=TRUE) # extract row
+pattern <- "(\\d)+" # regex pattern for digits
+
+count <- regmatches(sum.row, regexpr(pattern, sum.row) )
+# extract digits
+
+count <- comma(as.numeric(count)) # add comma
+@
+
+
+\begin{center}
+\vspace*{\stretch{1}}
+\dotfill
+\dotfill {\huge {\bf Word count}: \Sexpr{count}} \dotfill
+\dotfill
+\vspace*{\stretch{1}}
+\end{center}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% WORD COUNT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\section{Appendix} 
+
+% reset counter for appendix
+\subimport{/Users/hectorbahamonde/RU/Bibliografia_PoliSci/}{LaTeX_Reset_Counter_For_Appendix}
+
+\subsection{Info that goes into the Appendix}
+
+
+% Notes
+%\linespread{2}
+%\newpage\theendnotes
+
+
+\end{document}
+

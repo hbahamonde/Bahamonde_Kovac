@@ -506,10 +506,11 @@ p_load(GVARX)
 
 p=2 # The number of lag for Xt matrix
 FLag=2 # The number of lag for foreign variables in country-specific VAR
-lag.max=5 # The maximal number of lag for estimating country-specific VAR
+lag.max=4 # The maximal number of lag for estimating country-specific VAR # With N > 5 it gives error (more weights than observations, only first n used)
 type="trend" # Model specificaiton for VAR. As in package vars, we have four selection: "none","const","trend", "both".
-ic="SC" # Information criteria for optimal lag.As in package vars, we have four selection: "AIC", "HQ", "SC", and "FPE".
+ic="SC" # Information criteria for optimal lag.As in package vars, we have four selection: "AIC", "HQ", "SC", and "FPE". # With "AIC" it gives error ("more weights than observations").
 
+options(scipen=9999999)
 
 mainOUTPUT = GVECMest(
         data = cow.d.1,
@@ -522,6 +523,7 @@ mainOUTPUT = GVECMest(
 
 
 # summary(mainOUTPUT$gvecm[[1]])
+
 
 ## Look at the pr(F-statistic)
 # "the F test has the greatest power to determine the joint statistical significance of the coefficients on the lags of the variable hypothesized to Granger cause another variable. The null of no Granger causality is equivalent to the hypothesis that all these coefficients are jointly zero." Box-Steffensmeier2014a, p. 112
@@ -536,17 +538,6 @@ summary(mainOUTPUT$gvecm[[3]]) # France (MILPER - IRON) INCONCLUSIVE
 
 
 
-# Values for table (first country)
-unlist(list(summary(mainOUTPUT$gvecm[[1]])))[91] # F-statistic
-unlist(list(summary(mainOUTPUT$gvecm[[1]])))[87] # DF
-unlist(list(summary(mainOUTPUT$gvecm[[1]]))) # Trend
-
-# Values for table (second country)
-unlist(list(summary(mainOUTPUT$gvecm[[1]])))[246] # F-statistic
-unlist(list(summary(mainOUTPUT$gvecm[[1]])))[93] # DF
-
-
-test2 = unlist(list(summary(mainOUTPUT$gvecm[[1]])))
 
 ## Present results like Table 4.5 in Box-Steffensmeier2014a, 121.
 
@@ -564,5 +555,18 @@ test2 = unlist(list(summary(mainOUTPUT$gvecm[[1]])))
 # Other package
 # install.packages("GVAR", repos="http://R-Forge.R-project.org")
 # library(GVAR)
+
+
+################
+#### ABSTRACT
+################
+
+## ---- abstract ----
+fileConn <- file ("abstract.txt")
+writeLines(paste("This is the abstract."), fileConn)
+close(fileConn)
+## ----
+
+
 
 
