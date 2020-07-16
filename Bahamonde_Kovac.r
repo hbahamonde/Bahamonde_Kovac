@@ -827,6 +827,36 @@ summary(mainOUTPUT.1$gvecm[[8]]) # United Kingdom
 summary(mainOUTPUT.1$gvecm[[9]]) # United States
 
 
+## List of Possible Pendings
+
+### 1. Compare the dependency of residuals in VAR and GVAR.
+
+# Compare the dependency of residuals in VAR and GVAR.
+cor2_avg = averageCORgvecm(out=mainOUTPUT.1)
+as.matrix((cor2_avg$vecmRSDcor)[[1]])
+as.matrix((cor2_avg$vecmRSDcor)[[2]])
+
+
+## https://www.rdocumentation.org/packages/GVARX/versions/1.3/topics/averageCORgvecm
+data.frame(cor2_avg$vecmRSDcor) # Average residual correlations of country-specific VECM
+data.frame(cor2_avg$gvecmRSDcor) # Average residual correlations of country-specific VECM augmented by foreign variables(GVECM)
+
+### 2. Estimate Country-Specific Johansen Test Results In A Global VECM Setting
+p.1=2
+FLag.1=2
+type="const"
+ic="SC"
+weight.matrix=tradeweight1
+
+mainOUT.JO.1 = GVECM.jo(
+        data = cow.d.1,
+        p = p.1,
+        FLag = FLag.1, 
+        weight.matrix = wm.1
+        )
+
+mainOUT.JO.1$JO.test
+
 ########################################################
 # Second Period
 ########################################################
