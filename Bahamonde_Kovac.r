@@ -423,8 +423,8 @@ wm.1 = list(as.matrix(y.1871), as.matrix(y.1872), as.matrix(y.1873), as.matrix(y
 cow.d.2 <- subset(cow.d, Time >= 1955 & Time <= 2012) # 2012
 
 # Drop NAs
-cow.d.2$milper[cow.d.2$milper == -9] <- 0
-cow.d.2$irst[cow.d.2$irst ==  -9] <- 0
+cow.d.2$milper[cow.d.2$milper == -9] <- NA
+cow.d.2$irst[cow.d.2$irst ==  -9] <- NA
 
 # Filter countries for which we have complete data
 cow.d.2 = cow.d.2 %>% group_by(ID) %>% filter(milper != 0 & irst != 0)
@@ -441,6 +441,10 @@ full.info.countries.second.time.span <- full.info.countries.second.time.span[ful
 
 # Filtering complete obs by country name
 cow.d.2 = data.frame(cow.d.2[cow.d.2$ID %in% full.info.countries.second.time.span,])
+
+# TEST: introduce stochastic noise
+set.seed(2020); cow.d.2$milper = cow.d.2$milper + runif(nrow(cow.d.2), min = 0, max = 0.5)
+set.seed(2019); cow.d.2$irst = cow.d.2$irst + runif(nrow(cow.d.2), min = 0, max = 0.5)
 
 # Reformat time variable
 cow.d.2$Time = as.character(cow.d.2$Time)
