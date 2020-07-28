@@ -99,6 +99,19 @@ read_chunk('/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/Bahamonde_Kovac.R
 
 @
 
+<<data:loadings, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=FALSE, eval=TRUE>>=
+
+@
+
+<<gvar:model:first:period, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=FALSE, eval=TRUE>>=
+
+@
+
+<<gvar:model:second:period, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=FALSE, eval=TRUE>>=
+
+@
+
+
 % end knitr stuff
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -118,35 +131,35 @@ Here goes the ``theory'' part of the GVAR
 \section{Guns and Steel}
 
 \begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, 1871-1913}
-\begin{tabular}{cccccc|} 
-\cline{2-6}
-\multicolumn{1}{c|}{}                                    & \textbf{Granger Relationship} & \textbf{F-Test} & \textbf{P-Value} 				& \textbf{DF} & \textbf{Adjusted R-sq} \\ \hline
-\multicolumn{1}{|c|}{\multirow{2}{*}{Austria-Hungary}}   & steel $\rightarrow$ guns		 & 3.09            & \Sexpr{round(0.01108, 3)}      & (8, 31)     &  \Sexpr{round(0.3001, 3)} \\ 
-\multicolumn{1}{|c|}{}                                   & guns $\rightarrow$ steel		 & 1.878           & \Sexpr{round(0.09975, 3)}      & (8, 31)     &  \Sexpr{round(0.1527, 3)} \\\hline
-\cline{2-6}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Belgium}}           & steel $\rightarrow$ guns		 & 4.329           & \Sexpr{round(0.001034, 3)}     & (10, 28)    &  \Sexpr{round(0.467, 3)} \\ 
-\multicolumn{1}{|c|}{}                                   & guns $\rightarrow$ steel		 & 4.455           & \Sexpr{round(0.0008417, 3)}    & (10, 28)    &  \Sexpr{round(0.4762, 3)} \\\hline
-\cline{2-6}
-\multicolumn{1}{|c|}{\multirow{2}{*}{France}}            & steel $\rightarrow$ guns		  & 1.235           & \Sexpr{round(0.3125, 3)}     	& (8, 31)     &  \Sexpr{round(0.04592, 3)} \\ 
-\multicolumn{1}{|c|}{}                                   & guns $\rightarrow$ steel		 & 1.658           & \Sexpr{round(0.1488 , 3)}    & (8, 31)    &  \Sexpr{round(0.119, 3)} \\\hline
-\cline{2-6}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Germany}}           & steel $\rightarrow$ guns		  & 3.571           & \Sexpr{round(0.004819, 3)} 	& (8, 31)     &  \Sexpr{round(0.3453, 3)} \\ 
-\multicolumn{1}{|c|}{}                                   & guns $\rightarrow$ steel		 & 2.167           & \Sexpr{round(0.05875 , 3)}    & (8, 31)    &  \Sexpr{round(0.1931, 3)} \\\hline
-\cline{2-6}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Italy}}           	 & steel $\rightarrow$ guns		  & 3.369           & \Sexpr{round(0.005398, 3)} 	& (10, 28)     &  \Sexpr{round(0.384, 3)} \\ 
-\multicolumn{1}{|c|}{}                                   & guns $\rightarrow$ steel		 & 5.394           & \Sexpr{round(0.000196, 3)}    & (10, 28)    &  \Sexpr{round(0.5363, 3)} \\\hline
-\cline{2-6}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Russia}}         	 & steel $\rightarrow$ guns		  & 8.311           & \Sexpr{round(0.00001713, 3)} 	& (16, 19)     &  \Sexpr{round(0.7697, 3)} \\ 
-\multicolumn{1}{|c|}{}                                   & guns $\rightarrow$ steel		 & 2.514           & \Sexpr{round(0.02873, 3)}    & (16, 19)    &  \Sexpr{round(0.409, 3)} \\\hline
-\cline{2-6}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Spain}}         	 & steel $\rightarrow$ guns		  & 1.749           & \Sexpr{round(0.1263, 3)} 	& (8, 31)     &  \Sexpr{round(0.1332, 3)} \\ 
-\multicolumn{1}{|c|}{}                                   & guns $\rightarrow$ steel		 & 1.454           & \Sexpr{round(0.2142, 3)}    & (8, 31)    &  \Sexpr{round(0.0852, 3)} \\\hline
-\cline{2-6}
-\multicolumn{1}{|c|}{\multirow{2}{*}{United Kingdom}} 	 & steel $\rightarrow$ guns		  & 1.278           & \Sexpr{round(0.2903, 3)} 	& (8, 31)     &  \Sexpr{round(0.054, 3)} \\ 
-\multicolumn{1}{|c|}{}                                   & guns $\rightarrow$ steel		 & 1.569           & \Sexpr{round(0.1748, 3)}    & (8, 31)    &  \Sexpr{round(0.1044, 3)} \\\hline
-\cline{2-6}
-\multicolumn{1}{|c|}{\multirow{2}{*}{United States}} 	 & steel $\rightarrow$ guns		  & 2.292           & \Sexpr{round(0.04102, 3)} 	& (10, 28)     &  \Sexpr{round(0.2537, 3)} \\ 
-\multicolumn{1}{|c|}{}                                   & guns $\rightarrow$ steel		 & 5.36           & \Sexpr{round(0.0002063, 3)}    & (10, 28)    &  \Sexpr{round(0.5343, 3)} \\\hline
+\begin{tabular}{ccccccc|} 
+\cline{2-7}
+\multicolumn{1}{c|}{}                                  & \textbf{Granger Relationship} 	& \textbf{F-Test} 						& \textbf{P-Value} 					   & \textbf{DF} 								& 	\textbf{Adjusted R-sq} 					 & {\bf Lags}  \\ \hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Austria-Hungary}} & steel $\rightarrow$ guns		& \Sexpr{p.1.Austria.Hungary.ftest.1} 	& \Sexpr{p.1.Austria.Hungary.pvalue.1} & \Sexpr{(p.1.Austria.Hungary.df.num.dem.1)}& 	\Sexpr{p.1.Austria.Hungary.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Austria.Hungary.lags}}} \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.Austria.Hungary.ftest.2} 	& \Sexpr{p.1.Austria.Hungary.pvalue.2} & \Sexpr{(p.1.Austria.Hungary.df.num.dem.2)}& 	\Sexpr{p.1.Austria.Hungary.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Belgium}}         & steel $\rightarrow$ guns		& \Sexpr{p.1.Belgium.ftest.1} 			& \Sexpr{p.1.Belgium.pvalue.1} 			&  \Sexpr{(p.1.Belgium.df.num.dem.1)}    	& 	 \Sexpr{p.1.Belgium.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Belgium.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.Belgium.ftest.2}  			& \Sexpr{p.1.Belgium.pvalue.2} 			&  \Sexpr{(p.1.Belgium.df.num.dem.2)}    	& 	 \Sexpr{p.1.Belgium.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{France}}          & steel $\rightarrow$ guns		& \Sexpr{p.1.France.ftest.1} 			& \Sexpr{p.1.France.pvalue.1} 			&  \Sexpr{(p.1.France.df.num.dem.1)}    	& 	 \Sexpr{p.1.France.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.France.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.France.ftest.2}  			& \Sexpr{p.1.France.pvalue.2} 			&  \Sexpr{(p.1.France.df.num.dem.2)}    	& 	 \Sexpr{p.1.France.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Germany}}         & steel $\rightarrow$ guns		& \Sexpr{p.1.Germany.ftest.1} 			& \Sexpr{p.1.Germany.pvalue.1} 			&  \Sexpr{(p.1.Germany.df.num.dem.1)}    	& 	 \Sexpr{p.1.Germany.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Germany.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.Germany.ftest.2}  			& \Sexpr{p.1.Germany.pvalue.2} 			&  \Sexpr{(p.1.Germany.df.num.dem.2)}    	& 	 \Sexpr{p.1.Germany.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Italy}}           & steel $\rightarrow$ guns		& \Sexpr{p.1.Italy.ftest.1} 			& \Sexpr{p.1.Italy.pvalue.1} 			&  \Sexpr{(p.1.Italy.df.num.dem.1)}    	& 	 \Sexpr{p.1.Italy.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Italy.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.Italy.ftest.2}  			& \Sexpr{p.1.Italy.pvalue.2} 			&  \Sexpr{(p.1.Italy.df.num.dem.2)}    	& 	 \Sexpr{p.1.Italy.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Russia}}          & steel $\rightarrow$ guns		& \Sexpr{p.1.Russia.ftest.1} 			& \Sexpr{p.1.Russia.pvalue.1}			&  \Sexpr{(p.1.Russia.df.num.dem.1)}    	& 	 \Sexpr{p.1.Russia.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Russia.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.Russia.ftest.2}  			& \Sexpr{p.1.Russia.pvalue.2} 			&  \Sexpr{(p.1.Russia.df.num.dem.2)}    	& 	 \Sexpr{p.1.Russia.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Spain}}           & steel $\rightarrow$ guns		& \Sexpr{p.1.Spain.ftest.1} 			& \Sexpr{p.1.Spain.pvalue.1} 			&  \Sexpr{(p.1.Spain.df.num.dem.1)}    	& 	 \Sexpr{p.1.Spain.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Spain.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.Spain.ftest.2}  			& \Sexpr{p.1.Spain.pvalue.2} 			&  \Sexpr{(p.1.Spain.df.num.dem.2)}    	& 	 \Sexpr{p.1.Spain.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{United Kingdom}}  & steel $\rightarrow$ guns		& \Sexpr{p.1.United.Kingdom.ftest.1} 	& \Sexpr{p.1.United.Kingdom.pvalue.1} 	&  \Sexpr{(p.1.United.Kingdom.df.num.dem.1)} &  	\Sexpr{p.1.United.Kingdom.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.United.Kingdom.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.United.Kingdom.ftest.2}  	& \Sexpr{p.1.United.Kingdom.pvalue.2} 	&  \Sexpr{(p.1.United.Kingdom.df.num.dem.2)} &  	\Sexpr{p.1.United.Kingdom.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{United States}}   & steel $\rightarrow$ guns		& \Sexpr{p.1.United.States.ftest.1} 	& \Sexpr{p.1.United.States.pvalue.1}  	&  \Sexpr{(p.1.United.States.df.num.dem.1)}  &  	\Sexpr{p.1.United.States.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.United.States.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.United.States.ftest.2}  	& \Sexpr{p.1.United.States.pvalue.2} 	&  \Sexpr{(p.1.United.States.df.num.dem.2)}  &  	\Sexpr{p.1.United.States.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
 \end{tabular}
 \end{table}
 
@@ -154,25 +167,26 @@ Here goes the ``theory'' part of the GVAR
 
 
 
-\begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, 1955-2012}
-\begin{tabular}{cccccc|} 
-\cline{2-6}
-\multicolumn{1}{c|}{}                                    & \textbf{Granger Relationship} & \textbf{F-Test} & \textbf{P-Value} 				& \textbf{DF} & \textbf{Adjusted R-sq} \\ \hline
-\multicolumn{1}{|c|}{\multirow{2}{*}{Argentina}}   		 & steel $\rightarrow$ guns		 & 1.466           & \Sexpr{round(0.1897, 3)}      & (9, 45)     &  \Sexpr{round(0.07214, 3)} \\ 
-\multicolumn{1}{|c|}{}                                   & guns $\rightarrow$ steel		 & 1.056           & \Sexpr{round(0.4125, 3)}      & (9, 45)     &  \Sexpr{round(0.009306, 3)} \\\hline
-\cline{2-6}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Australia}}   		 & steel $\rightarrow$ guns		 & 1.229           & \Sexpr{round(0.3016, 3)}      & (9, 45)     &  \Sexpr{round(0.03683, 3)} \\ 
-\multicolumn{1}{|c|}{}                                   & guns $\rightarrow$ steel		 & 2.688           & \Sexpr{round(0.01365, 3)}      & (9, 45)     &  \Sexpr{round(0.2196, 3)} \\\hline
-\cline{2-6}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Austria}}   		 & steel $\rightarrow$ guns		 & 0.4064           & \Sexpr{round(0.9251, 3)}      & (9, 45)     &  \Sexpr{round(-0.1098, 3)} \\ 
-\multicolumn{1}{|c|}{}                                   & guns $\rightarrow$ steel		 & 2.579           & \Sexpr{round(0.01733, 3)}      & (9, 45)     &  \Sexpr{round(0.2084, 3)} \\\hline
-\cline{2-6}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Belgium}}   		 & steel $\rightarrow$ guns		 & 5.286           & \Sexpr{round(0.00006494, 3)}      & (9, 45)     &  \Sexpr{round(0.4167, 3)} \\ 
-\multicolumn{1}{|c|}{}                                   & guns $\rightarrow$ steel		 & 1.562           & \Sexpr{round(0.1561, 3)}      & (9, 45)     &  \Sexpr{round(0.08565, 3)} \\\hline
-\cline{2-6}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Brazil}}   		 & steel $\rightarrow$ guns		 & 0.3471           & \Sexpr{round(0.9536, 3)}      & (9, 45)     &  \Sexpr{round(-0.1221, 3)} \\ 
-\multicolumn{1}{|c|}{}                                   & guns $\rightarrow$ steel		 & 6.319           & \Sexpr{round(0.000009839, 3)}      & (9, 45)     &  \Sexpr{round(0.4699, 3)} \\\hline
-\cline{2-6}
+
+\begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, 1955-2014}
+\begin{tabular}{ccccccc|} 
+\cline{2-7}
+\multicolumn{1}{c|}{}                               & \textbf{Granger Relationship} & \textbf{F-Test} 					& \textbf{P-Value} 				 & \textbf{DF} 								& 	\textbf{Adjusted R-sq} 		& {\bf Lags}  \\ \hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Argentina}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.Argentina.ftest.1} 	& \Sexpr{p.2.Argentina.pvalue.1} & \Sexpr{(p.2.Argentina.df.num.dem.1)} 	& 	\Sexpr{p.2.Argentina.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Argentina.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Argentina.ftest.2} 	& \Sexpr{p.2.Argentina.pvalue.2} & \Sexpr{(p.2.Argentina.df.num.dem.2)} 	& 	\Sexpr{p.2.Argentina.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Australia}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.Australia.ftest.1} 	& \Sexpr{p.2.Australia.pvalue.1} & \Sexpr{(p.2.Australia.df.num.dem.1)} 	& 	\Sexpr{p.2.Australia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Australia.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Australia.ftest.2} 	& \Sexpr{p.2.Australia.pvalue.2} & \Sexpr{(p.2.Australia.df.num.dem.2)} 	& 	\Sexpr{p.2.Australia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Austria}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Austria.ftest.1} 		& \Sexpr{p.2.Austria.pvalue.1} & \Sexpr{(p.2.Austria.df.num.dem.1)} 		& 	\Sexpr{p.2.Austria.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Austria.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Austria.ftest.2} 		& \Sexpr{p.2.Austria.pvalue.2} & \Sexpr{(p.2.Austria.df.num.dem.2)} 		& 	\Sexpr{p.2.Austria.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Belgium}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Belgium.ftest.1} 		& \Sexpr{p.2.Belgium.pvalue.1} & \Sexpr{(p.2.Belgium.df.num.dem.1)} 		& 	\Sexpr{p.2.Belgium.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Belgium.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Belgium.ftest.2} 		& \Sexpr{p.2.Belgium.pvalue.2} & \Sexpr{(p.2.Belgium.df.num.dem.2)} 		& 	\Sexpr{p.2.Belgium.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Brazil}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Brazil.ftest.1} 		& \Sexpr{p.2.Brazil.pvalue.1} & \Sexpr{(p.2.Brazil.df.num.dem.1)} 		& 	\Sexpr{p.2.Brazil.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Brazil.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Brazil.ftest.2} 		& \Sexpr{p.2.Brazil.pvalue.2} & \Sexpr{(p.2.Brazil.df.num.dem.2)} 		& 	\Sexpr{p.2.Brazil.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
 \end{tabular}
 \end{table}
 
