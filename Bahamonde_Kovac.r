@@ -54,10 +54,12 @@ for ( i in sequence){
 ########################################################
 # Merge Trade-COW y National Material Capabilities-COW
 ########################################################
+
 cat("\014")
 rm(list=ls())
 graphics.off()
 
+## ---- data:loadings ----
 # loads pacman
 if (!require("pacman")) install.packages("pacman"); library(pacman) 
 
@@ -107,7 +109,8 @@ cow.d.1$milper[cow.d.1$milper == -9] <- 0
 cow.d.1$irst[cow.d.1$irst ==  -9] <- 0
 
 # Filter countries for which we have complete data
-cow.d.1 = cow.d.1 %>% group_by(ID) %>% filter(milper != 0 & irst != 0)
+p_load(dplyr)
+cow.d.1 = cow.d.1 %>% dplyr::group_by(ID) %>% filter(milper != 0 & irst != 0)
 
 # Drop countries for which we don't have the complete series
 full.info.countries.first.time.span = unique(cow.d.1[cow.d.1$ID %in% names(which(table(cow.d.1$ID) == as.numeric(length(1871:1913)))), ]$ID) # Countries for which we have complete rows
@@ -417,7 +420,7 @@ wm.1 = list(as.matrix(y.1871), as.matrix(y.1872), as.matrix(y.1873), as.matrix(y
 ################################################################################################################
 
 # Filter complete obs by year; here it's where I split the datasets
-cow.d.2 <- subset(cow.d, Time >= 1955 & Time <= 2014)
+cow.d.2 <- subset(cow.d, Time >= 1955 & Time <= 2012) # 2012
 
 # Drop NAs
 cow.d.2$milper[cow.d.2$milper == -9] <- 0
@@ -431,6 +434,8 @@ full.info.countries.second.time.span = unique(cow.d.2[cow.d.2$ID %in% names(whic
 
 # Exclude Luxembourg (it's got too many similar values year after year)
 full.info.countries.second.time.span <- full.info.countries.second.time.span[full.info.countries.second.time.span != "Luxembourg"]
+full.info.countries.second.time.span <- full.info.countries.second.time.span[full.info.countries.second.time.span != "Taiwan"]
+full.info.countries.second.time.span <- full.info.countries.second.time.span[full.info.countries.second.time.span != "North.Korea"]
 
 # test = max(table(cow.d.2$ID)) ; View(test) # Germanies appear 36 times. Consider do GVAR for both of them.
 
@@ -514,8 +519,8 @@ y.2009 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac
 y.2010 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2010.csv"))
 y.2011 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2011.csv"))
 y.2012 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2012.csv"))
-y.2013 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2013.csv"))
-y.2014 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2014.csv"))
+#y.2013 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2013.csv"))
+#y.2014 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2014.csv"))
 
 # 1. Sort column X (with countries) and Delete column X
 y.1955 = y.1955[order(y.1955$X), ] ; y.1955$X <- NULL
@@ -576,8 +581,8 @@ y.2009 = y.2009[order(y.2009$X), ] ; y.2009$X <- NULL
 y.2010 = y.2010[order(y.2010$X), ] ; y.2010$X <- NULL
 y.2011 = y.2011[order(y.2011$X), ] ; y.2011$X <- NULL
 y.2012 = y.2012[order(y.2012$X), ] ; y.2012$X <- NULL
-y.2013 = y.2013[order(y.2013$X), ] ; y.2013$X <- NULL
-y.2014 = y.2014[order(y.2014$X), ] ; y.2014$X <- NULL
+#y.2013 = y.2013[order(y.2013$X), ] ; y.2013$X <- NULL
+#y.2014 = y.2014[order(y.2014$X), ] ; y.2014$X <- NULL
 
 
 # 2. Sort column names and delete columns (countries) for which we have complete missingness
@@ -639,8 +644,8 @@ y.2009 = y.2009[ , order(names(y.2009))]
 y.2010 = y.2010[ , order(names(y.2010))]
 y.2011 = y.2011[ , order(names(y.2011))]
 y.2012 = y.2012[ , order(names(y.2012))]
-y.2013 = y.2013[ , order(names(y.2013))]
-y.2014 = y.2014[ , order(names(y.2014))]
+#y.2013 = y.2013[ , order(names(y.2013))]
+#y.2014 = y.2014[ , order(names(y.2014))]
 
 ## Keeping Columns for which we have complete information
 p_load(dplyr)
@@ -702,8 +707,8 @@ y.2009 = dplyr::select(y.2009, full.info.countries.second.time.span)
 y.2010 = dplyr::select(y.2010, full.info.countries.second.time.span)
 y.2011 = dplyr::select(y.2011, full.info.countries.second.time.span)
 y.2012 = dplyr::select(y.2012, full.info.countries.second.time.span)
-y.2013 = dplyr::select(y.2013, full.info.countries.second.time.span)
-y.2014 = dplyr::select(y.2014, full.info.countries.second.time.span)
+#y.2013 = dplyr::select(y.2013, full.info.countries.second.time.span)
+#y.2014 = dplyr::select(y.2014, full.info.countries.second.time.span)
 
 
 ## Keeping Rows for which we have complete information
@@ -765,12 +770,76 @@ y.2009 = y.2009[1:length(full.info.countries.second.time.span), ]
 y.2010 = y.2010[1:length(full.info.countries.second.time.span), ]
 y.2011 = y.2011[1:length(full.info.countries.second.time.span), ]
 y.2012 = y.2012[1:length(full.info.countries.second.time.span), ]
-y.2013 = y.2013[1:length(full.info.countries.second.time.span), ]
-y.2014 = y.2014[1:length(full.info.countries.second.time.span), ]
+#y.2013 = y.2013[1:length(full.info.countries.second.time.span), ]
+#y.2014 = y.2014[1:length(full.info.countries.second.time.span), ]
+
+# Resetting Rownames
+rownames(y.1955) <- NULL
+rownames(y.1956) <- NULL
+rownames(y.1957) <- NULL
+rownames(y.1958) <- NULL
+rownames(y.1959) <- NULL
+rownames(y.1960) <- NULL
+rownames(y.1961) <- NULL
+rownames(y.1962) <- NULL
+rownames(y.1963) <- NULL
+rownames(y.1964) <- NULL
+rownames(y.1965) <- NULL
+rownames(y.1966) <- NULL
+rownames(y.1967) <- NULL
+rownames(y.1968) <- NULL
+rownames(y.1969) <- NULL
+rownames(y.1970) <- NULL
+rownames(y.1971) <- NULL
+rownames(y.1972) <- NULL
+rownames(y.1973) <- NULL
+rownames(y.1974) <- NULL
+rownames(y.1975) <- NULL
+rownames(y.1976) <- NULL
+rownames(y.1977) <- NULL
+rownames(y.1978) <- NULL
+rownames(y.1979) <- NULL
+rownames(y.1980) <- NULL
+rownames(y.1981) <- NULL
+rownames(y.1982) <- NULL
+rownames(y.1983) <- NULL
+rownames(y.1984) <- NULL
+rownames(y.1985) <- NULL
+rownames(y.1986) <- NULL
+rownames(y.1987) <- NULL
+rownames(y.1988) <- NULL
+rownames(y.1989) <- NULL
+rownames(y.1990) <- NULL
+rownames(y.1991) <- NULL
+rownames(y.1992) <- NULL
+rownames(y.1993) <- NULL
+rownames(y.1994) <- NULL
+rownames(y.1995) <- NULL
+rownames(y.1996) <- NULL
+rownames(y.1997) <- NULL
+rownames(y.1998) <- NULL
+rownames(y.1999) <- NULL
+rownames(y.2000) <- NULL
+rownames(y.2001) <- NULL
+rownames(y.2002) <- NULL
+rownames(y.2003) <- NULL
+rownames(y.2004) <- NULL
+rownames(y.2005) <- NULL
+rownames(y.2006) <- NULL
+rownames(y.2007) <- NULL
+rownames(y.2008) <- NULL
+rownames(y.2009) <- NULL
+rownames(y.2010) <- NULL
+rownames(y.2011) <- NULL
+rownames(y.2012) <- NULL
+#rownames(y.2013) <- NULL
+#rownames(y.2014) <- NULL
 
 # Building WM for the first period
-wm.2 = list(as.matrix(y.1955), as.matrix(y.1956), as.matrix(y.1957), as.matrix(y.1958), as.matrix(y.1959), as.matrix(y.1960), as.matrix(y.1961), as.matrix(y.1962), as.matrix(y.1963), as.matrix(y.1964), as.matrix(y.1965), as.matrix(y.1966), as.matrix(y.1967), as.matrix(y.1968), as.matrix(y.1969), as.matrix(y.1970), as.matrix(y.1971), as.matrix(y.1972), as.matrix(y.1973), as.matrix(y.1974), as.matrix(y.1975), as.matrix(y.1976), as.matrix(y.1977), as.matrix(y.1978), as.matrix(y.1979), as.matrix(y.1980), as.matrix(y.1981), as.matrix(y.1982), as.matrix(y.1983), as.matrix(y.1984), as.matrix(y.1985), as.matrix(y.1986), as.matrix(y.1987), as.matrix(y.1988), as.matrix(y.1989), as.matrix(y.1990), as.matrix(y.1991), as.matrix(y.1992), as.matrix(y.1993), as.matrix(y.1994), as.matrix(y.1995), as.matrix(y.1996), as.matrix(y.1997), as.matrix(y.1998), as.matrix(y.1999), as.matrix(y.2000), as.matrix(y.2001), as.matrix(y.2002), as.matrix(y.2003), as.matrix(y.2004), as.matrix(y.2005), as.matrix(y.2006), as.matrix(y.2007), as.matrix(y.2008), as.matrix(y.2009), as.matrix(y.2010), as.matrix(y.2011), as.matrix(y.2012), as.matrix(y.2013), as.matrix(y.2014))
+wm.2 = list(as.matrix(y.1955), as.matrix(y.1956), as.matrix(y.1957), as.matrix(y.1958), as.matrix(y.1959), as.matrix(y.1960), as.matrix(y.1961), as.matrix(y.1962), as.matrix(y.1963), as.matrix(y.1964), as.matrix(y.1965), as.matrix(y.1966), as.matrix(y.1967), as.matrix(y.1968), as.matrix(y.1969), as.matrix(y.1970), as.matrix(y.1971), as.matrix(y.1972), as.matrix(y.1973), as.matrix(y.1974), as.matrix(y.1975), as.matrix(y.1976), as.matrix(y.1977), as.matrix(y.1978), as.matrix(y.1979), as.matrix(y.1980), as.matrix(y.1981), as.matrix(y.1982), as.matrix(y.1983), as.matrix(y.1984), as.matrix(y.1985), as.matrix(y.1986), as.matrix(y.1987), as.matrix(y.1988), as.matrix(y.1989), as.matrix(y.1990), as.matrix(y.1991), as.matrix(y.1992), as.matrix(y.1993), as.matrix(y.1994), as.matrix(y.1995), as.matrix(y.1996), as.matrix(y.1997), as.matrix(y.1998), as.matrix(y.1999), as.matrix(y.2000), as.matrix(y.2001), as.matrix(y.2002), as.matrix(y.2003), as.matrix(y.2004), as.matrix(y.2005), as.matrix(y.2006), as.matrix(y.2007), as.matrix(y.2008), as.matrix(y.2009), as.matrix(y.2010), as.matrix(y.2011), as.matrix(y.2012)#, as.matrix(y.2013), as.matrix(y.2014)
+            )
 
+## ----
 
 
 ########################################################
@@ -781,6 +850,7 @@ wm.2 = list(as.matrix(y.1955), as.matrix(y.1956), as.matrix(y.1957), as.matrix(y
 
 # GVARX
 # https://www.rdocumentation.org/packages/GVARX/versions/1.3
+# http://web.ntnu.edu.tw/~tsungwu/R_DevOps/GVAR/R_DevOps_GVAR_English.html
 # data("tradeweightx")
 
 # GVAR is developed by Pesaran2004
@@ -798,6 +868,9 @@ wm.2 = list(as.matrix(y.1955), as.matrix(y.1956), as.matrix(y.1957), as.matrix(y
 ########################################################
 # First Period
 ########################################################
+
+## ---- gvar:model:first:period ----
+
 p_load(GVARX)
 
 p.1=2 # The number of lag for Xt matrix
@@ -816,6 +889,230 @@ mainOUTPUT.1 = GVECMest(
         ic = ic.1,
         weight.matrix=wm.1)
 
+# Store values
+# summary(mainOUTPUT.1$gvecm[[9]])
+
+## P-values
+p.1.Austria.Hungary.pvalue.1 = round(0.01748, 3)
+p.1.Austria.Hungary.pvalue.2 = round(0.2383, 3)
+
+p.1.Belgium.pvalue.1 = round(0.001246 , 3)
+p.1.Belgium.pvalue.2 = round(0.0167, 3)
+
+p.1.France.pvalue.1 = round(0.257, 3)
+p.1.France.pvalue.2 = round(0.09469, 3)
+
+p.1.Germany.pvalue.1 = round(0.003133 , 3)
+p.1.Germany.pvalue.2 = round(0.02249, 3)
+
+p.1.Italy.pvalue.1 = round(0.003514, 3)
+p.1.Italy.pvalue.2 = round(0.000335, 3)
+
+p.1.Russia.pvalue.1 = round(0.000002816, 3)
+p.1.Russia.pvalue.2 = round(0.0339, 3)
+
+p.1.Spain.pvalue.1 = round(0.1263, 3)
+p.1.Spain.pvalue.2 = round(0.2142, 3)
+
+p.1.United.Kingdom.pvalue.1 = round(0.02331, 3)
+p.1.United.Kingdom.pvalue.2 = round(0.2845, 3)
+
+p.1.United.States.pvalue.1 = round(0.04415, 3)
+p.1.United.States.pvalue.2 = round(0.000161, 3)
+
+
+### Austria.Hungary
+## Ftests
+p.1.Austria.Hungary.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[1]])))["varresult.Austria.Hungary.milper.fstatistic.value"]), 3)
+p.1.Austria.Hungary.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[1]])))["varresult.Austria.Hungary.irst.fstatistic.value"]), 3)
+## DF Num, Dem (1)
+p.1.Austria.Hungary.df.num.dem.1 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[1]])))["varresult.Austria.Hungary.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[1]])))["varresult.Austria.Hungary.milper.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+## DF Num, Dem (2)
+p.1.Austria.Hungary.df.num.dem.2 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[1]])))["varresult.Austria.Hungary.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[1]])))["varresult.Austria.Hungary.irst.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+# Rsq 1
+p.1.Austria.Hungary.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[1]])))["varresult.Austria.Hungary.milper.adj.r.squared"]), 3) 
+# Rsq 2
+p.1.Austria.Hungary.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[1]])))["varresult.Austria.Hungary.irst.adj.r.squared"]), 3) 
+# Lags
+p.1.Austria.Hungary.lags = mainOUTPUT.1$lagmatrix$lags[1] # Lag for the first country 
+
+### Belgium
+## Ftests
+p.1.Belgium.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[2]])))["varresult.Belgium.milper.fstatistic.value"]), 3)
+p.1.Belgium.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[2]])))["varresult.Belgium.irst.fstatistic.value"]), 3)
+## DF Num, Dem (1)
+p.1.Belgium.df.num.dem.1 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[2]])))["varresult.Belgium.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[2]])))["varresult.Belgium.milper.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+## DF Num, Dem (2)
+p.1.Belgium.df.num.dem.2 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[2]])))["varresult.Belgium.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[2]])))["varresult.Belgium.irst.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+# Rsq 1
+p.1.Belgium.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[2]])))["varresult.Belgium.milper.adj.r.squared"]), 3) 
+# Rsq 2
+p.1.Belgium.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[2]])))["varresult.Belgium.irst.adj.r.squared"]), 3) 
+# Lags
+p.1.Belgium.lags = mainOUTPUT.1$lagmatrix$lags[2] # Lag for the first country 
+
+### France
+## Ftests
+p.1.France.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[3]])))["varresult.France.milper.fstatistic.value"]), 3)
+p.1.France.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[3]])))["varresult.France.irst.fstatistic.value"]), 3)
+## DF Num, Dem (1)
+p.1.France.df.num.dem.1 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[3]])))["varresult.France.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[3]])))["varresult.France.milper.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+## DF Num, Dem (2)
+p.1.France.df.num.dem.2 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[3]])))["varresult.France.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[3]])))["varresult.France.irst.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+# Rsq 1
+p.1.France.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[3]])))["varresult.France.milper.adj.r.squared"]), 3) 
+# Rsq 2
+p.1.France.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[3]])))["varresult.France.irst.adj.r.squared"]), 3) 
+# Lags
+p.1.France.lags = mainOUTPUT.1$lagmatrix$lags[3] # Lag for the first country 
+
+### Germany
+## Ftests
+p.1.Germany.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[4]])))["varresult.Germany.milper.fstatistic.value"]), 3)
+p.1.Germany.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[4]])))["varresult.Germany.irst.fstatistic.value"]), 3)
+## DF Num, Dem (1)
+p.1.Germany.df.num.dem.1 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[4]])))["varresult.Germany.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[4]])))["varresult.Germany.milper.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+## DF Num, Dem (2)
+p.1.Germany.df.num.dem.2 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[4]])))["varresult.Germany.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[4]])))["varresult.Germany.irst.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+# Rsq 1
+p.1.Germany.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[4]])))["varresult.Germany.milper.adj.r.squared"]), 3) 
+# Rsq 2
+p.1.Germany.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[4]])))["varresult.Germany.irst.adj.r.squared"]), 3) 
+# Lags
+p.1.Germany.lags = mainOUTPUT.1$lagmatrix$lags[4] # Lag for the first country 
+
+### Italy
+## Ftests
+p.1.Italy.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[5]])))["varresult.Italy.milper.fstatistic.value"]), 3)
+p.1.Italy.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[5]])))["varresult.Italy.irst.fstatistic.value"]), 3)
+## DF Num, Dem (1)
+p.1.Italy.df.num.dem.1 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[5]])))["varresult.Italy.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[5]])))["varresult.Italy.milper.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+## DF Num, Dem (2)
+p.1.Italy.df.num.dem.2 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[5]])))["varresult.Italy.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[5]])))["varresult.Italy.irst.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+# Rsq 1
+p.1.Italy.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[5]])))["varresult.Italy.milper.adj.r.squared"]), 3) 
+# Rsq 2
+p.1.Italy.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[5]])))["varresult.Italy.irst.adj.r.squared"]), 3) 
+# Lags
+p.1.Italy.lags = mainOUTPUT.1$lagmatrix$lags[5] # Lag for the first country 
+
+### Russia
+## Ftests
+p.1.Russia.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[6]])))["varresult.Russia.milper.fstatistic.value"]), 3)
+p.1.Russia.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[6]])))["varresult.Russia.irst.fstatistic.value"]), 3)
+## DF Num, Dem (1)
+p.1.Russia.df.num.dem.1 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[6]])))["varresult.Russia.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[6]])))["varresult.Russia.milper.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+## DF Num, Dem (2)
+p.1.Russia.df.num.dem.2 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[6]])))["varresult.Russia.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[6]])))["varresult.Russia.irst.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+# Rsq 1
+p.1.Russia.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[6]])))["varresult.Russia.milper.adj.r.squared"]), 3) 
+# Rsq 2
+p.1.Russia.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[6]])))["varresult.Russia.irst.adj.r.squared"]), 3) 
+# Lags
+p.1.Russia.lags = mainOUTPUT.1$lagmatrix$lags[6] # Lag for the first country 
+
+### Spain
+## Ftests
+p.1.Spain.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[7]])))["varresult.Spain.milper.fstatistic.value"]), 3)
+p.1.Spain.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[7]])))["varresult.Spain.irst.fstatistic.value"]), 3)
+## DF Num, Dem (1)
+p.1.Spain.df.num.dem.1 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[7]])))["varresult.Spain.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[7]])))["varresult.Spain.milper.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+## DF Num, Dem (2)
+p.1.Spain.df.num.dem.2 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[7]])))["varresult.Spain.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[7]])))["varresult.Spain.irst.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+# Rsq 1
+p.1.Spain.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[7]])))["varresult.Spain.milper.adj.r.squared"]), 3) 
+# Rsq 2
+p.1.Spain.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[7]])))["varresult.Spain.irst.adj.r.squared"]), 3) 
+# Lags
+p.1.Spain.lags = mainOUTPUT.1$lagmatrix$lags[7] # Lag for the first country 
+
+### United.Kingdom
+## Ftests
+p.1.United.Kingdom.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[8]])))["varresult.United.Kingdom.milper.fstatistic.value"]), 3)
+p.1.United.Kingdom.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[8]])))["varresult.United.Kingdom.irst.fstatistic.value"]), 3)
+## DF Num, Dem (1)
+p.1.United.Kingdom.df.num.dem.1 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[8]])))["varresult.United.Kingdom.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[8]])))["varresult.United.Kingdom.milper.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+## DF Num, Dem (2)
+p.1.United.Kingdom.df.num.dem.2 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[8]])))["varresult.United.Kingdom.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[8]])))["varresult.United.Kingdom.irst.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+# Rsq 1
+p.1.United.Kingdom.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[8]])))["varresult.United.Kingdom.milper.adj.r.squared"]), 3) 
+# Rsq 2
+p.1.United.Kingdom.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[8]])))["varresult.United.Kingdom.irst.adj.r.squared"]), 3) 
+# Lags
+p.1.United.Kingdom.lags = mainOUTPUT.1$lagmatrix$lags[8] # Lag for the first country 
+
+### United.States
+## Ftests
+p.1.United.States.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[9]])))["varresult.United.States.of.America.milper.fstatistic.value"]), 3)
+p.1.United.States.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[9]])))["varresult.United.States.of.America.irst.fstatistic.value"]), 3)
+## DF Num, Dem (1)
+p.1.United.States.df.num.dem.1 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[9]])))["varresult.United.States.of.America.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[9]])))["varresult.United.States.of.America.milper.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+## DF Num, Dem (2)
+p.1.United.States.df.num.dem.2 = paste(
+        unlist(list(summary(mainOUTPUT.1$gvecm[[9]])))["varresult.United.States.of.America.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.1$gvecm[[9]])))["varresult.United.States.of.America.irst.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+# Rsq 1
+p.1.United.States.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[9]])))["varresult.United.States.of.America.milper.adj.r.squared"]), 3) 
+# Rsq 2
+p.1.United.States.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.1$gvecm[[9]])))["varresult.United.States.of.America.irst.adj.r.squared"]), 3) 
+# Lags
+p.1.United.States.lags = mainOUTPUT.1$lagmatrix$lags[9] # Lag for the first country 
+
+## ----
+
+
 summary(mainOUTPUT.1$gvecm[[1]]) # Austria.Hungary 
 summary(mainOUTPUT.1$gvecm[[2]]) # Belgium 
 summary(mainOUTPUT.1$gvecm[[3]]) # France 
@@ -825,6 +1122,22 @@ summary(mainOUTPUT.1$gvecm[[6]]) # Russia
 summary(mainOUTPUT.1$gvecm[[7]]) # Spain 
 summary(mainOUTPUT.1$gvecm[[8]]) # United Kingdom  
 summary(mainOUTPUT.1$gvecm[[9]]) # United States
+
+
+### Others
+# unlist(list(summary(mainOUTPUT.1$gvecm[[1]])))[1] # VD (1)
+# unlist(list(summary(mainOUTPUT.1$gvecm[[1]])))[2] # VD (2)
+# unlist(list(summary(mainOUTPUT.1$gvecm[[1]])))["varresult.Austria.Hungary.milper.aliased.const"] # Constant (1)
+# unlist(list(summary(mainOUTPUT.1$gvecm[[1]])))["varresult.Austria.Hungary.milper.aliased.trend"] # Trend (1)
+# unlist(list(summary(mainOUTPUT.1$gvecm[[1]])))["varresult.Austria.Hungary.irst.aliased.const"] # Constant (2)
+# unlist(list(summary(mainOUTPUT.1$gvecm[[1]])))["varresult.Austria.Hungary.irst.aliased.trend"] # Trend (2) 
+# unlist(list(summary(mainOUTPUT.1$gvecm[[1]])))["obs"] # Obs (N)
+
+
+
+
+
+
 
 
 ## List of Possible Pendings
@@ -860,11 +1173,14 @@ mainOUT.JO.1$JO.test
 ########################################################
 # Second Period
 ########################################################
+
+## ---- gvar:model:second:period ----
+
 p_load(GVARX)
 
 p.2=3 # The number of lag for Xt matrix
 FLag.2=3 # The number of lag for foreign variables in country-specific VAR
-lag.max.2=3 # The maximal number of lag for estimating country-specific VAR
+lag.max.2=5 # The maximal number of lag for estimating country-specific VAR
 type.2="none" # Model specificaiton for VAR. As in package vars, we have four selection: "none","const","trend", "both".
 ic.2="SC" # Information criteria for optimal lag.As in package vars, we have four selection: "AIC", "HQ", "SC", and "FPE".
 
@@ -878,6 +1194,8 @@ mainOUTPUT.2 = GVECMest(
         type = type.2,
         ic = ic.2,
         weight.matrix=wm.2)
+## ----
+
 
 
 summary(mainOUTPUT.2$gvecm[[1]]) # Argentina 
