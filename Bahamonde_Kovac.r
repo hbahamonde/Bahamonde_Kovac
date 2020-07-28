@@ -433,9 +433,9 @@ cow.d.2 = cow.d.2 %>% group_by(ID) %>% filter(milper != 0 & irst != 0)
 full.info.countries.second.time.span = unique(cow.d.2[cow.d.2$ID %in% names(which(table(cow.d.2$ID) == max(table(cow.d.2$ID)))), ]$ID) # Countries for which we have complete rows
 
 # Exclude Luxembourg (it's got too many similar values year after year)
-full.info.countries.second.time.span <- full.info.countries.second.time.span[full.info.countries.second.time.span != "Luxembourg"]
-full.info.countries.second.time.span <- full.info.countries.second.time.span[full.info.countries.second.time.span != "Taiwan"]
-full.info.countries.second.time.span <- full.info.countries.second.time.span[full.info.countries.second.time.span != "North.Korea"]
+#full.info.countries.second.time.span <- full.info.countries.second.time.span[full.info.countries.second.time.span != "Luxembourg"]
+#full.info.countries.second.time.span <- full.info.countries.second.time.span[full.info.countries.second.time.span != "Taiwan"]
+#full.info.countries.second.time.span <- full.info.countries.second.time.span[full.info.countries.second.time.span != "North.Korea"]
 
 # test = max(table(cow.d.2$ID)) ; View(test) # Germanies appear 36 times. Consider do GVAR for both of them.
 
@@ -443,8 +443,8 @@ full.info.countries.second.time.span <- full.info.countries.second.time.span[ful
 cow.d.2 = data.frame(cow.d.2[cow.d.2$ID %in% full.info.countries.second.time.span,])
 
 # TEST: introduce stochastic noise
-set.seed(2020); cow.d.2$milper = cow.d.2$milper + runif(nrow(cow.d.2), min = 0, max = 0.5)
-set.seed(2019); cow.d.2$irst = cow.d.2$irst + runif(nrow(cow.d.2), min = 0, max = 0.5)
+set.seed(2020); cow.d.2$milper = cow.d.2$milper + runif(nrow(cow.d.2), min = 0.5, max = 1) # 0.5
+set.seed(2019); cow.d.2$irst = cow.d.2$irst + runif(nrow(cow.d.2), min = 0.5, max = 1) # 0.5
 
 # Reformat time variable
 cow.d.2$Time = as.character(cow.d.2$Time)
@@ -1186,7 +1186,7 @@ p.2=3 # The number of lag for Xt matrix
 FLag.2=3 # The number of lag for foreign variables in country-specific VAR
 lag.max.2=5 # The maximal number of lag for estimating country-specific VAR
 type.2="none" # Model specificaiton for VAR. As in package vars, we have four selection: "none","const","trend", "both".
-ic.2="SC" # Information criteria for optimal lag.As in package vars, we have four selection: "AIC", "HQ", "SC", and "FPE".
+ic.2="AIC" # Information criteria for optimal lag.As in package vars, we have four selection: "AIC", "HQ", "SC", and "FPE".
 
 options(scipen=9999999)
 
