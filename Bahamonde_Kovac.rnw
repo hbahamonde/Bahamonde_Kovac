@@ -131,6 +131,7 @@ Here goes the ``theory'' part of the GVAR
 \section{Guns and Steel}
 
 \begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, 1871-1913}
+\begin{center}
 \begin{tabular}{ccccccc|} 
 \cline{2-7}
 \multicolumn{1}{c|}{}                                  & \textbf{Granger Relationship} 	& \textbf{F-Test} 						& \textbf{P-Value} 					   & \textbf{DF} 								& 	\textbf{Adjusted R-sq} 					 & {\bf Lags}  \\ \hline
@@ -161,6 +162,7 @@ Here goes the ``theory'' part of the GVAR
 \multicolumn{1}{|c|}{\multirow{2}{*}{United States}}   & steel $\rightarrow$ guns		& \Sexpr{p.1.United.States.ftest.1} 	& \Sexpr{p.1.United.States.pvalue.1}  	&  \Sexpr{(p.1.United.States.df.num.dem.1)}  &  	\Sexpr{p.1.United.States.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.United.States.lags}}}  \\ 
 \multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.United.States.ftest.2}  	& \Sexpr{p.1.United.States.pvalue.2} 	&  \Sexpr{(p.1.United.States.df.num.dem.2)}  &  	\Sexpr{p.1.United.States.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
 \end{tabular}
+\end{center}
 \end{table}
 
 
@@ -169,6 +171,8 @@ Here goes the ``theory'' part of the GVAR
 
 
 \begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, 1955-2014}
+\begin{center}
+\scalebox{0.6}{
 \begin{tabular}{ccccccc|} 
 \cline{2-7}
 \multicolumn{1}{c|}{}                               & \textbf{Granger Relationship} & \textbf{F-Test} 					& \textbf{P-Value} 				 & \textbf{DF} 								& 	\textbf{Adjusted R-sq} 		& {\bf Lags}  \\ \hline
@@ -187,7 +191,98 @@ Here goes the ``theory'' part of the GVAR
 \multicolumn{1}{|c|}{\multirow{2}{*}{Brazil}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Brazil.ftest.1} 		& \Sexpr{p.2.Brazil.pvalue.1} & \Sexpr{(p.2.Brazil.df.num.dem.1)} 		& 	\Sexpr{p.2.Brazil.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Brazil.lags}}} \\ 
 \multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Brazil.ftest.2} 		& \Sexpr{p.2.Brazil.pvalue.2} & \Sexpr{(p.2.Brazil.df.num.dem.2)} 		& 	\Sexpr{p.2.Brazil.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\end{tabular}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Bulgaria}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.Bulgaria.ftest.1} 		& \Sexpr{p.2.Bulgaria.pvalue.1} & \Sexpr{(p.2.Bulgaria.df.num.dem.1)} 		& 	\Sexpr{p.2.Bulgaria.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Bulgaria.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Bulgaria.ftest.2} 		& \Sexpr{p.2.Bulgaria.pvalue.2} & \Sexpr{(p.2.Bulgaria.df.num.dem.2)} 		& 	\Sexpr{p.2.Bulgaria.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Canada}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Canada.ftest.1} 		& \Sexpr{p.2.Canada.pvalue.1} & \Sexpr{(p.2.Canada.df.num.dem.1)} 		& 	\Sexpr{p.2.Canada.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Canada.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Canada.ftest.2} 		& \Sexpr{p.2.Canada.pvalue.2} & \Sexpr{(p.2.Canada.df.num.dem.2)} 		& 	\Sexpr{p.2.Canada.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Chile}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Chile.ftest.1} 		& \Sexpr{p.2.Chile.pvalue.1} & \Sexpr{(p.2.Chile.df.num.dem.1)} 		& 	\Sexpr{p.2.Chile.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Chile.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Chile.ftest.2} 		& \Sexpr{p.2.Chile.pvalue.2} & \Sexpr{(p.2.Chile.df.num.dem.2)} 		& 	\Sexpr{p.2.Chile.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{China}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.China.ftest.1} 		& \Sexpr{p.2.China.pvalue.1} & \Sexpr{(p.2.China.df.num.dem.1)} 		& 	\Sexpr{p.2.China.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.China.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.China.ftest.2} 		& \Sexpr{p.2.China.pvalue.2} & \Sexpr{(p.2.China.df.num.dem.2)} 		& 	\Sexpr{p.2.China.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Colombia}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.Colombia.ftest.1} 		& \Sexpr{p.2.Colombia.pvalue.1} & \Sexpr{(p.2.Colombia.df.num.dem.1)} 		& 	\Sexpr{p.2.Colombia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Colombia.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Colombia.ftest.2} 		& \Sexpr{p.2.Colombia.pvalue.2} & \Sexpr{(p.2.Colombia.df.num.dem.2)} 		& 	\Sexpr{p.2.Colombia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Egypt}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Egypt.ftest.1} 		& \Sexpr{p.2.Egypt.pvalue.1} & \Sexpr{(p.2.Egypt.df.num.dem.1)} 		& 	\Sexpr{p.2.Egypt.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Egypt.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Egypt.ftest.2} 		& \Sexpr{p.2.Egypt.pvalue.2} & \Sexpr{(p.2.Egypt.df.num.dem.2)} 		& 	\Sexpr{p.2.Egypt.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Finland}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Finland.ftest.1} 		& \Sexpr{p.2.Finland.pvalue.1} & \Sexpr{(p.2.Finland.df.num.dem.1)} 		& 	\Sexpr{p.2.Finland.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Finland.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Finland.ftest.2} 		& \Sexpr{p.2.Finland.pvalue.2} & \Sexpr{(p.2.Finland.df.num.dem.2)} 		& 	\Sexpr{p.2.Finland.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{France}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.France.ftest.1} 		& \Sexpr{p.2.France.pvalue.1} & \Sexpr{(p.2.France.df.num.dem.1)} 		& 	\Sexpr{p.2.France.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.France.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.France.ftest.2} 		& \Sexpr{p.2.France.pvalue.2} & \Sexpr{(p.2.France.df.num.dem.2)} 		& 	\Sexpr{p.2.France.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Greece}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Greece.ftest.1} 		& \Sexpr{p.2.Greece.pvalue.1} & \Sexpr{(p.2.Greece.df.num.dem.1)} 		& 	\Sexpr{p.2.Greece.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Greece.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Greece.ftest.2} 		& \Sexpr{p.2.Greece.pvalue.2} & \Sexpr{(p.2.Greece.df.num.dem.2)} 		& 	\Sexpr{p.2.Greece.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Hungary}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Hungary.ftest.1} 		& \Sexpr{p.2.Hungary.pvalue.1} & \Sexpr{(p.2.Hungary.df.num.dem.1)} 		& 	\Sexpr{p.2.Hungary.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Hungary.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Hungary.ftest.2} 		& \Sexpr{p.2.Hungary.pvalue.2} & \Sexpr{(p.2.Hungary.df.num.dem.2)} 		& 	\Sexpr{p.2.Hungary.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{India}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.India.ftest.1} 		& \Sexpr{p.2.India.pvalue.1} & \Sexpr{(p.2.India.df.num.dem.1)} 		& 	\Sexpr{p.2.India.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.India.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.India.ftest.2} 		& \Sexpr{p.2.India.pvalue.2} & \Sexpr{(p.2.India.df.num.dem.2)} 		& 	\Sexpr{p.2.India.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Israel}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Israel.ftest.1} 		& \Sexpr{p.2.Israel.pvalue.1} & \Sexpr{(p.2.Israel.df.num.dem.1)} 		& 	\Sexpr{p.2.Israel.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Israel.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Israel.ftest.2} 		& \Sexpr{p.2.Israel.pvalue.2} & \Sexpr{(p.2.Israel.df.num.dem.2)} 		& 	\Sexpr{p.2.Israel.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Italy}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Italy.ftest.1} 		& \Sexpr{p.2.Italy.pvalue.1} & \Sexpr{(p.2.Italy.df.num.dem.1)} 		& 	\Sexpr{p.2.Italy.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Italy.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Italy.ftest.2} 		& \Sexpr{p.2.Italy.pvalue.2} & \Sexpr{(p.2.Italy.df.num.dem.2)} 		& 	\Sexpr{p.2.Italy.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Japan}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Japan.ftest.1} 		& \Sexpr{p.2.Japan.pvalue.1} & \Sexpr{(p.2.Japan.df.num.dem.1)} 		& 	\Sexpr{p.2.Japan.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Japan.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Japan.ftest.2} 		& \Sexpr{p.2.Japan.pvalue.2} & \Sexpr{(p.2.Japan.df.num.dem.2)} 		& 	\Sexpr{p.2.Japan.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Luxembourg}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.Luxembourg.ftest.1} 		& \Sexpr{p.2.Luxembourg.pvalue.1} & \Sexpr{(p.2.Luxembourg.df.num.dem.1)} 		& 	\Sexpr{p.2.Luxembourg.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Luxembourg.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Luxembourg.ftest.2} 		& \Sexpr{p.2.Luxembourg.pvalue.2} & \Sexpr{(p.2.Luxembourg.df.num.dem.2)} 		& 	\Sexpr{p.2.Luxembourg.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Mexico}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Mexico.ftest.1} 		& \Sexpr{p.2.Mexico.pvalue.1} & \Sexpr{(p.2.Mexico.df.num.dem.1)} 		& 	\Sexpr{p.2.Mexico.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Mexico.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Mexico.ftest.2} 		& \Sexpr{p.2.Mexico.pvalue.2} & \Sexpr{(p.2.Mexico.df.num.dem.2)} 		& 	\Sexpr{p.2.Mexico.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Netherlands}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.Netherlands.ftest.1} 		& \Sexpr{p.2.Netherlands.pvalue.1} & \Sexpr{(p.2.Netherlands.df.num.dem.1)} 		& 	\Sexpr{p.2.Netherlands.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Netherlands.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Netherlands.ftest.2} 		& \Sexpr{p.2.Netherlands.pvalue.2} & \Sexpr{(p.2.Netherlands.df.num.dem.2)} 		& 	\Sexpr{p.2.Netherlands.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{North Korea}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.North.Korea.ftest.1} 		& \Sexpr{p.2.North.Korea.pvalue.1} & \Sexpr{(p.2.North.Korea.df.num.dem.1)} 		& 	\Sexpr{p.2.North.Korea.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.North.Korea.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.North.Korea.ftest.2} 		& \Sexpr{p.2.North.Korea.pvalue.2} & \Sexpr{(p.2.North.Korea.df.num.dem.2)} 		& 	\Sexpr{p.2.North.Korea.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Norway}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Norway.ftest.1} 		& \Sexpr{p.2.Norway.pvalue.1} & \Sexpr{(p.2.Norway.df.num.dem.1)} 		& 	\Sexpr{p.2.Norway.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Norway.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Norway.ftest.2} 		& \Sexpr{p.2.Norway.pvalue.2} & \Sexpr{(p.2.Norway.df.num.dem.2)} 		& 	\Sexpr{p.2.Norway.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Poland}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Poland.ftest.1} 		& \Sexpr{p.2.Poland.pvalue.1} & \Sexpr{(p.2.Poland.df.num.dem.1)} 		& 	\Sexpr{p.2.Poland.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Poland.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Poland.ftest.2} 		& \Sexpr{p.2.Poland.pvalue.2} & \Sexpr{(p.2.Poland.df.num.dem.2)} 		& 	\Sexpr{p.2.Poland.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Portugal}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.Portugal.ftest.1} 		& \Sexpr{p.2.Portugal.pvalue.1} & \Sexpr{(p.2.Portugal.df.num.dem.1)} 		& 	\Sexpr{p.2.Portugal.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Portugal.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Portugal.ftest.2} 		& \Sexpr{p.2.Portugal.pvalue.2} & \Sexpr{(p.2.Portugal.df.num.dem.2)} 		& 	\Sexpr{p.2.Portugal.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Romania}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Romania.ftest.1} 		& \Sexpr{p.2.Romania.pvalue.1} & \Sexpr{(p.2.Romania.df.num.dem.1)} 		& 	\Sexpr{p.2.Romania.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Romania.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Romania.ftest.2} 		& \Sexpr{p.2.Romania.pvalue.2} & \Sexpr{(p.2.Romania.df.num.dem.2)} 		& 	\Sexpr{p.2.Romania.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Russia}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Russia.ftest.1} 		& \Sexpr{p.2.Russia.pvalue.1} & \Sexpr{(p.2.Russia.df.num.dem.1)} 		& 	\Sexpr{p.2.Russia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Russia.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Russia.ftest.2} 		& \Sexpr{p.2.Russia.pvalue.2} & \Sexpr{(p.2.Russia.df.num.dem.2)} 		& 	\Sexpr{p.2.Russia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{South.Africa}} & steel $\rightarrow$ guns		& \Sexpr{p.2.South.Africa.ftest.1} 		& \Sexpr{p.2.South.Africa.pvalue.1} & \Sexpr{(p.2.South.Africa.df.num.dem.1)} 		& 	\Sexpr{p.2.South.Africa.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.South.Africa.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.South.Africa.ftest.2} 		& \Sexpr{p.2.South.Africa.pvalue.2} & \Sexpr{(p.2.South.Africa.df.num.dem.2)} 		& 	\Sexpr{p.2.South.Africa.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{South Korea}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.South.Korea.ftest.1} 		& \Sexpr{p.2.South.Korea.pvalue.1} & \Sexpr{(p.2.South.Korea.df.num.dem.1)} 		& 	\Sexpr{p.2.South.Korea.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.South.Korea.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.South.Korea.ftest.2} 		& \Sexpr{p.2.South.Korea.pvalue.2} & \Sexpr{(p.2.South.Korea.df.num.dem.2)} 		& 	\Sexpr{p.2.South.Korea.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Spain}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Spain.ftest.1} 		& \Sexpr{p.2.Spain.pvalue.1} & \Sexpr{(p.2.Spain.df.num.dem.1)} 		& 	\Sexpr{p.2.Spain.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Spain.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Spain.ftest.2} 		& \Sexpr{p.2.Spain.pvalue.2} & \Sexpr{(p.2.Spain.df.num.dem.2)} 		& 	\Sexpr{p.2.Spain.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Taiwan}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Taiwan.ftest.1} 		& \Sexpr{p.2.Taiwan.pvalue.1} & \Sexpr{(p.2.Taiwan.df.num.dem.1)} 		& 	\Sexpr{p.2.Taiwan.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Taiwan.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Taiwan.ftest.2} 		& \Sexpr{p.2.Taiwan.pvalue.2} & \Sexpr{(p.2.Taiwan.df.num.dem.2)} 		& 	\Sexpr{p.2.Taiwan.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Turkey}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Turkey.ftest.1} 		& \Sexpr{p.2.Turkey.pvalue.1} & \Sexpr{(p.2.Turkey.df.num.dem.1)} 		& 	\Sexpr{p.2.Turkey.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Turkey.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Turkey.ftest.2} 		& \Sexpr{p.2.Turkey.pvalue.2} & \Sexpr{(p.2.Turkey.df.num.dem.2)} 		& 	\Sexpr{p.2.Turkey.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{United Kingdom}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.United.Kingdom.ftest.1} 		& \Sexpr{p.2.United.Kingdom.pvalue.1} & \Sexpr{(p.2.United.Kingdom.df.num.dem.1)} 		& 	\Sexpr{p.2.United.Kingdom.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.United.Kingdom.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              	& guns $\rightarrow$ steel		& \Sexpr{p.2.United.Kingdom.ftest.2} 		& \Sexpr{p.2.United.Kingdom.pvalue.2} & \Sexpr{(p.2.United.Kingdom.df.num.dem.2)} 		& 	\Sexpr{p.2.United.Kingdom.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{United States}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.United.States.of.America.ftest.1} 		& \Sexpr{p.2.United.States.of.America.pvalue.1} & \Sexpr{(p.2.United.States.of.America.df.num.dem.1)} 		& 	\Sexpr{p.2.United.States.of.America.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.United.States.of.America.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              	& guns $\rightarrow$ steel		& \Sexpr{p.2.United.States.of.America.ftest.2} 		& \Sexpr{p.2.United.States.of.America.pvalue.2} & \Sexpr{(p.2.United.States.of.America.df.num.dem.2)} 		& 	\Sexpr{p.2.United.States.of.America.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\end{tabular}}
+\end{center}
 \end{table}
 
 
