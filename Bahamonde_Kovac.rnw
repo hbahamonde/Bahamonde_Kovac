@@ -126,7 +126,15 @@ read_chunk('/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/Bahamonde_Kovac.R
 
 \subsection{Presenting the GVAR Methodology}
 
-Here goes the ``theory'' part of the GVAR
+Following \textcite[14]{Mauro2013}, we define a country-specific GVAR model as follows,
+
+\begin{equation}
+{\mathbf x}_{it} =  \bm{\alpha}_{i, 0} +  \bm{\Phi}_{i1} {\mathbf x}_{i,t-1} +  \bm{\Phi}_{i2} {\mathbf x}_{i,t-2} + \bm{\Lambda}_{i0} {\mathbf x}^{\star}_{it} + \bm{\Lambda}_{i1} {\mathbf x}^{\star}_{i, t-1} + \bm{\Lambda}_{i2} {\mathbf x}^{\star}_{i, t-2} + {\mathbf u}_{it}
+\end{equation}
+
+where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of domestic variables, ${\mathbf x}^{\star}_{it}$ is a $k^{\star}_{i} \; \times \; 1$ vector of foreign variables, and ${\mathbf u}_{it}$ is a serially uncorrelated and cross-sectionally weakly dependent process. The inclusion of the weighting foreign variables ${\mathbf x}^{\star}_{it}$ is one of the main characteristics of the GVAR approach. In our case, the vector of foreign variables is a single variable, namely, bilateral trade. Using this variable, a square weighting matrix was constructed. If there are 30 countries, the weight matrix has 30 rows and 30 columns---its diagonal element contains only zeros. Every country is weighted by the other 29 remaining countries. Finally, in our case, the vector ${\mathbf x}_{it}$ containing the domestic variables considers military personnel and iron production.\todo{cite cow data}
+
+
 
 \section{Guns and Steel}
 
@@ -373,4 +381,32 @@ count <- comma(as.numeric(count)) # add comma
 
 
 \end{document}
+
+
+GVAR (global vector autoregression) approach advanced in Pesaran, Schuermann and Weiner (2004, PSW). GVAR was originally developed in the aftermath of the 1997 East Asian financial crisis to quantify the effects of changing macroeconomic conditions (at GVAR % Mauro2013, 1
+
+``interdependencies that exist across markets and economies. National economic issues need to be considered from global as well as domestic perspectives. This invariably means that many different chan- nels of transmission must be taken into account.'' % Mauro2013, 1
+
+``The GVAR model is composed of a large number of unit-specific models. In many applications the units are countries or regions. But they could equally be counties, municipalities, industries, or sectors of a given economy'' % Mauro2013, 2
+
+``In the context of macroeconomic models the core domestic variables (such as real output, inflation, interest rates, real equity prices, and the exchange rate) are related to global observed variables, such as international energy and food prices, and foreign-specific variables (denoted as ‘starred’ variables). Foreign variables are constructed as weighted averages of foreign variables that cor- respond to the domestic variable in question, typically using trade weights.'' % Mauro2013, 2
+
+``The ‘curse of dimensionality’ is overcome by estimating the country-specifi error-correcting models separately, conditional on the foreign variables that are treated as weakly exogenous. The assumption of weak exogeneity is typically upheld when tested. '' % Mauro2013, 2,3
+
+``Country-specific models are then solved simultaneously for all the endogenous variables in the global model.'' % Mauro2013, 3
+
+``interconnection across economies calls for adequate modelling'' % Mauro2013, 12
+
+``The GVAR (Global Vector AutoRegressive) model combines indi- vidual country vector error-correcting models, in which domestic variables are related to country-specific foreign variables in a consistent manner.'' % Mauro2013, 13
+
+``The version of the GVAR model that will be presented here is based on that of Dées, di Mauro, Pesaran, and Smith (2007, DdPS), which is estimated for 26 countries/regions, the euro area being treated as a single economy. The estimation sample extends that of DdPS by eight years, covering the period 1979–2011. This version also considerably extends the 11 country/ region models estimated over the shorter period 1979–1999 in Pesaran, Schuermann, and Weiner (2004, PSW), where the GVAR model was initially introduced'' % Mauro2013, 13
+
+``The weak exogeneity assumption is the key feature of the GVAR modelling strategy, since it allows country models to be estimated individually and only at a later stage to be combined together.'' % Mauro2013, 13
+
+``the GVAR framework imposes—and later tests empirically—weak exogeneity of the foreign country-specific and global variables, i.e. it assumes that the individual country (with the notable exception of the US) is actually a small economy with respect to the rest of the world.'' % Mauro2013, 14
+
+``Although estimation is done on a country-by-country basis, the GVAR model is solved for the world as a whole'' % Mauro2013, 15
+
+``As it is built, the GVAR model allows for interactions among the different economies through three distinct channels: (i) contemporaneous depen- dence of domestic variables, xit, on foreign-specific variables, x∗it,and on its lagged values; (ii) dependence of the domestic variables, xit, on common global (weakly) exogenous variables, dt such as oil or food prices; (iii) con- temporaneous dependence of shocks in country i on the shocks in country j, as described by the cross-country covariances'' % Mauro2013, 17
+
 
