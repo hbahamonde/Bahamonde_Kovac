@@ -121,22 +121,44 @@ read_chunk('/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/Bahamonde_Kovac.R
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-\section{Intro}
+\section{Modelling ``Steel and Guns'' in a Global Setting: Presenting the GVAR Methodology}
 
 
-\subsection{Presenting the GVAR Methodology}
+\subsection{GVAR: Country-specific Equations and Granger-causality Tests}
 
-Following \textcite[14]{Mauro2013}, we define a country-specific GVAR model as follows,
 
-\begin{equation}
-{\mathbf x}_{it} =  \bm{\alpha}_{i, 0} +  \bm{\Phi}_{i1} {\mathbf x}_{i,t-1} +  \bm{\Phi}_{i2} {\mathbf x}_{i,t-2} + \bm{\Lambda}_{i0} {\mathbf x}^{\star}_{it} + \bm{\Lambda}_{i1} {\mathbf x}^{\star}_{i, t-1} + \bm{\Lambda}_{i2} {\mathbf x}^{\star}_{i, t-2} + {\mathbf u}_{it}
+Following \textcite[14]{Mauro2013}, we define a country $i$ GVAR model with $p$ lags as follows,
+
+\begin{equation}\label{eq:gvar}
+{\mathbf x}_{it} =  \bm{\alpha}_{i} +  \bm{\Phi}_{i} {\mathbf x}_{i,t-p} +  \bm{\Lambda}_{i0} {\mathbf x}^{\star}_{it} + \bm{\Lambda}_{i1} {\mathbf x}^{\star}_{i, t-p} + {\mathbf u}_{it}
 \end{equation}
 
-where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of domestic variables, ${\mathbf x}^{\star}_{it}$ is a $k^{\star}_{i} \; \times \; 1$ vector of foreign variables, and ${\mathbf u}_{it}$ is a serially uncorrelated and cross-sectionally weakly dependent process. The inclusion of the weighting foreign variables ${\mathbf x}^{\star}_{it}$ is one of the main characteristics of the GVAR approach. In our case, the vector of foreign variables is a single variable, namely, bilateral trade. Using this variable, a square weighting matrix was constructed. If there are 30 countries, the weight matrix has 30 rows and 30 columns---its diagonal element contains only zeros. Every country is weighted by the other 29 remaining countries. Finally, in our case, the vector ${\mathbf x}_{it}$ containing the domestic variables considers military personnel and iron production.\todo{cite cow data}
+where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of domestic variables, ${\mathbf x}^{\star}_{it}$ is a $k^{\star}_{i} \; \times \; 1$ vector of weakly-exogenous foreign variables, and ${\mathbf u}_{it}$ is a serially uncorrelated and cross-sectionally weakly dependent process. The inclusion of the foreign variables ${\mathbf x}^{\star}_{it}$ is one of the main characteristics of the GVAR approach. In simple, the Global vector autoregressive generalized model defined in \autoref{eq:gvar} explains $x_{it}$ as a function of past values of $x_{it}$\footnote{Defined by the number of lags $p$.}, at the same time that it weights estimates $\Phi_{i}$ by a weakly-exogenous foreign variables $x^{\star}_{i, t-p}$ (a effect which is captured by parameters $\Lambda_{i}$).
+
+Since we are substantively interested in if ``guns'' \emph{cause} ``steel'' or the other way around, in this paper we estimate country-specific bivariate Granger-causality tests within the GVAR framework.\footnote{We acknowledge that without proper experimentation and randomization there cannot be proper causation. Consequently, and following the Granger methodology, we employ a rather lose definition of ``causation'' and explore if lagged values of a variable \emph{forecast} another variable.} The Granger-causality method was introduced in \textcite{Granger1969} and it seeks to investigate if some variable $X$ Granger-causes another variable $Y$, or the other way around. A variable $X$ is said to Granger-cause $Y$ if predictions of $Y$ based on lagged values of $Y$ and lagged values of $X$ perform better than explaining $Y$ just with its own past values. Since Granger-causality tests are usually estimating by fitting vector auto-regressive models (VAR), we now derive the Granger-causality test within the GVAR framework. The advantage of GVAR Granger-causality tests over regular Granger-causality tests is that the estimates are weighted by the global economy, situating the domestic effects within the global context. More formally, we estimate the following equations for every country $i$,
+
+\begin{equation}\label{eq:gvar:granger}
+{\mathbf x}_{it} =  \bm{\alpha}_{i} +  \bm{\Phi}_{i} {\mathbf x}_{i,t-p} +  \bm{\Lambda}_{i0} {\mathbf x}^{\star}_{it} + \bm{\Lambda}_{i1} {\mathbf x}^{\star}_{i, t-p} + {\mathbf u}_{it}
+\end{equation}
+
+\begin{align}\label{eq:gvar:granger}
+{\mathbf x}_{it} &=  \bm{\alpha}_{i} +  \bm{\Phi}_{1i} {\mathbf y}_{i,t-p} + \bm{\Phi}_{2i} {\mathbf x}_{i,t-p} + \bm{\Lambda}_{i1} {\mathbf y}^{\star}_{it} + \bm{\Lambda}_{i2} {\mathbf y}^{\star}_{i,t-p} + \bm{\Lambda}_{i3} {\mathbf x}^{\star}_{it} + \bm{\Lambda}_{i4} {\mathbf x}^{\star}_{i,t-p} + {\mathbf u}_{it}\\
+{\mathbf y}_{it} &=  \bm{\alpha}_{i} +  \bm{\Phi}_{1i} {\mathbf x}_{i,t-p} + \bm{\Phi}_{2i} {\mathbf y}_{i,t-p} + \bm{\Lambda}_{i1} {\mathbf x}^{\star}_{it} + \bm{\Lambda}_{i2} {\mathbf x}^{\star}_{i,t-p} + \bm{\Lambda}_{i3} {\mathbf y}^{\star}_{it} + \bm{\Lambda}_{i4} {\mathbf y}^{\star}_{i,t-p} + {\mathbf u}_{it}
+\end{align}
 
 
 
-\section{Guns and Steel}
+
+
+In our case, the vector ${\mathbf x}_{it}$ contains country-year levels of ``military personnel'' and ``iron and steel production'', as systematized by the Correlates of War Project, particularly, the National Material Capabilities (version 5.0) dataset \parencite{Singer:1972aa}. The dataset covers all countries in the world between 1816-2012. 
+
+
+In our case, the vector of foreign variables is the single variable ``dyadic trade'' which measures bilateral trade flows between two countries. This variable was developed by the same project in the Trade dataset (version 4.0).\parencite{Barbieri:2009aa,Barbieri:2016aa}. Using this variable, a square weighting matrix was constructed as follows: if there are 30 countries, the weight matrix has 30 rows and 30 columns---its diagonal element contains only zeros. Every country is weighted by the other 29 remaining countries. 
+
+\todo{add Deterministic variables to table (trend, constant)}
+
+
+\subsection{Results}
 
 \begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, 1871-1913}
 \begin{center}
@@ -383,6 +405,8 @@ count <- comma(as.numeric(count)) # add comma
 \end{document}
 
 
+
+
 GVAR (global vector autoregression) approach advanced in Pesaran, Schuermann and Weiner (2004, PSW). GVAR was originally developed in the aftermath of the 1997 East Asian financial crisis to quantify the effects of changing macroeconomic conditions (at GVAR % Mauro2013, 1
 
 ``interdependencies that exist across markets and economies. National economic issues need to be considered from global as well as domestic perspectives. This invariably means that many different chan- nels of transmission must be taken into account.'' % Mauro2013, 1
@@ -408,5 +432,8 @@ GVAR (global vector autoregression) approach advanced in Pesaran, Schuermann and
 ``Although estimation is done on a country-by-country basis, the GVAR model is solved for the world as a whole'' % Mauro2013, 15
 
 ``As it is built, the GVAR model allows for interactions among the different economies through three distinct channels: (i) contemporaneous depen- dence of domestic variables, xit, on foreign-specific variables, x∗it,and on its lagged values; (ii) dependence of the domestic variables, xit, on common global (weakly) exogenous variables, dt such as oil or food prices; (iii) con- temporaneous dependence of shocks in country i on the shocks in country j, as described by the cross-country covariances'' % Mauro2013, 17
+
+
+specifies dynamics of the domestic variables xit as well as the commodity prices
 
 
