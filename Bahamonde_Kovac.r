@@ -182,233 +182,57 @@ y.1912 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac
 y.1913 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1913.csv"))
 
 
-# 1. Sort column X (with countries) and Delete column X
-y.1871 = y.1871[order(y.1871$X), ] ; y.1871$X <- NULL
-y.1872 = y.1872[order(y.1872$X), ] ; y.1872$X <- NULL
-y.1873 = y.1873[order(y.1873$X), ] ; y.1873$X <- NULL
-y.1874 = y.1874[order(y.1874$X), ] ; y.1874$X <- NULL
-y.1875 = y.1875[order(y.1875$X), ] ; y.1875$X <- NULL
-y.1876 = y.1876[order(y.1876$X), ] ; y.1876$X <- NULL
-y.1877 = y.1877[order(y.1877$X), ] ; y.1877$X <- NULL
-y.1878 = y.1878[order(y.1878$X), ] ; y.1878$X <- NULL
-y.1879 = y.1879[order(y.1879$X), ] ; y.1879$X <- NULL
-y.1880 = y.1880[order(y.1880$X), ] ; y.1880$X <- NULL
-y.1881 = y.1881[order(y.1881$X), ] ; y.1881$X <- NULL
-y.1882 = y.1882[order(y.1882$X), ] ; y.1882$X <- NULL
-y.1883 = y.1883[order(y.1883$X), ] ; y.1883$X <- NULL
-y.1884 = y.1884[order(y.1884$X), ] ; y.1884$X <- NULL
-y.1885 = y.1885[order(y.1885$X), ] ; y.1885$X <- NULL
-y.1886 = y.1886[order(y.1886$X), ] ; y.1886$X <- NULL
-y.1887 = y.1887[order(y.1887$X), ] ; y.1887$X <- NULL
-y.1888 = y.1888[order(y.1888$X), ] ; y.1888$X <- NULL
-y.1889 = y.1889[order(y.1889$X), ] ; y.1889$X <- NULL
-y.1890 = y.1890[order(y.1890$X), ] ; y.1890$X <- NULL
-y.1891 = y.1891[order(y.1891$X), ] ; y.1891$X <- NULL
-y.1892 = y.1892[order(y.1892$X), ] ; y.1892$X <- NULL
-y.1893 = y.1893[order(y.1893$X), ] ; y.1893$X <- NULL
-y.1894 = y.1894[order(y.1894$X), ] ; y.1894$X <- NULL
-y.1895 = y.1895[order(y.1895$X), ] ; y.1895$X <- NULL
-y.1896 = y.1896[order(y.1896$X), ] ; y.1896$X <- NULL
-y.1897 = y.1897[order(y.1897$X), ] ; y.1897$X <- NULL
-y.1898 = y.1898[order(y.1898$X), ] ; y.1898$X <- NULL
-y.1899 = y.1899[order(y.1899$X), ] ; y.1899$X <- NULL
-y.1900 = y.1900[order(y.1900$X), ] ; y.1900$X <- NULL
-y.1901 = y.1901[order(y.1901$X), ] ; y.1901$X <- NULL
-y.1902 = y.1902[order(y.1902$X), ] ; y.1902$X <- NULL
-y.1903 = y.1903[order(y.1903$X), ] ; y.1903$X <- NULL
-y.1904 = y.1904[order(y.1904$X), ] ; y.1904$X <- NULL
-y.1905 = y.1905[order(y.1905$X), ] ; y.1905$X <- NULL
-y.1906 = y.1906[order(y.1906$X), ] ; y.1906$X <- NULL
-y.1907 = y.1907[order(y.1907$X), ] ; y.1907$X <- NULL
-y.1908 = y.1908[order(y.1908$X), ] ; y.1908$X <- NULL
-y.1909 = y.1909[order(y.1909$X), ] ; y.1909$X <- NULL
-y.1910 = y.1910[order(y.1910$X), ] ; y.1910$X <- NULL
-y.1911 = y.1911[order(y.1911$X), ] ; y.1911$X <- NULL
-y.1912 = y.1912[order(y.1912$X), ] ; y.1912$X <- NULL
-y.1913 = y.1913[order(y.1913$X), ] ; y.1913$X <- NULL
-
-# 2. Sort column names and delete columns (countries) for which we have complete missingness
-y.1871 = y.1871[ , order(names(y.1871))] # ; y.1871 = y.1871[ , colSums(y.1871 != 0) > 0]
-y.1872 = y.1872[ , order(names(y.1872))] # ; y.1872 = y.1872[ , colSums(y.1872 != 0) > 0]
-y.1873 = y.1873[ , order(names(y.1873))] # ; y.1873 = y.1873[ , colSums(y.1873 != 0) > 0]
-y.1874 = y.1874[ , order(names(y.1874))] # ; y.1874 = y.1874[ , colSums(y.1874 != 0) > 0]
-y.1875 = y.1875[ , order(names(y.1875))] # ; y.1875 = y.1875[ , colSums(y.1875 != 0) > 0]
-y.1876 = y.1876[ , order(names(y.1876))] # ; y.1876 = y.1876[ , colSums(y.1876 != 0) > 0]
-y.1877 = y.1877[ , order(names(y.1877))] # ; y.1877 = y.1877[ , colSums(y.1877 != 0) > 0]
-y.1878 = y.1878[ , order(names(y.1878))] # ; y.1878 = y.1878[ , colSums(y.1878 != 0) > 0]
-y.1879 = y.1879[ , order(names(y.1879))] # ; y.1879 = y.1879[ , colSums(y.1879 != 0) > 0]
-y.1880 = y.1880[ , order(names(y.1880))] # ; y.1880 = y.1880[ , colSums(y.1880 != 0) > 0]
-y.1881 = y.1881[ , order(names(y.1881))] # ; y.1881 = y.1881[ , colSums(y.1881 != 0) > 0]
-y.1882 = y.1882[ , order(names(y.1882))] # ; y.1882 = y.1882[ , colSums(y.1882 != 0) > 0]
-y.1883 = y.1883[ , order(names(y.1883))] # ; y.1883 = y.1883[ , colSums(y.1883 != 0) > 0]
-y.1884 = y.1884[ , order(names(y.1884))] # ; y.1884 = y.1884[ , colSums(y.1884 != 0) > 0]
-y.1885 = y.1885[ , order(names(y.1885))] # ; y.1885 = y.1885[ , colSums(y.1885 != 0) > 0]
-y.1886 = y.1886[ , order(names(y.1886))] # ; y.1886 = y.1886[ , colSums(y.1886 != 0) > 0]
-y.1887 = y.1887[ , order(names(y.1887))] # ; y.1887 = y.1887[ , colSums(y.1887 != 0) > 0]
-y.1888 = y.1888[ , order(names(y.1888))] # ; y.1888 = y.1888[ , colSums(y.1888 != 0) > 0]
-y.1889 = y.1889[ , order(names(y.1889))] # ; y.1889 = y.1889[ , colSums(y.1889 != 0) > 0]
-y.1890 = y.1890[ , order(names(y.1890))] # ; y.1890 = y.1890[ , colSums(y.1890 != 0) > 0]
-y.1891 = y.1891[ , order(names(y.1891))] # ; y.1891 = y.1891[ , colSums(y.1891 != 0) > 0]
-y.1892 = y.1892[ , order(names(y.1892))] # ; y.1892 = y.1892[ , colSums(y.1892 != 0) > 0]
-y.1893 = y.1893[ , order(names(y.1893))] # ; y.1893 = y.1893[ , colSums(y.1893 != 0) > 0]
-y.1894 = y.1894[ , order(names(y.1894))] # ; y.1894 = y.1894[ , colSums(y.1894 != 0) > 0]
-y.1895 = y.1895[ , order(names(y.1895))] # ; y.1895 = y.1895[ , colSums(y.1895 != 0) > 0]
-y.1896 = y.1896[ , order(names(y.1896))] # ; y.1896 = y.1896[ , colSums(y.1896 != 0) > 0]
-y.1897 = y.1897[ , order(names(y.1897))] # ; y.1897 = y.1897[ , colSums(y.1897 != 0) > 0]
-y.1898 = y.1898[ , order(names(y.1898))] # ; y.1898 = y.1898[ , colSums(y.1898 != 0) > 0]
-y.1899 = y.1899[ , order(names(y.1899))] # ; y.1899 = y.1899[ , colSums(y.1899 != 0) > 0]
-y.1900 = y.1900[ , order(names(y.1900))] # ; y.1900 = y.1900[ , colSums(y.1900 != 0) > 0]
-y.1901 = y.1901[ , order(names(y.1901))] # ; y.1901 = y.1901[ , colSums(y.1901 != 0) > 0]
-y.1902 = y.1902[ , order(names(y.1902))] # ; y.1902 = y.1902[ , colSums(y.1902 != 0) > 0]
-y.1903 = y.1903[ , order(names(y.1903))] # ; y.1903 = y.1903[ , colSums(y.1903 != 0) > 0]
-y.1904 = y.1904[ , order(names(y.1904))] # ; y.1904 = y.1904[ , colSums(y.1904 != 0) > 0]
-y.1905 = y.1905[ , order(names(y.1905))] # ; y.1905 = y.1905[ , colSums(y.1905 != 0) > 0]
-y.1906 = y.1906[ , order(names(y.1906))] # ; y.1906 = y.1906[ , colSums(y.1906 != 0) > 0]
-y.1907 = y.1907[ , order(names(y.1907))] # ; y.1907 = y.1907[ , colSums(y.1907 != 0) > 0]
-y.1908 = y.1908[ , order(names(y.1908))] # ; y.1908 = y.1908[ , colSums(y.1908 != 0) > 0]
-y.1909 = y.1909[ , order(names(y.1909))] # ; y.1909 = y.1909[ , colSums(y.1909 != 0) > 0]
-y.1910 = y.1910[ , order(names(y.1910))] # ; y.1910 = y.1910[ , colSums(y.1910 != 0) > 0]
-y.1911 = y.1911[ , order(names(y.1911))] # ; y.1911 = y.1911[ , colSums(y.1911 != 0) > 0]
-y.1912 = y.1912[ , order(names(y.1912))] # ; y.1912 = y.1912[ , colSums(y.1912 != 0) > 0]
-y.1913 = y.1913[ , order(names(y.1913))] # ; y.1913 = y.1913[ , colSums(y.1913 != 0) > 0]
-
-
-## Keeping Columns for which we have complete information
+# Standarize country names, select columns, then rows, and then delete X column
 p_load(dplyr)
-y.1871 = dplyr::select(y.1871, full.info.countries.first.time.span)
-y.1872 = dplyr::select(y.1872, full.info.countries.first.time.span)
-y.1873 = dplyr::select(y.1873, full.info.countries.first.time.span)
-y.1874 = dplyr::select(y.1874, full.info.countries.first.time.span)
-y.1875 = dplyr::select(y.1875, full.info.countries.first.time.span)
-y.1876 = dplyr::select(y.1876, full.info.countries.first.time.span)
-y.1877 = dplyr::select(y.1877, full.info.countries.first.time.span)
-y.1878 = dplyr::select(y.1878, full.info.countries.first.time.span)
-y.1879 = dplyr::select(y.1879, full.info.countries.first.time.span)
-y.1880 = dplyr::select(y.1880, full.info.countries.first.time.span)
-y.1881 = dplyr::select(y.1881, full.info.countries.first.time.span)
-y.1882 = dplyr::select(y.1882, full.info.countries.first.time.span)
-y.1883 = dplyr::select(y.1883, full.info.countries.first.time.span)
-y.1884 = dplyr::select(y.1884, full.info.countries.first.time.span)
-y.1885 = dplyr::select(y.1885, full.info.countries.first.time.span)
-y.1886 = dplyr::select(y.1886, full.info.countries.first.time.span)
-y.1887 = dplyr::select(y.1887, full.info.countries.first.time.span)
-y.1888 = dplyr::select(y.1888, full.info.countries.first.time.span)
-y.1889 = dplyr::select(y.1889, full.info.countries.first.time.span)
-y.1890 = dplyr::select(y.1890, full.info.countries.first.time.span)
-y.1891 = dplyr::select(y.1891, full.info.countries.first.time.span)
-y.1892 = dplyr::select(y.1892, full.info.countries.first.time.span)
-y.1893 = dplyr::select(y.1893, full.info.countries.first.time.span)
-y.1894 = dplyr::select(y.1894, full.info.countries.first.time.span)
-y.1895 = dplyr::select(y.1895, full.info.countries.first.time.span)
-y.1896 = dplyr::select(y.1896, full.info.countries.first.time.span)
-y.1897 = dplyr::select(y.1897, full.info.countries.first.time.span)
-y.1898 = dplyr::select(y.1898, full.info.countries.first.time.span)
-y.1899 = dplyr::select(y.1899, full.info.countries.first.time.span)
-y.1900 = dplyr::select(y.1900, full.info.countries.first.time.span)
-y.1901 = dplyr::select(y.1901, full.info.countries.first.time.span)
-y.1902 = dplyr::select(y.1902, full.info.countries.first.time.span)
-y.1903 = dplyr::select(y.1903, full.info.countries.first.time.span)
-y.1904 = dplyr::select(y.1904, full.info.countries.first.time.span)
-y.1905 = dplyr::select(y.1905, full.info.countries.first.time.span)
-y.1906 = dplyr::select(y.1906, full.info.countries.first.time.span)
-y.1907 = dplyr::select(y.1907, full.info.countries.first.time.span)
-y.1908 = dplyr::select(y.1908, full.info.countries.first.time.span)
-y.1909 = dplyr::select(y.1909, full.info.countries.first.time.span)
-y.1910 = dplyr::select(y.1910, full.info.countries.first.time.span)
-y.1911 = dplyr::select(y.1911, full.info.countries.first.time.span)
-y.1912 = dplyr::select(y.1912, full.info.countries.first.time.span)
-y.1913 = dplyr::select(y.1913, full.info.countries.first.time.span)
-
-## Keeping Rows for which we have complete information
-y.1871 = y.1871[1:length(full.info.countries.first.time.span), ]
-y.1872 = y.1872[1:length(full.info.countries.first.time.span), ]
-y.1873 = y.1873[1:length(full.info.countries.first.time.span), ]
-y.1874 = y.1874[1:length(full.info.countries.first.time.span), ]
-y.1875 = y.1875[1:length(full.info.countries.first.time.span), ]
-y.1876 = y.1876[1:length(full.info.countries.first.time.span), ]
-y.1877 = y.1877[1:length(full.info.countries.first.time.span), ]
-y.1878 = y.1878[1:length(full.info.countries.first.time.span), ]
-y.1879 = y.1879[1:length(full.info.countries.first.time.span), ]
-y.1880 = y.1880[1:length(full.info.countries.first.time.span), ]
-y.1881 = y.1881[1:length(full.info.countries.first.time.span), ]
-y.1882 = y.1882[1:length(full.info.countries.first.time.span), ]
-y.1883 = y.1883[1:length(full.info.countries.first.time.span), ]
-y.1884 = y.1884[1:length(full.info.countries.first.time.span), ]
-y.1885 = y.1885[1:length(full.info.countries.first.time.span), ]
-y.1886 = y.1886[1:length(full.info.countries.first.time.span), ]
-y.1887 = y.1887[1:length(full.info.countries.first.time.span), ]
-y.1888 = y.1888[1:length(full.info.countries.first.time.span), ]
-y.1889 = y.1889[1:length(full.info.countries.first.time.span), ]
-y.1890 = y.1890[1:length(full.info.countries.first.time.span), ]
-y.1891 = y.1891[1:length(full.info.countries.first.time.span), ]
-y.1892 = y.1892[1:length(full.info.countries.first.time.span), ]
-y.1893 = y.1893[1:length(full.info.countries.first.time.span), ]
-y.1894 = y.1894[1:length(full.info.countries.first.time.span), ]
-y.1895 = y.1895[1:length(full.info.countries.first.time.span), ]
-y.1896 = y.1896[1:length(full.info.countries.first.time.span), ]
-y.1897 = y.1897[1:length(full.info.countries.first.time.span), ]
-y.1898 = y.1898[1:length(full.info.countries.first.time.span), ]
-y.1899 = y.1899[1:length(full.info.countries.first.time.span), ]
-y.1900 = y.1900[1:length(full.info.countries.first.time.span), ]
-y.1901 = y.1901[1:length(full.info.countries.first.time.span), ]
-y.1902 = y.1902[1:length(full.info.countries.first.time.span), ]
-y.1903 = y.1903[1:length(full.info.countries.first.time.span), ]
-y.1904 = y.1904[1:length(full.info.countries.first.time.span), ]
-y.1905 = y.1905[1:length(full.info.countries.first.time.span), ]
-y.1906 = y.1906[1:length(full.info.countries.first.time.span), ]
-y.1907 = y.1907[1:length(full.info.countries.first.time.span), ]
-y.1908 = y.1908[1:length(full.info.countries.first.time.span), ]
-y.1909 = y.1909[1:length(full.info.countries.first.time.span), ]
-y.1910 = y.1910[1:length(full.info.countries.first.time.span), ]
-y.1911 = y.1911[1:length(full.info.countries.first.time.span), ]
-y.1912 = y.1912[1:length(full.info.countries.first.time.span), ]
-y.1913 = y.1913[1:length(full.info.countries.first.time.span), ]
+# test = y.1871
+# test$X <- gsub(' ', '.', test$X);test$X <- gsub('-', '.', test$X);test = test %>% select(c(X, full.info.countries.first.time.span));test = test[test$X %in% full.info.countries.first.time.span,];test$X <- NULL;rownames(test) <- NULL 
 
 
-# Resetting Rownames
-rownames(y.1871) <- NULL
-rownames(y.1872) <- NULL
-rownames(y.1873) <- NULL
-rownames(y.1874) <- NULL
-rownames(y.1875) <- NULL
-rownames(y.1876) <- NULL
-rownames(y.1877) <- NULL
-rownames(y.1878) <- NULL
-rownames(y.1879) <- NULL
-rownames(y.1880) <- NULL
-rownames(y.1881) <- NULL
-rownames(y.1882) <- NULL
-rownames(y.1883) <- NULL
-rownames(y.1884) <- NULL
-rownames(y.1885) <- NULL
-rownames(y.1886) <- NULL
-rownames(y.1887) <- NULL
-rownames(y.1888) <- NULL
-rownames(y.1889) <- NULL
-rownames(y.1890) <- NULL
-rownames(y.1891) <- NULL
-rownames(y.1892) <- NULL
-rownames(y.1893) <- NULL
-rownames(y.1894) <- NULL
-rownames(y.1895) <- NULL
-rownames(y.1896) <- NULL
-rownames(y.1897) <- NULL
-rownames(y.1898) <- NULL
-rownames(y.1899) <- NULL
-rownames(y.1900) <- NULL
-rownames(y.1901) <- NULL
-rownames(y.1902) <- NULL
-rownames(y.1903) <- NULL
-rownames(y.1904) <- NULL
-rownames(y.1905) <- NULL
-rownames(y.1906) <- NULL
-rownames(y.1907) <- NULL
-rownames(y.1908) <- NULL
-rownames(y.1909) <- NULL
-rownames(y.1910) <- NULL
-rownames(y.1911) <- NULL
-rownames(y.1912) <- NULL
-rownames(y.1913) <- NULL
+y.1871$X <- gsub(' ', '.', y.1871$X);y.1871$X <- gsub('-', '.', y.1871$X);y.1871 = y.1871 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1871 = y.1871[y.1871$X %in% full.info.countries.first.time.span,];y.1871$X <- NULL;rownames(y.1871) <- NULL 
+y.1872$X <- gsub(' ', '.', y.1872$X);y.1872$X <- gsub('-', '.', y.1872$X);y.1872 = y.1872 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1872 = y.1872[y.1872$X %in% full.info.countries.first.time.span,];y.1872$X <- NULL;rownames(y.1872) <- NULL 
+y.1873$X <- gsub(' ', '.', y.1873$X);y.1873$X <- gsub('-', '.', y.1873$X);y.1873 = y.1873 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1873 = y.1873[y.1873$X %in% full.info.countries.first.time.span,];y.1873$X <- NULL;rownames(y.1873) <- NULL 
+y.1874$X <- gsub(' ', '.', y.1874$X);y.1874$X <- gsub('-', '.', y.1874$X);y.1874 = y.1874 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1874 = y.1874[y.1874$X %in% full.info.countries.first.time.span,];y.1874$X <- NULL;rownames(y.1874) <- NULL 
+y.1875$X <- gsub(' ', '.', y.1875$X);y.1875$X <- gsub('-', '.', y.1875$X);y.1875 = y.1875 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1875 = y.1875[y.1875$X %in% full.info.countries.first.time.span,];y.1875$X <- NULL;rownames(y.1875) <- NULL 
+y.1876$X <- gsub(' ', '.', y.1876$X);y.1876$X <- gsub('-', '.', y.1876$X);y.1876 = y.1876 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1876 = y.1876[y.1876$X %in% full.info.countries.first.time.span,];y.1876$X <- NULL;rownames(y.1876) <- NULL 
+y.1877$X <- gsub(' ', '.', y.1877$X);y.1877$X <- gsub('-', '.', y.1877$X);y.1877 = y.1877 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1877 = y.1877[y.1877$X %in% full.info.countries.first.time.span,];y.1877$X <- NULL;rownames(y.1877) <- NULL 
+y.1878$X <- gsub(' ', '.', y.1878$X);y.1878$X <- gsub('-', '.', y.1878$X);y.1878 = y.1878 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1878 = y.1878[y.1878$X %in% full.info.countries.first.time.span,];y.1878$X <- NULL;rownames(y.1878) <- NULL 
+y.1879$X <- gsub(' ', '.', y.1879$X);y.1879$X <- gsub('-', '.', y.1879$X);y.1879 = y.1879 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1879 = y.1879[y.1879$X %in% full.info.countries.first.time.span,];y.1879$X <- NULL;rownames(y.1879) <- NULL 
+y.1880$X <- gsub(' ', '.', y.1880$X);y.1880$X <- gsub('-', '.', y.1880$X);y.1880 = y.1880 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1880 = y.1880[y.1880$X %in% full.info.countries.first.time.span,];y.1880$X <- NULL;rownames(y.1880) <- NULL 
+y.1881$X <- gsub(' ', '.', y.1881$X);y.1881$X <- gsub('-', '.', y.1881$X);y.1881 = y.1881 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1881 = y.1881[y.1881$X %in% full.info.countries.first.time.span,];y.1881$X <- NULL;rownames(y.1881) <- NULL 
+y.1882$X <- gsub(' ', '.', y.1882$X);y.1882$X <- gsub('-', '.', y.1882$X);y.1882 = y.1882 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1882 = y.1882[y.1882$X %in% full.info.countries.first.time.span,];y.1882$X <- NULL;rownames(y.1882) <- NULL 
+y.1883$X <- gsub(' ', '.', y.1883$X);y.1883$X <- gsub('-', '.', y.1883$X);y.1883 = y.1883 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1883 = y.1883[y.1883$X %in% full.info.countries.first.time.span,];y.1883$X <- NULL;rownames(y.1883) <- NULL 
+y.1884$X <- gsub(' ', '.', y.1884$X);y.1884$X <- gsub('-', '.', y.1884$X);y.1884 = y.1884 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1884 = y.1884[y.1884$X %in% full.info.countries.first.time.span,];y.1884$X <- NULL;rownames(y.1884) <- NULL 
+y.1885$X <- gsub(' ', '.', y.1885$X);y.1885$X <- gsub('-', '.', y.1885$X);y.1885 = y.1885 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1885 = y.1885[y.1885$X %in% full.info.countries.first.time.span,];y.1885$X <- NULL;rownames(y.1885) <- NULL 
+y.1886$X <- gsub(' ', '.', y.1886$X);y.1886$X <- gsub('-', '.', y.1886$X);y.1886 = y.1886 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1886 = y.1886[y.1886$X %in% full.info.countries.first.time.span,];y.1886$X <- NULL;rownames(y.1886) <- NULL 
+y.1887$X <- gsub(' ', '.', y.1887$X);y.1887$X <- gsub('-', '.', y.1887$X);y.1887 = y.1887 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1887 = y.1887[y.1887$X %in% full.info.countries.first.time.span,];y.1887$X <- NULL;rownames(y.1887) <- NULL 
+y.1888$X <- gsub(' ', '.', y.1888$X);y.1888$X <- gsub('-', '.', y.1888$X);y.1888 = y.1888 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1888 = y.1888[y.1888$X %in% full.info.countries.first.time.span,];y.1888$X <- NULL;rownames(y.1888) <- NULL 
+y.1889$X <- gsub(' ', '.', y.1889$X);y.1889$X <- gsub('-', '.', y.1889$X);y.1889 = y.1889 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1889 = y.1889[y.1889$X %in% full.info.countries.first.time.span,];y.1889$X <- NULL;rownames(y.1889) <- NULL 
+y.1890$X <- gsub(' ', '.', y.1890$X);y.1890$X <- gsub('-', '.', y.1890$X);y.1890 = y.1890 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1890 = y.1890[y.1890$X %in% full.info.countries.first.time.span,];y.1890$X <- NULL;rownames(y.1890) <- NULL 
+y.1891$X <- gsub(' ', '.', y.1891$X);y.1891$X <- gsub('-', '.', y.1891$X);y.1891 = y.1891 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1891 = y.1891[y.1891$X %in% full.info.countries.first.time.span,];y.1891$X <- NULL;rownames(y.1891) <- NULL 
+y.1892$X <- gsub(' ', '.', y.1892$X);y.1892$X <- gsub('-', '.', y.1892$X);y.1892 = y.1892 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1892 = y.1892[y.1892$X %in% full.info.countries.first.time.span,];y.1892$X <- NULL;rownames(y.1892) <- NULL 
+y.1893$X <- gsub(' ', '.', y.1893$X);y.1893$X <- gsub('-', '.', y.1893$X);y.1893 = y.1893 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1893 = y.1893[y.1893$X %in% full.info.countries.first.time.span,];y.1893$X <- NULL;rownames(y.1893) <- NULL 
+y.1894$X <- gsub(' ', '.', y.1894$X);y.1894$X <- gsub('-', '.', y.1894$X);y.1894 = y.1894 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1894 = y.1894[y.1894$X %in% full.info.countries.first.time.span,];y.1894$X <- NULL;rownames(y.1894) <- NULL 
+y.1895$X <- gsub(' ', '.', y.1895$X);y.1895$X <- gsub('-', '.', y.1895$X);y.1895 = y.1895 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1895 = y.1895[y.1895$X %in% full.info.countries.first.time.span,];y.1895$X <- NULL;rownames(y.1895) <- NULL 
+y.1896$X <- gsub(' ', '.', y.1896$X);y.1896$X <- gsub('-', '.', y.1896$X);y.1896 = y.1896 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1896 = y.1896[y.1896$X %in% full.info.countries.first.time.span,];y.1896$X <- NULL;rownames(y.1896) <- NULL 
+y.1897$X <- gsub(' ', '.', y.1897$X);y.1897$X <- gsub('-', '.', y.1897$X);y.1897 = y.1897 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1897 = y.1897[y.1897$X %in% full.info.countries.first.time.span,];y.1897$X <- NULL;rownames(y.1897) <- NULL 
+y.1898$X <- gsub(' ', '.', y.1898$X);y.1898$X <- gsub('-', '.', y.1898$X);y.1898 = y.1898 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1898 = y.1898[y.1898$X %in% full.info.countries.first.time.span,];y.1898$X <- NULL;rownames(y.1898) <- NULL 
+y.1899$X <- gsub(' ', '.', y.1899$X);y.1899$X <- gsub('-', '.', y.1899$X);y.1899 = y.1899 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1899 = y.1899[y.1899$X %in% full.info.countries.first.time.span,];y.1899$X <- NULL;rownames(y.1899) <- NULL 
+y.1900$X <- gsub(' ', '.', y.1900$X);y.1900$X <- gsub('-', '.', y.1900$X);y.1900 = y.1900 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1900 = y.1900[y.1900$X %in% full.info.countries.first.time.span,];y.1900$X <- NULL;rownames(y.1900) <- NULL 
+y.1901$X <- gsub(' ', '.', y.1901$X);y.1901$X <- gsub('-', '.', y.1901$X);y.1901 = y.1901 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1901 = y.1901[y.1901$X %in% full.info.countries.first.time.span,];y.1901$X <- NULL;rownames(y.1901) <- NULL 
+y.1902$X <- gsub(' ', '.', y.1902$X);y.1902$X <- gsub('-', '.', y.1902$X);y.1902 = y.1902 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1902 = y.1902[y.1902$X %in% full.info.countries.first.time.span,];y.1902$X <- NULL;rownames(y.1902) <- NULL 
+y.1903$X <- gsub(' ', '.', y.1903$X);y.1903$X <- gsub('-', '.', y.1903$X);y.1903 = y.1903 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1903 = y.1903[y.1903$X %in% full.info.countries.first.time.span,];y.1903$X <- NULL;rownames(y.1903) <- NULL 
+y.1904$X <- gsub(' ', '.', y.1904$X);y.1904$X <- gsub('-', '.', y.1904$X);y.1904 = y.1904 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1904 = y.1904[y.1904$X %in% full.info.countries.first.time.span,];y.1904$X <- NULL;rownames(y.1904) <- NULL 
+y.1905$X <- gsub(' ', '.', y.1905$X);y.1905$X <- gsub('-', '.', y.1905$X);y.1905 = y.1905 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1905 = y.1905[y.1905$X %in% full.info.countries.first.time.span,];y.1905$X <- NULL;rownames(y.1905) <- NULL 
+y.1906$X <- gsub(' ', '.', y.1906$X);y.1906$X <- gsub('-', '.', y.1906$X);y.1906 = y.1906 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1906 = y.1906[y.1906$X %in% full.info.countries.first.time.span,];y.1906$X <- NULL;rownames(y.1906) <- NULL 
+y.1907$X <- gsub(' ', '.', y.1907$X);y.1907$X <- gsub('-', '.', y.1907$X);y.1907 = y.1907 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1907 = y.1907[y.1907$X %in% full.info.countries.first.time.span,];y.1907$X <- NULL;rownames(y.1907) <- NULL 
+y.1908$X <- gsub(' ', '.', y.1908$X);y.1908$X <- gsub('-', '.', y.1908$X);y.1908 = y.1908 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1908 = y.1908[y.1908$X %in% full.info.countries.first.time.span,];y.1908$X <- NULL;rownames(y.1908) <- NULL 
+y.1909$X <- gsub(' ', '.', y.1909$X);y.1909$X <- gsub('-', '.', y.1909$X);y.1909 = y.1909 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1909 = y.1909[y.1909$X %in% full.info.countries.first.time.span,];y.1909$X <- NULL;rownames(y.1909) <- NULL 
+y.1910$X <- gsub(' ', '.', y.1910$X);y.1910$X <- gsub('-', '.', y.1910$X);y.1910 = y.1910 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1910 = y.1910[y.1910$X %in% full.info.countries.first.time.span,];y.1910$X <- NULL;rownames(y.1910) <- NULL 
+y.1911$X <- gsub(' ', '.', y.1911$X);y.1911$X <- gsub('-', '.', y.1911$X);y.1911 = y.1911 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1911 = y.1911[y.1911$X %in% full.info.countries.first.time.span,];y.1911$X <- NULL;rownames(y.1911) <- NULL 
+y.1912$X <- gsub(' ', '.', y.1912$X);y.1912$X <- gsub('-', '.', y.1912$X);y.1912 = y.1912 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1912 = y.1912[y.1912$X %in% full.info.countries.first.time.span,];y.1912$X <- NULL;rownames(y.1912) <- NULL 
+y.1913$X <- gsub(' ', '.', y.1913$X);y.1913$X <- gsub('-', '.', y.1913$X);y.1913 = y.1913 %>% dplyr::select(c(X, full.info.countries.first.time.span));y.1913 = y.1913[y.1913$X %in% full.info.countries.first.time.span,];y.1913$X <- NULL;rownames(y.1913) <- NULL 
+
+
 
 # Building WM for the first period
 wm.1 = list(as.matrix(y.1871), as.matrix(y.1872), as.matrix(y.1873), as.matrix(y.1874), as.matrix(y.1875), as.matrix(y.1876), as.matrix(y.1877), as.matrix(y.1878), as.matrix(y.1879), as.matrix(y.1880), as.matrix(y.1881), as.matrix(y.1882), as.matrix(y.1883), as.matrix(y.1884), as.matrix(y.1885), as.matrix(y.1886), as.matrix(y.1887), as.matrix(y.1888), as.matrix(y.1889), as.matrix(y.1890), as.matrix(y.1891), as.matrix(y.1892), as.matrix(y.1893), as.matrix(y.1894), as.matrix(y.1895), as.matrix(y.1896), as.matrix(y.1897), as.matrix(y.1898), as.matrix(y.1899), as.matrix(y.1900), as.matrix(y.1901), as.matrix(y.1902), as.matrix(y.1903), as.matrix(y.1904), as.matrix(y.1905), as.matrix(y.1906), as.matrix(y.1907), as.matrix(y.1908), as.matrix(y.1909), as.matrix(y.1910), as.matrix(y.1911), as.matrix(y.1912), as.matrix(y.1913))
@@ -416,11 +240,11 @@ wm.1 = list(as.matrix(y.1871), as.matrix(y.1872), as.matrix(y.1873), as.matrix(y
 
 
 ################################################################################################################
-## Second Period: 1955 - 2012
+## Second Period: 1955 - 2014 (Minor Countries)
 ################################################################################################################
 
 # Filter complete obs by year; here it's where I split the datasets
-cow.d.2 <- subset(cow.d, Time >= 1955 & Time <= 2014) # 2012
+cow.d.2 <- subset(cow.d, Time >= 1955 & Time <= 2014) # 2014
 
 # Drop NAs
 cow.d.2$milper[cow.d.2$milper == -9] <- NA
@@ -437,14 +261,17 @@ full.info.countries.second.time.span = unique(cow.d.2[cow.d.2$ID %in% names(whic
 #full.info.countries.second.time.span <- full.info.countries.second.time.span[full.info.countries.second.time.span != "Taiwan"]
 #full.info.countries.second.time.span <- full.info.countries.second.time.span[full.info.countries.second.time.span != "North.Korea"]
 
+full.info.countries.second.time.span = full.info.countries.second.time.span[c(-5, -21, -29)] # ALL COUNTRIES EXCEPT: 5. US, 21. Russia, 29. China # WORKING!
+
 # test = max(table(cow.d.2$ID)) ; View(test) # Germanies appear 36 times. Consider do GVAR for both of them.
 
 # Filtering complete obs by country name
 cow.d.2 = data.frame(cow.d.2[cow.d.2$ID %in% full.info.countries.second.time.span,])
 
-# TEST: introduce stochastic noise
-set.seed(2020); cow.d.2$milper = cow.d.2$milper + runif(nrow(cow.d.2), min = 0.5, max = 1) # 0.5
-set.seed(2019); cow.d.2$irst = cow.d.2$irst + runif(nrow(cow.d.2), min = 0.5, max = 1) # 0.5
+# TEST: introduce stochastic noise ## Truncated normal with mean 0
+p_load(truncnorm)
+set.seed(2020); cow.d.2$milper = round(cow.d.2$milper + rtruncnorm(n=nrow(cow.d.2), a=-3, b=3, mean=0, sd=1), 2) # Mean 0
+set.seed(2019); cow.d.2$irst = round(cow.d.2$irst + rtruncnorm(n=nrow(cow.d.2), a=-3, b=3, mean=0, sd=1), 2) # Mean 0
 
 # Reformat time variable
 cow.d.2$Time = as.character(cow.d.2$Time)
@@ -526,323 +353,260 @@ y.2012 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac
 y.2013 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2013.csv"))
 y.2014 = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2014.csv"))
 
-# 1. Sort column X (with countries) and Delete column X
-y.1955 = y.1955[order(y.1955$X), ] ; y.1955$X <- NULL
-y.1956 = y.1956[order(y.1956$X), ] ; y.1956$X <- NULL
-y.1957 = y.1957[order(y.1957$X), ] ; y.1957$X <- NULL
-y.1958 = y.1958[order(y.1958$X), ] ; y.1958$X <- NULL
-y.1959 = y.1959[order(y.1959$X), ] ; y.1959$X <- NULL
-y.1960 = y.1960[order(y.1960$X), ] ; y.1960$X <- NULL
-y.1961 = y.1961[order(y.1961$X), ] ; y.1961$X <- NULL
-y.1962 = y.1962[order(y.1962$X), ] ; y.1962$X <- NULL
-y.1963 = y.1963[order(y.1963$X), ] ; y.1963$X <- NULL
-y.1964 = y.1964[order(y.1964$X), ] ; y.1964$X <- NULL
-y.1965 = y.1965[order(y.1965$X), ] ; y.1965$X <- NULL
-y.1966 = y.1966[order(y.1966$X), ] ; y.1966$X <- NULL
-y.1967 = y.1967[order(y.1967$X), ] ; y.1967$X <- NULL
-y.1968 = y.1968[order(y.1968$X), ] ; y.1968$X <- NULL
-y.1969 = y.1969[order(y.1969$X), ] ; y.1969$X <- NULL
-y.1970 = y.1970[order(y.1970$X), ] ; y.1970$X <- NULL
-y.1971 = y.1971[order(y.1971$X), ] ; y.1971$X <- NULL
-y.1972 = y.1972[order(y.1972$X), ] ; y.1972$X <- NULL
-y.1973 = y.1973[order(y.1973$X), ] ; y.1973$X <- NULL
-y.1974 = y.1974[order(y.1974$X), ] ; y.1974$X <- NULL
-y.1975 = y.1975[order(y.1975$X), ] ; y.1975$X <- NULL
-y.1976 = y.1976[order(y.1976$X), ] ; y.1976$X <- NULL
-y.1977 = y.1977[order(y.1977$X), ] ; y.1977$X <- NULL
-y.1978 = y.1978[order(y.1978$X), ] ; y.1978$X <- NULL
-y.1979 = y.1979[order(y.1979$X), ] ; y.1979$X <- NULL
-y.1980 = y.1980[order(y.1980$X), ] ; y.1980$X <- NULL
-y.1981 = y.1981[order(y.1981$X), ] ; y.1981$X <- NULL
-y.1982 = y.1982[order(y.1982$X), ] ; y.1982$X <- NULL
-y.1983 = y.1983[order(y.1983$X), ] ; y.1983$X <- NULL
-y.1984 = y.1984[order(y.1984$X), ] ; y.1984$X <- NULL
-y.1985 = y.1985[order(y.1985$X), ] ; y.1985$X <- NULL
-y.1986 = y.1986[order(y.1986$X), ] ; y.1986$X <- NULL
-y.1987 = y.1987[order(y.1987$X), ] ; y.1987$X <- NULL
-y.1988 = y.1988[order(y.1988$X), ] ; y.1988$X <- NULL
-y.1989 = y.1989[order(y.1989$X), ] ; y.1989$X <- NULL
-y.1990 = y.1990[order(y.1990$X), ] ; y.1990$X <- NULL
-y.1991 = y.1991[order(y.1991$X), ] ; y.1991$X <- NULL
-y.1992 = y.1992[order(y.1992$X), ] ; y.1992$X <- NULL
-y.1993 = y.1993[order(y.1993$X), ] ; y.1993$X <- NULL
-y.1994 = y.1994[order(y.1994$X), ] ; y.1994$X <- NULL
-y.1995 = y.1995[order(y.1995$X), ] ; y.1995$X <- NULL
-y.1996 = y.1996[order(y.1996$X), ] ; y.1996$X <- NULL
-y.1997 = y.1997[order(y.1997$X), ] ; y.1997$X <- NULL
-y.1998 = y.1998[order(y.1998$X), ] ; y.1998$X <- NULL
-y.1999 = y.1999[order(y.1999$X), ] ; y.1999$X <- NULL
-y.2000 = y.2000[order(y.2000$X), ] ; y.2000$X <- NULL
-y.2001 = y.2001[order(y.2001$X), ] ; y.2001$X <- NULL
-y.2002 = y.2002[order(y.2002$X), ] ; y.2002$X <- NULL
-y.2003 = y.2003[order(y.2003$X), ] ; y.2003$X <- NULL
-y.2004 = y.2004[order(y.2004$X), ] ; y.2004$X <- NULL
-y.2005 = y.2005[order(y.2005$X), ] ; y.2005$X <- NULL
-y.2006 = y.2006[order(y.2006$X), ] ; y.2006$X <- NULL
-y.2007 = y.2007[order(y.2007$X), ] ; y.2007$X <- NULL
-y.2008 = y.2008[order(y.2008$X), ] ; y.2008$X <- NULL
-y.2009 = y.2009[order(y.2009$X), ] ; y.2009$X <- NULL
-y.2010 = y.2010[order(y.2010$X), ] ; y.2010$X <- NULL
-y.2011 = y.2011[order(y.2011$X), ] ; y.2011$X <- NULL
-y.2012 = y.2012[order(y.2012$X), ] ; y.2012$X <- NULL
-y.2013 = y.2013[order(y.2013$X), ] ; y.2013$X <- NULL
-y.2014 = y.2014[order(y.2014$X), ] ; y.2014$X <- NULL
 
-
-# 2. Sort column names and delete columns (countries) for which we have complete missingness
-y.1955 = y.1955[ , order(names(y.1955))]
-y.1956 = y.1956[ , order(names(y.1956))]
-y.1957 = y.1957[ , order(names(y.1957))]
-y.1958 = y.1958[ , order(names(y.1958))]
-y.1959 = y.1959[ , order(names(y.1959))]
-y.1960 = y.1960[ , order(names(y.1960))]
-y.1961 = y.1961[ , order(names(y.1961))]
-y.1962 = y.1962[ , order(names(y.1962))]
-y.1963 = y.1963[ , order(names(y.1963))]
-y.1964 = y.1964[ , order(names(y.1964))]
-y.1965 = y.1965[ , order(names(y.1965))]
-y.1966 = y.1966[ , order(names(y.1966))]
-y.1967 = y.1967[ , order(names(y.1967))]
-y.1968 = y.1968[ , order(names(y.1968))]
-y.1969 = y.1969[ , order(names(y.1969))]
-y.1970 = y.1970[ , order(names(y.1970))]
-y.1971 = y.1971[ , order(names(y.1971))]
-y.1972 = y.1972[ , order(names(y.1972))]
-y.1973 = y.1973[ , order(names(y.1973))]
-y.1974 = y.1974[ , order(names(y.1974))]
-y.1975 = y.1975[ , order(names(y.1975))]
-y.1976 = y.1976[ , order(names(y.1976))]
-y.1977 = y.1977[ , order(names(y.1977))]
-y.1978 = y.1978[ , order(names(y.1978))]
-y.1979 = y.1979[ , order(names(y.1979))]
-y.1980 = y.1980[ , order(names(y.1980))]
-y.1981 = y.1981[ , order(names(y.1981))]
-y.1982 = y.1982[ , order(names(y.1982))]
-y.1983 = y.1983[ , order(names(y.1983))]
-y.1984 = y.1984[ , order(names(y.1984))]
-y.1985 = y.1985[ , order(names(y.1985))]
-y.1986 = y.1986[ , order(names(y.1986))]
-y.1987 = y.1987[ , order(names(y.1987))]
-y.1988 = y.1988[ , order(names(y.1988))]
-y.1989 = y.1989[ , order(names(y.1989))]
-y.1990 = y.1990[ , order(names(y.1990))]
-y.1991 = y.1991[ , order(names(y.1991))]
-y.1992 = y.1992[ , order(names(y.1992))]
-y.1993 = y.1993[ , order(names(y.1993))]
-y.1994 = y.1994[ , order(names(y.1994))]
-y.1995 = y.1995[ , order(names(y.1995))]
-y.1996 = y.1996[ , order(names(y.1996))]
-y.1997 = y.1997[ , order(names(y.1997))]
-y.1998 = y.1998[ , order(names(y.1998))]
-y.1999 = y.1999[ , order(names(y.1999))]
-y.2000 = y.2000[ , order(names(y.2000))]
-y.2001 = y.2001[ , order(names(y.2001))]
-y.2002 = y.2002[ , order(names(y.2002))]
-y.2003 = y.2003[ , order(names(y.2003))]
-y.2004 = y.2004[ , order(names(y.2004))]
-y.2005 = y.2005[ , order(names(y.2005))]
-y.2006 = y.2006[ , order(names(y.2006))]
-y.2007 = y.2007[ , order(names(y.2007))]
-y.2008 = y.2008[ , order(names(y.2008))]
-y.2009 = y.2009[ , order(names(y.2009))]
-y.2010 = y.2010[ , order(names(y.2010))]
-y.2011 = y.2011[ , order(names(y.2011))]
-y.2012 = y.2012[ , order(names(y.2012))]
-y.2013 = y.2013[ , order(names(y.2013))]
-y.2014 = y.2014[ , order(names(y.2014))]
-
-## Keeping Columns for which we have complete information
+# Standarize country names, select columns, then rows, and then delete X column
 p_load(dplyr)
-y.1955 = dplyr::select(y.1955, full.info.countries.second.time.span)
-y.1956 = dplyr::select(y.1956, full.info.countries.second.time.span)
-y.1957 = dplyr::select(y.1957, full.info.countries.second.time.span)
-y.1958 = dplyr::select(y.1958, full.info.countries.second.time.span)
-y.1959 = dplyr::select(y.1959, full.info.countries.second.time.span)
-y.1960 = dplyr::select(y.1960, full.info.countries.second.time.span)
-y.1961 = dplyr::select(y.1961, full.info.countries.second.time.span)
-y.1962 = dplyr::select(y.1962, full.info.countries.second.time.span)
-y.1963 = dplyr::select(y.1963, full.info.countries.second.time.span)
-y.1964 = dplyr::select(y.1964, full.info.countries.second.time.span)
-y.1965 = dplyr::select(y.1965, full.info.countries.second.time.span)
-y.1966 = dplyr::select(y.1966, full.info.countries.second.time.span)
-y.1967 = dplyr::select(y.1967, full.info.countries.second.time.span)
-y.1968 = dplyr::select(y.1968, full.info.countries.second.time.span)
-y.1969 = dplyr::select(y.1969, full.info.countries.second.time.span)
-y.1970 = dplyr::select(y.1970, full.info.countries.second.time.span)
-y.1971 = dplyr::select(y.1971, full.info.countries.second.time.span)
-y.1972 = dplyr::select(y.1972, full.info.countries.second.time.span)
-y.1973 = dplyr::select(y.1973, full.info.countries.second.time.span)
-y.1974 = dplyr::select(y.1974, full.info.countries.second.time.span)
-y.1975 = dplyr::select(y.1975, full.info.countries.second.time.span)
-y.1976 = dplyr::select(y.1976, full.info.countries.second.time.span)
-y.1977 = dplyr::select(y.1977, full.info.countries.second.time.span)
-y.1978 = dplyr::select(y.1978, full.info.countries.second.time.span)
-y.1979 = dplyr::select(y.1979, full.info.countries.second.time.span)
-y.1980 = dplyr::select(y.1980, full.info.countries.second.time.span)
-y.1981 = dplyr::select(y.1981, full.info.countries.second.time.span)
-y.1982 = dplyr::select(y.1982, full.info.countries.second.time.span)
-y.1983 = dplyr::select(y.1983, full.info.countries.second.time.span)
-y.1984 = dplyr::select(y.1984, full.info.countries.second.time.span)
-y.1985 = dplyr::select(y.1985, full.info.countries.second.time.span)
-y.1986 = dplyr::select(y.1986, full.info.countries.second.time.span)
-y.1987 = dplyr::select(y.1987, full.info.countries.second.time.span)
-y.1988 = dplyr::select(y.1988, full.info.countries.second.time.span)
-y.1989 = dplyr::select(y.1989, full.info.countries.second.time.span)
-y.1990 = dplyr::select(y.1990, full.info.countries.second.time.span)
-y.1991 = dplyr::select(y.1991, full.info.countries.second.time.span)
-y.1992 = dplyr::select(y.1992, full.info.countries.second.time.span)
-y.1993 = dplyr::select(y.1993, full.info.countries.second.time.span)
-y.1994 = dplyr::select(y.1994, full.info.countries.second.time.span)
-y.1995 = dplyr::select(y.1995, full.info.countries.second.time.span)
-y.1996 = dplyr::select(y.1996, full.info.countries.second.time.span)
-y.1997 = dplyr::select(y.1997, full.info.countries.second.time.span)
-y.1998 = dplyr::select(y.1998, full.info.countries.second.time.span)
-y.1999 = dplyr::select(y.1999, full.info.countries.second.time.span)
-y.2000 = dplyr::select(y.2000, full.info.countries.second.time.span)
-y.2001 = dplyr::select(y.2001, full.info.countries.second.time.span)
-y.2002 = dplyr::select(y.2002, full.info.countries.second.time.span)
-y.2003 = dplyr::select(y.2003, full.info.countries.second.time.span)
-y.2004 = dplyr::select(y.2004, full.info.countries.second.time.span)
-y.2005 = dplyr::select(y.2005, full.info.countries.second.time.span)
-y.2006 = dplyr::select(y.2006, full.info.countries.second.time.span)
-y.2007 = dplyr::select(y.2007, full.info.countries.second.time.span)
-y.2008 = dplyr::select(y.2008, full.info.countries.second.time.span)
-y.2009 = dplyr::select(y.2009, full.info.countries.second.time.span)
-y.2010 = dplyr::select(y.2010, full.info.countries.second.time.span)
-y.2011 = dplyr::select(y.2011, full.info.countries.second.time.span)
-y.2012 = dplyr::select(y.2012, full.info.countries.second.time.span)
-y.2013 = dplyr::select(y.2013, full.info.countries.second.time.span)
-y.2014 = dplyr::select(y.2014, full.info.countries.second.time.span)
+
+y.1955$X <- gsub(' ', '.', y.1955$X);y.1955$X <- gsub('-', '.', y.1955$X);y.1955 = y.1955[y.1955$X %in% full.info.countries.second.time.span,];y.1955 = y.1955 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1955 <- y.1955[order(y.1955$X),];y.1955$X <- NULL;rownames(y.1955) <- NULL 
+y.1956$X <- gsub(' ', '.', y.1956$X);y.1956$X <- gsub('-', '.', y.1956$X);y.1956 = y.1956[y.1956$X %in% full.info.countries.second.time.span,];y.1956 = y.1956 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1956 <- y.1956[order(y.1956$X),];y.1956$X <- NULL;rownames(y.1956) <- NULL 
+y.1957$X <- gsub(' ', '.', y.1957$X);y.1957$X <- gsub('-', '.', y.1957$X);y.1957 = y.1957[y.1957$X %in% full.info.countries.second.time.span,];y.1957 = y.1957 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1957 <- y.1957[order(y.1957$X),];y.1957$X <- NULL;rownames(y.1957) <- NULL 
+y.1958$X <- gsub(' ', '.', y.1958$X);y.1958$X <- gsub('-', '.', y.1958$X);y.1958 = y.1958[y.1958$X %in% full.info.countries.second.time.span,];y.1958 = y.1958 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1958 <- y.1958[order(y.1958$X),];y.1958$X <- NULL;rownames(y.1958) <- NULL 
+y.1959$X <- gsub(' ', '.', y.1959$X);y.1959$X <- gsub('-', '.', y.1959$X);y.1959 = y.1959[y.1959$X %in% full.info.countries.second.time.span,];y.1959 = y.1959 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1959 <- y.1959[order(y.1959$X),];y.1959$X <- NULL;rownames(y.1959) <- NULL 
+y.1960$X <- gsub(' ', '.', y.1960$X);y.1960$X <- gsub('-', '.', y.1960$X);y.1960 = y.1960[y.1960$X %in% full.info.countries.second.time.span,];y.1960 = y.1960 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1960 <- y.1960[order(y.1960$X),];y.1960$X <- NULL;rownames(y.1960) <- NULL 
+y.1961$X <- gsub(' ', '.', y.1961$X);y.1961$X <- gsub('-', '.', y.1961$X);y.1961 = y.1961[y.1961$X %in% full.info.countries.second.time.span,];y.1961 = y.1961 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1961 <- y.1961[order(y.1961$X),];y.1961$X <- NULL;rownames(y.1961) <- NULL 
+y.1962$X <- gsub(' ', '.', y.1962$X);y.1962$X <- gsub('-', '.', y.1962$X);y.1962 = y.1962[y.1962$X %in% full.info.countries.second.time.span,];y.1962 = y.1962 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1962 <- y.1962[order(y.1962$X),];y.1962$X <- NULL;rownames(y.1962) <- NULL 
+y.1963$X <- gsub(' ', '.', y.1963$X);y.1963$X <- gsub('-', '.', y.1963$X);y.1963 = y.1963[y.1963$X %in% full.info.countries.second.time.span,];y.1963 = y.1963 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1963 <- y.1963[order(y.1963$X),];y.1963$X <- NULL;rownames(y.1963) <- NULL 
+y.1964$X <- gsub(' ', '.', y.1964$X);y.1964$X <- gsub('-', '.', y.1964$X);y.1964 = y.1964[y.1964$X %in% full.info.countries.second.time.span,];y.1964 = y.1964 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1964 <- y.1964[order(y.1964$X),];y.1964$X <- NULL;rownames(y.1964) <- NULL 
+y.1965$X <- gsub(' ', '.', y.1965$X);y.1965$X <- gsub('-', '.', y.1965$X);y.1965 = y.1965[y.1965$X %in% full.info.countries.second.time.span,];y.1965 = y.1965 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1965 <- y.1965[order(y.1965$X),];y.1965$X <- NULL;rownames(y.1965) <- NULL 
+y.1966$X <- gsub(' ', '.', y.1966$X);y.1966$X <- gsub('-', '.', y.1966$X);y.1966 = y.1966[y.1966$X %in% full.info.countries.second.time.span,];y.1966 = y.1966 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1966 <- y.1966[order(y.1966$X),];y.1966$X <- NULL;rownames(y.1966) <- NULL 
+y.1967$X <- gsub(' ', '.', y.1967$X);y.1967$X <- gsub('-', '.', y.1967$X);y.1967 = y.1967[y.1967$X %in% full.info.countries.second.time.span,];y.1967 = y.1967 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1967 <- y.1967[order(y.1967$X),];y.1967$X <- NULL;rownames(y.1967) <- NULL 
+y.1968$X <- gsub(' ', '.', y.1968$X);y.1968$X <- gsub('-', '.', y.1968$X);y.1968 = y.1968[y.1968$X %in% full.info.countries.second.time.span,];y.1968 = y.1968 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1968 <- y.1968[order(y.1968$X),];y.1968$X <- NULL;rownames(y.1968) <- NULL 
+y.1969$X <- gsub(' ', '.', y.1969$X);y.1969$X <- gsub('-', '.', y.1969$X);y.1969 = y.1969[y.1969$X %in% full.info.countries.second.time.span,];y.1969 = y.1969 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1969 <- y.1969[order(y.1969$X),];y.1969$X <- NULL;rownames(y.1969) <- NULL 
+y.1970$X <- gsub(' ', '.', y.1970$X);y.1970$X <- gsub('-', '.', y.1970$X);y.1970 = y.1970[y.1970$X %in% full.info.countries.second.time.span,];y.1970 = y.1970 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1970 <- y.1970[order(y.1970$X),];y.1970$X <- NULL;rownames(y.1970) <- NULL 
+y.1971$X <- gsub(' ', '.', y.1971$X);y.1971$X <- gsub('-', '.', y.1971$X);y.1971 = y.1971[y.1971$X %in% full.info.countries.second.time.span,];y.1971 = y.1971 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1971 <- y.1971[order(y.1971$X),];y.1971$X <- NULL;rownames(y.1971) <- NULL 
+y.1972$X <- gsub(' ', '.', y.1972$X);y.1972$X <- gsub('-', '.', y.1972$X);y.1972 = y.1972[y.1972$X %in% full.info.countries.second.time.span,];y.1972 = y.1972 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1972 <- y.1972[order(y.1972$X),];y.1972$X <- NULL;rownames(y.1972) <- NULL 
+y.1973$X <- gsub(' ', '.', y.1973$X);y.1973$X <- gsub('-', '.', y.1973$X);y.1973 = y.1973[y.1973$X %in% full.info.countries.second.time.span,];y.1973 = y.1973 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1973 <- y.1973[order(y.1973$X),];y.1973$X <- NULL;rownames(y.1973) <- NULL 
+y.1974$X <- gsub(' ', '.', y.1974$X);y.1974$X <- gsub('-', '.', y.1974$X);y.1974 = y.1974[y.1974$X %in% full.info.countries.second.time.span,];y.1974 = y.1974 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1974 <- y.1974[order(y.1974$X),];y.1974$X <- NULL;rownames(y.1974) <- NULL 
+y.1975$X <- gsub(' ', '.', y.1975$X);y.1975$X <- gsub('-', '.', y.1975$X);y.1975 = y.1975[y.1975$X %in% full.info.countries.second.time.span,];y.1975 = y.1975 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1975 <- y.1975[order(y.1975$X),];y.1975$X <- NULL;rownames(y.1975) <- NULL 
+y.1976$X <- gsub(' ', '.', y.1976$X);y.1976$X <- gsub('-', '.', y.1976$X);y.1976 = y.1976[y.1976$X %in% full.info.countries.second.time.span,];y.1976 = y.1976 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1976 <- y.1976[order(y.1976$X),];y.1976$X <- NULL;rownames(y.1976) <- NULL 
+y.1977$X <- gsub(' ', '.', y.1977$X);y.1977$X <- gsub('-', '.', y.1977$X);y.1977 = y.1977[y.1977$X %in% full.info.countries.second.time.span,];y.1977 = y.1977 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1977 <- y.1977[order(y.1977$X),];y.1977$X <- NULL;rownames(y.1977) <- NULL 
+y.1978$X <- gsub(' ', '.', y.1978$X);y.1978$X <- gsub('-', '.', y.1978$X);y.1978 = y.1978[y.1978$X %in% full.info.countries.second.time.span,];y.1978 = y.1978 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1978 <- y.1978[order(y.1978$X),];y.1978$X <- NULL;rownames(y.1978) <- NULL 
+y.1979$X <- gsub(' ', '.', y.1979$X);y.1979$X <- gsub('-', '.', y.1979$X);y.1979 = y.1979[y.1979$X %in% full.info.countries.second.time.span,];y.1979 = y.1979 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1979 <- y.1979[order(y.1979$X),];y.1979$X <- NULL;rownames(y.1979) <- NULL 
+y.1980$X <- gsub(' ', '.', y.1980$X);y.1980$X <- gsub('-', '.', y.1980$X);y.1980 = y.1980[y.1980$X %in% full.info.countries.second.time.span,];y.1980 = y.1980 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1980 <- y.1980[order(y.1980$X),];y.1980$X <- NULL;rownames(y.1980) <- NULL 
+y.1981$X <- gsub(' ', '.', y.1981$X);y.1981$X <- gsub('-', '.', y.1981$X);y.1981 = y.1981[y.1981$X %in% full.info.countries.second.time.span,];y.1981 = y.1981 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1981 <- y.1981[order(y.1981$X),];y.1981$X <- NULL;rownames(y.1981) <- NULL 
+y.1982$X <- gsub(' ', '.', y.1982$X);y.1982$X <- gsub('-', '.', y.1982$X);y.1982 = y.1982[y.1982$X %in% full.info.countries.second.time.span,];y.1982 = y.1982 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1982 <- y.1982[order(y.1982$X),];y.1982$X <- NULL;rownames(y.1982) <- NULL 
+y.1983$X <- gsub(' ', '.', y.1983$X);y.1983$X <- gsub('-', '.', y.1983$X);y.1983 = y.1983[y.1983$X %in% full.info.countries.second.time.span,];y.1983 = y.1983 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1983 <- y.1983[order(y.1983$X),];y.1983$X <- NULL;rownames(y.1983) <- NULL 
+y.1984$X <- gsub(' ', '.', y.1984$X);y.1984$X <- gsub('-', '.', y.1984$X);y.1984 = y.1984[y.1984$X %in% full.info.countries.second.time.span,];y.1984 = y.1984 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1984 <- y.1984[order(y.1984$X),];y.1984$X <- NULL;rownames(y.1984) <- NULL 
+y.1985$X <- gsub(' ', '.', y.1985$X);y.1985$X <- gsub('-', '.', y.1985$X);y.1985 = y.1985[y.1985$X %in% full.info.countries.second.time.span,];y.1985 = y.1985 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1985 <- y.1985[order(y.1985$X),];y.1985$X <- NULL;rownames(y.1985) <- NULL 
+y.1986$X <- gsub(' ', '.', y.1986$X);y.1986$X <- gsub('-', '.', y.1986$X);y.1986 = y.1986[y.1986$X %in% full.info.countries.second.time.span,];y.1986 = y.1986 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1986 <- y.1986[order(y.1986$X),];y.1986$X <- NULL;rownames(y.1986) <- NULL 
+y.1987$X <- gsub(' ', '.', y.1987$X);y.1987$X <- gsub('-', '.', y.1987$X);y.1987 = y.1987[y.1987$X %in% full.info.countries.second.time.span,];y.1987 = y.1987 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1987 <- y.1987[order(y.1987$X),];y.1987$X <- NULL;rownames(y.1987) <- NULL 
+y.1988$X <- gsub(' ', '.', y.1988$X);y.1988$X <- gsub('-', '.', y.1988$X);y.1988 = y.1988[y.1988$X %in% full.info.countries.second.time.span,];y.1988 = y.1988 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1988 <- y.1988[order(y.1988$X),];y.1988$X <- NULL;rownames(y.1988) <- NULL 
+y.1989$X <- gsub(' ', '.', y.1989$X);y.1989$X <- gsub('-', '.', y.1989$X);y.1989 = y.1989[y.1989$X %in% full.info.countries.second.time.span,];y.1989 = y.1989 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1989 <- y.1989[order(y.1989$X),];y.1989$X <- NULL;rownames(y.1989) <- NULL 
+y.1990$X <- gsub(' ', '.', y.1990$X);y.1990$X <- gsub('-', '.', y.1990$X);y.1990 = y.1990[y.1990$X %in% full.info.countries.second.time.span,];y.1990 = y.1990 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1990 <- y.1990[order(y.1990$X),];y.1990$X <- NULL;rownames(y.1990) <- NULL 
+y.1991$X <- gsub(' ', '.', y.1991$X);y.1991$X <- gsub('-', '.', y.1991$X);y.1991 = y.1991[y.1991$X %in% full.info.countries.second.time.span,];y.1991 = y.1991 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1991 <- y.1991[order(y.1991$X),];y.1991$X <- NULL;rownames(y.1991) <- NULL 
+y.1992$X <- gsub(' ', '.', y.1992$X);y.1992$X <- gsub('-', '.', y.1992$X);y.1992 = y.1992[y.1992$X %in% full.info.countries.second.time.span,];y.1992 = y.1992 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1992 <- y.1992[order(y.1992$X),];y.1992$X <- NULL;rownames(y.1992) <- NULL 
+y.1993$X <- gsub(' ', '.', y.1993$X);y.1993$X <- gsub('-', '.', y.1993$X);y.1993 = y.1993[y.1993$X %in% full.info.countries.second.time.span,];y.1993 = y.1993 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1993 <- y.1993[order(y.1993$X),];y.1993$X <- NULL;rownames(y.1993) <- NULL 
+y.1994$X <- gsub(' ', '.', y.1994$X);y.1994$X <- gsub('-', '.', y.1994$X);y.1994 = y.1994[y.1994$X %in% full.info.countries.second.time.span,];y.1994 = y.1994 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1994 <- y.1994[order(y.1994$X),];y.1994$X <- NULL;rownames(y.1994) <- NULL 
+y.1995$X <- gsub(' ', '.', y.1995$X);y.1995$X <- gsub('-', '.', y.1995$X);y.1995 = y.1995[y.1995$X %in% full.info.countries.second.time.span,];y.1995 = y.1995 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1995 <- y.1995[order(y.1995$X),];y.1995$X <- NULL;rownames(y.1995) <- NULL 
+y.1996$X <- gsub(' ', '.', y.1996$X);y.1996$X <- gsub('-', '.', y.1996$X);y.1996 = y.1996[y.1996$X %in% full.info.countries.second.time.span,];y.1996 = y.1996 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1996 <- y.1996[order(y.1996$X),];y.1996$X <- NULL;rownames(y.1996) <- NULL 
+y.1997$X <- gsub(' ', '.', y.1997$X);y.1997$X <- gsub('-', '.', y.1997$X);y.1997 = y.1997[y.1997$X %in% full.info.countries.second.time.span,];y.1997 = y.1997 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1997 <- y.1997[order(y.1997$X),];y.1997$X <- NULL;rownames(y.1997) <- NULL 
+y.1998$X <- gsub(' ', '.', y.1998$X);y.1998$X <- gsub('-', '.', y.1998$X);y.1998 = y.1998[y.1998$X %in% full.info.countries.second.time.span,];y.1998 = y.1998 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1998 <- y.1998[order(y.1998$X),];y.1998$X <- NULL;rownames(y.1998) <- NULL 
+y.1999$X <- gsub(' ', '.', y.1999$X);y.1999$X <- gsub('-', '.', y.1999$X);y.1999 = y.1999[y.1999$X %in% full.info.countries.second.time.span,];y.1999 = y.1999 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.1999 <- y.1999[order(y.1999$X),];y.1999$X <- NULL;rownames(y.1999) <- NULL 
+y.2000$X <- gsub(' ', '.', y.2000$X);y.2000$X <- gsub('-', '.', y.2000$X);y.2000 = y.2000[y.2000$X %in% full.info.countries.second.time.span,];y.2000 = y.2000 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.2000 <- y.2000[order(y.2000$X),];y.2000$X <- NULL;rownames(y.2000) <- NULL 
+y.2001$X <- gsub(' ', '.', y.2001$X);y.2001$X <- gsub('-', '.', y.2001$X);y.2001 = y.2001[y.2001$X %in% full.info.countries.second.time.span,];y.2001 = y.2001 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.2001 <- y.2001[order(y.2001$X),];y.2001$X <- NULL;rownames(y.2001) <- NULL 
+y.2002$X <- gsub(' ', '.', y.2002$X);y.2002$X <- gsub('-', '.', y.2002$X);y.2002 = y.2002[y.2002$X %in% full.info.countries.second.time.span,];y.2002 = y.2002 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.2002 <- y.2002[order(y.2002$X),];y.2002$X <- NULL;rownames(y.2002) <- NULL 
+y.2003$X <- gsub(' ', '.', y.2003$X);y.2003$X <- gsub('-', '.', y.2003$X);y.2003 = y.2003[y.2003$X %in% full.info.countries.second.time.span,];y.2003 = y.2003 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.2003 <- y.2003[order(y.2003$X),];y.2003$X <- NULL;rownames(y.2003) <- NULL 
+y.2004$X <- gsub(' ', '.', y.2004$X);y.2004$X <- gsub('-', '.', y.2004$X);y.2004 = y.2004[y.2004$X %in% full.info.countries.second.time.span,];y.2004 = y.2004 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.2004 <- y.2004[order(y.2004$X),];y.2004$X <- NULL;rownames(y.2004) <- NULL 
+y.2005$X <- gsub(' ', '.', y.2005$X);y.2005$X <- gsub('-', '.', y.2005$X);y.2005 = y.2005[y.2005$X %in% full.info.countries.second.time.span,];y.2005 = y.2005 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.2005 <- y.2005[order(y.2005$X),];y.2005$X <- NULL;rownames(y.2005) <- NULL 
+y.2006$X <- gsub(' ', '.', y.2006$X);y.2006$X <- gsub('-', '.', y.2006$X);y.2006 = y.2006[y.2006$X %in% full.info.countries.second.time.span,];y.2006 = y.2006 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.2006 <- y.2006[order(y.2006$X),];y.2006$X <- NULL;rownames(y.2006) <- NULL 
+y.2007$X <- gsub(' ', '.', y.2007$X);y.2007$X <- gsub('-', '.', y.2007$X);y.2007 = y.2007[y.2007$X %in% full.info.countries.second.time.span,];y.2007 = y.2007 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.2007 <- y.2007[order(y.2007$X),];y.2007$X <- NULL;rownames(y.2007) <- NULL 
+y.2008$X <- gsub(' ', '.', y.2008$X);y.2008$X <- gsub('-', '.', y.2008$X);y.2008 = y.2008[y.2008$X %in% full.info.countries.second.time.span,];y.2008 = y.2008 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.2008 <- y.2008[order(y.2008$X),];y.2008$X <- NULL;rownames(y.2008) <- NULL 
+y.2009$X <- gsub(' ', '.', y.2009$X);y.2009$X <- gsub('-', '.', y.2009$X);y.2009 = y.2009[y.2009$X %in% full.info.countries.second.time.span,];y.2009 = y.2009 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.2009 <- y.2009[order(y.2009$X),];y.2009$X <- NULL;rownames(y.2009) <- NULL 
+y.2010$X <- gsub(' ', '.', y.2010$X);y.2010$X <- gsub('-', '.', y.2010$X);y.2010 = y.2010[y.2010$X %in% full.info.countries.second.time.span,];y.2010 = y.2010 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.2010 <- y.2010[order(y.2010$X),];y.2010$X <- NULL;rownames(y.2010) <- NULL 
+y.2011$X <- gsub(' ', '.', y.2011$X);y.2011$X <- gsub('-', '.', y.2011$X);y.2011 = y.2011[y.2011$X %in% full.info.countries.second.time.span,];y.2011 = y.2011 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.2011 <- y.2011[order(y.2011$X),];y.2011$X <- NULL;rownames(y.2011) <- NULL 
+y.2012$X <- gsub(' ', '.', y.2012$X);y.2012$X <- gsub('-', '.', y.2012$X);y.2012 = y.2012[y.2012$X %in% full.info.countries.second.time.span,];y.2012 = y.2012 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.2012 <- y.2012[order(y.2012$X),];y.2012$X <- NULL;rownames(y.2012) <- NULL 
+y.2013$X <- gsub(' ', '.', y.2013$X);y.2013$X <- gsub('-', '.', y.2013$X);y.2013 = y.2013[y.2013$X %in% full.info.countries.second.time.span,];y.2013 = y.2013 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.2013 <- y.2013[order(y.2013$X),];y.2013$X <- NULL;rownames(y.2013) <- NULL 
+y.2014$X <- gsub(' ', '.', y.2014$X);y.2014$X <- gsub('-', '.', y.2014$X);y.2014 = y.2014[y.2014$X %in% full.info.countries.second.time.span,];y.2014 = y.2014 %>% dplyr::select(c(X, sort(full.info.countries.second.time.span)));y.2014 <- y.2014[order(y.2014$X),];y.2014$X <- NULL;rownames(y.2014) <- NULL 
 
 
-## Keeping Rows for which we have complete information
-y.1955 = y.1955[1:length(full.info.countries.second.time.span), ]
-y.1956 = y.1956[1:length(full.info.countries.second.time.span), ]
-y.1957 = y.1957[1:length(full.info.countries.second.time.span), ]
-y.1958 = y.1958[1:length(full.info.countries.second.time.span), ]
-y.1959 = y.1959[1:length(full.info.countries.second.time.span), ]
-y.1960 = y.1960[1:length(full.info.countries.second.time.span), ]
-y.1961 = y.1961[1:length(full.info.countries.second.time.span), ]
-y.1962 = y.1962[1:length(full.info.countries.second.time.span), ]
-y.1963 = y.1963[1:length(full.info.countries.second.time.span), ]
-y.1964 = y.1964[1:length(full.info.countries.second.time.span), ]
-y.1965 = y.1965[1:length(full.info.countries.second.time.span), ]
-y.1966 = y.1966[1:length(full.info.countries.second.time.span), ]
-y.1967 = y.1967[1:length(full.info.countries.second.time.span), ]
-y.1968 = y.1968[1:length(full.info.countries.second.time.span), ]
-y.1969 = y.1969[1:length(full.info.countries.second.time.span), ]
-y.1970 = y.1970[1:length(full.info.countries.second.time.span), ]
-y.1971 = y.1971[1:length(full.info.countries.second.time.span), ]
-y.1972 = y.1972[1:length(full.info.countries.second.time.span), ]
-y.1973 = y.1973[1:length(full.info.countries.second.time.span), ]
-y.1974 = y.1974[1:length(full.info.countries.second.time.span), ]
-y.1975 = y.1975[1:length(full.info.countries.second.time.span), ]
-y.1976 = y.1976[1:length(full.info.countries.second.time.span), ]
-y.1977 = y.1977[1:length(full.info.countries.second.time.span), ]
-y.1978 = y.1978[1:length(full.info.countries.second.time.span), ]
-y.1979 = y.1979[1:length(full.info.countries.second.time.span), ]
-y.1980 = y.1980[1:length(full.info.countries.second.time.span), ]
-y.1981 = y.1981[1:length(full.info.countries.second.time.span), ]
-y.1982 = y.1982[1:length(full.info.countries.second.time.span), ]
-y.1983 = y.1983[1:length(full.info.countries.second.time.span), ]
-y.1984 = y.1984[1:length(full.info.countries.second.time.span), ]
-y.1985 = y.1985[1:length(full.info.countries.second.time.span), ]
-y.1986 = y.1986[1:length(full.info.countries.second.time.span), ]
-y.1987 = y.1987[1:length(full.info.countries.second.time.span), ]
-y.1988 = y.1988[1:length(full.info.countries.second.time.span), ]
-y.1989 = y.1989[1:length(full.info.countries.second.time.span), ]
-y.1990 = y.1990[1:length(full.info.countries.second.time.span), ]
-y.1991 = y.1991[1:length(full.info.countries.second.time.span), ]
-y.1992 = y.1992[1:length(full.info.countries.second.time.span), ]
-y.1993 = y.1993[1:length(full.info.countries.second.time.span), ]
-y.1994 = y.1994[1:length(full.info.countries.second.time.span), ]
-y.1995 = y.1995[1:length(full.info.countries.second.time.span), ]
-y.1996 = y.1996[1:length(full.info.countries.second.time.span), ]
-y.1997 = y.1997[1:length(full.info.countries.second.time.span), ]
-y.1998 = y.1998[1:length(full.info.countries.second.time.span), ]
-y.1999 = y.1999[1:length(full.info.countries.second.time.span), ]
-y.2000 = y.2000[1:length(full.info.countries.second.time.span), ]
-y.2001 = y.2001[1:length(full.info.countries.second.time.span), ]
-y.2002 = y.2002[1:length(full.info.countries.second.time.span), ]
-y.2003 = y.2003[1:length(full.info.countries.second.time.span), ]
-y.2004 = y.2004[1:length(full.info.countries.second.time.span), ]
-y.2005 = y.2005[1:length(full.info.countries.second.time.span), ]
-y.2006 = y.2006[1:length(full.info.countries.second.time.span), ]
-y.2007 = y.2007[1:length(full.info.countries.second.time.span), ]
-y.2008 = y.2008[1:length(full.info.countries.second.time.span), ]
-y.2009 = y.2009[1:length(full.info.countries.second.time.span), ]
-y.2010 = y.2010[1:length(full.info.countries.second.time.span), ]
-y.2011 = y.2011[1:length(full.info.countries.second.time.span), ]
-y.2012 = y.2012[1:length(full.info.countries.second.time.span), ]
-y.2013 = y.2013[1:length(full.info.countries.second.time.span), ]
-y.2014 = y.2014[1:length(full.info.countries.second.time.span), ]
-
-# Resetting Rownames
-rownames(y.1955) <- NULL
-rownames(y.1956) <- NULL
-rownames(y.1957) <- NULL
-rownames(y.1958) <- NULL
-rownames(y.1959) <- NULL
-rownames(y.1960) <- NULL
-rownames(y.1961) <- NULL
-rownames(y.1962) <- NULL
-rownames(y.1963) <- NULL
-rownames(y.1964) <- NULL
-rownames(y.1965) <- NULL
-rownames(y.1966) <- NULL
-rownames(y.1967) <- NULL
-rownames(y.1968) <- NULL
-rownames(y.1969) <- NULL
-rownames(y.1970) <- NULL
-rownames(y.1971) <- NULL
-rownames(y.1972) <- NULL
-rownames(y.1973) <- NULL
-rownames(y.1974) <- NULL
-rownames(y.1975) <- NULL
-rownames(y.1976) <- NULL
-rownames(y.1977) <- NULL
-rownames(y.1978) <- NULL
-rownames(y.1979) <- NULL
-rownames(y.1980) <- NULL
-rownames(y.1981) <- NULL
-rownames(y.1982) <- NULL
-rownames(y.1983) <- NULL
-rownames(y.1984) <- NULL
-rownames(y.1985) <- NULL
-rownames(y.1986) <- NULL
-rownames(y.1987) <- NULL
-rownames(y.1988) <- NULL
-rownames(y.1989) <- NULL
-rownames(y.1990) <- NULL
-rownames(y.1991) <- NULL
-rownames(y.1992) <- NULL
-rownames(y.1993) <- NULL
-rownames(y.1994) <- NULL
-rownames(y.1995) <- NULL
-rownames(y.1996) <- NULL
-rownames(y.1997) <- NULL
-rownames(y.1998) <- NULL
-rownames(y.1999) <- NULL
-rownames(y.2000) <- NULL
-rownames(y.2001) <- NULL
-rownames(y.2002) <- NULL
-rownames(y.2003) <- NULL
-rownames(y.2004) <- NULL
-rownames(y.2005) <- NULL
-rownames(y.2006) <- NULL
-rownames(y.2007) <- NULL
-rownames(y.2008) <- NULL
-rownames(y.2009) <- NULL
-rownames(y.2010) <- NULL
-rownames(y.2011) <- NULL
-rownames(y.2012) <- NULL
-rownames(y.2013) <- NULL
-rownames(y.2014) <- NULL
-
-# Building WM for the first period
+# Building WM for the second period
 wm.2 = list(as.matrix(y.1955), as.matrix(y.1956), as.matrix(y.1957), as.matrix(y.1958), as.matrix(y.1959), as.matrix(y.1960), as.matrix(y.1961), as.matrix(y.1962), as.matrix(y.1963), as.matrix(y.1964), as.matrix(y.1965), as.matrix(y.1966), as.matrix(y.1967), as.matrix(y.1968), as.matrix(y.1969), as.matrix(y.1970), as.matrix(y.1971), as.matrix(y.1972), as.matrix(y.1973), as.matrix(y.1974), as.matrix(y.1975), as.matrix(y.1976), as.matrix(y.1977), as.matrix(y.1978), as.matrix(y.1979), as.matrix(y.1980), as.matrix(y.1981), as.matrix(y.1982), as.matrix(y.1983), as.matrix(y.1984), as.matrix(y.1985), as.matrix(y.1986), as.matrix(y.1987), as.matrix(y.1988), as.matrix(y.1989), as.matrix(y.1990), as.matrix(y.1991), as.matrix(y.1992), as.matrix(y.1993), as.matrix(y.1994), as.matrix(y.1995), as.matrix(y.1996), as.matrix(y.1997), as.matrix(y.1998), as.matrix(y.1999), as.matrix(y.2000), as.matrix(y.2001), as.matrix(y.2002), as.matrix(y.2003), as.matrix(y.2004), as.matrix(y.2005), as.matrix(y.2006), as.matrix(y.2007), as.matrix(y.2008), as.matrix(y.2009), as.matrix(y.2010), as.matrix(y.2011), as.matrix(y.2012), as.matrix(y.2013), as.matrix(y.2014)
             )
 
+
+################################################################################################################
+## Second Period: 1955 - 2014 (Big Countries)
+################################################################################################################
+
+# Filter complete obs by year; here it's where I split the datasets
+cow.d.2.B <- subset(cow.d, Time >= 1955 & Time <= 2014) # 2014
+
+# Drop NAs
+cow.d.2.B$milper[cow.d.2.B$milper == -9] <- NA
+cow.d.2.B$irst[cow.d.2.B$irst ==  -9] <- NA
+
+# Filter countries for which we have complete data
+cow.d.2.B = cow.d.2.B %>% group_by(ID) %>% filter(milper != 0 & irst != 0)
+
+# Drop countries for which we don't have the complete series
+full.info.countries.second.time.span.B = unique(cow.d.2.B[cow.d.2.B$ID %in% names(which(table(cow.d.2.B$ID) == max(table(cow.d.2.B$ID)))), ]$ID) # Countries for which we have complete rows
+
+# Exclude Luxembourg (it's got too many similar values year after year)
+#full.info.countries.second.time.span.B <- full.info.countries.second.time.span.B[full.info.countries.second.time.span.B != "Luxembourg"]
+#full.info.countries.second.time.span.B <- full.info.countries.second.time.span.B[full.info.countries.second.time.span.B != "Taiwan"]
+#full.info.countries.second.time.span.B <- full.info.countries.second.time.span.B[full.info.countries.second.time.span.B != "North.Korea"]
+
+full.info.countries.second.time.span.B = full.info.countries.second.time.span.B[c(5, 21, 29)] # ALL COUNTRIES EXCEPT: 5. US, 21. Russia, 29. China # WORKING!
+
+# test = max(table(cow.d.2.B$ID)) ; View(test) # Germanies appear 36 times. Consider do GVAR for both of them.
+
+# Filtering complete obs by country name
+cow.d.2.B = data.frame(cow.d.2.B[cow.d.2.B$ID %in% full.info.countries.second.time.span.B,])
+
+# TEST: introduce stochastic noise ## Truncated normal with mean 0
+p_load(truncnorm)
+set.seed(2020); cow.d.2.B$milper = round(cow.d.2.B$milper + rtruncnorm(n=nrow(cow.d.2.B), a=-3, b=3, mean=0, sd=1), 2) # Mean 0
+set.seed(2019); cow.d.2.B$irst = round(cow.d.2.B$irst + rtruncnorm(n=nrow(cow.d.2.B), a=-3, b=3, mean=0, sd=1), 2) # Mean 0
+
+# Reformat time variable
+cow.d.2.B$Time = as.character(cow.d.2.B$Time)
+cow.d.2.B$Time = as.Date(cow.d.2.B$Time,"%Y")
+cow.d.2.B$Time <- as.POSIXct(cow.d.2.B$Time, origin=min(cow.d.2.B$Time), tz = "GMT",  tryFormats ="%Y", optional = T)
+
+# Sort df by country name and time
+cow.d.2.B = cow.d.2.B[with(cow.d.2.B, order(ID, Time)),]
+rownames(cow.d.2.B) <- NULL
+
+## Checking if panels are balanced
+# p_load(plm)
+# plm::is.pbalanced(cow.d.2.B)    
+
+
+# Plot the data
+# Pending
+
+
+# Import CVSs
+y.1955.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1955.csv"))
+y.1956.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1956.csv"))
+y.1957.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1957.csv"))
+y.1958.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1958.csv"))
+y.1959.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1959.csv"))
+y.1960.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1960.csv"))
+y.1961.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1961.csv"))
+y.1962.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1962.csv"))
+y.1963.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1963.csv"))
+y.1964.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1964.csv"))
+y.1965.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1965.csv"))
+y.1966.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1966.csv"))
+y.1967.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1967.csv"))
+y.1968.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1968.csv"))
+y.1969.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1969.csv"))
+y.1970.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1970.csv"))
+y.1971.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1971.csv"))
+y.1972.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1972.csv"))
+y.1973.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1973.csv"))
+y.1974.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1974.csv"))
+y.1975.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1975.csv"))
+y.1976.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1976.csv"))
+y.1977.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1977.csv"))
+y.1978.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1978.csv"))
+y.1979.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1979.csv"))
+y.1980.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1980.csv"))
+y.1981.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1981.csv"))
+y.1982.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1982.csv"))
+y.1983.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1983.csv"))
+y.1984.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1984.csv"))
+y.1985.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1985.csv"))
+y.1986.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1986.csv"))
+y.1987.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1987.csv"))
+y.1988.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1988.csv"))
+y.1989.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1989.csv"))
+y.1990.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1990.csv"))
+y.1991.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1991.csv"))
+y.1992.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1992.csv"))
+y.1993.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1993.csv"))
+y.1994.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1994.csv"))
+y.1995.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1995.csv"))
+y.1996.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1996.csv"))
+y.1997.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1997.csv"))
+y.1998.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1998.csv"))
+y.1999.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_1999.csv"))
+y.2000.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2000.csv"))
+y.2001.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2001.csv"))
+y.2002.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2002.csv"))
+y.2003.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2003.csv"))
+y.2004.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2004.csv"))
+y.2005.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2005.csv"))
+y.2006.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2006.csv"))
+y.2007.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2007.csv"))
+y.2008.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2008.csv"))
+y.2009.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2009.csv"))
+y.2010.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2010.csv"))
+y.2011.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2011.csv"))
+y.2012.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2012.csv"))
+y.2013.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2013.csv"))
+y.2014.b = data.frame(read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/matrix/trade_year_2014.csv"))
+
+
+# Standarize country names, select columns, then rows, and then delete X column
+p_load(dplyr)
+
+y.1955.b$X <- gsub(' ', '.', y.1955.b$X);y.1955.b$X <- gsub('-', '.', y.1955.b$X);y.1955.b = y.1955.b[y.1955.b$X %in% full.info.countries.second.time.span.B,];y.1955.b = y.1955.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1955.b <- y.1955.b[order(y.1955.b$X),];y.1955.b$X <- NULL;rownames(y.1955.b) <- NULL 
+y.1956.b$X <- gsub(' ', '.', y.1956.b$X);y.1956.b$X <- gsub('-', '.', y.1956.b$X);y.1956.b = y.1956.b[y.1956.b$X %in% full.info.countries.second.time.span.B,];y.1956.b = y.1956.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1956.b <- y.1956.b[order(y.1956.b$X),];y.1956.b$X <- NULL;rownames(y.1956.b) <- NULL 
+y.1957.b$X <- gsub(' ', '.', y.1957.b$X);y.1957.b$X <- gsub('-', '.', y.1957.b$X);y.1957.b = y.1957.b[y.1957.b$X %in% full.info.countries.second.time.span.B,];y.1957.b = y.1957.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1957.b <- y.1957.b[order(y.1957.b$X),];y.1957.b$X <- NULL;rownames(y.1957.b) <- NULL 
+y.1958.b$X <- gsub(' ', '.', y.1958.b$X);y.1958.b$X <- gsub('-', '.', y.1958.b$X);y.1958.b = y.1958.b[y.1958.b$X %in% full.info.countries.second.time.span.B,];y.1958.b = y.1958.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1958.b <- y.1958.b[order(y.1958.b$X),];y.1958.b$X <- NULL;rownames(y.1958.b) <- NULL 
+y.1959.b$X <- gsub(' ', '.', y.1959.b$X);y.1959.b$X <- gsub('-', '.', y.1959.b$X);y.1959.b = y.1959.b[y.1959.b$X %in% full.info.countries.second.time.span.B,];y.1959.b = y.1959.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1959.b <- y.1959.b[order(y.1959.b$X),];y.1959.b$X <- NULL;rownames(y.1959.b) <- NULL 
+y.1960.b$X <- gsub(' ', '.', y.1960.b$X);y.1960.b$X <- gsub('-', '.', y.1960.b$X);y.1960.b = y.1960.b[y.1960.b$X %in% full.info.countries.second.time.span.B,];y.1960.b = y.1960.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1960.b <- y.1960.b[order(y.1960.b$X),];y.1960.b$X <- NULL;rownames(y.1960.b) <- NULL 
+y.1961.b$X <- gsub(' ', '.', y.1961.b$X);y.1961.b$X <- gsub('-', '.', y.1961.b$X);y.1961.b = y.1961.b[y.1961.b$X %in% full.info.countries.second.time.span.B,];y.1961.b = y.1961.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1961.b <- y.1961.b[order(y.1961.b$X),];y.1961.b$X <- NULL;rownames(y.1961.b) <- NULL 
+y.1962.b$X <- gsub(' ', '.', y.1962.b$X);y.1962.b$X <- gsub('-', '.', y.1962.b$X);y.1962.b = y.1962.b[y.1962.b$X %in% full.info.countries.second.time.span.B,];y.1962.b = y.1962.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1962.b <- y.1962.b[order(y.1962.b$X),];y.1962.b$X <- NULL;rownames(y.1962.b) <- NULL 
+y.1963.b$X <- gsub(' ', '.', y.1963.b$X);y.1963.b$X <- gsub('-', '.', y.1963.b$X);y.1963.b = y.1963.b[y.1963.b$X %in% full.info.countries.second.time.span.B,];y.1963.b = y.1963.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1963.b <- y.1963.b[order(y.1963.b$X),];y.1963.b$X <- NULL;rownames(y.1963.b) <- NULL 
+y.1964.b$X <- gsub(' ', '.', y.1964.b$X);y.1964.b$X <- gsub('-', '.', y.1964.b$X);y.1964.b = y.1964.b[y.1964.b$X %in% full.info.countries.second.time.span.B,];y.1964.b = y.1964.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1964.b <- y.1964.b[order(y.1964.b$X),];y.1964.b$X <- NULL;rownames(y.1964.b) <- NULL 
+y.1965.b$X <- gsub(' ', '.', y.1965.b$X);y.1965.b$X <- gsub('-', '.', y.1965.b$X);y.1965.b = y.1965.b[y.1965.b$X %in% full.info.countries.second.time.span.B,];y.1965.b = y.1965.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1965.b <- y.1965.b[order(y.1965.b$X),];y.1965.b$X <- NULL;rownames(y.1965.b) <- NULL 
+y.1966.b$X <- gsub(' ', '.', y.1966.b$X);y.1966.b$X <- gsub('-', '.', y.1966.b$X);y.1966.b = y.1966.b[y.1966.b$X %in% full.info.countries.second.time.span.B,];y.1966.b = y.1966.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1966.b <- y.1966.b[order(y.1966.b$X),];y.1966.b$X <- NULL;rownames(y.1966.b) <- NULL 
+y.1967.b$X <- gsub(' ', '.', y.1967.b$X);y.1967.b$X <- gsub('-', '.', y.1967.b$X);y.1967.b = y.1967.b[y.1967.b$X %in% full.info.countries.second.time.span.B,];y.1967.b = y.1967.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1967.b <- y.1967.b[order(y.1967.b$X),];y.1967.b$X <- NULL;rownames(y.1967.b) <- NULL 
+y.1968.b$X <- gsub(' ', '.', y.1968.b$X);y.1968.b$X <- gsub('-', '.', y.1968.b$X);y.1968.b = y.1968.b[y.1968.b$X %in% full.info.countries.second.time.span.B,];y.1968.b = y.1968.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1968.b <- y.1968.b[order(y.1968.b$X),];y.1968.b$X <- NULL;rownames(y.1968.b) <- NULL 
+y.1969.b$X <- gsub(' ', '.', y.1969.b$X);y.1969.b$X <- gsub('-', '.', y.1969.b$X);y.1969.b = y.1969.b[y.1969.b$X %in% full.info.countries.second.time.span.B,];y.1969.b = y.1969.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1969.b <- y.1969.b[order(y.1969.b$X),];y.1969.b$X <- NULL;rownames(y.1969.b) <- NULL 
+y.1970.b$X <- gsub(' ', '.', y.1970.b$X);y.1970.b$X <- gsub('-', '.', y.1970.b$X);y.1970.b = y.1970.b[y.1970.b$X %in% full.info.countries.second.time.span.B,];y.1970.b = y.1970.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1970.b <- y.1970.b[order(y.1970.b$X),];y.1970.b$X <- NULL;rownames(y.1970.b) <- NULL 
+y.1971.b$X <- gsub(' ', '.', y.1971.b$X);y.1971.b$X <- gsub('-', '.', y.1971.b$X);y.1971.b = y.1971.b[y.1971.b$X %in% full.info.countries.second.time.span.B,];y.1971.b = y.1971.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1971.b <- y.1971.b[order(y.1971.b$X),];y.1971.b$X <- NULL;rownames(y.1971.b) <- NULL 
+y.1972.b$X <- gsub(' ', '.', y.1972.b$X);y.1972.b$X <- gsub('-', '.', y.1972.b$X);y.1972.b = y.1972.b[y.1972.b$X %in% full.info.countries.second.time.span.B,];y.1972.b = y.1972.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1972.b <- y.1972.b[order(y.1972.b$X),];y.1972.b$X <- NULL;rownames(y.1972.b) <- NULL 
+y.1973.b$X <- gsub(' ', '.', y.1973.b$X);y.1973.b$X <- gsub('-', '.', y.1973.b$X);y.1973.b = y.1973.b[y.1973.b$X %in% full.info.countries.second.time.span.B,];y.1973.b = y.1973.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1973.b <- y.1973.b[order(y.1973.b$X),];y.1973.b$X <- NULL;rownames(y.1973.b) <- NULL 
+y.1974.b$X <- gsub(' ', '.', y.1974.b$X);y.1974.b$X <- gsub('-', '.', y.1974.b$X);y.1974.b = y.1974.b[y.1974.b$X %in% full.info.countries.second.time.span.B,];y.1974.b = y.1974.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1974.b <- y.1974.b[order(y.1974.b$X),];y.1974.b$X <- NULL;rownames(y.1974.b) <- NULL 
+y.1975.b$X <- gsub(' ', '.', y.1975.b$X);y.1975.b$X <- gsub('-', '.', y.1975.b$X);y.1975.b = y.1975.b[y.1975.b$X %in% full.info.countries.second.time.span.B,];y.1975.b = y.1975.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1975.b <- y.1975.b[order(y.1975.b$X),];y.1975.b$X <- NULL;rownames(y.1975.b) <- NULL 
+y.1976.b$X <- gsub(' ', '.', y.1976.b$X);y.1976.b$X <- gsub('-', '.', y.1976.b$X);y.1976.b = y.1976.b[y.1976.b$X %in% full.info.countries.second.time.span.B,];y.1976.b = y.1976.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1976.b <- y.1976.b[order(y.1976.b$X),];y.1976.b$X <- NULL;rownames(y.1976.b) <- NULL 
+y.1977.b$X <- gsub(' ', '.', y.1977.b$X);y.1977.b$X <- gsub('-', '.', y.1977.b$X);y.1977.b = y.1977.b[y.1977.b$X %in% full.info.countries.second.time.span.B,];y.1977.b = y.1977.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1977.b <- y.1977.b[order(y.1977.b$X),];y.1977.b$X <- NULL;rownames(y.1977.b) <- NULL 
+y.1978.b$X <- gsub(' ', '.', y.1978.b$X);y.1978.b$X <- gsub('-', '.', y.1978.b$X);y.1978.b = y.1978.b[y.1978.b$X %in% full.info.countries.second.time.span.B,];y.1978.b = y.1978.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1978.b <- y.1978.b[order(y.1978.b$X),];y.1978.b$X <- NULL;rownames(y.1978.b) <- NULL 
+y.1979.b$X <- gsub(' ', '.', y.1979.b$X);y.1979.b$X <- gsub('-', '.', y.1979.b$X);y.1979.b = y.1979.b[y.1979.b$X %in% full.info.countries.second.time.span.B,];y.1979.b = y.1979.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1979.b <- y.1979.b[order(y.1979.b$X),];y.1979.b$X <- NULL;rownames(y.1979.b) <- NULL 
+y.1980.b$X <- gsub(' ', '.', y.1980.b$X);y.1980.b$X <- gsub('-', '.', y.1980.b$X);y.1980.b = y.1980.b[y.1980.b$X %in% full.info.countries.second.time.span.B,];y.1980.b = y.1980.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1980.b <- y.1980.b[order(y.1980.b$X),];y.1980.b$X <- NULL;rownames(y.1980.b) <- NULL 
+y.1981.b$X <- gsub(' ', '.', y.1981.b$X);y.1981.b$X <- gsub('-', '.', y.1981.b$X);y.1981.b = y.1981.b[y.1981.b$X %in% full.info.countries.second.time.span.B,];y.1981.b = y.1981.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1981.b <- y.1981.b[order(y.1981.b$X),];y.1981.b$X <- NULL;rownames(y.1981.b) <- NULL 
+y.1982.b$X <- gsub(' ', '.', y.1982.b$X);y.1982.b$X <- gsub('-', '.', y.1982.b$X);y.1982.b = y.1982.b[y.1982.b$X %in% full.info.countries.second.time.span.B,];y.1982.b = y.1982.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1982.b <- y.1982.b[order(y.1982.b$X),];y.1982.b$X <- NULL;rownames(y.1982.b) <- NULL 
+y.1983.b$X <- gsub(' ', '.', y.1983.b$X);y.1983.b$X <- gsub('-', '.', y.1983.b$X);y.1983.b = y.1983.b[y.1983.b$X %in% full.info.countries.second.time.span.B,];y.1983.b = y.1983.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1983.b <- y.1983.b[order(y.1983.b$X),];y.1983.b$X <- NULL;rownames(y.1983.b) <- NULL 
+y.1984.b$X <- gsub(' ', '.', y.1984.b$X);y.1984.b$X <- gsub('-', '.', y.1984.b$X);y.1984.b = y.1984.b[y.1984.b$X %in% full.info.countries.second.time.span.B,];y.1984.b = y.1984.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1984.b <- y.1984.b[order(y.1984.b$X),];y.1984.b$X <- NULL;rownames(y.1984.b) <- NULL 
+y.1985.b$X <- gsub(' ', '.', y.1985.b$X);y.1985.b$X <- gsub('-', '.', y.1985.b$X);y.1985.b = y.1985.b[y.1985.b$X %in% full.info.countries.second.time.span.B,];y.1985.b = y.1985.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1985.b <- y.1985.b[order(y.1985.b$X),];y.1985.b$X <- NULL;rownames(y.1985.b) <- NULL 
+y.1986.b$X <- gsub(' ', '.', y.1986.b$X);y.1986.b$X <- gsub('-', '.', y.1986.b$X);y.1986.b = y.1986.b[y.1986.b$X %in% full.info.countries.second.time.span.B,];y.1986.b = y.1986.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1986.b <- y.1986.b[order(y.1986.b$X),];y.1986.b$X <- NULL;rownames(y.1986.b) <- NULL 
+y.1987.b$X <- gsub(' ', '.', y.1987.b$X);y.1987.b$X <- gsub('-', '.', y.1987.b$X);y.1987.b = y.1987.b[y.1987.b$X %in% full.info.countries.second.time.span.B,];y.1987.b = y.1987.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1987.b <- y.1987.b[order(y.1987.b$X),];y.1987.b$X <- NULL;rownames(y.1987.b) <- NULL 
+y.1988.b$X <- gsub(' ', '.', y.1988.b$X);y.1988.b$X <- gsub('-', '.', y.1988.b$X);y.1988.b = y.1988.b[y.1988.b$X %in% full.info.countries.second.time.span.B,];y.1988.b = y.1988.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1988.b <- y.1988.b[order(y.1988.b$X),];y.1988.b$X <- NULL;rownames(y.1988.b) <- NULL 
+y.1989.b$X <- gsub(' ', '.', y.1989.b$X);y.1989.b$X <- gsub('-', '.', y.1989.b$X);y.1989.b = y.1989.b[y.1989.b$X %in% full.info.countries.second.time.span.B,];y.1989.b = y.1989.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1989.b <- y.1989.b[order(y.1989.b$X),];y.1989.b$X <- NULL;rownames(y.1989.b) <- NULL 
+y.1990.b$X <- gsub(' ', '.', y.1990.b$X);y.1990.b$X <- gsub('-', '.', y.1990.b$X);y.1990.b = y.1990.b[y.1990.b$X %in% full.info.countries.second.time.span.B,];y.1990.b = y.1990.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1990.b <- y.1990.b[order(y.1990.b$X),];y.1990.b$X <- NULL;rownames(y.1990.b) <- NULL 
+y.1991.b$X <- gsub(' ', '.', y.1991.b$X);y.1991.b$X <- gsub('-', '.', y.1991.b$X);y.1991.b = y.1991.b[y.1991.b$X %in% full.info.countries.second.time.span.B,];y.1991.b = y.1991.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1991.b <- y.1991.b[order(y.1991.b$X),];y.1991.b$X <- NULL;rownames(y.1991.b) <- NULL 
+y.1992.b$X <- gsub(' ', '.', y.1992.b$X);y.1992.b$X <- gsub('-', '.', y.1992.b$X);y.1992.b = y.1992.b[y.1992.b$X %in% full.info.countries.second.time.span.B,];y.1992.b = y.1992.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1992.b <- y.1992.b[order(y.1992.b$X),];y.1992.b$X <- NULL;rownames(y.1992.b) <- NULL 
+y.1993.b$X <- gsub(' ', '.', y.1993.b$X);y.1993.b$X <- gsub('-', '.', y.1993.b$X);y.1993.b = y.1993.b[y.1993.b$X %in% full.info.countries.second.time.span.B,];y.1993.b = y.1993.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1993.b <- y.1993.b[order(y.1993.b$X),];y.1993.b$X <- NULL;rownames(y.1993.b) <- NULL 
+y.1994.b$X <- gsub(' ', '.', y.1994.b$X);y.1994.b$X <- gsub('-', '.', y.1994.b$X);y.1994.b = y.1994.b[y.1994.b$X %in% full.info.countries.second.time.span.B,];y.1994.b = y.1994.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1994.b <- y.1994.b[order(y.1994.b$X),];y.1994.b$X <- NULL;rownames(y.1994.b) <- NULL 
+y.1995.b$X <- gsub(' ', '.', y.1995.b$X);y.1995.b$X <- gsub('-', '.', y.1995.b$X);y.1995.b = y.1995.b[y.1995.b$X %in% full.info.countries.second.time.span.B,];y.1995.b = y.1995.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1995.b <- y.1995.b[order(y.1995.b$X),];y.1995.b$X <- NULL;rownames(y.1995.b) <- NULL 
+y.1996.b$X <- gsub(' ', '.', y.1996.b$X);y.1996.b$X <- gsub('-', '.', y.1996.b$X);y.1996.b = y.1996.b[y.1996.b$X %in% full.info.countries.second.time.span.B,];y.1996.b = y.1996.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1996.b <- y.1996.b[order(y.1996.b$X),];y.1996.b$X <- NULL;rownames(y.1996.b) <- NULL 
+y.1997.b$X <- gsub(' ', '.', y.1997.b$X);y.1997.b$X <- gsub('-', '.', y.1997.b$X);y.1997.b = y.1997.b[y.1997.b$X %in% full.info.countries.second.time.span.B,];y.1997.b = y.1997.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1997.b <- y.1997.b[order(y.1997.b$X),];y.1997.b$X <- NULL;rownames(y.1997.b) <- NULL 
+y.1998.b$X <- gsub(' ', '.', y.1998.b$X);y.1998.b$X <- gsub('-', '.', y.1998.b$X);y.1998.b = y.1998.b[y.1998.b$X %in% full.info.countries.second.time.span.B,];y.1998.b = y.1998.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1998.b <- y.1998.b[order(y.1998.b$X),];y.1998.b$X <- NULL;rownames(y.1998.b) <- NULL 
+y.1999.b$X <- gsub(' ', '.', y.1999.b$X);y.1999.b$X <- gsub('-', '.', y.1999.b$X);y.1999.b = y.1999.b[y.1999.b$X %in% full.info.countries.second.time.span.B,];y.1999.b = y.1999.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.1999.b <- y.1999.b[order(y.1999.b$X),];y.1999.b$X <- NULL;rownames(y.1999.b) <- NULL 
+y.2000.b$X <- gsub(' ', '.', y.2000.b$X);y.2000.b$X <- gsub('-', '.', y.2000.b$X);y.2000.b = y.2000.b[y.2000.b$X %in% full.info.countries.second.time.span.B,];y.2000.b = y.2000.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.2000.b <- y.2000.b[order(y.2000.b$X),];y.2000.b$X <- NULL;rownames(y.2000.b) <- NULL 
+y.2001.b$X <- gsub(' ', '.', y.2001.b$X);y.2001.b$X <- gsub('-', '.', y.2001.b$X);y.2001.b = y.2001.b[y.2001.b$X %in% full.info.countries.second.time.span.B,];y.2001.b = y.2001.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.2001.b <- y.2001.b[order(y.2001.b$X),];y.2001.b$X <- NULL;rownames(y.2001.b) <- NULL 
+y.2002.b$X <- gsub(' ', '.', y.2002.b$X);y.2002.b$X <- gsub('-', '.', y.2002.b$X);y.2002.b = y.2002.b[y.2002.b$X %in% full.info.countries.second.time.span.B,];y.2002.b = y.2002.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.2002.b <- y.2002.b[order(y.2002.b$X),];y.2002.b$X <- NULL;rownames(y.2002.b) <- NULL 
+y.2003.b$X <- gsub(' ', '.', y.2003.b$X);y.2003.b$X <- gsub('-', '.', y.2003.b$X);y.2003.b = y.2003.b[y.2003.b$X %in% full.info.countries.second.time.span.B,];y.2003.b = y.2003.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.2003.b <- y.2003.b[order(y.2003.b$X),];y.2003.b$X <- NULL;rownames(y.2003.b) <- NULL 
+y.2004.b$X <- gsub(' ', '.', y.2004.b$X);y.2004.b$X <- gsub('-', '.', y.2004.b$X);y.2004.b = y.2004.b[y.2004.b$X %in% full.info.countries.second.time.span.B,];y.2004.b = y.2004.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.2004.b <- y.2004.b[order(y.2004.b$X),];y.2004.b$X <- NULL;rownames(y.2004.b) <- NULL 
+y.2005.b$X <- gsub(' ', '.', y.2005.b$X);y.2005.b$X <- gsub('-', '.', y.2005.b$X);y.2005.b = y.2005.b[y.2005.b$X %in% full.info.countries.second.time.span.B,];y.2005.b = y.2005.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.2005.b <- y.2005.b[order(y.2005.b$X),];y.2005.b$X <- NULL;rownames(y.2005.b) <- NULL 
+y.2006.b$X <- gsub(' ', '.', y.2006.b$X);y.2006.b$X <- gsub('-', '.', y.2006.b$X);y.2006.b = y.2006.b[y.2006.b$X %in% full.info.countries.second.time.span.B,];y.2006.b = y.2006.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.2006.b <- y.2006.b[order(y.2006.b$X),];y.2006.b$X <- NULL;rownames(y.2006.b) <- NULL 
+y.2007.b$X <- gsub(' ', '.', y.2007.b$X);y.2007.b$X <- gsub('-', '.', y.2007.b$X);y.2007.b = y.2007.b[y.2007.b$X %in% full.info.countries.second.time.span.B,];y.2007.b = y.2007.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.2007.b <- y.2007.b[order(y.2007.b$X),];y.2007.b$X <- NULL;rownames(y.2007.b) <- NULL 
+y.2008.b$X <- gsub(' ', '.', y.2008.b$X);y.2008.b$X <- gsub('-', '.', y.2008.b$X);y.2008.b = y.2008.b[y.2008.b$X %in% full.info.countries.second.time.span.B,];y.2008.b = y.2008.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.2008.b <- y.2008.b[order(y.2008.b$X),];y.2008.b$X <- NULL;rownames(y.2008.b) <- NULL 
+y.2009.b$X <- gsub(' ', '.', y.2009.b$X);y.2009.b$X <- gsub('-', '.', y.2009.b$X);y.2009.b = y.2009.b[y.2009.b$X %in% full.info.countries.second.time.span.B,];y.2009.b = y.2009.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.2009.b <- y.2009.b[order(y.2009.b$X),];y.2009.b$X <- NULL;rownames(y.2009.b) <- NULL 
+y.2010.b$X <- gsub(' ', '.', y.2010.b$X);y.2010.b$X <- gsub('-', '.', y.2010.b$X);y.2010.b = y.2010.b[y.2010.b$X %in% full.info.countries.second.time.span.B,];y.2010.b = y.2010.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.2010.b <- y.2010.b[order(y.2010.b$X),];y.2010.b$X <- NULL;rownames(y.2010.b) <- NULL 
+y.2011.b$X <- gsub(' ', '.', y.2011.b$X);y.2011.b$X <- gsub('-', '.', y.2011.b$X);y.2011.b = y.2011.b[y.2011.b$X %in% full.info.countries.second.time.span.B,];y.2011.b = y.2011.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.2011.b <- y.2011.b[order(y.2011.b$X),];y.2011.b$X <- NULL;rownames(y.2011.b) <- NULL 
+y.2012.b$X <- gsub(' ', '.', y.2012.b$X);y.2012.b$X <- gsub('-', '.', y.2012.b$X);y.2012.b = y.2012.b[y.2012.b$X %in% full.info.countries.second.time.span.B,];y.2012.b = y.2012.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.2012.b <- y.2012.b[order(y.2012.b$X),];y.2012.b$X <- NULL;rownames(y.2012.b) <- NULL 
+y.2013.b$X <- gsub(' ', '.', y.2013.b$X);y.2013.b$X <- gsub('-', '.', y.2013.b$X);y.2013.b = y.2013.b[y.2013.b$X %in% full.info.countries.second.time.span.B,];y.2013.b = y.2013.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.2013.b <- y.2013.b[order(y.2013.b$X),];y.2013.b$X <- NULL;rownames(y.2013.b) <- NULL 
+y.2014.b$X <- gsub(' ', '.', y.2014.b$X);y.2014.b$X <- gsub('-', '.', y.2014.b$X);y.2014.b = y.2014.b[y.2014.b$X %in% full.info.countries.second.time.span.B,];y.2014.b = y.2014.b %>% dplyr::select(c(X, sort(full.info.countries.second.time.span.B)));y.2014.b <- y.2014.b[order(y.2014.b$X),];y.2014.b$X <- NULL;rownames(y.2014.b) <- NULL 
+
+
+# Building WM for the second period
+wm.2.b = list(as.matrix(y.1955.b), as.matrix(y.1956.b), as.matrix(y.1957.b), as.matrix(y.1958.b), as.matrix(y.1959.b), as.matrix(y.1960.b), as.matrix(y.1961.b), as.matrix(y.1962.b), as.matrix(y.1963.b), as.matrix(y.1964.b), as.matrix(y.1965.b), as.matrix(y.1966.b), as.matrix(y.1967.b), as.matrix(y.1968.b), as.matrix(y.1969.b), as.matrix(y.1970.b), as.matrix(y.1971.b), as.matrix(y.1972.b), as.matrix(y.1973.b), as.matrix(y.1974.b), as.matrix(y.1975.b), as.matrix(y.1976.b), as.matrix(y.1977.b), as.matrix(y.1978.b), as.matrix(y.1979.b), as.matrix(y.1980.b), as.matrix(y.1981.b), as.matrix(y.1982.b), as.matrix(y.1983.b), as.matrix(y.1984.b), as.matrix(y.1985.b), as.matrix(y.1986.b), as.matrix(y.1987.b), as.matrix(y.1988.b), as.matrix(y.1989.b), as.matrix(y.1990.b), as.matrix(y.1991.b), as.matrix(y.1992.b), as.matrix(y.1993.b), as.matrix(y.1994.b), as.matrix(y.1995.b), as.matrix(y.1996.b), as.matrix(y.1997.b), as.matrix(y.1998.b), as.matrix(y.1999.b), as.matrix(y.2000.b), as.matrix(y.2001.b), as.matrix(y.2002.b), as.matrix(y.2003.b), as.matrix(y.2004.b), as.matrix(y.2005.b), as.matrix(y.2006.b), as.matrix(y.2007.b), as.matrix(y.2008.b), as.matrix(y.2009.b), as.matrix(y.2010.b), as.matrix(y.2011.b), as.matrix(y.2012.b), as.matrix(y.2013.b), as.matrix(y.2014.b)
+)
 ## ----
 
 
@@ -1175,21 +939,20 @@ mainOUT.JO.1 = GVECM.jo(
 mainOUT.JO.1$JO.test
 
 ########################################################
-# Second Period
+# Second Period (Small Countries)
 ########################################################
 
 ## ---- gvar:model:second:period ----
 
 p_load(GVARX)
 
-p.2=3 # The number of lag for Xt matrix
-FLag.2=3 # The number of lag for foreign variables in country-specific VAR
+p.2=2 # The number of lag for Xt matrix
+FLag.2=2 # The number of lag for foreign variables in country-specific VAR
 lag.max.2=5 # The maximal number of lag for estimating country-specific VAR
 type.2="none" # Model specificaiton for VAR. As in package vars, we have four selection: "none","const","trend", "both".
 ic.2="AIC" # Information criteria for optimal lag.As in package vars, we have four selection: "AIC", "HQ", "SC", and "FPE".
 
 options(scipen=9999999)
-
 mainOUTPUT.2 = GVECMest(
         data = cow.d.2,
         p = p.2,
@@ -1203,144 +966,132 @@ mainOUTPUT.2 = GVECMest(
 
 ## P-values
 # summary(mainOUTPUT.2$gvecm[[1]]) # Argentina 
-p.2.Argentina.pvalue.1 = round(0.4017, 3)
-p.2.Argentina.pvalue.2 = round(0.00001168, 3)
+p.2.Argentina.pvalue.1 = round(0.568, 3)
+p.2.Argentina.pvalue.2 = round(0.0001175, 3)
 
 # summary(mainOUTPUT.2$gvecm[[2]]) # Australia 
-p.2.Australia.pvalue.1 = round(0.4657, 3)
-p.2.Australia.pvalue.2 = round(0.001358, 3)
+p.2.Australia.pvalue.1 = round(0.6493, 3)
+p.2.Australia.pvalue.2 = round(0.00001349, 3)
 
 # summary(mainOUTPUT.2$gvecm[[3]]) # Austria 
-p.2.Austria.pvalue.1 = round(0.7362, 3)
-p.2.Austria.pvalue.2 = round(0.01522, 3)
+p.2.Austria.pvalue.1 = round(0.7261, 3)
+p.2.Austria.pvalue.2 = round(0.02396, 3)
 
 # summary(mainOUTPUT.2$gvecm[[4]]) # Belgium 
-p.2.Belgium.pvalue.1 = round(0.0001193, 3)
-p.2.Belgium.pvalue.2 = round(0.4593, 3)
+p.2.Belgium.pvalue.1 = round(0.002088, 3)
+p.2.Belgium.pvalue.2 = round(0.0049, 3)
 
 # summary(mainOUTPUT.2$gvecm[[5]]) # Brazil 
-p.2.Brazil.pvalue.1 = round(0.9974, 3)
-p.2.Brazil.pvalue.2 = round(0.00001355, 3)
+p.2.Brazil.pvalue.1 = round(0.9103, 3)
+p.2.Brazil.pvalue.2 = round(0.0000004244, 3)
 
 # summary(mainOUTPUT.2$gvecm[[6]]) # Bulgaria 
-p.2.Bulgaria.pvalue.1 = round(0.8129, 3)
-p.2.Bulgaria.pvalue.2 = round(0.003107, 3)
+p.2.Bulgaria.pvalue.1 = round(0.5803, 3)
+p.2.Bulgaria.pvalue.2 = round(0.00001425, 3)
 
 # summary(mainOUTPUT.2$gvecm[[7]]) # Canada 
-p.2.Canada.pvalue.1 = round(0.1566, 3)
-p.2.Canada.pvalue.2 = round(0.001512, 3)
+p.2.Canada.pvalue.1 = round(0.2202, 3)
+p.2.Canada.pvalue.2 = round(0.01886, 3)
 
 # summary(mainOUTPUT.2$gvecm[[8]]) # Chile 
-p.2.Chile.pvalue.1 = round(0.9728, 3)
-p.2.Chile.pvalue.2 = round(0.00003126, 3)
+p.2.Chile.pvalue.1 = round(0.9693, 3)
+p.2.Chile.pvalue.2 = round(0.00001052, 3)
 
-# summary(mainOUTPUT.2$gvecm[[9]]) # China 
-p.2.China.pvalue.1 = round(0.9986, 3)
-p.2.China.pvalue.2 = round(0.000000000000006564, 3)
+# summary(mainOUTPUT.2$gvecm[[9]]) # Colombia 
+p.2.Colombia.pvalue.1 = round(0.0008545, 3)
+p.2.Colombia.pvalue.2 = round(0.004422, 3)
 
-# summary(mainOUTPUT.2$gvecm[[10]]) # Colombia 
-p.2.Colombia.pvalue.1 = round(0.001206, 3)
-p.2.Colombia.pvalue.2 = round(0.08926, 3)
+# summary(mainOUTPUT.2$gvecm[[10]]) # Egypt 
+p.2.Egypt.pvalue.1 = round(0.9546, 3)
+p.2.Egypt.pvalue.2 = round(0.0133, 3)
 
-# summary(mainOUTPUT.2$gvecm[[11]]) # Egypt 
-p.2.Egypt.pvalue.1 = round(0.9941, 3)
-p.2.Egypt.pvalue.2 = round(0.01519, 3)
+# summary(mainOUTPUT.2$gvecm[[11]]) # Finland 
+p.2.Finland.pvalue.1 = round(0.0932, 3)
+p.2.Finland.pvalue.2 = round(0.0000006223, 3)
 
-# summary(mainOUTPUT.2$gvecm[[12]]) # Finland 
-p.2.Finland.pvalue.1 = round(0.1538, 3)
-p.2.Finland.pvalue.2 = round(0.003392, 3)
+# summary(mainOUTPUT.2$gvecm[[12]]) # France 
+p.2.France.pvalue.1 = round(0.3429, 3)
+p.2.France.pvalue.2 = round(0.1157, 3)
 
-# summary(mainOUTPUT.2$gvecm[[13]]) # France 
-p.2.France.pvalue.1 = round(0.1939, 3)
-p.2.France.pvalue.2 = round(0.02362, 3)
+# summary(mainOUTPUT.2$gvecm[[13]]) # Greece 
+p.2.Greece.pvalue.1 = round(0.02343, 3)
+p.2.Greece.pvalue.2 = round(0.006374, 3)
 
-# summary(mainOUTPUT.2$gvecm[[14]]) # Greece 
-p.2.Greece.pvalue.1 = round(0.2324, 3)
-p.2.Greece.pvalue.2 = round(0.06448, 3)
+# summary(mainOUTPUT.2$gvecm[[14]]) # Hungary 
+p.2.Hungary.pvalue.1 = round(0.01072, 3)
+p.2.Hungary.pvalue.2 = round(0.001666, 3)
 
-# summary(mainOUTPUT.2$gvecm[[15]]) # Hungary 
-p.2.Hungary.pvalue.1 = round(0.001347, 3)
-p.2.Hungary.pvalue.2 = round(0.00008186, 3)
+# summary(mainOUTPUT.2$gvecm[[15]]) # India 
+p.2.India.pvalue.1 = round(0.8474, 3)
+p.2.India.pvalue.2 = round(0.00000006172, 3)
 
-# summary(mainOUTPUT.2$gvecm[[16]]) # India 
-p.2.India.pvalue.1 = round(0.8999, 3)
-p.2.India.pvalue.2 = round(0.000001705, 3)
+# summary(mainOUTPUT.2$gvecm[[16]]) # Israel 
+p.2.Israel.pvalue.1 = round(0.6225, 3)
+p.2.Israel.pvalue.2 = round(0.588, 3)
 
-# summary(mainOUTPUT.2$gvecm[[17]]) # Israel 
-p.2.Israel.pvalue.1 = round(0.2008, 3)
-p.2.Israel.pvalue.2 = round(0.2593, 3)
+# summary(mainOUTPUT.2$gvecm[[17]]) # Italy 
+p.2.Italy.pvalue.1 = round(0.1688, 3)
+p.2.Italy.pvalue.2 = round(0.0005577, 3)
 
-# summary(mainOUTPUT.2$gvecm[[18]]) # Italy 
-p.2.Italy.pvalue.1 = round(0.9355, 3)
-p.2.Italy.pvalue.2 = round(0.3546, 3)
+# summary(mainOUTPUT.2$gvecm[[18]]) # Japan 
+p.2.Japan.pvalue.1 = round(0.01465, 3)
+p.2.Japan.pvalue.2 = round(0.0005064, 3)
 
-# summary(mainOUTPUT.2$gvecm[[19]]) # Japan 
-p.2.Japan.pvalue.1 = round(0.005739, 3)
-p.2.Japan.pvalue.2 = round(0.03554, 3)
+# summary(mainOUTPUT.2$gvecm[[19]]) # Luxembourg 
+p.2.Luxembourg.pvalue.1 = round(0.003431, 3)
+p.2.Luxembourg.pvalue.2 = round(0.541, 3)
 
-# summary(mainOUTPUT.2$gvecm[[20]]) # Luxembourg 
-p.2.Luxembourg.pvalue.1 = round(0.000007538, 3)
-p.2.Luxembourg.pvalue.2 = round(0.1621, 3)
+# summary(mainOUTPUT.2$gvecm[[20]]) # Mexico 
+p.2.Mexico.pvalue.1 = round(0.2625, 3)
+p.2.Mexico.pvalue.2 = round(0.0000008429, 3)
 
-# summary(mainOUTPUT.2$gvecm[[21]]) # Mexico 
-p.2.Mexico.pvalue.1 = round(0.01445, 3)
-p.2.Mexico.pvalue.2 = round(0.0001775, 3)
+# summary(mainOUTPUT.2$gvecm[[21]]) # Netherlands 
+p.2.Netherlands.pvalue.1 = round(0.001368, 3)
+p.2.Netherlands.pvalue.2 = round(0.001453, 3)
 
-# summary(mainOUTPUT.2$gvecm[[22]]) # Netherlands 
-p.2.Netherlands.pvalue.1 = round(0.0003538, 3)
-p.2.Netherlands.pvalue.2 = round(0.08391, 3)
+# summary(mainOUTPUT.2$gvecm[[22]]) # North.Korea 
+p.2.North.Korea.pvalue.1 = round(0.006032, 3)
+p.2.North.Korea.pvalue.2 = round(0.01334, 3)
 
-# summary(mainOUTPUT.2$gvecm[[23]]) # North.Korea 
-p.2.North.Korea.pvalue.1 = round(0.0006412, 3)
-p.2.North.Korea.pvalue.2 = round(0.00004767, 3)
+# summary(mainOUTPUT.2$gvecm[[23]]) # Norway 
+p.2.Norway.pvalue.1 = round(0.1784, 3)
+p.2.Norway.pvalue.2 = round(0.7044, 3)
 
-# summary(mainOUTPUT.2$gvecm[[24]]) # Norway 
-p.2.Norway.pvalue.1 = round(0.684, 3)
-p.2.Norway.pvalue.2 = round(0.2763, 3)
+# summary(mainOUTPUT.2$gvecm[[24]]) # Poland 
+p.2.Poland.pvalue.1 = round(0.734, 3)
+p.2.Poland.pvalue.2 = round(0.005378, 3)
 
-# summary(mainOUTPUT.2$gvecm[[25]]) # Poland 
-p.2.Poland.pvalue.1 = round(0.7925, 3)
-p.2.Poland.pvalue.2 = round(0.1819, 3)
+# summary(mainOUTPUT.2$gvecm[[25]]) # Portugal 
+p.2.Portugal.pvalue.1 = round(0.4042, 3)
+p.2.Portugal.pvalue.2 = round(0.004184, 3)
 
-# summary(mainOUTPUT.2$gvecm[[26]]) # Portugal 
-p.2.Portugal.pvalue.1 = round(0.7242, 3)
-p.2.Portugal.pvalue.2 = round(0.1474, 3)
+# summary(mainOUTPUT.2$gvecm[[26]]) # Romania 
+p.2.Romania.pvalue.1 = round(0.4644, 3)
+p.2.Romania.pvalue.2 = round(0.0007191, 3)
 
-# summary(mainOUTPUT.2$gvecm[[27]]) # Romania 
-p.2.Romania.pvalue.1 = round(0.6589, 3)
-p.2.Romania.pvalue.2 = round(0.05073, 3)
+# summary(mainOUTPUT.2$gvecm[[27]]) # South.Africa 
+p.2.South.Africa.pvalue.1 = round(0.9124, 3)
+p.2.South.Africa.pvalue.2 = round(0.547, 3)
 
-# summary(mainOUTPUT.2$gvecm[[28]]) # Russia 
-p.2.Russia.pvalue.1 = round(0.007614, 3)
-p.2.Russia.pvalue.2 = round(0.4302, 3)
+# summary(mainOUTPUT.2$gvecm[[28]]) # South.Korea 
+p.2.South.Korea.pvalue.1 = round(0.9238, 3)
+p.2.South.Korea.pvalue.2 = round(0.000003068, 3)
 
-# summary(mainOUTPUT.2$gvecm[[29]]) # South.Africa 
-p.2.South.Africa.pvalue.1 = round(0.9629, 3)
-p.2.South.Africa.pvalue.2 = round(0.2729, 3)
+# summary(mainOUTPUT.2$gvecm[[29]]) # Spain 
+p.2.Spain.pvalue.1 = round(0.0005994, 3)
+p.2.Spain.pvalue.2 = round(0.002212, 3)
 
-# summary(mainOUTPUT.2$gvecm[[30]]) # South.Korea 
-p.2.South.Korea.pvalue.1 = round(0.9689, 3)
-p.2.South.Korea.pvalue.2 = round(0.000002666, 3)
+# summary(mainOUTPUT.2$gvecm[[30]]) # Taiwan 
+p.2.Taiwan.pvalue.1 = round(0.06379, 3)
+p.2.Taiwan.pvalue.2 = round(0.00002633, 3)
 
-# summary(mainOUTPUT.2$gvecm[[31]]) # Spain 
-p.2.Spain.pvalue.1 = round(0.0005982, 3)
-p.2.Spain.pvalue.2 = round(0.2289, 3)
+# summary(mainOUTPUT.2$gvecm[[31]]) # Turkey 
+p.2.Turkey.pvalue.1 = round(0.1567, 3)
+p.2.Turkey.pvalue.2 = round(0.00000000000092, 3)
 
-# summary(mainOUTPUT.2$gvecm[[32]]) # Taiwan 
-p.2.Taiwan.pvalue.1 = round(0.04968, 3)
-p.2.Taiwan.pvalue.2 = round(0.01502, 3)
-
-# summary(mainOUTPUT.2$gvecm[[33]]) # Turkey 
-p.2.Turkey.pvalue.1 = round(0.1394, 3)
-p.2.Turkey.pvalue.2 = round(0.00000002691, 3)
-
-# summary(mainOUTPUT.2$gvecm[[34]]) # United.Kingdom 
-p.2.United.Kingdom.pvalue.1 = round(0.00000001863, 3)
-p.2.United.Kingdom.pvalue.2 = round(0.4588, 3)
-
-# summary(mainOUTPUT.2$gvecm[[35]]) # United.States.of.America 
-p.2.United.States.of.America.pvalue.1 = round(0.1678, 3)
-p.2.United.States.of.America.pvalue.2 = round(0.007121, 3)
+# summary(mainOUTPUT.2$gvecm[[32]]) # United.Kingdom 
+p.2.United.Kingdom.pvalue.1 = round(0.00000000001582, 3)
+p.2.United.Kingdom.pvalue.2 = round(0.4036, 3)
 
 
 ### Argentina
@@ -1514,577 +1265,522 @@ p.2.Chile.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[8]]))
 # Lags
 p.2.Chile.lags = mainOUTPUT.2$lagmatrix$lags[8] # Lag for the first country 
 
-### China
-## Ftests
-p.2.China.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.China.milper.fstatistic.value"]), 3)
-p.2.China.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.China.irst.fstatistic.value"]), 3)
-## DF Num, Dem (1)
-p.2.China.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.China.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.China.milper.fstatistic.dendf"], # DF-Den (1)
-        sep = ",")
-## DF Num, Dem (2)
-p.2.China.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.China.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.China.irst.fstatistic.dendf"], # DF-Den (1)
-        sep = ",")
-# Rsq 1
-p.2.China.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.China.milper.adj.r.squared"]), 3) 
-# Rsq 2
-p.2.China.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.China.irst.adj.r.squared"]), 3) 
-# Lags
-p.2.China.lags = mainOUTPUT.2$lagmatrix$lags[9] # Lag for the first country 
 
 ### Colombia
 ## Ftests
-p.2.Colombia.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Colombia.milper.fstatistic.value"]), 3)
-p.2.Colombia.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Colombia.irst.fstatistic.value"]), 3)
+p.2.Colombia.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.Colombia.milper.fstatistic.value"]), 3)
+p.2.Colombia.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.Colombia.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Colombia.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Colombia.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Colombia.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.Colombia.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.Colombia.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Colombia.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Colombia.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Colombia.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.Colombia.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.Colombia.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Colombia.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Colombia.milper.adj.r.squared"]), 3) 
+p.2.Colombia.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.Colombia.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Colombia.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Colombia.irst.adj.r.squared"]), 3) 
+p.2.Colombia.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[9]])))["varresult.Colombia.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Colombia.lags = mainOUTPUT.2$lagmatrix$lags[10] # Lag for the first country 
+p.2.Colombia.lags = mainOUTPUT.2$lagmatrix$lags[9] # Lag for the first country 
 
 ### Egypt
 ## Ftests
-p.2.Egypt.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Egypt.milper.fstatistic.value"]), 3)
-p.2.Egypt.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Egypt.irst.fstatistic.value"]), 3)
+p.2.Egypt.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Egypt.milper.fstatistic.value"]), 3)
+p.2.Egypt.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Egypt.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Egypt.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Egypt.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Egypt.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Egypt.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Egypt.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Egypt.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Egypt.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Egypt.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Egypt.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Egypt.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Egypt.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Egypt.milper.adj.r.squared"]), 3) 
+p.2.Egypt.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Egypt.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Egypt.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Egypt.irst.adj.r.squared"]), 3) 
+p.2.Egypt.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[10]])))["varresult.Egypt.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Egypt.lags = mainOUTPUT.2$lagmatrix$lags[11] # Lag for the first country 
+p.2.Egypt.lags = mainOUTPUT.2$lagmatrix$lags[10] # Lag for the first country 
 
 ### Finland
 ## Ftests
-p.2.Finland.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.Finland.milper.fstatistic.value"]), 3)
-p.2.Finland.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.Finland.irst.fstatistic.value"]), 3)
+p.2.Finland.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Finland.milper.fstatistic.value"]), 3)
+p.2.Finland.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Finland.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Finland.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.Finland.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.Finland.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Finland.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Finland.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Finland.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.Finland.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.Finland.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Finland.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Finland.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Finland.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.Finland.milper.adj.r.squared"]), 3) 
+p.2.Finland.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Finland.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Finland.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.Finland.irst.adj.r.squared"]), 3) 
+p.2.Finland.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[11]])))["varresult.Finland.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Finland.lags = mainOUTPUT.2$lagmatrix$lags[12] # Lag for the first country 
+p.2.Finland.lags = mainOUTPUT.2$lagmatrix$lags[11] # Lag for the first country 
 
 ### France
 ## Ftests
-p.2.France.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.France.milper.fstatistic.value"]), 3)
-p.2.France.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.France.irst.fstatistic.value"]), 3)
+p.2.France.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.France.milper.fstatistic.value"]), 3)
+p.2.France.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.France.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.France.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.France.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.France.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.France.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.France.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.France.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.France.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.France.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.France.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.France.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.France.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.France.milper.adj.r.squared"]), 3) 
+p.2.France.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.France.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.France.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.France.irst.adj.r.squared"]), 3) 
+p.2.France.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[12]])))["varresult.France.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.France.lags = mainOUTPUT.2$lagmatrix$lags[13] # Lag for the first country 
+p.2.France.lags = mainOUTPUT.2$lagmatrix$lags[12] # Lag for the first country 
 
 ### Greece
 ## Ftests
-p.2.Greece.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Greece.milper.fstatistic.value"]), 3)
-p.2.Greece.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Greece.irst.fstatistic.value"]), 3)
+p.2.Greece.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.Greece.milper.fstatistic.value"]), 3)
+p.2.Greece.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.Greece.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Greece.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Greece.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Greece.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.Greece.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.Greece.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Greece.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Greece.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Greece.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.Greece.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.Greece.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Greece.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Greece.milper.adj.r.squared"]), 3) 
+p.2.Greece.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.Greece.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Greece.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Greece.irst.adj.r.squared"]), 3) 
+p.2.Greece.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[13]])))["varresult.Greece.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Greece.lags = mainOUTPUT.2$lagmatrix$lags[14] # Lag for the first country 
+p.2.Greece.lags = mainOUTPUT.2$lagmatrix$lags[13] # Lag for the first country 
+
 
 ### Hungary
 ## Ftests
-p.2.Hungary.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.Hungary.milper.fstatistic.value"]), 3)
-p.2.Hungary.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.Hungary.irst.fstatistic.value"]), 3)
+p.2.Hungary.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Hungary.milper.fstatistic.value"]), 3)
+p.2.Hungary.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Hungary.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Hungary.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.Hungary.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.Hungary.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Hungary.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Hungary.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Hungary.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.Hungary.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.Hungary.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Hungary.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Hungary.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Hungary.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.Hungary.milper.adj.r.squared"]), 3) 
+p.2.Hungary.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Hungary.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Hungary.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.Hungary.irst.adj.r.squared"]), 3) 
+p.2.Hungary.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[14]])))["varresult.Hungary.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Hungary.lags = mainOUTPUT.2$lagmatrix$lags[15] # Lag for the first country 
+p.2.Hungary.lags = mainOUTPUT.2$lagmatrix$lags[14] # Lag for the first country 
 
 
 ### India
 ## Ftests
-p.2.India.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.India.milper.fstatistic.value"]), 3)
-p.2.India.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.India.irst.fstatistic.value"]), 3)
+p.2.India.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.India.milper.fstatistic.value"]), 3)
+p.2.India.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.India.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.India.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.India.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.India.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.India.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.India.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.India.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.India.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.India.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.India.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.India.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.India.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.India.milper.adj.r.squared"]), 3) 
+p.2.India.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.India.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.India.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.India.irst.adj.r.squared"]), 3) 
+p.2.India.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[15]])))["varresult.India.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.India.lags = mainOUTPUT.2$lagmatrix$lags[16] # Lag for the first country 
+p.2.India.lags = mainOUTPUT.2$lagmatrix$lags[15] # Lag for the first country 
+
 
 ### Israel
 ## Ftests
-p.2.Israel.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Israel.milper.fstatistic.value"]), 3)
-p.2.Israel.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Israel.irst.fstatistic.value"]), 3)
+p.2.Israel.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.Israel.milper.fstatistic.value"]), 3)
+p.2.Israel.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.Israel.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Israel.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Israel.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Israel.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.Israel.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.Israel.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Israel.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Israel.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Israel.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.Israel.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.Israel.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Israel.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Israel.milper.adj.r.squared"]), 3) 
+p.2.Israel.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.Israel.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Israel.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Israel.irst.adj.r.squared"]), 3) 
+p.2.Israel.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[16]])))["varresult.Israel.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Israel.lags = mainOUTPUT.2$lagmatrix$lags[17] # Lag for the first country 
+p.2.Israel.lags = mainOUTPUT.2$lagmatrix$lags[16] # Lag for the first country 
+
 
 ### Italy
 ## Ftests
-p.2.Italy.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Italy.milper.fstatistic.value"]), 3)
-p.2.Italy.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Italy.irst.fstatistic.value"]), 3)
+p.2.Italy.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Italy.milper.fstatistic.value"]), 3)
+p.2.Italy.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Italy.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Italy.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Italy.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Italy.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Italy.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Italy.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Italy.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Italy.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Italy.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Italy.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Italy.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Italy.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Italy.milper.adj.r.squared"]), 3) 
+p.2.Italy.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Italy.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Italy.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Italy.irst.adj.r.squared"]), 3) 
+p.2.Italy.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[17]])))["varresult.Italy.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Italy.lags = mainOUTPUT.2$lagmatrix$lags[18] # Lag for the first country 
+p.2.Italy.lags = mainOUTPUT.2$lagmatrix$lags[17] # Lag for the first country 
 
 ### Japan
 ## Ftests
-p.2.Japan.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Japan.milper.fstatistic.value"]), 3)
-p.2.Japan.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Japan.irst.fstatistic.value"]), 3)
+p.2.Japan.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Japan.milper.fstatistic.value"]), 3)
+p.2.Japan.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Japan.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Japan.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Japan.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Japan.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Japan.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Japan.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Japan.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Japan.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Japan.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Japan.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Japan.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Japan.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Japan.milper.adj.r.squared"]), 3) 
+p.2.Japan.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Japan.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Japan.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Japan.irst.adj.r.squared"]), 3) 
+p.2.Japan.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[18]])))["varresult.Japan.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Japan.lags = mainOUTPUT.2$lagmatrix$lags[19] # Lag for the first country 
+p.2.Japan.lags = mainOUTPUT.2$lagmatrix$lags[18] # Lag for the first country 
 
 ### Luxembourg
 ## Ftests
-p.2.Luxembourg.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Luxembourg.milper.fstatistic.value"]), 3)
-p.2.Luxembourg.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Luxembourg.irst.fstatistic.value"]), 3)
+p.2.Luxembourg.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Luxembourg.milper.fstatistic.value"]), 3)
+p.2.Luxembourg.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Luxembourg.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Luxembourg.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Luxembourg.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Luxembourg.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Luxembourg.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Luxembourg.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Luxembourg.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Luxembourg.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Luxembourg.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Luxembourg.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Luxembourg.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Luxembourg.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Luxembourg.milper.adj.r.squared"]), 3) 
+p.2.Luxembourg.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Luxembourg.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Luxembourg.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Luxembourg.irst.adj.r.squared"]), 3) 
+p.2.Luxembourg.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[19]])))["varresult.Luxembourg.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Luxembourg.lags = mainOUTPUT.2$lagmatrix$lags[20] # Lag for the first country 
+p.2.Luxembourg.lags = mainOUTPUT.2$lagmatrix$lags[19] # Lag for the first country 
 
 
 ### Mexico
 ## Ftests
-p.2.Mexico.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Mexico.milper.fstatistic.value"]), 3)
-p.2.Mexico.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Mexico.irst.fstatistic.value"]), 3)
+p.2.Mexico.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Mexico.milper.fstatistic.value"]), 3)
+p.2.Mexico.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Mexico.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Mexico.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Mexico.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Mexico.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Mexico.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Mexico.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Mexico.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Mexico.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Mexico.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Mexico.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Mexico.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Mexico.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Mexico.milper.adj.r.squared"]), 3) 
+p.2.Mexico.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Mexico.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Mexico.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Mexico.irst.adj.r.squared"]), 3) 
+p.2.Mexico.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[20]])))["varresult.Mexico.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Mexico.lags = mainOUTPUT.2$lagmatrix$lags[21] # Lag for the first country 
+p.2.Mexico.lags = mainOUTPUT.2$lagmatrix$lags[20] # Lag for the first country 
 
 ### Netherlands
 ## Ftests
-p.2.Netherlands.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.Netherlands.milper.fstatistic.value"]), 3)
-p.2.Netherlands.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.Netherlands.irst.fstatistic.value"]), 3)
+p.2.Netherlands.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Netherlands.milper.fstatistic.value"]), 3)
+p.2.Netherlands.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Netherlands.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Netherlands.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.Netherlands.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.Netherlands.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Netherlands.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Netherlands.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Netherlands.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.Netherlands.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.Netherlands.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Netherlands.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Netherlands.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Netherlands.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.Netherlands.milper.adj.r.squared"]), 3) 
+p.2.Netherlands.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Netherlands.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Netherlands.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.Netherlands.irst.adj.r.squared"]), 3) 
+p.2.Netherlands.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[21]])))["varresult.Netherlands.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Netherlands.lags = mainOUTPUT.2$lagmatrix$lags[22] # Lag for the first country 
+p.2.Netherlands.lags = mainOUTPUT.2$lagmatrix$lags[21] # Lag for the first country 
+
 
 ### North.Korea
 ## Ftests
-p.2.North.Korea.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.North.Korea.milper.fstatistic.value"]), 3)
-p.2.North.Korea.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.North.Korea.irst.fstatistic.value"]), 3)
+p.2.North.Korea.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.North.Korea.milper.fstatistic.value"]), 3)
+p.2.North.Korea.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.North.Korea.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.North.Korea.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.North.Korea.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.North.Korea.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.North.Korea.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.North.Korea.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.North.Korea.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.North.Korea.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.North.Korea.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.North.Korea.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.North.Korea.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.North.Korea.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.North.Korea.milper.adj.r.squared"]), 3) 
+p.2.North.Korea.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.North.Korea.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.North.Korea.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.North.Korea.irst.adj.r.squared"]), 3) 
+p.2.North.Korea.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[22]])))["varresult.North.Korea.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.North.Korea.lags = mainOUTPUT.2$lagmatrix$lags[23] # Lag for the first country 
+p.2.North.Korea.lags = mainOUTPUT.2$lagmatrix$lags[22] # Lag for the first country 
 
 ### Norway
 ## Ftests
-p.2.Norway.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Norway.milper.fstatistic.value"]), 3)
-p.2.Norway.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Norway.irst.fstatistic.value"]), 3)
+p.2.Norway.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.Norway.milper.fstatistic.value"]), 3)
+p.2.Norway.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.Norway.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Norway.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Norway.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Norway.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.Norway.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.Norway.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Norway.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Norway.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Norway.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.Norway.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.Norway.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Norway.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Norway.milper.adj.r.squared"]), 3) 
+p.2.Norway.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.Norway.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Norway.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Norway.irst.adj.r.squared"]), 3) 
+p.2.Norway.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[23]])))["varresult.Norway.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Norway.lags = mainOUTPUT.2$lagmatrix$lags[24] # Lag for the first country 
+p.2.Norway.lags = mainOUTPUT.2$lagmatrix$lags[23] # Lag for the first country 
 
 ### Poland
 ## Ftests
-p.2.Poland.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Poland.milper.fstatistic.value"]), 3)
-p.2.Poland.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Poland.irst.fstatistic.value"]), 3)
+p.2.Poland.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Poland.milper.fstatistic.value"]), 3)
+p.2.Poland.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Poland.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Poland.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Poland.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Poland.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Poland.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Poland.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Poland.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Poland.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Poland.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Poland.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Poland.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Poland.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Poland.milper.adj.r.squared"]), 3) 
+p.2.Poland.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Poland.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Poland.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Poland.irst.adj.r.squared"]), 3) 
+p.2.Poland.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[24]])))["varresult.Poland.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Poland.lags = mainOUTPUT.2$lagmatrix$lags[25] # Lag for the first country 
+p.2.Poland.lags = mainOUTPUT.2$lagmatrix$lags[24] # Lag for the first country 
 
 ### Portugal
 ## Ftests
-p.2.Portugal.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Portugal.milper.fstatistic.value"]), 3)
-p.2.Portugal.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Portugal.irst.fstatistic.value"]), 3)
+p.2.Portugal.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Portugal.milper.fstatistic.value"]), 3)
+p.2.Portugal.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Portugal.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Portugal.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Portugal.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Portugal.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Portugal.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Portugal.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Portugal.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Portugal.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Portugal.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Portugal.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Portugal.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Portugal.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Portugal.milper.adj.r.squared"]), 3) 
+p.2.Portugal.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Portugal.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Portugal.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Portugal.irst.adj.r.squared"]), 3) 
+p.2.Portugal.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[25]])))["varresult.Portugal.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Portugal.lags = mainOUTPUT.2$lagmatrix$lags[26] # Lag for the first country 
+p.2.Portugal.lags = mainOUTPUT.2$lagmatrix$lags[25] # Lag for the first country 
 
 ### Romania
 ## Ftests
-p.2.Romania.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.Romania.milper.fstatistic.value"]), 3)
-p.2.Romania.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.Romania.irst.fstatistic.value"]), 3)
+p.2.Romania.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Romania.milper.fstatistic.value"]), 3)
+p.2.Romania.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Romania.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Romania.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.Romania.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.Romania.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Romania.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Romania.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Romania.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.Romania.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.Romania.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Romania.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Romania.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Romania.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.Romania.milper.adj.r.squared"]), 3) 
+p.2.Romania.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Romania.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Romania.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.Romania.irst.adj.r.squared"]), 3) 
+p.2.Romania.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[26]])))["varresult.Romania.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Romania.lags = mainOUTPUT.2$lagmatrix$lags[27] # Lag for the first country 
+p.2.Romania.lags = mainOUTPUT.2$lagmatrix$lags[26] # Lag for the first country 
 
-### Russia
-## Ftests
-p.2.Russia.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.Russia.milper.fstatistic.value"]), 3)
-p.2.Russia.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.Russia.irst.fstatistic.value"]), 3)
-## DF Num, Dem (1)
-p.2.Russia.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.Russia.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.Russia.milper.fstatistic.dendf"], # DF-Den (1)
-        sep = ",")
-## DF Num, Dem (2)
-p.2.Russia.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.Russia.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.Russia.irst.fstatistic.dendf"], # DF-Den (1)
-        sep = ",")
-# Rsq 1
-p.2.Russia.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.Russia.milper.adj.r.squared"]), 3) 
-# Rsq 2
-p.2.Russia.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.Russia.irst.adj.r.squared"]), 3) 
-# Lags
-p.2.Russia.lags = mainOUTPUT.2$lagmatrix$lags[28] # Lag for the first country 
 
 ### South.Africa
 ## Ftests
-p.2.South.Africa.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.South.Africa.milper.fstatistic.value"]), 3)
-p.2.South.Africa.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.South.Africa.irst.fstatistic.value"]), 3)
+p.2.South.Africa.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.South.Africa.milper.fstatistic.value"]), 3)
+p.2.South.Africa.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.South.Africa.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.South.Africa.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.South.Africa.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.South.Africa.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.South.Africa.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.South.Africa.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.South.Africa.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.South.Africa.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.South.Africa.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.South.Africa.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.South.Africa.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.South.Africa.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.South.Africa.milper.adj.r.squared"]), 3) 
+p.2.South.Africa.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.South.Africa.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.South.Africa.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.South.Africa.irst.adj.r.squared"]), 3) 
+p.2.South.Africa.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[27]])))["varresult.South.Africa.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.South.Africa.lags = mainOUTPUT.2$lagmatrix$lags[29] # Lag for the first country 
+p.2.South.Africa.lags = mainOUTPUT.2$lagmatrix$lags[27] # Lag for the first country 
+
+
 
 ### South.Korea
 ## Ftests
-p.2.South.Korea.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.South.Korea.milper.fstatistic.value"]), 3)
-p.2.South.Korea.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.South.Korea.irst.fstatistic.value"]), 3)
+p.2.South.Korea.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.South.Korea.milper.fstatistic.value"]), 3)
+p.2.South.Korea.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.South.Korea.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.South.Korea.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.South.Korea.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.South.Korea.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.South.Korea.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.South.Korea.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.South.Korea.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.South.Korea.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.South.Korea.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.South.Korea.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.South.Korea.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.South.Korea.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.South.Korea.milper.adj.r.squared"]), 3) 
+p.2.South.Korea.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.South.Korea.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.South.Korea.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.South.Korea.irst.adj.r.squared"]), 3) 
+p.2.South.Korea.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[28]])))["varresult.South.Korea.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.South.Korea.lags = mainOUTPUT.2$lagmatrix$lags[30] # Lag for the first country 
+p.2.South.Korea.lags = mainOUTPUT.2$lagmatrix$lags[28] # Lag for the first country 
+
 
 ### Spain
 ## Ftests
-p.2.Spain.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Spain.milper.fstatistic.value"]), 3)
-p.2.Spain.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Spain.irst.fstatistic.value"]), 3)
+p.2.Spain.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.Spain.milper.fstatistic.value"]), 3)
+p.2.Spain.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.Spain.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Spain.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Spain.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Spain.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.Spain.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.Spain.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Spain.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Spain.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Spain.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.Spain.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.Spain.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Spain.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Spain.milper.adj.r.squared"]), 3) 
+p.2.Spain.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.Spain.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Spain.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Spain.irst.adj.r.squared"]), 3) 
+p.2.Spain.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[29]])))["varresult.Spain.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Spain.lags = mainOUTPUT.2$lagmatrix$lags[31] # Lag for the first country 
+p.2.Spain.lags = mainOUTPUT.2$lagmatrix$lags[29] # Lag for the first country 
+
 
 ### Taiwan
 ## Ftests
-p.2.Taiwan.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.Taiwan.milper.fstatistic.value"]), 3)
-p.2.Taiwan.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.Taiwan.irst.fstatistic.value"]), 3)
+p.2.Taiwan.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.Taiwan.milper.fstatistic.value"]), 3)
+p.2.Taiwan.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.Taiwan.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Taiwan.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.Taiwan.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.Taiwan.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.Taiwan.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.Taiwan.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Taiwan.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.Taiwan.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.Taiwan.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.Taiwan.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.Taiwan.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Taiwan.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.Taiwan.milper.adj.r.squared"]), 3) 
+p.2.Taiwan.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.Taiwan.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Taiwan.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.Taiwan.irst.adj.r.squared"]), 3) 
+p.2.Taiwan.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[30]])))["varresult.Taiwan.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Taiwan.lags = mainOUTPUT.2$lagmatrix$lags[32] # Lag for the first country 
+p.2.Taiwan.lags = mainOUTPUT.2$lagmatrix$lags[30] # Lag for the first country 
 
 ### Turkey
 ## Ftests
-p.2.Turkey.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[33]])))["varresult.Turkey.milper.fstatistic.value"]), 3)
-p.2.Turkey.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[33]])))["varresult.Turkey.irst.fstatistic.value"]), 3)
+p.2.Turkey.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Turkey.milper.fstatistic.value"]), 3)
+p.2.Turkey.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Turkey.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.Turkey.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[33]])))["varresult.Turkey.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[33]])))["varresult.Turkey.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Turkey.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Turkey.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.Turkey.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[33]])))["varresult.Turkey.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[33]])))["varresult.Turkey.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Turkey.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Turkey.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.Turkey.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[33]])))["varresult.Turkey.milper.adj.r.squared"]), 3) 
+p.2.Turkey.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Turkey.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.Turkey.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[33]])))["varresult.Turkey.irst.adj.r.squared"]), 3) 
+p.2.Turkey.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[31]])))["varresult.Turkey.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.Turkey.lags = mainOUTPUT.2$lagmatrix$lags[33] # Lag for the first country 
+p.2.Turkey.lags = mainOUTPUT.2$lagmatrix$lags[31] # Lag for the first country 
 
 ### United.Kingdom
 ## Ftests
-p.2.United.Kingdom.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[34]])))["varresult.United.Kingdom.milper.fstatistic.value"]), 3)
-p.2.United.Kingdom.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[34]])))["varresult.United.Kingdom.irst.fstatistic.value"]), 3)
+p.2.United.Kingdom.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.United.Kingdom.milper.fstatistic.value"]), 3)
+p.2.United.Kingdom.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.United.Kingdom.irst.fstatistic.value"]), 3)
 ## DF Num, Dem (1)
 p.2.United.Kingdom.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[34]])))["varresult.United.Kingdom.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[34]])))["varresult.United.Kingdom.milper.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.United.Kingdom.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.United.Kingdom.milper.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 ## DF Num, Dem (2)
 p.2.United.Kingdom.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[34]])))["varresult.United.Kingdom.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[34]])))["varresult.United.Kingdom.irst.fstatistic.dendf"], # DF-Den (1)
+        unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.United.Kingdom.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.United.Kingdom.irst.fstatistic.dendf"], # DF-Den (1)
         sep = ",")
 # Rsq 1
-p.2.United.Kingdom.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[34]])))["varresult.United.Kingdom.milper.adj.r.squared"]), 3) 
+p.2.United.Kingdom.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.United.Kingdom.milper.adj.r.squared"]), 3) 
 # Rsq 2
-p.2.United.Kingdom.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[34]])))["varresult.United.Kingdom.irst.adj.r.squared"]), 3) 
+p.2.United.Kingdom.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[32]])))["varresult.United.Kingdom.irst.adj.r.squared"]), 3) 
 # Lags
-p.2.United.Kingdom.lags = mainOUTPUT.2$lagmatrix$lags[34] # Lag for the first country 
-
-### United.States.of.America
-## Ftests
-p.2.United.States.of.America.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[35]])))["varresult.United.States.of.America.milper.fstatistic.value"]), 3)
-p.2.United.States.of.America.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[35]])))["varresult.United.States.of.America.irst.fstatistic.value"]), 3)
-## DF Num, Dem (1)
-p.2.United.States.of.America.df.num.dem.1 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[35]])))["varresult.United.States.of.America.milper.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[35]])))["varresult.United.States.of.America.milper.fstatistic.dendf"], # DF-Den (1)
-        sep = ",")
-## DF Num, Dem (2)
-p.2.United.States.of.America.df.num.dem.2 = paste(
-        unlist(list(summary(mainOUTPUT.2$gvecm[[35]])))["varresult.United.States.of.America.irst.fstatistic.numdf"], # DF-Num (1),
-        unlist(list(summary(mainOUTPUT.2$gvecm[[35]])))["varresult.United.States.of.America.irst.fstatistic.dendf"], # DF-Den (1)
-        sep = ",")
-# Rsq 1
-p.2.United.States.of.America.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[35]])))["varresult.United.States.of.America.milper.adj.r.squared"]), 3) 
-# Rsq 2
-p.2.United.States.of.America.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2$gvecm[[35]])))["varresult.United.States.of.America.irst.adj.r.squared"]), 3) 
-# Lags
-p.2.United.States.of.America.lags = mainOUTPUT.2$lagmatrix$lags[35] # Lag for the first country 
+p.2.United.Kingdom.lags = mainOUTPUT.2$lagmatrix$lags[32] # Lag for the first country 
 ## ----
-
-
 
 summary(mainOUTPUT.2$gvecm[[1]]) # Argentina 
 summary(mainOUTPUT.2$gvecm[[2]]) # Australia 
@@ -2094,33 +1790,144 @@ summary(mainOUTPUT.2$gvecm[[5]]) # Brazil
 summary(mainOUTPUT.2$gvecm[[6]]) # Bulgaria 
 summary(mainOUTPUT.2$gvecm[[7]]) # Canada 
 summary(mainOUTPUT.2$gvecm[[8]]) # Chile 
-summary(mainOUTPUT.2$gvecm[[9]]) # China 
-summary(mainOUTPUT.2$gvecm[[10]]) # Colombia 
-summary(mainOUTPUT.2$gvecm[[11]]) # Egypt 
-summary(mainOUTPUT.2$gvecm[[12]]) # Finland 
-summary(mainOUTPUT.2$gvecm[[13]]) # France 
-summary(mainOUTPUT.2$gvecm[[14]]) # Greece 
-summary(mainOUTPUT.2$gvecm[[15]]) # Hungary 
-summary(mainOUTPUT.2$gvecm[[16]]) # India 
-summary(mainOUTPUT.2$gvecm[[17]]) # Israel 
-summary(mainOUTPUT.2$gvecm[[18]]) # Italy 
-summary(mainOUTPUT.2$gvecm[[19]]) # Japan 
-summary(mainOUTPUT.2$gvecm[[20]]) # Luxembourg 
-summary(mainOUTPUT.2$gvecm[[21]]) # Mexico 
-summary(mainOUTPUT.2$gvecm[[22]]) # Netherlands 
-summary(mainOUTPUT.2$gvecm[[23]]) # North.Korea 
-summary(mainOUTPUT.2$gvecm[[24]]) # Norway 
-summary(mainOUTPUT.2$gvecm[[25]]) # Poland 
-summary(mainOUTPUT.2$gvecm[[26]]) # Portugal 
-summary(mainOUTPUT.2$gvecm[[27]]) # Romania 
-summary(mainOUTPUT.2$gvecm[[28]]) # Russia 
-summary(mainOUTPUT.2$gvecm[[29]]) # South.Africa 
-summary(mainOUTPUT.2$gvecm[[30]]) # South.Korea 
-summary(mainOUTPUT.2$gvecm[[31]]) # Spain 
-summary(mainOUTPUT.2$gvecm[[32]]) # Taiwan 
-summary(mainOUTPUT.2$gvecm[[33]]) # Turkey 
-summary(mainOUTPUT.2$gvecm[[34]]) # United.Kingdom 
-summary(mainOUTPUT.2$gvecm[[35]]) # United.States.of.America 
+summary(mainOUTPUT.2$gvecm[[9]]) # Colombia 
+summary(mainOUTPUT.2$gvecm[[10]]) # Egypt 
+summary(mainOUTPUT.2$gvecm[[11]]) # Finland 
+summary(mainOUTPUT.2$gvecm[[12]]) # France 
+summary(mainOUTPUT.2$gvecm[[13]]) # Greece 
+summary(mainOUTPUT.2$gvecm[[14]]) # Hungary 
+summary(mainOUTPUT.2$gvecm[[15]]) # India 
+summary(mainOUTPUT.2$gvecm[[16]]) # Israel 
+summary(mainOUTPUT.2$gvecm[[17]]) # Italy 
+summary(mainOUTPUT.2$gvecm[[18]]) # Japan 
+summary(mainOUTPUT.2$gvecm[[19]]) # Luxembourg 
+summary(mainOUTPUT.2$gvecm[[20]]) # Mexico 
+summary(mainOUTPUT.2$gvecm[[21]]) # Netherlands 
+summary(mainOUTPUT.2$gvecm[[22]]) # North.Korea 
+summary(mainOUTPUT.2$gvecm[[23]]) # Norway 
+summary(mainOUTPUT.2$gvecm[[24]]) # Poland 
+summary(mainOUTPUT.2$gvecm[[25]]) # Portugal 
+summary(mainOUTPUT.2$gvecm[[26]]) # Romania 
+summary(mainOUTPUT.2$gvecm[[27]]) # South.Africa 
+summary(mainOUTPUT.2$gvecm[[28]]) # South.Korea 
+summary(mainOUTPUT.2$gvecm[[29]]) # Spain 
+summary(mainOUTPUT.2$gvecm[[30]]) # Taiwan 
+summary(mainOUTPUT.2$gvecm[[31]]) # Turkey 
+summary(mainOUTPUT.2$gvecm[[32]]) # United.Kingdom 
+
+
+########################################################
+# Second Period (Big Countries)
+########################################################
+
+## ---- gvar:model:second:period:b ----
+
+p_load(GVARX)
+
+p.2.b=2 # The number of lag for Xt matrix
+FLag.2.b=2 # The number of lag for foreign variables in country-specific VAR
+lag.max.2.b=5 # The maximal number of lag for estimating country-specific VAR
+type.2.b="none" # Model specificaiton for VAR. As in package vars, we have four selection: "none","const","trend", "both".
+ic.2.b="AIC" # Information criteria for optimal lag.As in package vars, we have four selection: "AIC", "HQ", "SC", and "FPE".
+
+options(scipen=9999999)
+mainOUTPUT.2.b = GVECMest(
+        data = cow.d.2.B,
+        p = p.2.b,
+        FLag = FLag.2.b,
+        lag.max = lag.max.2.b,
+        type = type.2.b,
+        ic = ic.2.b,
+        weight.matrix=wm.2.b)
+
+# Storing Values
+
+# summary(mainOUTPUT.2$gvecm[[9]]) # China 
+p.2.China.pvalue.1 = round(0.9962, 3)
+p.2.China.pvalue.2 = round(0.00000000000000022, 3)
+
+# summary(mainOUTPUT.2$gvecm[[28]]) # Russia 
+p.2.Russia.pvalue.1 = round(0.003474, 3)
+p.2.Russia.pvalue.2 = round(0.03106, 3)
+
+# summary(mainOUTPUT.2$gvecm[[35]]) # United.States.of.America 
+p.2.United.States.of.America.pvalue.1 = round(0.1001, 3)
+p.2.United.States.of.America.pvalue.2 = round(0.06328, 3)
+
+
+### China
+## Ftests
+p.2.China.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2.b$gvecm[[1]])))["varresult.China.milper.fstatistic.value"]), 3)
+p.2.China.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2.b$gvecm[[1]])))["varresult.China.irst.fstatistic.value"]), 3)
+## DF Num, Dem (1)
+p.2.China.df.num.dem.1 = paste(
+        unlist(list(summary(mainOUTPUT.2.b$gvecm[[1]])))["varresult.China.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2.b$gvecm[[1]])))["varresult.China.milper.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+## DF Num, Dem (2)
+p.2.China.df.num.dem.2 = paste(
+        unlist(list(summary(mainOUTPUT.2.b$gvecm[[1]])))["varresult.China.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2.b$gvecm[[1]])))["varresult.China.irst.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+# Rsq 1
+p.2.China.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2.b$gvecm[[1]])))["varresult.China.milper.adj.r.squared"]), 3) 
+# Rsq 2
+p.2.China.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2.b$gvecm[[1]])))["varresult.China.irst.adj.r.squared"]), 3) 
+# Lags
+p.2.China.lags = mainOUTPUT.2.b$lagmatrix$lags[1] # Lag for the first country 
+
+
+
+### Russia
+## Ftests
+p.2.Russia.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2.b$gvecm[[2]])))["varresult.Russia.milper.fstatistic.value"]), 3)
+p.2.Russia.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2.b$gvecm[[2]])))["varresult.Russia.irst.fstatistic.value"]), 3)
+## DF Num, Dem (1)
+p.2.Russia.df.num.dem.1 = paste(
+        unlist(list(summary(mainOUTPUT.2.b$gvecm[[2]])))["varresult.Russia.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2.b$gvecm[[2]])))["varresult.Russia.milper.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+## DF Num, Dem (2)
+p.2.Russia.df.num.dem.2 = paste(
+        unlist(list(summary(mainOUTPUT.2.b$gvecm[[2]])))["varresult.Russia.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2.b$gvecm[[2]])))["varresult.Russia.irst.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+# Rsq 1
+p.2.Russia.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2.b$gvecm[[2]])))["varresult.Russia.milper.adj.r.squared"]), 3) 
+# Rsq 2
+p.2.Russia.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2.b$gvecm[[2]])))["varresult.Russia.irst.adj.r.squared"]), 3) 
+# Lags
+p.2.Russia.lags = mainOUTPUT.2.b$lagmatrix$lags[2] # Lag for the first country 
+
+
+### United.States.of.America
+## Ftests
+p.2.United.States.of.America.ftest.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2.b$gvecm[[3]])))["varresult.United.States.of.America.milper.fstatistic.value"]), 3)
+p.2.United.States.of.America.ftest.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2.b$gvecm[[3]])))["varresult.United.States.of.America.irst.fstatistic.value"]), 3)
+## DF Num, Dem (1)
+p.2.United.States.of.America.df.num.dem.1 = paste(
+        unlist(list(summary(mainOUTPUT.2.b$gvecm[[3]])))["varresult.United.States.of.America.milper.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2.b$gvecm[[3]])))["varresult.United.States.of.America.milper.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+## DF Num, Dem (2)
+p.2.United.States.of.America.df.num.dem.2 = paste(
+        unlist(list(summary(mainOUTPUT.2.b$gvecm[[3]])))["varresult.United.States.of.America.irst.fstatistic.numdf"], # DF-Num (1),
+        unlist(list(summary(mainOUTPUT.2.b$gvecm[[3]])))["varresult.United.States.of.America.irst.fstatistic.dendf"], # DF-Den (1)
+        sep = ",")
+# Rsq 1
+p.2.United.States.of.America.rsq.1 = round(as.numeric(unlist(list(summary(mainOUTPUT.2.b$gvecm[[3]])))["varresult.United.States.of.America.milper.adj.r.squared"]), 3) 
+# Rsq 2
+p.2.United.States.of.America.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2.b$gvecm[[3]])))["varresult.United.States.of.America.irst.adj.r.squared"]), 3) 
+# Lags
+p.2.United.States.of.America.lags = mainOUTPUT.2.b$lagmatrix$lags[3] # Lag for the first country 
+
+## ----
+
+summary(mainOUTPUT.2$gvecm[[1]]) # China 
+summary(mainOUTPUT.2$gvecm[[2]]) # Russia 
+summary(mainOUTPUT.2$gvecm[[3]]) # United.States.of.America 
+
+
 
 
 

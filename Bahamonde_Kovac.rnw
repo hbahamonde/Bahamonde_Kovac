@@ -111,6 +111,10 @@ read_chunk('/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/Bahamonde_Kovac.R
 
 @
 
+<<gvar:model:second:period:b, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=FALSE, eval=TRUE>>=
+
+@
+
 
 % end knitr stuff
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -213,7 +217,7 @@ countries $i$ for all $K$ countries. Following the literature on Granger-causali
 
 
 
-\begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, 1955-2014}
+\begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, 1955-2014 (A)}
 \begin{center}
 \scalebox{0.6}{
 \begin{tabular}{ccccccc|} 
@@ -242,9 +246,6 @@ countries $i$ for all $K$ countries. Following the literature on Granger-causali
 \cline{2-7}
 \multicolumn{1}{|c|}{\multirow{2}{*}{Chile}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Chile.ftest.1} 		& \Sexpr{p.2.Chile.pvalue.1} & \Sexpr{(p.2.Chile.df.num.dem.1)} 		& 	\Sexpr{p.2.Chile.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Chile.lags}}} \\ 
 \multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Chile.ftest.2} 		& \Sexpr{p.2.Chile.pvalue.2} & \Sexpr{(p.2.Chile.df.num.dem.2)} 		& 	\Sexpr{p.2.Chile.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
-\cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{China}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.China.ftest.1} 		& \Sexpr{p.2.China.pvalue.1} & \Sexpr{(p.2.China.df.num.dem.1)} 		& 	\Sexpr{p.2.China.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.China.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.China.ftest.2} 		& \Sexpr{p.2.China.pvalue.2} & \Sexpr{(p.2.China.df.num.dem.2)} 		& 	\Sexpr{p.2.China.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
 \multicolumn{1}{|c|}{\multirow{2}{*}{Colombia}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.Colombia.ftest.1} 		& \Sexpr{p.2.Colombia.pvalue.1} & \Sexpr{(p.2.Colombia.df.num.dem.1)} 		& 	\Sexpr{p.2.Colombia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Colombia.lags}}} \\ 
 \multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Colombia.ftest.2} 		& \Sexpr{p.2.Colombia.pvalue.2} & \Sexpr{(p.2.Colombia.df.num.dem.2)} 		& 	\Sexpr{p.2.Colombia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
@@ -300,10 +301,7 @@ countries $i$ for all $K$ countries. Following the literature on Granger-causali
 \multicolumn{1}{|c|}{\multirow{2}{*}{Romania}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Romania.ftest.1} 		& \Sexpr{p.2.Romania.pvalue.1} & \Sexpr{(p.2.Romania.df.num.dem.1)} 		& 	\Sexpr{p.2.Romania.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Romania.lags}}} \\ 
 \multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Romania.ftest.2} 		& \Sexpr{p.2.Romania.pvalue.2} & \Sexpr{(p.2.Romania.df.num.dem.2)} 		& 	\Sexpr{p.2.Romania.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Russia}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Russia.ftest.1} 		& \Sexpr{p.2.Russia.pvalue.1} & \Sexpr{(p.2.Russia.df.num.dem.1)} 		& 	\Sexpr{p.2.Russia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Russia.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Russia.ftest.2} 		& \Sexpr{p.2.Russia.pvalue.2} & \Sexpr{(p.2.Russia.df.num.dem.2)} 		& 	\Sexpr{p.2.Russia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
-\cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{South.Africa}} & steel $\rightarrow$ guns		& \Sexpr{p.2.South.Africa.ftest.1} 		& \Sexpr{p.2.South.Africa.pvalue.1} & \Sexpr{(p.2.South.Africa.df.num.dem.1)} 		& 	\Sexpr{p.2.South.Africa.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.South.Africa.lags}}} \\ 
+\multicolumn{1}{|c|}{\multirow{2}{*}{South Africa}} & steel $\rightarrow$ guns		& \Sexpr{p.2.South.Africa.ftest.1} 		& \Sexpr{p.2.South.Africa.pvalue.1} & \Sexpr{(p.2.South.Africa.df.num.dem.1)} 		& 	\Sexpr{p.2.South.Africa.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.South.Africa.lags}}} \\ 
 \multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.South.Africa.ftest.2} 		& \Sexpr{p.2.South.Africa.pvalue.2} & \Sexpr{(p.2.South.Africa.df.num.dem.2)} 		& 	\Sexpr{p.2.South.Africa.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
 \multicolumn{1}{|c|}{\multirow{2}{*}{South Korea}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.South.Korea.ftest.1} 		& \Sexpr{p.2.South.Korea.pvalue.1} & \Sexpr{(p.2.South.Korea.df.num.dem.1)} 		& 	\Sexpr{p.2.South.Korea.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.South.Korea.lags}}} \\ 
@@ -321,14 +319,32 @@ countries $i$ for all $K$ countries. Following the literature on Granger-causali
 \multicolumn{1}{|c|}{\multirow{2}{*}{United Kingdom}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.United.Kingdom.ftest.1} 		& \Sexpr{p.2.United.Kingdom.pvalue.1} & \Sexpr{(p.2.United.Kingdom.df.num.dem.1)} 		& 	\Sexpr{p.2.United.Kingdom.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.United.Kingdom.lags}}} \\ 
 \multicolumn{1}{|c|}{}                              	& guns $\rightarrow$ steel		& \Sexpr{p.2.United.Kingdom.ftest.2} 		& \Sexpr{p.2.United.Kingdom.pvalue.2} & \Sexpr{(p.2.United.Kingdom.df.num.dem.2)} 		& 	\Sexpr{p.2.United.Kingdom.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
+\end{tabular}}
+\end{center}
+\end{table}
+
+
+
+
+
+\begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, 1955-2014 (B)}
+\begin{center}
+\scalebox{0.6}{
+\begin{tabular}{ccccccc|} 
+\cline{2-7}
+\multicolumn{1}{c|}{}                               & \textbf{Granger Relationship} & \textbf{F-Test} 					& \textbf{P-Value} 				 & \textbf{DF} 								& 	\textbf{Adjusted R-sq} 		& {\bf Lags}  \\ \hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{China}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.China.ftest.1} 		& \Sexpr{p.2.China.pvalue.1} & \Sexpr{(p.2.China.df.num.dem.1)} 		& 	\Sexpr{p.2.China.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.China.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.China.ftest.2} 		& \Sexpr{p.2.China.pvalue.2} & \Sexpr{(p.2.China.df.num.dem.2)} 		& 	\Sexpr{p.2.China.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
+\multicolumn{1}{|c|}{\multirow{2}{*}{Russia}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Russia.ftest.1} 		& \Sexpr{p.2.Russia.pvalue.1} & \Sexpr{(p.2.Russia.df.num.dem.1)} 		& 	\Sexpr{p.2.Russia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Russia.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Russia.ftest.2} 		& \Sexpr{p.2.Russia.pvalue.2} & \Sexpr{(p.2.Russia.df.num.dem.2)} 		& 	\Sexpr{p.2.Russia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\cline{2-7}
 \multicolumn{1}{|c|}{\multirow{2}{*}{United States}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.United.States.of.America.ftest.1} 		& \Sexpr{p.2.United.States.of.America.pvalue.1} & \Sexpr{(p.2.United.States.of.America.df.num.dem.1)} 		& 	\Sexpr{p.2.United.States.of.America.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.United.States.of.America.lags}}} \\ 
 \multicolumn{1}{|c|}{}                              	& guns $\rightarrow$ steel		& \Sexpr{p.2.United.States.of.America.ftest.2} 		& \Sexpr{p.2.United.States.of.America.pvalue.2} & \Sexpr{(p.2.United.States.of.America.df.num.dem.2)} 		& 	\Sexpr{p.2.United.States.of.America.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
 \end{tabular}}
 \end{center}
 \end{table}
-
-
 
 
 % References
