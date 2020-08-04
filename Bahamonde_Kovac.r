@@ -6,31 +6,26 @@ graphics.off()
 ##############################
 # Yearly weight data for weight matrix
 ##############################
-# cat("\014")
-# rm(list=ls())
-
 # loads pacman
 if (!require("pacman")) install.packages("pacman"); library(pacman) 
 
 p_load(foreign)
-bilateral.d <- read.csv("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/Dyadic_COW_4.0.csv") 
+bilateral.d = read.csv("https://github.com/hbahamonde/Bahamonde_Kovac/raw/master/Dyadic_COW_4.0.csv")
 
-# Generating another column with the absolute market trade distance between the two countries
-options(scipen=1000000) 
-bilateral.d$trade = as.numeric(round(abs(bilateral.d$flow1-bilateral.d$flow2), 4))
+# Codebook
+## importer1: Name of country A
+## importer2: Name of country B
+## flow1: Imports of Country A from Country B [in US millions of current dollars]
+## flow2: Imports of Country B from Country A [in US millions of current dollars]
 
 # keeping columns i'll need
-bilateral.d <- bilateral.d[c("year", "importer1", "importer2", "trade")]
-
-
-# Others adjustments PENDING
-
-# 1. Rename "West Germany" to "Germany" only for 1946-1989 period.
-# bilateral.d$importer1[bilateral.d$importer1 == "German Federal Republic"] <- "Germany"
-# bilateral.d$importer2[bilateral.d$importer2 == "German Federal Republic"] <- "Germany"
+bilateral.d <- bilateral.d[c("year", "importer1", "importer2", "flow1", "flow2")]
 
 trade = bilateral.d
 
+# Drop NAs
+trade$flow1[trade$flow1 == -9] <- 0
+trade$flow2[trade$flow2 ==  -9] <- 0
 
 # Loop to Generate Independent XLSX Files (one per year) contanining the square country matrices.
 p_load(dplyr)
@@ -42,9 +37,11 @@ sequence <- seq.int(min(trade$year),max(trade$year),1)
 
 for ( i in sequence){
         filtracion <- filter(trade,year==i)
-        d <- data.frame(filtracion$importer1,filtracion$importer2)
-        g <- graph_from_data_frame(d, directed = FALSE, vertices = NULL)
-        E(g)$weight <- filtracion$trade
+        country_from <- c(as.character(filtracion$importer1),as.character(filtracion$importer2))
+        country_to <- c(as.character(filtracion$importer2),as.character(filtracion$importer1))
+        trade_weight <- c(filtracion$flow1,filtracion$flow2)
+        d <- data.frame(from=country_from, to=country_to, weight=trade_weight)
+        g <- graph_from_data_frame(d, directed = TRUE, vertices = NULL)
         ad_matrix <- get.adjacency(g, attr="weight", sparse = F)
         file_name <- paste(c("trade_year_",i,".csv"), collapse = "")
         print(i)
@@ -66,6 +63,14 @@ if (!require("pacman")) install.packages("pacman"); library(pacman)
 # load National Material Capabilities-COW
 p_load(foreign)
 mnc.d <- read.dta("/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/NMC_5_0.dta") 
+
+
+## NOTES IGOR MEETING
+# 1. Do a separate model using "pec" with "milper"
+# 2. Ask chinese guy if it is possible to get one number thing.
+# 3. fix the W matrix. 
+# 4. PVAR with control variable (W as a control variable). 
+# irst-mil, ... do all of them. 
 
 # load Trade-COW
 p_load(foreign)
@@ -237,6 +242,10 @@ y.1913$X <- gsub(' ', '.', y.1913$X);y.1913$X <- gsub('-', '.', y.1913$X);y.1913
 # Building WM for the first period
 wm.1 = list(as.matrix(y.1871), as.matrix(y.1872), as.matrix(y.1873), as.matrix(y.1874), as.matrix(y.1875), as.matrix(y.1876), as.matrix(y.1877), as.matrix(y.1878), as.matrix(y.1879), as.matrix(y.1880), as.matrix(y.1881), as.matrix(y.1882), as.matrix(y.1883), as.matrix(y.1884), as.matrix(y.1885), as.matrix(y.1886), as.matrix(y.1887), as.matrix(y.1888), as.matrix(y.1889), as.matrix(y.1890), as.matrix(y.1891), as.matrix(y.1892), as.matrix(y.1893), as.matrix(y.1894), as.matrix(y.1895), as.matrix(y.1896), as.matrix(y.1897), as.matrix(y.1898), as.matrix(y.1899), as.matrix(y.1900), as.matrix(y.1901), as.matrix(y.1902), as.matrix(y.1903), as.matrix(y.1904), as.matrix(y.1905), as.matrix(y.1906), as.matrix(y.1907), as.matrix(y.1908), as.matrix(y.1909), as.matrix(y.1910), as.matrix(y.1911), as.matrix(y.1912), as.matrix(y.1913))
 
+
+# stores years
+year.min.t1 = as.character(format(as.Date(min(cow.d.1$Time), "%Y", tz = "GMT"),"%Y"))
+year.max.t1 = as.character(format(as.Date(max(cow.d.1$Time), "%Y", tz = "GMT"),"%Y"))
 
 
 ################################################################################################################
@@ -423,6 +432,9 @@ y.2014$X <- gsub(' ', '.', y.2014$X);y.2014$X <- gsub('-', '.', y.2014$X);y.2014
 wm.2 = list(as.matrix(y.1955), as.matrix(y.1956), as.matrix(y.1957), as.matrix(y.1958), as.matrix(y.1959), as.matrix(y.1960), as.matrix(y.1961), as.matrix(y.1962), as.matrix(y.1963), as.matrix(y.1964), as.matrix(y.1965), as.matrix(y.1966), as.matrix(y.1967), as.matrix(y.1968), as.matrix(y.1969), as.matrix(y.1970), as.matrix(y.1971), as.matrix(y.1972), as.matrix(y.1973), as.matrix(y.1974), as.matrix(y.1975), as.matrix(y.1976), as.matrix(y.1977), as.matrix(y.1978), as.matrix(y.1979), as.matrix(y.1980), as.matrix(y.1981), as.matrix(y.1982), as.matrix(y.1983), as.matrix(y.1984), as.matrix(y.1985), as.matrix(y.1986), as.matrix(y.1987), as.matrix(y.1988), as.matrix(y.1989), as.matrix(y.1990), as.matrix(y.1991), as.matrix(y.1992), as.matrix(y.1993), as.matrix(y.1994), as.matrix(y.1995), as.matrix(y.1996), as.matrix(y.1997), as.matrix(y.1998), as.matrix(y.1999), as.matrix(y.2000), as.matrix(y.2001), as.matrix(y.2002), as.matrix(y.2003), as.matrix(y.2004), as.matrix(y.2005), as.matrix(y.2006), as.matrix(y.2007), as.matrix(y.2008), as.matrix(y.2009), as.matrix(y.2010), as.matrix(y.2011), as.matrix(y.2012), as.matrix(y.2013), as.matrix(y.2014)
             )
 
+# stores years
+year.min.t2 = as.character(format(as.Date(min(cow.d.2$Time), "%Y", tz = "GMT"),"%Y"))
+year.max.t2 = as.character(format(as.Date(max(cow.d.2$Time), "%Y", tz = "GMT"),"%Y"))
 
 ################################################################################################################
 ## Second Period: 1955 - 2014 (Big Countries)
@@ -646,6 +658,9 @@ FLag.1=2 # The number of lag for foreign variables in country-specific VAR
 lag.max.1=5 # The maximal number of lag for estimating country-specific VAR
 type.1="both" # Model specificaiton for VAR. As in package vars, we have four selection: "none","const","trend", "both".
 ic.1="AIC" # Information criteria for optimal lag.As in package vars, we have four selection: "AIC", "HQ", "SC", and "FPE".
+
+# determinsitic component for the paper
+type.1.paper = ifelse(type.1=="both", as.character("Trend and constant."), ifelse(type.1 == "trend", as.character("Trend."), ifelse(type.1 == "constant", "Constant.", NA )))
 
 options(scipen=9999999)
 mainOUTPUT.1 = GVECMest(
@@ -943,14 +958,13 @@ mainOUT.JO.1$JO.test
 ########################################################
 
 ## ---- gvar:model:second:period ----
-
 p_load(GVARX)
 
-p.2=2 # The number of lag for Xt matrix
-FLag.2=2 # The number of lag for foreign variables in country-specific VAR
+p.2=3 # The number of lag for Xt matrix
+FLag.2=3 # The number of lag for foreign variables in country-specific VAR
 lag.max.2=5 # The maximal number of lag for estimating country-specific VAR
-type.2="none" # Model specificaiton for VAR. As in package vars, we have four selection: "none","const","trend", "both".
-ic.2="AIC" # Information criteria for optimal lag.As in package vars, we have four selection: "AIC", "HQ", "SC", and "FPE".
+type.2="both" # Model specificaiton for VAR. As in package vars, we have four selection: "none","const","trend", "both".
+ic.2="SC" # Information criteria for optimal lag.As in package vars, we have four selection: "AIC", "HQ", "SC", and "FPE".
 
 options(scipen=9999999)
 mainOUTPUT.2 = GVECMest(
@@ -961,6 +975,9 @@ mainOUTPUT.2 = GVECMest(
         type = type.2,
         ic = ic.2,
         weight.matrix=wm.2)
+
+# determinsitic component for the paper
+type.2.paper = ifelse(type.2=="both", as.character("Trend and constant."), ifelse(type.2 == "trend", as.character("Trend."), ifelse(type.2 == "constant", "Constant.", NA )))
 
 # Storing Values
 
@@ -1839,6 +1856,9 @@ mainOUTPUT.2.b = GVECMest(
         type = type.2.b,
         ic = ic.2.b,
         weight.matrix=wm.2.b)
+
+# determinsitic component for the paper
+type.2.b.paper = ifelse(type.2.b=="both", as.character("Trend and constant."), ifelse(type.2.b == "trend", as.character("Trend."), ifelse(type.2.b == "constant", "Constant.", NA )))
 
 # Storing Values
 

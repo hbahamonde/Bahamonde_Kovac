@@ -4,13 +4,7 @@
 \subimport{/Users/hectorbahamonde/RU/Bibliografia_PoliSci/}{LaTeX_Paper_Packages_And_Style}
 
 % this below is to have endnotes at the end of the document.
-\let\footnote=\endnote 
-
-
-% DOCUMENT ID
-%\fancyhead[C]{Draft, please don't share without permission} % Custom header text
-
-
+%\let\footnote=\endnote 
 
 
 % TITLE SECTION
@@ -30,7 +24,7 @@
 \textsc{Name Lastname}
 \thanks{\href{mailto:hector.bahamonde@uoh.cl}{hector.bahamonde@uoh.cl}; 
 \href{http://www.hectorbahamonde.com}{\texttt{http://www.hectorbahamonde.com}}. \\
-We both thank Tsung-wu Ho.}}
+We thank...}}
 
 
 \affil[1]{Assistant Professor, O$'$Higgins University (Chile)}
@@ -155,29 +149,35 @@ Since we are substantively interested in weather ``guns'' \emph{cause} ``steel''
 In our case, the vector ${\mathbf x}_{it}$ contains country-year levels of ``military personnel,'' while vector ${\mathbf y}_{it}$ contains country-year levels of ``iron and steel production.'' Both variables were systematized by the Correlates of War Project, particularly, the National Material Capabilities dataset \parencite{Singer:1972aa}.\footnote{Version 5.0.} The dataset covers all countries in the world between 1816-2012. 
 
 
-Also, the vector of foreign variables is the single variable ``dyadic trade'' which measures bilateral trade flows between two countries. This variable was constructed by the same project but in the Trade dataset \parencite{Barbieri:2009aa,Barbieri:2016aa}\footnote{Version 4.0.} and was used to construct the weight matrix ${\mathbf W}$. The matrix is a square matrix which has all countries in both its columns and rows with zeros as diagonal elements. The matrix represents bilateral trade among two countries. Every country is weighted by the other remaining countries. As \autoref{eq:gvar:granger} shows, the GVAR methodology also considers $p$ lags for the ${\mathbf W}$ matrix. More formally, ${\mathbf W}$ contains $t$ sub-matrices (one matrix per year) with dimensions $k \; \times \; k$ for a total of ${\mathbf K}$ countries such that,
+Also, the vector of foreign variables is the single variable ``dyadic trade'' which measures bilateral trade flows between two countries. This variable was constructed by the same project but in the Trade dataset \parencite{Barbieri:2009aa,Barbieri:2016aa}\footnote{Version 4.0.} and was used to construct the weight matrix ${\mathbf W}$. The matrix is a square matrix which has all $K$ countries in both its columns and rows with zeros as diagonal elements. The matrix represents bilateral trade among two countries measured by the \emph{flow1} and the \emph{flow2} variables. The former measures imports from a country (\emph{importer1}) to another country (\emph{importer2}), and the latter measures the reverse dyad, i.e. imports from \emph{importer2} to \emph{importer1}. More formally, ${\mathbf W}$ contains $t$ sub-matrices (one sub-matrix per year) with dimensions $k \; \times \; k$ for a total of ${\mathbf K}$ countries such that,
+
 
 \begin{center}
 ${\mathbf W}_{t} = 
 \begin{bmatrix}
 	  			& {\mathbf i_{1}} & {\mathbf i_{2}} 	& {\mathbf i_{3}} 	& \hdots & {\mathbf i_{K}} 	\\ 
-{\mathbf i_{1}} &  0      			& | i_{1}-i_{2}| 	& | i_{1}-  i_{3}| & \hdots &  i_{1K} 			\\ 
-{\mathbf i_{2}} & | i_{2}-i_{1}| & 0      			& |i_{2}- i_{3}| 	& \hdots & i_{2K} 			\\ 
-{\mathbf i_{3}} & | i_{3}-i_{1}| & |i_{3}-i_{2}|  	&    0      		& \hdots & \vdots 			\\
+{\mathbf i_{1}} &  0      			&  f_{21} 	&  f_{31} & \hdots &  i_{K1} 			\\ 
+{\mathbf i_{2}} &  f_{12} & 0      			& f_{32} 	& \hdots & i_{K2} 			\\ 
+{\mathbf i_{3}} & f_{13} & f_{23}  	&    0      		& \hdots & i_{K3} 			\\
 \vdots			& \vdots			& \vdots			&    \vdots    	&\ddots	& \vdots 			\\
-{\mathbf i_{K}}     & \vdots			& \vdots			&    \vdots    &	\hdots	& i_{KK} 			\\
+{\mathbf i_{K}}     & f_{1K}			& f_{2K}			&    f_{3K}    &	\hdots	& i_{KK} 			\\
 \end{bmatrix}$
 \end{center}
 
-This means that the dynamics of every $i$ country-specific systems of equations are weighted $t$ times. Also note that bilateral trade is the geometric distance (i.e. the absolute value) between \todo{inflows outflows?}
-countries $i$ for all $K$ countries. Following the literature on Granger-causality, we focus our attention on the joint hypothesis \todo{f tests}
+Every $W_{t}$ matrix weights all $K$ country-specific Granger regressions described in \autoref{eq:gvar:granger}. Every $K$ system is weighted by the other $K-1$ countries. And as \autoref{eq:gvar:granger} shows, the GVAR methodology also considers $p$ lags of the ${\mathbf W}$ matrix. Following the literature on Granger-causality tests we focus our attention model-specific f-tests (one per country) which tests if all variables in the model are jointly statistically different from zero. Then null is that there is no Granger causality.
+
+
 
 \todo{add Deterministic variables to table (trend, constant)}
+
+Number of lags for endogenous variables \;=\; $\Sexpr{p.1}$. Number of lags for foreign variables \;=\; $\Sexpr{FLag.1}$. Max number of lags for estimating the country-specific VAR model \;=\; $\Sexpr{lag.max.1}$. Information criteria for optimal lag length \;=\; $\Sexpr{ic.1}$.
+
+Deterministic variables: $\Sexpr{type.1.paper}$.
 
 
 \subsection{Results}
 
-\begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, 1871-1913}
+\begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, $\Sexpr{year.min.t1}$-$\Sexpr{year.max.t1}$}
 \begin{center}
 \begin{tabular}{ccccccc|} 
 \cline{2-7}
@@ -217,7 +217,7 @@ countries $i$ for all $K$ countries. Following the literature on Granger-causali
 
 
 
-\begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, 1955-2014 (A)}
+\begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, $\Sexpr{year.min.t2}$-$\Sexpr{year.max.t2}$ (A)}
 \begin{center}
 \scalebox{0.6}{
 \begin{tabular}{ccccccc|} 
@@ -327,7 +327,7 @@ countries $i$ for all $K$ countries. Following the literature on Granger-causali
 
 
 
-\begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, 1955-2014 (B)}
+\begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, $\Sexpr{year.min.t2}$-$\Sexpr{year.max.t2}$ (B)}
 \begin{center}
 \scalebox{0.6}{
 \begin{tabular}{ccccccc|} 
