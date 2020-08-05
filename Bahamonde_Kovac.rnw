@@ -164,15 +164,11 @@ ${\mathbf W}_{t} =
 \end{bmatrix}$
 \end{center}
 
-Every $W_{t}$ matrix weights all $K$ country-specific Granger regressions described in \autoref{eq:gvar:granger}. Every $K$ system is weighted by the other $K-1$ countries. And as \autoref{eq:gvar:granger} shows, the GVAR methodology also considers $p$ lags of the ${\mathbf W}$ matrix. Following the literature on Granger-causality tests we focus our attention model-specific f-tests (one per country) which tests if all variables in the model are jointly statistically different from zero. Then null is that there is no Granger causality.
+Every $W_{t}$ matrix weights all $K$ country-specific Granger regressions described in \autoref{eq:gvar:granger}. Every $K$ system is weighted by the other $K-1$ countries. And as \autoref{eq:gvar:granger} shows, the GVAR methodology also considers $p$ lags of the ${\mathbf W}$ matrix. Following the literature on Granger-causality tests we focus our attention model-specific f-tests (one per country) which tests if all variables in the model are jointly significant. Then null is that there is no Granger causality.
 
 
 
-\todo{add Deterministic variables to table (trend, constant)}
 
-Number of lags for endogenous variables \;=\; $\Sexpr{p.1}$. Number of lags for foreign variables \;=\; $\Sexpr{FLag.1}$. Max number of lags for estimating the country-specific VAR model \;=\; $\Sexpr{lag.max.1}$. Information criteria for optimal lag length \;=\; $\Sexpr{ic.1}$.
-
-Deterministic variables: $\Sexpr{type.1.paper}$.
 
 
 \subsection{Results}
@@ -209,6 +205,8 @@ Deterministic variables: $\Sexpr{type.1.paper}$.
 \multicolumn{1}{|c|}{\multirow{2}{*}{United States}}   & steel $\rightarrow$ guns		& \Sexpr{p.1.United.States.ftest.1} 	& \Sexpr{p.1.United.States.pvalue.1}  	&  \Sexpr{(p.1.United.States.df.num.dem.1)}  &  	\Sexpr{p.1.United.States.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.United.States.lags}}}  \\ 
 \multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.United.States.ftest.2}  	& \Sexpr{p.1.United.States.pvalue.2} 	&  \Sexpr{(p.1.United.States.df.num.dem.2)}  &  	\Sexpr{p.1.United.States.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
 \end{tabular}
+\\
+{\raggedright \small Table shows country-specific Granger-causality F-tests. Last column shows number of domestic lags used per every country-specific Granger model. Number of lags for endogenous variables \;=\; $\Sexpr{p.1}$. Number of lags for foreign variables \;=\; $\Sexpr{FLag.1}$. Max number of lags for estimating the country-specific VAR model \;=\; $\Sexpr{lag.max.1}$. Information criteria for optimal lag length \;=\; $\text{\Sexpr{ic.1}}$. Deterministic variables: $\text{\Sexpr{type.1.paper}}$. \par}
 \end{center}
 \end{table}
 
@@ -320,6 +318,8 @@ Deterministic variables: $\Sexpr{type.1.paper}$.
 \multicolumn{1}{|c|}{}                              	& guns $\rightarrow$ steel		& \Sexpr{p.2.United.Kingdom.ftest.2} 		& \Sexpr{p.2.United.Kingdom.pvalue.2} & \Sexpr{(p.2.United.Kingdom.df.num.dem.2)} 		& 	\Sexpr{p.2.United.Kingdom.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
 \end{tabular}}
+\\
+{\raggedright \small Table shows country-specific Granger-causality F-tests. Last column shows number of domestic lags used per every country-specific Granger model. Number of lags for endogenous variables \;=\; $\Sexpr{p.2}$. Number of lags for foreign variables \;=\; $\Sexpr{FLag.2}$. Max number of lags for estimating the country-specific VAR model \;=\; $\Sexpr{lag.max.2}$. Information criteria for optimal lag length \;=\; $\text{\Sexpr{ic.2}}$. Deterministic variables: $\text{\Sexpr{type.2.paper}}$. \par}
 \end{center}
 \end{table}
 
@@ -329,7 +329,7 @@ Deterministic variables: $\Sexpr{type.1.paper}$.
 
 \begin{table}[H]\caption{Bivariate Gobal Granger Causality Tests of the World Political Economy, $\Sexpr{year.min.t2}$-$\Sexpr{year.max.t2}$ (B)}
 \begin{center}
-\scalebox{0.6}{
+\scalebox{1}{
 \begin{tabular}{ccccccc|} 
 \cline{2-7}
 \multicolumn{1}{c|}{}                               & \textbf{Granger Relationship} & \textbf{F-Test} 					& \textbf{P-Value} 				 & \textbf{DF} 								& 	\textbf{Adjusted R-sq} 		& {\bf Lags}  \\ \hline
@@ -343,6 +343,8 @@ Deterministic variables: $\Sexpr{type.1.paper}$.
 \multicolumn{1}{|c|}{}                              	& guns $\rightarrow$ steel		& \Sexpr{p.2.United.States.of.America.ftest.2} 		& \Sexpr{p.2.United.States.of.America.pvalue.2} & \Sexpr{(p.2.United.States.of.America.df.num.dem.2)} 		& 	\Sexpr{p.2.United.States.of.America.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
 \end{tabular}}
+\\
+{\raggedright \small Table shows country-specific Granger-causality F-tests. Last column shows number of domestic lags used per every country-specific Granger model. Number of lags for endogenous variables \;=\; $\Sexpr{p.2.b}$. Number of lags for foreign variables \;=\; $\Sexpr{FLag.2.b}$. Max number of lags for estimating the country-specific VAR model \;=\; $\Sexpr{lag.max.2.b}$. Information criteria for optimal lag length \;=\; $\text{\Sexpr{ic.2.b}}$. Deterministic variables: $\text{\Sexpr{type.2.b.paper}}$. \par}
 \end{center}
 \end{table}
 
