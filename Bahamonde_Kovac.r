@@ -2085,22 +2085,170 @@ p.2.United.States.of.America.rsq.1 = round(as.numeric(unlist(list(summary(mainOU
 p.2.United.States.of.America.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2.b$gvecm[[3]])))["varresult.United.States.of.America.irst.adj.r.squared"]), 3) 
 # Lags
 p.2.United.States.of.America.lags = mainOUTPUT.2.b$lagmatrix$lags[3] # Lag for the first country 
+## ----
+
+
+## ---- pvalues.plot:d ----
+# first period, all
+d.1 = data.frame(
+        PValue = as.vector(rbind(
+                # 1
+                pf(p.1.Austria.Hungary.f.1[1], df1=p.1.Austria.Hungary.f.1[2],df2=p.1.Austria.Hungary.f.1[3], lower.tail=FALSE), 
+                pf(p.1.Belgium.f.1[1], df1=p.1.Belgium.f.1[2],df2=p.1.Belgium.f.1[3], lower.tail=FALSE), 
+                pf(p.1.France.f.1[1], df1=p.1.France.f.1[2],df2=p.1.France.f.1[3], lower.tail=FALSE), 
+                pf(p.1.Germany.f.1[1], df1=p.1.Germany.f.1[2],df2=p.1.Germany.f.1[3], lower.tail=FALSE), 
+                pf(p.1.Italy.f.1[1], df1=p.1.Italy.f.1[2],df2=p.1.Italy.f.1[3], lower.tail=FALSE), 
+                pf(p.1.Russia.f.1[1], df1=p.1.Russia.f.1[2],df2=p.1.Russia.f.1[3], lower.tail=FALSE), 
+                pf(p.1.Spain.f.1[1], df1=p.1.Spain.f.1[2],df2=p.1.Spain.f.1[3], lower.tail=FALSE), 
+                pf(p.1.United.Kingdom.f.1[1], df1=p.1.United.Kingdom.f.1[2],df2=p.1.United.Kingdom.f.1[3], lower.tail=FALSE), 
+                pf(p.1.United.States.f.1[1], df1=p.1.United.States.f.1[2],df2=p.1.United.States.f.1[3], lower.tail=FALSE), 
+                # 2
+                pf(p.1.Austria.Hungary.f.2[1], df1=p.1.Austria.Hungary.f.2[2],df2=p.1.Austria.Hungary.f.2[3], lower.tail=FALSE),
+                pf(p.1.Belgium.f.2[1], df1=p.1.Belgium.f.2[2],df2=p.1.Belgium.f.2[3], lower.tail=FALSE),
+                pf(p.1.France.f.2[1], df1=p.1.France.f.2[2],df2=p.1.France.f.2[3], lower.tail=FALSE),
+                pf(p.1.Germany.f.2[1], df1=p.1.Germany.f.2[2],df2=p.1.Germany.f.2[3], lower.tail=FALSE),
+                pf(p.1.Italy.f.2[1], df1=p.1.Italy.f.2[2],df2=p.1.Italy.f.2[3], lower.tail=FALSE),
+                pf(p.1.Russia.f.2[1], df1=p.1.Russia.f.2[2],df2=p.1.Russia.f.2[3], lower.tail=FALSE),
+                pf(p.1.Spain.f.2[1], df1=p.1.Spain.f.2[2],df2=p.1.Spain.f.2[3], lower.tail=FALSE),
+                pf(p.1.United.Kingdom.f.2[1], df1=p.1.United.Kingdom.f.2[2],df2=p.1.United.Kingdom.f.2[3], lower.tail=FALSE),
+                pf(p.1.United.States.f.2[1], df1=p.1.United.States.f.2[2],df2=p.1.United.States.f.2[3], lower.tail=FALSE)
+                )
+                ),
+        Country = rep(c(unique(cow.d.1$ID)), 2),
+        Years = rep(paste(as.character(year.min.t1), as.character(year.max.t1), sep = "-"), length(rep(c(unique(cow.d.1$ID)), 2))),
+        Relationship = as.vector(c(rep("Steel -> Guns", length(unique(cow.d.1$ID))), rep("Guns -> Steel", length(unique(cow.d.1$ID)))))
+        )
 
 
 
-p.2.b.pvalues.guns = round(mean(p.2.China.pvalue.1, p.2.Russia.pvalue.1, p.2.United.States.pvalue.1), 2)
-p.2.b.pvalues.steel = round(mean(p.2.China.pvalue.2, p.2.Russia.pvalue.2, p.2.United.States.pvalue.2), 2)
+# Second Period, Small countries
+d.2 = data.frame(
+        PValue = as.vector(rbind(
+                # 1
+                pf(p.2.Argentina.f.1[1], df1=p.2.Argentina.f.1[2],df2=p.2.Argentina.f.1[3], lower.tail=FALSE),
+                pf(p.2.Australia.f.1[1], df1=p.2.Australia.f.1[2],df2=p.2.Australia.f.1[3], lower.tail=FALSE),
+                pf(p.2.Austria.f.1[1], df1=p.2.Austria.f.1[2],df2=p.2.Austria.f.1[3], lower.tail=FALSE),
+                pf(p.2.Belgium.f.1[1], df1=p.2.Belgium.f.1[2],df2=p.2.Belgium.f.1[3], lower.tail=FALSE),
+                pf(p.2.Brazil.f.1[1], df1=p.2.Brazil.f.1[2],df2=p.2.Brazil.f.1[3], lower.tail=FALSE),
+                pf(p.2.Bulgaria.f.1[1], df1=p.2.Bulgaria.f.1[2],df2=p.2.Bulgaria.f.1[3], lower.tail=FALSE),
+                pf(p.2.Canada.f.1[1], df1=p.2.Canada.f.1[2],df2=p.2.Canada.f.1[3], lower.tail=FALSE),
+                pf(p.2.Chile.f.1[1], df1=p.2.Chile.f.1[2],df2=p.2.Chile.f.1[3], lower.tail=FALSE),
+                pf(p.2.Colombia.f.1[1], df1=p.2.Colombia.f.1[2],df2=p.2.Colombia.f.1[3], lower.tail=FALSE),
+                pf(p.2.Egypt.f.1[1], df1=p.2.Egypt.f.1[2],df2=p.2.Egypt.f.1[3], lower.tail=FALSE),
+                pf(p.2.Finland.f.1[1], df1=p.2.Finland.f.1[2],df2=p.2.Finland.f.1[3], lower.tail=FALSE),
+                pf(p.2.France.f.1[1], df1=p.2.France.f.1[2],df2=p.2.France.f.1[3], lower.tail=FALSE),
+                pf(p.2.Greece.f.1[1], df1=p.2.Greece.f.1[2],df2=p.2.Greece.f.1[3], lower.tail=FALSE),
+                pf(p.2.Hungary.f.1[1], df1=p.2.Hungary.f.1[2],df2=p.2.Hungary.f.1[3], lower.tail=FALSE),
+                pf(p.2.India.f.1[1], df1=p.2.India.f.1[2],df2=p.2.India.f.1[3], lower.tail=FALSE),
+                pf(p.2.Israel.f.1[1], df1=p.2.Israel.f.1[2],df2=p.2.Israel.f.1[3], lower.tail=FALSE),
+                pf(p.2.Italy.f.1[1], df1=p.2.Italy.f.1[2],df2=p.2.Italy.f.1[3], lower.tail=FALSE),
+                pf(p.2.Japan.f.1[1], df1=p.2.Japan.f.1[2],df2=p.2.Japan.f.1[3], lower.tail=FALSE),
+                pf(p.2.Luxembourg.f.1[1], df1=p.2.Luxembourg.f.1[2],df2=p.2.Luxembourg.f.1[3], lower.tail=FALSE),
+                pf(p.2.Mexico.f.1[1], df1=p.2.Mexico.f.1[2],df2=p.2.Mexico.f.1[3], lower.tail=FALSE),
+                pf(p.2.Netherlands.f.1[1], df1=p.2.Netherlands.f.1[2],df2=p.2.Netherlands.f.1[3], lower.tail=FALSE),
+                pf(p.2.North.Korea.f.1[1], df1=p.2.North.Korea.f.1[2],df2=p.2.North.Korea.f.1[3], lower.tail=FALSE),
+                pf(p.2.Norway.f.1[1], df1=p.2.Norway.f.1[2],df2=p.2.Norway.f.1[3], lower.tail=FALSE),
+                pf(p.2.Poland.f.1[1], df1=p.2.Poland.f.1[2],df2=p.2.Poland.f.1[3], lower.tail=FALSE),
+                pf(p.2.Portugal.f.1[1], df1=p.2.Portugal.f.1[2],df2=p.2.Portugal.f.1[3], lower.tail=FALSE),
+                pf(p.2.Romania.f.1[1], df1=p.2.Romania.f.1[2],df2=p.2.Romania.f.1[3], lower.tail=FALSE),
+                pf(p.2.South.Africa.f.1[1], df1=p.2.South.Africa.f.1[2],df2=p.2.South.Africa.f.1[3], lower.tail=FALSE),
+                pf(p.2.South.Korea.f.1[1], df1=p.2.South.Korea.f.1[2],df2=p.2.South.Korea.f.1[3], lower.tail=FALSE),
+                pf(p.2.Spain.f.1[1], df1=p.2.Spain.f.1[2],df2=p.2.Spain.f.1[3], lower.tail=FALSE),
+                pf(p.2.Taiwan.f.1[1], df1=p.2.Taiwan.f.1[2],df2=p.2.Taiwan.f.1[3], lower.tail=FALSE),
+                pf(p.2.Turkey.f.1[1], df1=p.2.Turkey.f.1[2],df2=p.2.Turkey.f.1[3], lower.tail=FALSE),
+                pf(p.2.United.Kingdom.f.1[1], df1=p.2.United.Kingdom.f.1[2],df2=p.2.United.Kingdom.f.1[3], lower.tail=FALSE),
+                # 2
+                pf(p.2.Argentina.f.2[1], df1=p.2.Argentina.f.2[2],df2=p.2.Argentina.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Australia.f.2[1], df1=p.2.Australia.f.2[2],df2=p.2.Australia.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Austria.f.2[1], df1=p.2.Austria.f.2[2],df2=p.2.Austria.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Belgium.f.2[1], df1=p.2.Belgium.f.2[2],df2=p.2.Belgium.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Brazil.f.2[1], df1=p.2.Brazil.f.2[2],df2=p.2.Brazil.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Bulgaria.f.2[1], df1=p.2.Bulgaria.f.2[2],df2=p.2.Bulgaria.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Canada.f.2[1], df1=p.2.Canada.f.2[2],df2=p.2.Canada.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Chile.f.2[1], df1=p.2.Chile.f.2[2],df2=p.2.Chile.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Colombia.f.2[1], df1=p.2.Colombia.f.2[2],df2=p.2.Colombia.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Egypt.f.2[1], df1=p.2.Egypt.f.2[2],df2=p.2.Egypt.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Finland.f.2[1], df1=p.2.Finland.f.2[2],df2=p.2.Finland.f.2[3], lower.tail=FALSE), 
+                pf(p.2.France.f.2[1], df1=p.2.France.f.2[2],df2=p.2.France.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Greece.f.2[1], df1=p.2.Greece.f.2[2],df2=p.2.Greece.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Hungary.f.2[1], df1=p.2.Hungary.f.2[2],df2=p.2.Hungary.f.2[3], lower.tail=FALSE), 
+                pf(p.2.India.f.2[1], df1=p.2.India.f.2[2],df2=p.2.India.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Israel.f.2[1], df1=p.2.Israel.f.2[2],df2=p.2.Israel.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Italy.f.2[1], df1=p.2.Italy.f.2[2],df2=p.2.Italy.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Japan.f.2[1], df1=p.2.Japan.f.2[2],df2=p.2.Japan.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Luxembourg.f.2[1], df1=p.2.Luxembourg.f.2[2],df2=p.2.Luxembourg.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Mexico.f.2[1], df1=p.2.Mexico.f.2[2],df2=p.2.Mexico.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Netherlands.f.2[1], df1=p.2.Netherlands.f.2[2],df2=p.2.Netherlands.f.2[3], lower.tail=FALSE), 
+                pf(p.2.North.Korea.f.2[1], df1=p.2.North.Korea.f.2[2],df2=p.2.North.Korea.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Norway.f.2[1], df1=p.2.Norway.f.2[2],df2=p.2.Norway.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Poland.f.2[1], df1=p.2.Poland.f.2[2],df2=p.2.Poland.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Portugal.f.2[1], df1=p.2.Portugal.f.2[2],df2=p.2.Portugal.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Romania.f.2[1], df1=p.2.Romania.f.2[2],df2=p.2.Romania.f.2[3], lower.tail=FALSE), 
+                pf(p.2.South.Africa.f.2[1], df1=p.2.South.Africa.f.2[2],df2=p.2.South.Africa.f.2[3], lower.tail=FALSE), 
+                pf(p.2.South.Korea.f.2[1], df1=p.2.South.Korea.f.2[2],df2=p.2.South.Korea.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Spain.f.2[1], df1=p.2.Spain.f.2[2],df2=p.2.Spain.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Taiwan.f.2[1], df1=p.2.Taiwan.f.2[2],df2=p.2.Taiwan.f.2[3], lower.tail=FALSE), 
+                pf(p.2.Turkey.f.2[1], df1=p.2.Turkey.f.2[2],df2=p.2.Turkey.f.2[3], lower.tail=FALSE), 
+                pf(p.2.United.Kingdom.f.2[1], df1=p.2.United.Kingdom.f.2[2],df2=p.2.United.Kingdom.f.2[3], lower.tail=FALSE))),
+        Country = rep(c(unique(cow.d.2$ID)), 2),
+        Years = rep(paste(as.character(year.min.t2), as.character(year.max.t2), sep = "-"), length(rep(c(unique(cow.d.2$ID)), 2))),
+        Relationship = as.vector(c(rep("Steel -> Guns", length(unique(cow.d.2$ID))), rep("Guns -> Steel", length(unique(cow.d.2$ID)))))
+        )
+
+# Second Period, Big countries
+d.3 = data.frame(
+        PValue = as.vector(rbind(
+                pf(p.2.China.f.1[1], df1=p.2.China.f.1[2],df2=p.2.China.f.1[3], lower.tail=FALSE), # p.2.China.pvalue.1
+                pf(p.2.Russia.f.1[1], df1=p.2.Russia.f.1[2],df2=p.2.Russia.f.1[3], lower.tail=FALSE), # p.2.Russia.pvalue.1
+                pf(p.2.United.States.f.1[1], df1=p.2.United.States.f.1[2],df2=p.2.United.States.f.1[3], lower.tail=FALSE), # p.2.United.States.pvalue.1
+                pf(p.2.China.f.2[1], df1=p.2.China.f.2[2],df2=p.2.China.f.2[3], lower.tail=FALSE), # p.2.China.pvalue.2
+                pf(p.2.Russia.f.2[1], df1=p.2.Russia.f.2[2],df2=p.2.Russia.f.2[3], lower.tail=FALSE), # p.2.Russia.pvalue.2
+                pf(p.2.United.States.f.2[1], df1=p.2.United.States.f.2[2],df2=p.2.United.States.f.2[3], lower.tail=FALSE) # p.2.United.States.pvalue.2
+                )),
+        Country = rep(c(unique(cow.d.2.B$ID)), 2),
+        Years = rep(paste(as.character(year.min.t2), as.character(year.max.t2), sep = "-"), length(rep(c(unique(cow.d.2.B$ID)), 2))),
+        Relationship = as.vector(c(rep("Steel -> Guns", length(unique(cow.d.2.B$ID))), rep("Guns -> Steel", length(unique(cow.d.2.B$ID)))))
+)
+
+d = rbind(d.1, d.2, d.3)
+
+p_load(ggplot2,hrbrthemes, viridis)
+p.value.plot = ggplot(d, aes(x = Country, y = PValue)) +
+        geom_point(aes(colour = PValue), size = 5,  alpha = 0.6) + #shape = Relationship # size = PValue
+        #geom_text(hjust = 1, size = 2) +
+        scale_size(range = c(5,10)) +
+        theme_bw() + # theme_ipsum
+        scale_color_gradient(low = "green", high = "red",limits=c(0, 0.1)) +
+        facet_grid(Relationship ~ Years) +
+        theme(legend.position="bottom", legend.direction="horizontal")  +
+        theme(axis.text.y = element_text(size=7), 
+              axis.text.x = element_text(size=7,angle = 90), 
+              axis.title.y = element_text(size=7), 
+              axis.title.x = element_text(size=7), 
+              legend.text=element_text(size=9), 
+              legend.title=element_text(size=9),
+              plot.title = element_text(size=3),
+              #legend.position="bottom",
+              legend.key.size = unit(0.9,"cm"),
+              legend.spacing.x = unit(0.7, 'cm'),
+              strip.text.x = element_text(size = 7))
+
+# percentages
+percent.steel.causes.guns.t1 = round(as.numeric(table(d.1$PValue[d.1$Relationship == "Steel -> Guns"] <= 0.1)[2]*100/length(unique(d.1$Country))),0)
+percent.steel.causes.guns.t2 = round(as.numeric(table(d.2$PValue[d.2$Relationship == "Steel -> Guns"] <= 0.1)[2]*100/length(unique(d.2$Country))),0)
+percent.steel.causes.guns.t2.b = round(as.numeric(table(d.3$PValue[d.3$Relationship == "Steel -> Guns"] <= 0.1)[2]*100/length(unique(d.3$Country))),0)
 
 ## ----
 
-summary(mainOUTPUT.2$gvecm[[1]]) # China 
-summary(mainOUTPUT.2$gvecm[[2]]) # Russia 
-summary(mainOUTPUT.2$gvecm[[3]]) # United.States.of.America 
-
-
-
-
-
+## ---- pvalues.plot ----
+p.value.plot
+p.value.plot.note <- paste(
+        paste("{\\bf P-Values of the Country-specific Granger-causality F-Tests,", paste(paste(year.min.t1, "-",paste(year.max.t2, ".", sep=""), sep=""), "}", sep = ""), sep=" "),
+        "\\\\\\hspace{\\textwidth}", 
+        paste("{\\bf Note}: Plot shows country-specific p-values of the Granger-causality f-tests obtained when fitting \\autoref{eq:gvar:granger} (detailed results shown in \\autoref{t:1}, \\autoref{t:2} and \\autoref{t:2b}). The plot shows that during the", paste(paste(year.min.t1, "-",paste(year.max.t1, sep=""), sep=""), sep = ""), "period, in" ,
+              paste(percent.steel.causes.guns.t1, "\\%", sep = ""), "of the countries, steel Granger-caused guns. This porcentage changes to", paste(percent.steel.causes.guns.t2, "\\%", sep = ""), "and to", paste(percent.steel.causes.guns.t2.b, "\\%", sep = ""), "for the hegemonic countries during the", paste(paste(year.min.t2, "-",paste(year.max.t2, sep=""), sep=""), sep = ""), "period."),
+        "\n")
+## ----
 
 
 
