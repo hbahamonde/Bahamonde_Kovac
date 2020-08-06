@@ -674,35 +674,69 @@ mainOUTPUT.1 = GVECMest(
         weight.matrix=wm.1)
 
 # Store values
-# summary(mainOUTPUT.1$gvecm[[9]])
 
-## P-values
-p.1.Austria.Hungary.pvalue.1 = round(0.01748, 3)
-p.1.Austria.Hungary.pvalue.2 = round(0.2383, 3)
+# Austria.Hungary
+p.1.Austria.Hungary.f.1=summary(mainOUTPUT.1$gvecm[[1]])$varresult$Austria.Hungary.milper$fstatistic
+p.1.Austria.Hungary.pvalue.1=round(pf(p.1.Austria.Hungary.f.1[1], df1=p.1.Austria.Hungary.f.1[2],df2=p.1.Austria.Hungary.f.1[3], lower.tail=FALSE), 2)
 
-p.1.Belgium.pvalue.1 = round(0.001246 , 3)
-p.1.Belgium.pvalue.2 = round(0.0167, 3)
+p.1.Austria.Hungary.f.2=summary(mainOUTPUT.1$gvecm[[1]])$varresult$Austria.Hungary.irst$fstatistic
+p.1.Austria.Hungary.pvalue.2=round(pf(p.1.Austria.Hungary.f.2[1], df1=p.1.Austria.Hungary.f.2[2],df2=p.1.Austria.Hungary.f.2[3], lower.tail=FALSE), 2)
 
-p.1.France.pvalue.1 = round(0.257, 3)
-p.1.France.pvalue.2 = round(0.09469, 3)
+# Belgium
+p.1.Belgium.f.1=summary(mainOUTPUT.1$gvecm[[2]])$varresult$Belgium.milper$fstatistic
+p.1.Belgium.pvalue.1=round(pf(p.1.Belgium.f.1[1], df1=p.1.Belgium.f.1[2],df2=p.1.Belgium.f.1[3], lower.tail=FALSE), 2)
 
-p.1.Germany.pvalue.1 = round(0.003133 , 3)
-p.1.Germany.pvalue.2 = round(0.02249, 3)
+p.1.Belgium.f.2=summary(mainOUTPUT.1$gvecm[[2]])$varresult$Belgium.irst$fstatistic
+p.1.Belgium.pvalue.2=round(pf(p.1.Belgium.f.2[1], df1=p.1.Belgium.f.2[2],df2=p.1.Belgium.f.2[3], lower.tail=FALSE), 2)
 
-p.1.Italy.pvalue.1 = round(0.003514, 3)
-p.1.Italy.pvalue.2 = round(0.000335, 3)
+# France
+p.1.France.f.1=summary(mainOUTPUT.1$gvecm[[3]])$varresult$France.milper$fstatistic
+p.1.France.pvalue.1=round(pf(p.1.France.f.1[1], df1=p.1.France.f.1[2],df2=p.1.France.f.1[3], lower.tail=FALSE), 2)
 
-p.1.Russia.pvalue.1 = round(0.000002816, 3)
-p.1.Russia.pvalue.2 = round(0.0339, 3)
+p.1.France.f.2=summary(mainOUTPUT.1$gvecm[[3]])$varresult$France.irst$fstatistic
+p.1.France.pvalue.2=round(pf(p.1.France.f.2[1], df1=p.1.France.f.2[2],df2=p.1.France.f.2[3], lower.tail=FALSE), 2)
 
-p.1.Spain.pvalue.1 = round(0.1263, 3)
-p.1.Spain.pvalue.2 = round(0.2142, 3)
+# Germany
+p.1.Germany.f.1=summary(mainOUTPUT.1$gvecm[[4]])$varresult$Germany.milper$fstatistic
+p.1.Germany.pvalue.1=round(pf(p.1.Germany.f.1[1], df1=p.1.Germany.f.1[2],df2=p.1.Germany.f.1[3], lower.tail=FALSE), 2)
 
-p.1.United.Kingdom.pvalue.1 = round(0.02331, 3)
-p.1.United.Kingdom.pvalue.2 = round(0.2845, 3)
+p.1.Germany.f.2=summary(mainOUTPUT.1$gvecm[[4]])$varresult$Germany.irst$fstatistic
+p.1.Germany.pvalue.2=round(pf(p.1.Germany.f.2[1], df1=p.1.Germany.f.2[2],df2=p.1.Germany.f.2[3], lower.tail=FALSE), 2)
 
-p.1.United.States.pvalue.1 = round(0.04415, 3)
-p.1.United.States.pvalue.2 = round(0.000161, 3)
+# Italy
+p.1.Italy.f.1=summary(mainOUTPUT.1$gvecm[[5]])$varresult$Italy.milper$fstatistic
+p.1.Italy.pvalue.1=round(pf(p.1.Italy.f.1[1], df1=p.1.Italy.f.1[2],df2=p.1.Italy.f.1[3], lower.tail=FALSE), 2)
+
+p.1.Italy.f.2=summary(mainOUTPUT.1$gvecm[[5]])$varresult$Italy.irst$fstatistic
+p.1.Italy.pvalue.2=round(pf(p.1.Italy.f.2[1], df1=p.1.Italy.f.2[2],df2=p.1.Italy.f.2[3], lower.tail=FALSE), 2)
+
+# Russia
+p.1.Russia.f.1=summary(mainOUTPUT.1$gvecm[[6]])$varresult$Russia.milper$fstatistic
+p.1.Russia.pvalue.1=round(pf(p.1.Russia.f.1[1], df1=p.1.Russia.f.1[2],df2=p.1.Russia.f.1[3], lower.tail=FALSE), 2)
+
+p.1.Russia.f.2=summary(mainOUTPUT.1$gvecm[[6]])$varresult$Russia.irst$fstatistic
+p.1.Russia.pvalue.2=round(pf(p.1.Russia.f.2[1], df1=p.1.Russia.f.2[2],df2=p.1.Russia.f.2[3], lower.tail=FALSE), 2)
+
+# Spain
+p.1.Spain.f.1=summary(mainOUTPUT.1$gvecm[[7]])$varresult$Spain.milper$fstatistic
+p.1.Spain.pvalue.1=round(pf(p.1.Spain.f.1[1], df1=p.1.Spain.f.1[2],df2=p.1.Spain.f.1[3], lower.tail=FALSE), 2)
+
+p.1.Spain.f.2=summary(mainOUTPUT.1$gvecm[[7]])$varresult$Spain.irst$fstatistic
+p.1.Spain.pvalue.2=round(pf(p.1.Spain.f.2[1], df1=p.1.Spain.f.2[2],df2=p.1.Spain.f.2[3], lower.tail=FALSE), 2)
+
+# United.Kingdom
+p.1.United.Kingdom.f.1=summary(mainOUTPUT.1$gvecm[[8]])$varresult$United.Kingdom.milper$fstatistic
+p.1.United.Kingdom.pvalue.1=round(pf(p.1.United.Kingdom.f.1[1], df1=p.1.United.Kingdom.f.1[2],df2=p.1.United.Kingdom.f.1[3], lower.tail=FALSE), 2)
+
+p.1.United.Kingdom.f.2=summary(mainOUTPUT.1$gvecm[[8]])$varresult$United.Kingdom.irst$fstatistic
+p.1.United.Kingdom.pvalue.2=round(pf(p.1.United.Kingdom.f.2[1], df1=p.1.United.Kingdom.f.2[2],df2=p.1.United.Kingdom.f.2[3], lower.tail=FALSE), 2)
+
+# United.States.of.America
+p.1.United.States.f.1=summary(mainOUTPUT.1$gvecm[[9]])$varresult$United.States.of.America.milper$fstatistic
+p.1.United.States.pvalue.1=round(pf(p.1.United.States.f.1[1], df1=p.1.United.States.f.1[2],df2=p.1.United.States.f.1[3], lower.tail=FALSE), 2)
+
+p.1.United.States.f.2=summary(mainOUTPUT.1$gvecm[[9]])$varresult$United.States.of.America.irst$fstatistic
+p.1.United.States.pvalue.2=round(pf(p.1.United.States.f.2[1], df1=p.1.United.States.f.2[2],df2=p.1.United.States.f.2[3], lower.tail=FALSE), 2)
 
 
 ### Austria.Hungary
@@ -981,135 +1015,235 @@ mainOUTPUT.2 = GVECMest(
 type.2.paper = as.character(ifelse(type.2=="both", as.character("Trend and constant"), ifelse(type.2 == "trend", as.character("Trend"), ifelse(type.2 == "constant", "Constant", NA ))))
 
 # Storing Values
-
 ## P-values
-# summary(mainOUTPUT.2$gvecm[[1]]) # Argentina 
-p.2.Argentina.pvalue.1 = round(0.568, 3)
-p.2.Argentina.pvalue.2 = round(0.0001175, 3)
 
-# summary(mainOUTPUT.2$gvecm[[2]]) # Australia 
-p.2.Australia.pvalue.1 = round(0.6493, 3)
-p.2.Australia.pvalue.2 = round(0.00001349, 3)
 
-# summary(mainOUTPUT.2$gvecm[[3]]) # Austria 
-p.2.Austria.pvalue.1 = round(0.7261, 3)
-p.2.Austria.pvalue.2 = round(0.02396, 3)
+# Argentina
+p.2.Argentina.f.1=summary(mainOUTPUT.2$gvecm[[1]])$varresult$Argentina.milper$fstatistic
+p.2.Argentina.pvalue.1=round(pf(p.2.Argentina.f.1[1], df1=p.2.Argentina.f.1[2],df2=p.2.Argentina.f.1[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[4]]) # Belgium 
-p.2.Belgium.pvalue.1 = round(0.002088, 3)
-p.2.Belgium.pvalue.2 = round(0.0049, 3)
+p.2.Argentina.f.2=summary(mainOUTPUT.2$gvecm[[1]])$varresult$Argentina.irst$fstatistic
+p.2.Argentina.pvalue.2=round(pf(p.2.Argentina.f.2[1], df1=p.2.Argentina.f.2[2],df2=p.2.Argentina.f.2[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[5]]) # Brazil 
-p.2.Brazil.pvalue.1 = round(0.9103, 3)
-p.2.Brazil.pvalue.2 = round(0.0000004244, 3)
+# Australia
+p.2.Australia.f.1=summary(mainOUTPUT.2$gvecm[[2]])$varresult$Australia.milper$fstatistic
+p.2.Australia.pvalue.1=round(pf(p.2.Australia.f.1[1], df1=p.2.Australia.f.1[2],df2=p.2.Australia.f.1[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[6]]) # Bulgaria 
-p.2.Bulgaria.pvalue.1 = round(0.5803, 3)
-p.2.Bulgaria.pvalue.2 = round(0.00001425, 3)
+p.2.Australia.f.2=summary(mainOUTPUT.2$gvecm[[2]])$varresult$Australia.irst$fstatistic
+p.2.Australia.pvalue.2=round(pf(p.2.Australia.f.2[1], df1=p.2.Australia.f.2[2],df2=p.2.Australia.f.2[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[7]]) # Canada 
-p.2.Canada.pvalue.1 = round(0.2202, 3)
-p.2.Canada.pvalue.2 = round(0.01886, 3)
+# Austria
+p.2.Austria.f.1=summary(mainOUTPUT.2$gvecm[[3]])$varresult$Austria.milper$fstatistic
+p.2.Austria.pvalue.1=round(pf(p.2.Austria.f.1[1], df1=p.2.Austria.f.1[2],df2=p.2.Austria.f.1[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[8]]) # Chile 
-p.2.Chile.pvalue.1 = round(0.9693, 3)
-p.2.Chile.pvalue.2 = round(0.00001052, 3)
+p.2.Austria.f.2=summary(mainOUTPUT.2$gvecm[[3]])$varresult$Austria.irst$fstatistic
+p.2.Austria.pvalue.2=round(pf(p.2.Austria.f.2[1], df1=p.2.Austria.f.2[2],df2=p.2.Austria.f.2[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[9]]) # Colombia 
-p.2.Colombia.pvalue.1 = round(0.0008545, 3)
-p.2.Colombia.pvalue.2 = round(0.004422, 3)
+# Belgium
+p.2.Belgium.f.1=summary(mainOUTPUT.2$gvecm[[4]])$varresult$Belgium.milper$fstatistic
+p.2.Belgium.pvalue.1=round(pf(p.2.Belgium.f.1[1], df1=p.2.Belgium.f.1[2],df2=p.2.Belgium.f.1[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[10]]) # Egypt 
-p.2.Egypt.pvalue.1 = round(0.9546, 3)
-p.2.Egypt.pvalue.2 = round(0.0133, 3)
+p.2.Belgium.f.2=summary(mainOUTPUT.2$gvecm[[4]])$varresult$Belgium.irst$fstatistic
+p.2.Belgium.pvalue.2=round(pf(p.2.Belgium.f.2[1], df1=p.2.Belgium.f.2[2],df2=p.2.Belgium.f.2[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[11]]) # Finland 
-p.2.Finland.pvalue.1 = round(0.0932, 3)
-p.2.Finland.pvalue.2 = round(0.0000006223, 3)
 
-# summary(mainOUTPUT.2$gvecm[[12]]) # France 
-p.2.France.pvalue.1 = round(0.3429, 3)
-p.2.France.pvalue.2 = round(0.1157, 3)
+# Brazil
+p.2.Brazil.f.1=summary(mainOUTPUT.2$gvecm[[5]])$varresult$Brazil.milper$fstatistic
+p.2.Brazil.pvalue.1=round(pf(p.2.Brazil.f.1[1], df1=p.2.Brazil.f.1[2],df2=p.2.Brazil.f.1[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[13]]) # Greece 
-p.2.Greece.pvalue.1 = round(0.02343, 3)
-p.2.Greece.pvalue.2 = round(0.006374, 3)
+p.2.Brazil.f.2=summary(mainOUTPUT.2$gvecm[[5]])$varresult$Brazil.irst$fstatistic
+p.2.Brazil.pvalue.2=round(pf(p.2.Brazil.f.2[1], df1=p.2.Brazil.f.2[2],df2=p.2.Brazil.f.2[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[14]]) # Hungary 
-p.2.Hungary.pvalue.1 = round(0.01072, 3)
-p.2.Hungary.pvalue.2 = round(0.001666, 3)
+# Bulgaria
+p.2.Bulgaria.f.1=summary(mainOUTPUT.2$gvecm[[6]])$varresult$Bulgaria.milper$fstatistic
+p.2.Bulgaria.pvalue.1=round(pf(p.2.Bulgaria.f.1[1], df1=p.2.Bulgaria.f.1[2],df2=p.2.Bulgaria.f.1[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[15]]) # India 
-p.2.India.pvalue.1 = round(0.8474, 3)
-p.2.India.pvalue.2 = round(0.00000006172, 3)
+p.2.Bulgaria.f.2=summary(mainOUTPUT.2$gvecm[[6]])$varresult$Bulgaria.irst$fstatistic
+p.2.Bulgaria.pvalue.2=round(pf(p.2.Bulgaria.f.2[1], df1=p.2.Bulgaria.f.2[2],df2=p.2.Bulgaria.f.2[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[16]]) # Israel 
-p.2.Israel.pvalue.1 = round(0.6225, 3)
-p.2.Israel.pvalue.2 = round(0.588, 3)
+# Canada
+p.2.Canada.f.1=summary(mainOUTPUT.2$gvecm[[7]])$varresult$Canada.milper$fstatistic
+p.2.Canada.pvalue.1=round(pf(p.2.Canada.f.1[1], df1=p.2.Canada.f.1[2],df2=p.2.Canada.f.1[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[17]]) # Italy 
-p.2.Italy.pvalue.1 = round(0.1688, 3)
-p.2.Italy.pvalue.2 = round(0.0005577, 3)
+p.2.Canada.f.2=summary(mainOUTPUT.2$gvecm[[7]])$varresult$Canada.irst$fstatistic
+p.2.Canada.pvalue.2=round(pf(p.2.Canada.f.2[1], df1=p.2.Canada.f.2[2],df2=p.2.Canada.f.2[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[18]]) # Japan 
-p.2.Japan.pvalue.1 = round(0.01465, 3)
-p.2.Japan.pvalue.2 = round(0.0005064, 3)
+# Chile
+p.2.Chile.f.1=summary(mainOUTPUT.2$gvecm[[8]])$varresult$Chile.milper$fstatistic
+p.2.Chile.pvalue.1=round(pf(p.2.Chile.f.1[1], df1=p.2.Chile.f.1[2],df2=p.2.Chile.f.1[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[19]]) # Luxembourg 
-p.2.Luxembourg.pvalue.1 = round(0.003431, 3)
-p.2.Luxembourg.pvalue.2 = round(0.541, 3)
+p.2.Chile.f.2=summary(mainOUTPUT.2$gvecm[[8]])$varresult$Chile.irst$fstatistic
+p.2.Chile.pvalue.2=round(pf(p.2.Chile.f.2[1], df1=p.2.Chile.f.2[2],df2=p.2.Chile.f.2[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[20]]) # Mexico 
-p.2.Mexico.pvalue.1 = round(0.2625, 3)
-p.2.Mexico.pvalue.2 = round(0.0000008429, 3)
+# Colombia
+p.2.Colombia.f.1=summary(mainOUTPUT.2$gvecm[[9]])$varresult$Colombia.milper$fstatistic
+p.2.Colombia.pvalue.1=round(pf(p.2.Colombia.f.1[1], df1=p.2.Colombia.f.1[2],df2=p.2.Colombia.f.1[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[21]]) # Netherlands 
-p.2.Netherlands.pvalue.1 = round(0.001368, 3)
-p.2.Netherlands.pvalue.2 = round(0.001453, 3)
+p.2.Colombia.f.2=summary(mainOUTPUT.2$gvecm[[9]])$varresult$Colombia.irst$fstatistic
+p.2.Colombia.pvalue.2=round(pf(p.2.Colombia.f.2[1], df1=p.2.Colombia.f.2[2],df2=p.2.Colombia.f.2[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[22]]) # North.Korea 
-p.2.North.Korea.pvalue.1 = round(0.006032, 3)
-p.2.North.Korea.pvalue.2 = round(0.01334, 3)
+# Egypt
+p.2.Egypt.f.1=summary(mainOUTPUT.2$gvecm[[10]])$varresult$Egypt.milper$fstatistic
+p.2.Egypt.pvalue.1=round(pf(p.2.Egypt.f.1[1], df1=p.2.Egypt.f.1[2],df2=p.2.Egypt.f.1[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[23]]) # Norway 
-p.2.Norway.pvalue.1 = round(0.1784, 3)
-p.2.Norway.pvalue.2 = round(0.7044, 3)
+p.2.Egypt.f.2=summary(mainOUTPUT.2$gvecm[[10]])$varresult$Egypt.irst$fstatistic
+p.2.Egypt.pvalue.2=round(pf(p.2.Egypt.f.2[1], df1=p.2.Egypt.f.2[2],df2=p.2.Egypt.f.2[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[24]]) # Poland 
-p.2.Poland.pvalue.1 = round(0.734, 3)
-p.2.Poland.pvalue.2 = round(0.005378, 3)
+# Finland
+p.2.Finland.f.1=summary(mainOUTPUT.2$gvecm[[11]])$varresult$Finland.milper$fstatistic
+p.2.Finland.pvalue.1=round(pf(p.2.Finland.f.1[1], df1=p.2.Finland.f.1[2],df2=p.2.Finland.f.1[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[25]]) # Portugal 
-p.2.Portugal.pvalue.1 = round(0.4042, 3)
-p.2.Portugal.pvalue.2 = round(0.004184, 3)
+p.2.Finland.f.2=summary(mainOUTPUT.2$gvecm[[11]])$varresult$Finland.irst$fstatistic
+p.2.Finland.pvalue.2=round(pf(p.2.Finland.f.2[1], df1=p.2.Finland.f.2[2],df2=p.2.Finland.f.2[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[26]]) # Romania 
-p.2.Romania.pvalue.1 = round(0.4644, 3)
-p.2.Romania.pvalue.2 = round(0.0007191, 3)
+# France
+p.2.France.f.1=summary(mainOUTPUT.2$gvecm[[12]])$varresult$France.milper$fstatistic
+p.2.France.pvalue.1=round(pf(p.2.France.f.1[1], df1=p.2.France.f.1[2],df2=p.2.France.f.1[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[27]]) # South.Africa 
-p.2.South.Africa.pvalue.1 = round(0.9124, 3)
-p.2.South.Africa.pvalue.2 = round(0.547, 3)
+p.2.France.f.2=summary(mainOUTPUT.2$gvecm[[12]])$varresult$France.irst$fstatistic
+p.2.France.pvalue.2=round(pf(p.2.France.f.2[1], df1=p.2.France.f.2[2],df2=p.2.France.f.2[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[28]]) # South.Korea 
-p.2.South.Korea.pvalue.1 = round(0.9238, 3)
-p.2.South.Korea.pvalue.2 = round(0.000003068, 3)
+# Greece
+p.2.Greece.f.1=summary(mainOUTPUT.2$gvecm[[13]])$varresult$Greece.milper$fstatistic
+p.2.Greece.pvalue.1=round(pf(p.2.Greece.f.1[1], df1=p.2.Greece.f.1[2],df2=p.2.Greece.f.1[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[29]]) # Spain 
-p.2.Spain.pvalue.1 = round(0.0005994, 3)
-p.2.Spain.pvalue.2 = round(0.002212, 3)
+p.2.Greece.f.2=summary(mainOUTPUT.2$gvecm[[13]])$varresult$Greece.irst$fstatistic
+p.2.Greece.pvalue.2=round(pf(p.2.Greece.f.2[1], df1=p.2.Greece.f.2[2],df2=p.2.Greece.f.2[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[30]]) # Taiwan 
-p.2.Taiwan.pvalue.1 = round(0.06379, 3)
-p.2.Taiwan.pvalue.2 = round(0.00002633, 3)
+# Hungary
+p.2.Hungary.f.1=summary(mainOUTPUT.2$gvecm[[14]])$varresult$Hungary.milper$fstatistic
+p.2.Hungary.pvalue.1=round(pf(p.2.Hungary.f.1[1], df1=p.2.Hungary.f.1[2],df2=p.2.Hungary.f.1[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[31]]) # Turkey 
-p.2.Turkey.pvalue.1 = round(0.1567, 3)
-p.2.Turkey.pvalue.2 = round(0.00000000000092, 3)
+p.2.Hungary.f.2=summary(mainOUTPUT.2$gvecm[[14]])$varresult$Hungary.irst$fstatistic
+p.2.Hungary.pvalue.2=round(pf(p.2.Hungary.f.2[1], df1=p.2.Hungary.f.2[2],df2=p.2.Hungary.f.2[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[32]]) # United.Kingdom 
-p.2.United.Kingdom.pvalue.1 = round(0.00000000001582, 3)
-p.2.United.Kingdom.pvalue.2 = round(0.4036, 3)
+# India
+p.2.India.f.1=summary(mainOUTPUT.2$gvecm[[15]])$varresult$India.milper$fstatistic
+p.2.India.pvalue.1=round(pf(p.2.India.f.1[1], df1=p.2.India.f.1[2],df2=p.2.India.f.1[3], lower.tail=FALSE), 2)
+
+p.2.India.f.2=summary(mainOUTPUT.2$gvecm[[15]])$varresult$India.irst$fstatistic
+p.2.India.pvalue.2=round(pf(p.2.India.f.2[1], df1=p.2.India.f.2[2],df2=p.2.India.f.2[3], lower.tail=FALSE), 2)
+
+# Israel
+p.2.Israel.f.1=summary(mainOUTPUT.2$gvecm[[16]])$varresult$Israel.milper$fstatistic
+p.2.Israel.pvalue.1=round(pf(p.2.Israel.f.1[1], df1=p.2.Israel.f.1[2],df2=p.2.Israel.f.1[3], lower.tail=FALSE), 2)
+
+p.2.Israel.f.2=summary(mainOUTPUT.2$gvecm[[16]])$varresult$Israel.irst$fstatistic
+p.2.Israel.pvalue.2=round(pf(p.2.Israel.f.2[1], df1=p.2.Israel.f.2[2],df2=p.2.Israel.f.2[3], lower.tail=FALSE), 2)
+
+# Italy
+p.2.Italy.f.1=summary(mainOUTPUT.2$gvecm[[17]])$varresult$Italy.milper$fstatistic
+p.2.Italy.pvalue.1=round(pf(p.2.Italy.f.1[1], df1=p.2.Italy.f.1[2],df2=p.2.Italy.f.1[3], lower.tail=FALSE), 2)
+
+p.2.Italy.f.2=summary(mainOUTPUT.2$gvecm[[17]])$varresult$Italy.irst$fstatistic
+p.2.Italy.pvalue.2=round(pf(p.2.Italy.f.2[1], df1=p.2.Italy.f.2[2],df2=p.2.Italy.f.2[3], lower.tail=FALSE), 2)
+
+# Japan
+p.2.Japan.f.1=summary(mainOUTPUT.2$gvecm[[18]])$varresult$Japan.milper$fstatistic
+p.2.Japan.pvalue.1=round(pf(p.2.Japan.f.1[1], df1=p.2.Japan.f.1[2],df2=p.2.Japan.f.1[3], lower.tail=FALSE), 2)
+
+p.2.Japan.f.2=summary(mainOUTPUT.2$gvecm[[18]])$varresult$Japan.irst$fstatistic
+p.2.Japan.pvalue.2=round(pf(p.2.Japan.f.2[1], df1=p.2.Japan.f.2[2],df2=p.2.Japan.f.2[3], lower.tail=FALSE), 2)
+
+# Luxembourg
+p.2.Luxembourg.f.1=summary(mainOUTPUT.2$gvecm[[19]])$varresult$Luxembourg.milper$fstatistic
+p.2.Luxembourg.pvalue.1=round(pf(p.2.Luxembourg.f.1[1], df1=p.2.Luxembourg.f.1[2],df2=p.2.Luxembourg.f.1[3], lower.tail=FALSE), 2)
+
+p.2.Luxembourg.f.2=summary(mainOUTPUT.2$gvecm[[19]])$varresult$Luxembourg.irst$fstatistic
+p.2.Luxembourg.pvalue.2=round(pf(p.2.Luxembourg.f.2[1], df1=p.2.Luxembourg.f.2[2],df2=p.2.Luxembourg.f.2[3], lower.tail=FALSE), 2)
+
+# Mexico
+p.2.Mexico.f.1=summary(mainOUTPUT.2$gvecm[[20]])$varresult$Mexico.milper$fstatistic
+p.2.Mexico.pvalue.1=round(pf(p.2.Mexico.f.1[1], df1=p.2.Mexico.f.1[2],df2=p.2.Mexico.f.1[3], lower.tail=FALSE), 2)
+
+p.2.Mexico.f.2=summary(mainOUTPUT.2$gvecm[[20]])$varresult$Mexico.irst$fstatistic
+p.2.Mexico.pvalue.2=round(pf(p.2.Mexico.f.2[1], df1=p.2.Mexico.f.2[2],df2=p.2.Mexico.f.2[3], lower.tail=FALSE), 2)
+
+# Netherlands
+p.2.Netherlands.f.1=summary(mainOUTPUT.2$gvecm[[21]])$varresult$Netherlands.milper$fstatistic
+p.2.Netherlands.pvalue.1=round(pf(p.2.Netherlands.f.1[1], df1=p.2.Netherlands.f.1[2],df2=p.2.Netherlands.f.1[3], lower.tail=FALSE), 2)
+
+p.2.Netherlands.f.2=summary(mainOUTPUT.2$gvecm[[21]])$varresult$Netherlands.irst$fstatistic
+p.2.Netherlands.pvalue.2=round(pf(p.2.Netherlands.f.2[1], df1=p.2.Netherlands.f.2[2],df2=p.2.Netherlands.f.2[3], lower.tail=FALSE), 2)
+
+# North.Korea
+p.2.North.Korea.f.1=summary(mainOUTPUT.2$gvecm[[22]])$varresult$North.Korea.milper$fstatistic
+p.2.North.Korea.pvalue.1=round(pf(p.2.North.Korea.f.1[1], df1=p.2.North.Korea.f.1[2],df2=p.2.North.Korea.f.1[3], lower.tail=FALSE), 2)
+
+p.2.North.Korea.f.2=summary(mainOUTPUT.2$gvecm[[22]])$varresult$North.Korea.irst$fstatistic
+p.2.North.Korea.pvalue.2=round(pf(p.2.North.Korea.f.2[1], df1=p.2.North.Korea.f.2[2],df2=p.2.North.Korea.f.2[3], lower.tail=FALSE), 2)
+
+# Norway
+p.2.Norway.f.1=summary(mainOUTPUT.2$gvecm[[23]])$varresult$Norway.milper$fstatistic
+p.2.Norway.pvalue.1=round(pf(p.2.Norway.f.1[1], df1=p.2.Norway.f.1[2],df2=p.2.Norway.f.1[3], lower.tail=FALSE), 2)
+
+p.2.Norway.f.2=summary(mainOUTPUT.2$gvecm[[23]])$varresult$Norway.irst$fstatistic
+p.2.Norway.pvalue.2=round(pf(p.2.Norway.f.2[1], df1=p.2.Norway.f.2[2],df2=p.2.Norway.f.2[3], lower.tail=FALSE), 2)
+
+# Poland
+p.2.Poland.f.1=summary(mainOUTPUT.2$gvecm[[24]])$varresult$Poland.milper$fstatistic
+p.2.Poland.pvalue.1=round(pf(p.2.Poland.f.1[1], df1=p.2.Poland.f.1[2],df2=p.2.Poland.f.1[3], lower.tail=FALSE), 2)
+
+p.2.Poland.f.2=summary(mainOUTPUT.2$gvecm[[24]])$varresult$Poland.irst$fstatistic
+p.2.Poland.pvalue.2=round(pf(p.2.Poland.f.2[1], df1=p.2.Poland.f.2[2],df2=p.2.Poland.f.2[3], lower.tail=FALSE), 2)
+
+# Portugal
+p.2.Portugal.f.1=summary(mainOUTPUT.2$gvecm[[25]])$varresult$Portugal.milper$fstatistic
+p.2.Portugal.pvalue.1=round(pf(p.2.Portugal.f.1[1], df1=p.2.Portugal.f.1[2],df2=p.2.Portugal.f.1[3], lower.tail=FALSE), 2)
+
+p.2.Portugal.f.2=summary(mainOUTPUT.2$gvecm[[25]])$varresult$Portugal.irst$fstatistic
+p.2.Portugal.pvalue.2=round(pf(p.2.Portugal.f.2[1], df1=p.2.Portugal.f.2[2],df2=p.2.Portugal.f.2[3], lower.tail=FALSE), 2)
+
+# Romania
+p.2.Romania.f.1=summary(mainOUTPUT.2$gvecm[[26]])$varresult$Romania.milper$fstatistic
+p.2.Romania.pvalue.1=round(pf(p.2.Romania.f.1[1], df1=p.2.Romania.f.1[2],df2=p.2.Romania.f.1[3], lower.tail=FALSE), 2)
+
+p.2.Romania.f.2=summary(mainOUTPUT.2$gvecm[[26]])$varresult$Romania.irst$fstatistic
+p.2.Romania.pvalue.2=round(pf(p.2.Romania.f.2[1], df1=p.2.Romania.f.2[2],df2=p.2.Romania.f.2[3], lower.tail=FALSE), 2)
+
+
+# South.Africa
+p.2.South.Africa.f.1=summary(mainOUTPUT.2$gvecm[[27]])$varresult$South.Africa.milper$fstatistic
+p.2.South.Africa.pvalue.1=round(pf(p.2.South.Africa.f.1[1], df1=p.2.South.Africa.f.1[2],df2=p.2.South.Africa.f.1[3], lower.tail=FALSE), 2)
+
+p.2.South.Africa.f.2=summary(mainOUTPUT.2$gvecm[[27]])$varresult$South.Africa.irst$fstatistic
+p.2.South.Africa.pvalue.2=round(pf(p.2.South.Africa.f.2[1], df1=p.2.South.Africa.f.2[2],df2=p.2.South.Africa.f.2[3], lower.tail=FALSE), 2)
+
+# South.Korea
+p.2.South.Korea.f.1=summary(mainOUTPUT.2$gvecm[[28]])$varresult$South.Korea.milper$fstatistic
+p.2.South.Korea.pvalue.1=round(pf(p.2.South.Korea.f.1[1], df1=p.2.South.Korea.f.1[2],df2=p.2.South.Korea.f.1[3], lower.tail=FALSE), 2)
+
+p.2.South.Korea.f.2=summary(mainOUTPUT.2$gvecm[[28]])$varresult$South.Korea.irst$fstatistic
+p.2.South.Korea.pvalue.2=round(pf(p.2.South.Korea.f.2[1], df1=p.2.South.Korea.f.2[2],df2=p.2.South.Korea.f.2[3], lower.tail=FALSE), 2)
+
+# Spain
+p.2.Spain.f.1=summary(mainOUTPUT.2$gvecm[[29]])$varresult$Spain.milper$fstatistic
+p.2.Spain.pvalue.1=round(pf(p.2.Spain.f.1[1], df1=p.2.Spain.f.1[2],df2=p.2.Spain.f.1[3], lower.tail=FALSE), 2)
+
+p.2.Spain.f.2=summary(mainOUTPUT.2$gvecm[[29]])$varresult$Spain.irst$fstatistic
+p.2.Spain.pvalue.2=round(pf(p.2.Spain.f.2[1], df1=p.2.Spain.f.2[2],df2=p.2.Spain.f.2[3], lower.tail=FALSE), 2)
+
+# Taiwan
+p.2.Taiwan.f.1=summary(mainOUTPUT.2$gvecm[[30]])$varresult$Taiwan.milper$fstatistic
+p.2.Taiwan.pvalue.1=round(pf(p.2.Taiwan.f.1[1], df1=p.2.Taiwan.f.1[2],df2=p.2.Taiwan.f.1[3], lower.tail=FALSE), 2)
+
+p.2.Taiwan.f.2=summary(mainOUTPUT.2$gvecm[[30]])$varresult$Taiwan.irst$fstatistic
+p.2.Taiwan.pvalue.2=round(pf(p.2.Taiwan.f.2[1], df1=p.2.Taiwan.f.2[2],df2=p.2.Taiwan.f.2[3], lower.tail=FALSE), 2)
+
+# Turkey
+p.2.Turkey.f.1=summary(mainOUTPUT.2$gvecm[[31]])$varresult$Turkey.milper$fstatistic
+p.2.Turkey.pvalue.1=round(pf(p.2.Turkey.f.1[1], df1=p.2.Turkey.f.1[2],df2=p.2.Turkey.f.1[3], lower.tail=FALSE), 2)
+
+p.2.Turkey.f.2=summary(mainOUTPUT.2$gvecm[[31]])$varresult$Turkey.irst$fstatistic
+p.2.Turkey.pvalue.2=round(pf(p.2.Turkey.f.2[1], df1=p.2.Turkey.f.2[2],df2=p.2.Turkey.f.2[3], lower.tail=FALSE), 2)
+
+# United.Kingdom
+p.2.United.Kingdom.f.1=summary(mainOUTPUT.2$gvecm[[32]])$varresult$United.Kingdom.milper$fstatistic
+p.2.United.Kingdom.pvalue.1=round(pf(p.2.United.Kingdom.f.1[1], df1=p.2.United.Kingdom.f.1[2],df2=p.2.United.Kingdom.f.1[3], lower.tail=FALSE), 2)
+
+p.2.United.Kingdom.f.2=summary(mainOUTPUT.2$gvecm[[32]])$varresult$United.Kingdom.irst$fstatistic
+p.2.United.Kingdom.pvalue.2=round(pf(p.2.United.Kingdom.f.2[1], df1=p.2.United.Kingdom.f.2[2],df2=p.2.United.Kingdom.f.2[3], lower.tail=FALSE), 2)
+
 
 
 ### Argentina
@@ -1863,17 +1997,27 @@ type.2.b.paper = as.character(ifelse(type.2.b=="both", as.character("Trend and c
 
 # Storing Values
 
-# summary(mainOUTPUT.2$gvecm[[9]]) # China 
-p.2.China.pvalue.1 = round(0.9962, 3)
-p.2.China.pvalue.2 = round(0.00000000000000022, 3)
+# China
+p.2.China.f.1=summary(mainOUTPUT.2.b$gvecm[[1]])$varresult$China.milper$fstatistic
+p.2.China.pvalue.1=round(pf(p.2.China.f.1[1], df1=p.2.China.f.1[2],df2=p.2.China.f.1[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[28]]) # Russia 
-p.2.Russia.pvalue.1 = round(0.003474, 3)
-p.2.Russia.pvalue.2 = round(0.03106, 3)
+p.2.China.f.2=summary(mainOUTPUT.2.b$gvecm[[1]])$varresult$China.irst$fstatistic
+p.2.China.pvalue.2=round(pf(p.2.China.f.2[1], df1=p.2.China.f.2[2],df2=p.2.China.f.2[3], lower.tail=FALSE), 2)
 
-# summary(mainOUTPUT.2$gvecm[[35]]) # United.States.of.America 
-p.2.United.States.of.America.pvalue.1 = round(0.1001, 3)
-p.2.United.States.of.America.pvalue.2 = round(0.06328, 3)
+# Russia
+p.2.Russia.f.1=summary(mainOUTPUT.2.b$gvecm[[2]])$varresult$Russia.milper$fstatistic
+p.2.Russia.pvalue.1=round(pf(p.2.Russia.f.1[1], df1=p.2.Russia.f.1[2],df2=p.2.Russia.f.1[3], lower.tail=FALSE), 2)
+
+p.2.Russia.f.2=summary(mainOUTPUT.2.b$gvecm[[2]])$varresult$Russia.irst$fstatistic
+p.2.Russia.pvalue.2=round(pf(p.2.Russia.f.2[1], df1=p.2.Russia.f.2[2],df2=p.2.Russia.f.2[3], lower.tail=FALSE), 2)
+
+
+# United.States.of.America
+p.2.United.States.f.1=summary(mainOUTPUT.2.b$gvecm[[3]])$varresult$United.States.of.America.milper$fstatistic
+p.2.United.States.pvalue.1=round(pf(p.2.United.States.f.1[1], df1=p.2.United.States.f.1[2],df2=p.2.United.States.f.1[3], lower.tail=FALSE), 2)
+
+p.2.United.States.f.2=summary(mainOUTPUT.2.b$gvecm[[3]])$varresult$United.States.of.America.irst$fstatistic
+p.2.United.States.pvalue.2=round(pf(p.2.United.States.f.2[1], df1=p.2.United.States.f.2[2],df2=p.2.United.States.f.2[3], lower.tail=FALSE), 2)
 
 
 ### China
@@ -1941,6 +2085,11 @@ p.2.United.States.of.America.rsq.1 = round(as.numeric(unlist(list(summary(mainOU
 p.2.United.States.of.America.rsq.2 = round(as.numeric(unlist(list(summary(mainOUTPUT.2.b$gvecm[[3]])))["varresult.United.States.of.America.irst.adj.r.squared"]), 3) 
 # Lags
 p.2.United.States.of.America.lags = mainOUTPUT.2.b$lagmatrix$lags[3] # Lag for the first country 
+
+
+
+p.2.b.pvalues.guns = round(mean(p.2.China.pvalue.1, p.2.Russia.pvalue.1, p.2.United.States.pvalue.1), 2)
+p.2.b.pvalues.steel = round(mean(p.2.China.pvalue.2, p.2.Russia.pvalue.2, p.2.United.States.pvalue.2), 2)
 
 ## ----
 
@@ -2060,17 +2209,95 @@ test$selection # "selection" = Vector with the optimal lag number according to e
 #### Plots
 ################################################################################################################
 
-p_load(ggfortify)
+## ---- plot:d ----
 
-ggplot2::autoplot(ts( cbind(log(cow.d.1$milper),log(cow.d.1$irst)), start = c(1871,1), frequency = 1 ),
-         facets = FALSE, ts.colour=cow.d.1$ID)
+# Plot t1
+p_load(reshape)
+cow.d.1.log = cow.d.1
+names(cow.d.1.log)[3] <- "Guns"
+names(cow.d.1.log)[4] <- "Steel"
+cow.d.1.log$Guns = log(cow.d.1.log$Guns)
+cow.d.1.log$Steel = log(cow.d.1.log$Steel)
+
+
+cow.d.1.log <- melt(cow.d.1.log, id.vars = c("ID", "Time"))
+
+p_load(ggplot2)
+cow.d.1.plot = ggplot(cow.d.1.log,
+                      aes(x = Time, y = value, colour = variable)) +
+        geom_line() +
+        facet_wrap(~ ID, ncol = 3, scales="free_y") +
+        xlab("Year") + 
+        ylab("National Steel and Guns Production (log)") +
+        theme_bw() +
+        theme(legend.position="bottom", legend.direction="horizontal")  +
+        theme(axis.text.y = element_text(size=3), 
+              axis.text.x = element_text(size=3), 
+              axis.title.y = element_text(size=6), 
+              axis.title.x = element_text(size=6), 
+              legend.text=element_text(size=6), 
+              legend.title=element_text(size=0),
+              plot.title = element_text(size=3),
+              legend.position="bottom",
+              legend.key.size = unit(0.5,"cm"),
+              legend.spacing.x = unit(0.3, 'cm'),
+              strip.text.x = element_text(size = 3))
+
+# Plot t2
+p_load(reshape)
+cow.d.2.log = cow.d.2
+names(cow.d.2.log)[3] <- "Guns"
+names(cow.d.2.log)[4] <- "Steel"
+cow.d.2.log$Guns = log(cow.d.2.log$Guns)
+cow.d.2.log$Steel = log(cow.d.2.log$Steel)
+
+
+cow.d.2.log <- melt(cow.d.2.log, id.vars = c("ID", "Time"))
+
+p_load(ggplot2)
+cow.d.2.plot = ggplot(cow.d.2.log,
+                      aes(x = Time, y = value, colour = variable)) +
+        geom_line() +
+        facet_wrap(~ ID, ncol = 4, scales="free_y") +
+        xlab("Year") + 
+        ylab("National Steel and Guns Production (log)") +
+        theme_bw() +
+        theme(legend.position="bottom", legend.direction="horizontal")  +
+        theme(axis.text.y = element_text(size=3), 
+              axis.text.x = element_text(size=3), 
+              axis.title.y = element_text(size=6), 
+              axis.title.x = element_text(size=6), 
+              legend.text=element_text(size=6), 
+              legend.title=element_text(size=0),
+              plot.title = element_text(size=3),
+              legend.position="bottom",
+              legend.key.size = unit(0.5,"cm"),
+              legend.spacing.x = unit(0.3, 'cm'),
+              strip.text.x = element_text(size = 4))
+## ----
+
+
+## ---- plot:t:1 ----
+cow.d.1.plot
+cow.d.1.plot.note <- paste(
+        paste("{\\bf National Steel and Guns Production (log),", paste(paste(year.min.t1, "-",paste(year.max.t1, ".", sep=""), sep=""), "}", sep = ""), sep=" "),
+        "\\\\\\hspace{\\textwidth}", 
+        "{\\bf Note}: Variables are ``milper'' and ``irst.'' Both  were obtained from \\textcite{Singer:1972aa}. ",
+        "\n")
+## ----
 
 
 
 
-cbind(cow.d.1$milper,cow.d.1$irst)
-cbind(rep("Guns", length(cow.d.1$milper)), rep("Steel", length(cow.d.1$irst)))
 
+## ---- plot:t:2 ----
+cow.d.2.plot
+cow.d.2.plot.note <- paste(
+        paste("{\\bf National Steel and Guns Production (log),", paste(paste(year.min.t2, "-",paste(year.max.t2, ".", sep=""), sep=""), "}", sep = ""), sep=" "),
+        "\\\\\\hspace{\\textwidth}", 
+        "{\\bf Note}: Variables are ``milper'' and ``irst.'' Both  were obtained from \\textcite{Singer:1972aa}. ",
+        "\n")
+## ----
 
 
 ################

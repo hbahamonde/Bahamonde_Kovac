@@ -109,6 +109,10 @@ read_chunk('/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/Bahamonde_Kovac.R
 
 @
 
+<<plot:d, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=FALSE, eval=TRUE>>=
+
+@
+
 
 % end knitr stuff
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -148,6 +152,19 @@ Since we are substantively interested in weather ``guns'' \emph{cause} ``steel''
 
 In our case, the vector ${\mathbf x}_{it}$ contains country-year levels of ``military personnel,'' while vector ${\mathbf y}_{it}$ contains country-year levels of ``iron and steel production.'' Both variables were systematized by the Correlates of War Project, particularly, the National Material Capabilities dataset \parencite{Singer:1972aa}.\footnote{Version 5.0.} The dataset covers all countries in the world between 1816-2012. 
 
+\clearpage
+<<plot:t:1, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=cow.d.1.plot.note, fig.align='center', fig.width=6, fig.height=6,dpi=1000,cache = FALSE, include = TRUE>>=
+
+
+@
+
+\clearpage
+\afterpage{%
+<<plot:t:2, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap=cow.d.2.plot.note, fig.align='center', fig.width=6, fig.height=8,dpi=1000,cache = FALSE, include = TRUE>>=
+
+
+@
+}
 
 Also, the vector of foreign variables is the single variable ``dyadic trade'' which measures bilateral trade flows between two countries. This variable was constructed by the same project but in the Trade dataset \parencite{Barbieri:2009aa,Barbieri:2016aa}\footnote{Version 4.0.} and was used to construct the weight matrix ${\mathbf W}$. The matrix is a square matrix which has all $K$ countries in both its columns and rows with zeros as diagonal elements. The matrix represents bilateral trade among two countries measured by the \emph{flow1} and the \emph{flow2} variables. The former measures imports from a country (\emph{importer1}) to another country (\emph{importer2}), and the latter measures the reverse dyad, i.e. imports from \emph{importer2} to \emph{importer1}. More formally, ${\mathbf W}$ contains $t$ sub-matrices (one sub-matrix per year) with dimensions $k \; \times \; k$ for a total of ${\mathbf K}$ countries such that,
 
@@ -339,8 +356,8 @@ Every $W_{t}$ matrix weights all $K$ country-specific Granger regressions descri
 \multicolumn{1}{|c|}{\multirow{2}{*}{Russia}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Russia.ftest.1} 		& \Sexpr{p.2.Russia.pvalue.1} & \Sexpr{(p.2.Russia.df.num.dem.1)} 		& 	\Sexpr{p.2.Russia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Russia.lags}}} \\ 
 \multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Russia.ftest.2} 		& \Sexpr{p.2.Russia.pvalue.2} & \Sexpr{(p.2.Russia.df.num.dem.2)} 		& 	\Sexpr{p.2.Russia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{United States}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.United.States.of.America.ftest.1} 		& \Sexpr{p.2.United.States.of.America.pvalue.1} & \Sexpr{(p.2.United.States.of.America.df.num.dem.1)} 		& 	\Sexpr{p.2.United.States.of.America.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.United.States.of.America.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              	& guns $\rightarrow$ steel		& \Sexpr{p.2.United.States.of.America.ftest.2} 		& \Sexpr{p.2.United.States.of.America.pvalue.2} & \Sexpr{(p.2.United.States.of.America.df.num.dem.2)} 		& 	\Sexpr{p.2.United.States.of.America.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{United States}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.United.States.of.America.ftest.1} 		& \Sexpr{p.2.United.States.pvalue.1} & \Sexpr{(p.2.United.States.of.America.df.num.dem.1)} 		& 	\Sexpr{p.2.United.States.of.America.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.United.States.of.America.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              	& guns $\rightarrow$ steel		& \Sexpr{p.2.United.States.of.America.ftest.2} 		& \Sexpr{p.2.United.States.pvalue.2} & \Sexpr{(p.2.United.States.of.America.df.num.dem.2)} 		& 	\Sexpr{p.2.United.States.of.America.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
 \end{tabular}}
 \\
