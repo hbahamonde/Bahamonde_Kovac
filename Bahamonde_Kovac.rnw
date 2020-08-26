@@ -1,15 +1,17 @@
 \documentclass[onesided]{article}
 \usepackage{import}
 
-\subimport{/Users/hectorbahamonde/RU/Bibliografia_PoliSci/}{LaTeX_Paper_Packages_And_Style}
+
+\subimport{/Users/hectorbahamonde/Bibliografia_PoliSci/}{LaTeX_Paper_Packages_And_Style}
+\addbibresource{/Users/hectorbahamonde/research/Bahamonde_Kovac/Bahamonde_Kovac.bib} 
 
 % this below is to have endnotes at the end of the document.
-%\let\footnote=\endnote 
+\let\footnote=\endnote 
 
 
 % TITLE SECTION
 
-\title{\vspace{-15mm}\fontsize{18pt}{7pt}\selectfont\textbf{\input{/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/title.txt}\unskip}} % Article title
+\title{\vspace{-15mm}\fontsize{18pt}{7pt}\selectfont\textbf{\input{/Users/hectorbahamonde/research/Bahamonde_Kovac/title.txt}\unskip}} % Article title
 
 
 \author[1]{
@@ -21,14 +23,14 @@
 
 \author[2]{
 
-\textsc{Name Lastname}
-\thanks{\href{mailto:hector.bahamonde@uoh.cl}{hector.bahamonde@uoh.cl}; 
-\href{http://www.hectorbahamonde.com}{\texttt{http://www.hectorbahamonde.com}}. \\
-We thank...}}
+\textsc{Igor Kovac}
+\thanks{\href{mailto:kovacir@mail.uc.edu}{kovacir@mail.uc.edu}; 
+\href{https://igorkovac.com}{\texttt{https://igorkovac.com}}. \\
+We thank Tsung-wu Ho and Cristobal Quininao for their suggestions.}}
 
 
 \affil[1]{Assistant Professor, O$'$Higgins University (Chile)}
-\affil[2]{Position, Institution}
+\affil[2]{PhD Candidate in Political Science, University of Cincinnati}
 
 
 \date{\today}
@@ -54,15 +56,15 @@ We thank...}}
 % ABSTRACT
 %----------------------------------------------------------------------------------------
 \begin{abstract}
-\input{/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/abstract.txt}\unskip
+\input{/Users/hectorbahamonde/research/Bahamonde_Kovac/abstract.txt}\unskip
 \end{abstract}
 
 
-\keywords{time series, IPE, IR}
+\keywords{time series; IPE; GVAR; IR}
 \\
 
 \begin{center}
-{\bf \input{/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/status.txt}\unskip} \\
+\input{/Users/hectorbahamonde/research/Bahamonde_Kovac/status.txt}\unskip
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -77,43 +79,43 @@ We thank...}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % begin knitr stuff
-<<setup, include=FALSE, cache=FALSE>>=
+<<setup, include=FALSE, cache=TRUE>>=
 if (!require("pacman")) install.packages("pacman"); library(pacman)
 p_load(knitr)
 
 @
 
 <<echo=FALSE, cache= F, warning = FALSE, message = F, eval=TRUE>>=
-read_chunk('/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/Bahamonde_Kovac.R')
+read_chunk('/Users/hectorbahamonde/research/Bahamonde_Kovac/Bahamonde_Kovac.R')
 
 @
 
 
-<<abstract, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=FALSE, eval=TRUE>>=
+<<abstract, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
 
 @
 
-<<data:loadings, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=FALSE, eval=TRUE>>=
+<<data:loadings, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
 
 @
 
-<<gvar:model:first:period, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=FALSE, eval=TRUE>>=
+<<gvar:model:first:period, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
 
 @
 
-<<gvar:model:second:period, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=FALSE, eval=TRUE>>=
+<<gvar:model:second:period, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
 
 @
 
-<<gvar:model:second:period:b, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=FALSE, eval=TRUE>>=
+<<gvar:model:second:period:b, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
 
 @
 
-<<plot:d, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=FALSE, eval=TRUE>>=
+<<plot:d, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
 
 @
 
-<<pvalues.plot:d, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=FALSE, eval=TRUE>>=
+<<pvalues.plot:d, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
 
 @
 
@@ -128,7 +130,41 @@ read_chunk('/Users/hectorbahamonde/RU/research/Bahamonde_Kovac/Bahamonde_Kovac.R
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-\section{Modelling ``Steel and Guns'' in a Global Setting: Presenting the GVAR Methodology}
+
+
+\section{Introduction}
+
+``Power is the ultimate aphrodisiac,'' said Henry Kissinger \parencite{kissinger1973a}.  Since the dawn of social and political science, power has been a key object of multiple research projects as well as served as a crucial explanation for others \parencite{lasswell1950a}. In recent decades a prevailing notion became present in International Relations, which sometimes takes the shape of a latent assumption, and sometimes as an explicit disclaimer, that the economic power is the most fundamental type of power---a sort of a condition for all other forms \parencite{kennedy1989a,luttwak1990a,fukuyama1992a,nau1995a,kirshner1997a,gilpin2001a,brooks2005a,ikenberry2011a}.  The argument is neatly summed by Organski, who claimed that economic power is a prerequisite for all other power capabilities, without a strong economy and good growth potential a dominant state stagnates and declines \parencite[299-306]{organski1958a}. 
+
+However, this claim has never been properly tested. For instance, \textcite[Ch. 3]{mearsheimer2001a} dedicates a whole chapter in his masterpiece to explain how latent power matters to military power,\footnote{They described it as perhaps the most fundamental in the whole Political Science; whereas \textcite[245-70, 249]{elster1976a} is even more assertive arguing that power is the most important single idea in Political Theory.} but he does not test this claim for great power relations, nor for international relations in general.  Hence, are we taking this assumption for granted due to its sound causal pathway? Namely, states need good economy to purchase or make weapons\footnote{Some studies have posed a similar research questions---generally touching upon the relations between the economy and military or strategy, e.g.: \textcite{baldwin1985a,beckley2010a,copeland2014a}. Moreover, Power Transition literature defined economic growth and development as a primary source of international change, and Gross Domestic Product has been identified as the parsimonious indicator of satisfaction with the status quo, see for example \textcite{organski1980a,lemke1996a,soysa1997a}. However, these are inquiries about the change in the international system, not of power \emph{per se}. International Political Economy also posed ontologically different questions and has not offered a comprehensive research on power. It is primarily interested in the political decision to prefer economic benefits or security, as if these two issues would be mutually exclusive---the question of ``Power or plenty,'' for instance \textcite{viner1948a,katzenstein1977a,gowa1994a,hafner-burton2008a,findlay2009a,cohen2017a}. For an insightful analysis on false exclusivity of the economic and security interests, see \textcite{norrlof2016a}.}. However, if such a claim may be self-evident when it comes to relations between economic and military power, than this is not the case for relations between economic and political, and economic and cultural power.\footnote{We decided to use the term culture, and not ideological, as it is often referred to in the literature (e.g \textcite{mann1986a}). Although we agree with Mann regarding the concept and what it implies, we think the name carries a negative connotation, relating mostly to Marxist traditions where it has been identified with false consciousness. Nevertheless, the ideational dimension of power should not be understood as something negative. Identity is also something positive. Thus, to avoid any prejudgments, we talk about cultural, which is neutral in its connotation, not ideology.}
+
+
+As such, if the literature offers assumptions about the nature of power and proposes causal relations between power factors,\footnote{Military, economic, political, and cultural power factors \parencite{mann1986a}.} than it should also provide general evidence that those are accurate. Nevertheless, such test is suspiciously missing from the International Relations scholarship. So far, the literature has not offered a general study which would test the assumption that economic power is a prerequisite of all other power factors. Several reasons may contribute to such a situation. First, the problem of measuring power, particularly political and cultural.\footnote{On this issue see \textcite{hoehn2014a}.} Second, the lack of appropriate methods of tackling this question. Third, the absence of unified theoretical framework of power that would allow for generalization of such test. 
+
+
+We acknowledge the first issue, but by no means should this limit scientific endeavors. Being aware of vices in databases and variables used to measure a concept should only motivate us to do additional primary research, as well as to reproduce existing studies with different variables from variety of data bases. Furthermore, being cognizant of the problem requires transparency, not avoidance. Regarding the third point, it is very difficult to imagine that Political Science will ever develop an ultimate definition of power.\footnote{There is no lack of definitions and conceptualizations of power, which have been hotly debated for decades. See: \textcite{russel1938a,simon1953a,hunter1953a,march1955a,mills1956a,french1959a,bachrach1962a,lukes1974a,oppenheim1976a,stokman1985a,digeser1992a,scott1994a}.} Still, this skepticism should not discourage us to advance power assessments, as well as limit scientific inquiries that are based on a specific definition. Therefore, this paper tackles the second problem---methodological. Namely, we introduce to Political Science a new time series method---Global Vector Autoregression (GVAR).\footnote{GVAR was introduced in 2004, see \textcite{pesaran2004a}. It ``was developed in the aftermath of the 1997 Asian financial crisis to quantify the effects of macroeconomic developments on the losses of major financial institutions. It was clear then that all major banks are exposed to risk from adverse global or regional shocks, but quantifying these effects required a coherent and simple-to-simulate global macroeconomic model. The GVAR approach provides a useful and practical way of building such a model, and, although developed originally as a tool for credit risk analysis, it soon became apparent that it has numerous other applications \textcite{chudik2016a}.''} The latter, among other characteristics, enables a big N and big T analysis.\footnote{This was so far not possible to perform. PVAR allowed for small N and big T, and Arellano-Bond linear dynamic panel-data estimation is used for big N and small T. On particularities of GVAR and how they relate to other time series methods see \textcite{mauro2013a,bouvet2013a,canova2013a,schnuecker2017a,alzuabi2020a}.}  Therefore, it is ideal for testing such an assumption as relations between economic and military power.
+
+As such, in this paper we focus solely on the relations between economic and military power factors. We use GVAR to determine which power factor drives the other---Granger causality \parencite{granger1969a}. We hypothesize that pre-World War One, it was military power that generated economic power---greater military, led to greater economic power. Moreover, we also expect in the second hypothesis that after the World War Two the relations would be reverse. Hence, it is the economic power that conditions military power. These two hypotheses derive from structural changes of international relations, such as advancement of technology, which contributes to slower fungibility of military power in modern time.\footnote{On the debate on fungibility of power see \textcite{art1996a,art1999a,baldwin1999a}.} However, fungibility does not mean causality, it only refers to a possibility and the likelihood of that possibility---a resource to be used in more than one issue area.
+
+We operationalize military and economic power using variables from Correlates of War Project, components of National Capability Index \parencite{singer1987a}. Namely, the number of military personnel, the amount of military expenditure, the amount of energy consumption, and the production of iron and steel. Furthermore, in GVAR model we also use Bilateral Trade data from the same database that is used as the foreign or structural variable.\parencite{barbieri2016a}  Namely, in order to construct a GVAR model, one needs country specific data, as well as global variables, which generates the framework or weights of those country level numbers.\footnote{``Through the use of foreign variables, the GVAR is able to account for bilateral inter-relationships amongst countries, and therefore control for spillovers on the basis of cross-country exposure. Additionally, the use of foreign variables allows the GVAR to scale up in a coherent manner and include a larger number of variables than possible in a VAR. Unlike a PVAR model, a GVAR also maintains the capability of giving country-level estimates '' \parencite{fund2016a}.} Our preliminary results confirm our hypothesis.
+
+Hence, the paper proceeds by first positioning the question of relations between economic and military power in the broader literature on power. Second, we introduce the new method and GVAR model. Then we present our results and finally, elaborate our future research prospects and proposals regarding this scientific inquiry.
+
+\section{Power}
+
+The literature offers numerous ways how to think and understand power.\footnote{A good overview is \textcite{baldwin2016a}.}  For the sake of clarity and being cognizant of the risk of oversimplification, we identify three approaches of conceptualizing power. First are the ``dimensions of power''---``power to,'' ``power over,'' ``power with.'' Second are the faces of power. Third are power factors (economic, military, political, cultural). These three approaches may be distinct, but this does not mean that there are no commonalities, which can serve for new theory developments on power. However, we will leave this question of synthesis for a different paper.
+
+Dimensions of power see power as either agential, structural, or relational \parencite{qin2018a}.  ``Power to'' refers to the possession of the resources by a specific actor. Hence, it is linked with capabilities of states, which can be latent or already manifested. Namely, the more of a certain capability a state has, the more powerful it is. This is a straightforward logic; hence politicians and strategists like to operate with it \parencite{deibel2007a}. ``Power over'' refers to influence and control over outcomes or over other actors and their behavior \parencite{hart1976a}.  As such, it bears a structural element, where the structure of international relations is favorable for certain states. ``Power with'' sees power residing in relations between A and B and therefore, both can draw from it. Thus, different type of relations lead to different levels of power in those relations. In fact, it is argued that the only way power is found is through the process of determining a consensus of goals and values among diverse interests \parencite{arendt1970a}. Deriving from these three dimensions of power Barnett and Duvall have presented their systemic, precise, and general typology of power \parencite{barnett2005a}. 
+
+
+
+Another way of classifying power is through the so called ``faces of power.'' Such a classification developed gradually throughout the decades after the end of the World War Two and resides in the notion that power needs to be understood as a cause. Hence, the ``faces of power'' look for causal pathways through which power functions. Digeser sums it up: ``Under the first face of power the central question is, `Who, if anyone, is exercising power?' Under the second face, `What issues have been mobilized off the agenda and by whom?' Under the radical conception, `Whose objective interests are being harmed?' Under the fourth face of power the critical issue is, `What kind of subject is being produced?' '' \parencite[980]{digeser1992a}  Namely, the first face sees power as coercion behind the decision of making B do what A wants. It stresses direct contact between A and B  \parencite{dahl1957a}. Yet, \textcite{bachrach1962a} expanded the causal mechanism of power and identified that power also lies in the ability of A to make B do what A wants it to without with affection. They have called this the `Second Face of Power.' Thus, B may do what A wants not only because A has an authority over B, but it also may be the case that B likes A and wants to please it. However, a `third face of power' further expanded the causal mechanisms of power. It looks at the mechanism of subliminal ideological causes of shaping others' interest, rules and in international relations \parencite{lukes1974a}. Finally, the fourth `face of power' postulates that subjectivity or individuality is not biologically given. Subjects are understood as social constructions, whose formation can be historically described. Thus, power works through the identity construction of A's and B's \parencite{digeser1992a}. 
+
+
+The third approach of looking at power is to look at a particular domain of state interaction. Subsequently, each domain has its unique sources of power and causal mechanisms how that power functions. As stated, \textcite{mann1986a} determined economic, military, political, and ideological power domains. 
+
+
+\section{Modeling ``Butter and Guns'' in a Global Setting: Presenting the GVAR Methodology}
 
 
 \subsection{GVAR: Country-specific Equations and Granger-causality Tests}
@@ -147,7 +183,7 @@ where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of endogenous variab
 
 where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of domestic (i.e. endogenous) variables, ${\mathbf W}_{t}$ is a $k_{i} \; \times \; 1$ vector of weakly-exogenous foreign variables, and ${\mathbf u}_{it}$ is a serially uncorrelated and cross-sectionally weakly dependent process. As it becomes apparent, the inclusion of foreign variables ${\mathbf W}_{t}$ in \autoref{eq:gvar} is one of the main characteristics of the GVAR approach, and the main difference with the VAR equation described in \autoref{eq:var}. In simple, the Global vector autoregressive GVAR model in \autoref{eq:gvar} explains ${\mathbf x}_{i,t}$ as a function of past values ${\mathbf x}_{i,t-p}$ lagged $p$ times, at the same time that it weights these dynamics by weakly-exogenous foreign variables ${\mathbf W}_{t-p}$ (weights which are captured by parameters $\bm{\Lambda}_{ni}$).
 
-Since we are substantively interested in weather ``guns'' \emph{cause} ``steel'' or the other way around, in this paper we estimate country-specific bivariate Granger-causality tests within the GVAR framework.\footnote{We acknowledge that without proper experimentation and randomization there cannot be proper causation. Consequently, and following the Granger methodology, we employ a rather lose definition of ``causation'' and explore if lagged values of a variable \emph{forecast} another variable.} The Granger-causality method was introduced in \textcite{Granger1969} and it seeks to investigate if some variable $X$ Granger-causes another variable $Y$, or the other way around. A variable $X$ is said to Granger-cause $Y$ if predictions of $Y$ based on lagged values of $Y$ and lagged values of $X$ perform better than explaining $Y$ just with its own past values. Since Granger-causality tests are usually estimated by fitting VAR equations (\autoref{eq:var}) we now derive the Granger-causality test within the GVAR framework. The substantive advantage of GVAR Granger-causality tests over regular Granger-causality tests is that estimates are weighted by the global economy, situating the domestic dynamics within the global context. More formally, we estimate the following GVAR Granger-causality system for every country $i$ with $p$ lags as follows:
+Since we are substantively interested in weather ``guns'' \emph{cause} ``butter'' or the other way around, in this paper we estimate country-specific bivariate Granger-causality tests within the GVAR framework.\footnote{We acknowledge that without proper experimentation and randomization there cannot be proper causation. Consequently, and following the Granger methodology, we employ a rather lose definition of ``causation'' and explore if lagged values of a variable \emph{forecast} another variable.} The Granger-causality method was introduced in \textcite{Granger1969} and it seeks to investigate if some variable $X$ Granger-causes another variable $Y$, or the other way around. A variable $X$ is said to Granger-cause $Y$ if predictions of $Y$ based on lagged values of $Y$ and lagged values of $X$ perform better than explaining $Y$ just with its own past values. Since Granger-causality tests are usually estimated by fitting VAR equations (\autoref{eq:var}) we now derive the Granger-causality test within the GVAR framework. The substantive advantage of GVAR Granger-causality tests over regular Granger-causality tests is that estimates are weighted by the global economy, situating the domestic dynamics within the global context. More formally, we estimate the following GVAR Granger-causality system for every country $i$ with $p$ lags as follows:
 
 \begin{align}\label{eq:gvar:granger}
 \begin{aligned}
@@ -160,14 +196,14 @@ Since we are substantively interested in weather ``guns'' \emph{cause} ``steel''
 In our case, the vector ${\mathbf x}_{it}$ contains country-year levels of ``military personnel,'' while vector ${\mathbf y}_{it}$ contains country-year levels of ``iron and steel production.'' Both variables were systematized by the Correlates of War Project, particularly, the National Material Capabilities dataset \parencite{Singer:1972aa}.\footnote{Version 5.0.} The dataset covers all countries in the world between 1816-2012. 
 
 \clearpage
-<<plot:t:1, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=cow.d.1.plot.note, fig.align='center', fig.width=6, fig.height=6,dpi=1000,cache = FALSE, include = TRUE>>=
+<<plot:t:1, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=cow.d.1.plot.note, fig.align='center', fig.width=6, fig.height=6,dpi=1000,cache = TRUE, include = TRUE>>=
 
 
 @
 
 \clearpage
 \afterpage{%
-<<plot:t:2, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap=cow.d.2.plot.note, fig.align='center', fig.width=6, fig.height=8,dpi=1000,cache = FALSE, include = TRUE>>=
+<<plot:t:2, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap=cow.d.2.plot.note, fig.align='center', fig.width=6, fig.height=8,dpi=1000,cache = TRUE, include = TRUE>>=
 
 
 @
@@ -192,11 +228,11 @@ Every $W_{t}$ matrix weights all $K$ country-specific Granger regressions descri
 
 \subsection{Results}
 
-\autoref{fig:pvalues.plot} shows country-specific p-values of the Granger-causality f-tests obtained when fitting \autoref{eq:gvar:granger} (detailed results shown in \autoref{t:1}, \autoref{t:2} and \autoref{t:2b}). The plot shows that during the \text{$\Sexpr{paste(paste(year.min.t1, "-",paste(year.max.t1, sep=""), sep=""), sep = "")}$} period, in $\Sexpr{percent.steel.causes.guns.t1}$\%  of the countries, steel Granger-caused guns. This percentage changes to  $\Sexpr{percent.steel.causes.guns.t2}$\%, and to $\Sexpr{percent.steel.causes.guns.t2.b}$\% for the hegemonic countries during the $\Sexpr{paste(paste(year.min.t2, "-",paste(year.max.t2, sep=""), sep=""), sep = "")}$ period. In other words, in $\Sexpr{100-(percent.steel.causes.guns.t2+percent.steel.causes.guns.t2.b/2)}$\% of the instances, guns Granger-caused steel for the $\Sexpr{paste(paste(year.min.t2, "-",paste(year.max.t2, sep=""), sep=""), sep = "")}$ period. \todo{Gist of the paper}These results strongly suggest that the guns-steel ``causal'' relationship reverses during the late 20th century.
+\autoref{fig:pvalues.plot} shows country-specific p-values of the Granger-causality f-tests obtained when fitting \autoref{eq:gvar:granger} (detailed results shown in \autoref{t:1}, \autoref{t:2} and \autoref{t:2b}). The plot shows that during the \text{$\Sexpr{paste(paste(year.min.t1, "-",paste(year.max.t1, sep=""), sep=""), sep = "")}$} period, in $\Sexpr{percent.steel.causes.guns.t1}$\%  of the countries, butter Granger-caused guns. This percentage changes to  $\Sexpr{percent.steel.causes.guns.t2}$\%, and to $\Sexpr{percent.steel.causes.guns.t2.b}$\% for the hegemonic countries during the $\Sexpr{paste(paste(year.min.t2, "-",paste(year.max.t2, sep=""), sep=""), sep = "")}$ period. In other words, in $\Sexpr{100-(percent.steel.causes.guns.t2+percent.steel.causes.guns.t2.b/2)}$\% of the instances, guns Granger-caused butter for the $\Sexpr{paste(paste(year.min.t2, "-",paste(year.max.t2, sep=""), sep=""), sep = "")}$ period. \todo{Gist of the paper}These results strongly suggest that the guns-butter ``causal'' relationship reverses during the late 20th century.
 
 
 
-<<pvalues.plot, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=p.value.plot.note, fig.align='center', fig.width=12, fig.height=6,dpi=1000,cache = FALSE, include = TRUE>>=
+<<pvalues.plot, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=p.value.plot.note, fig.align='center', fig.width=12, fig.height=6,dpi=1000,cache = TRUE, include = TRUE>>=
 
 
 @
@@ -213,7 +249,7 @@ Every $W_{t}$ matrix weights all $K$ country-specific Granger regressions descri
 \printbibliography
 
 
-<<bib:export, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=FALSE, eval=TRUE>>=
+<<bib:export, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
 
 @
 
@@ -235,7 +271,7 @@ Every $W_{t}$ matrix weights all $K$ country-specific Granger regressions descri
 \clearpage
 \newpage
 \pagenumbering{gobble}
-<<wordcount, echo=FALSE, cache=FALSE>>=
+<<wordcount, echo=FALSE, cache=TRUE>>=
 library(knitr)
 
 comma <- function (x, ...) {
@@ -280,7 +316,7 @@ count <- comma(as.numeric(count)) # add comma
 \section{Appendix} 
 
 % reset counter for appendix
-\subimport{/Users/hectorbahamonde/RU/Bibliografia_PoliSci/}{LaTeX_Reset_Counter_For_Appendix}
+\subimport{/Users/hectorbahamonde/Bibliografia_PoliSci/}{LaTeX_Reset_Counter_For_Appendix}
 
 \subsection{Appendix}
 
@@ -291,32 +327,32 @@ count <- comma(as.numeric(count)) # add comma
 \begin{tabular}{ccccccc|}
 \cline{2-7}
 \multicolumn{1}{c|}{}                                  & \textbf{Granger Relationship} 	& \textbf{F-Test} 						& \textbf{P-Value} 					   & \textbf{DF} 								& 	\textbf{Adjusted R-sq} 					 & {\bf Lags}  \\ \hline
-\multicolumn{1}{|c|}{\multirow{2}{*}{Austria-Hungary}} & steel $\rightarrow$ guns		& \Sexpr{p.1.Austria.Hungary.ftest.1} 	& \Sexpr{p.1.Austria.Hungary.pvalue.1} & \Sexpr{(p.1.Austria.Hungary.df.num.dem.1)}& 	\Sexpr{p.1.Austria.Hungary.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Austria.Hungary.lags}}} \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.Austria.Hungary.ftest.2} 	& \Sexpr{p.1.Austria.Hungary.pvalue.2} & \Sexpr{(p.1.Austria.Hungary.df.num.dem.2)}& 	\Sexpr{p.1.Austria.Hungary.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Austria-Hungary}} & butter $\rightarrow$ guns		& \Sexpr{p.1.Austria.Hungary.ftest.1} 	& \Sexpr{p.1.Austria.Hungary.pvalue.1} & \Sexpr{(p.1.Austria.Hungary.df.num.dem.1)}& 	\Sexpr{p.1.Austria.Hungary.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Austria.Hungary.lags}}} \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.Austria.Hungary.ftest.2} 	& \Sexpr{p.1.Austria.Hungary.pvalue.2} & \Sexpr{(p.1.Austria.Hungary.df.num.dem.2)}& 	\Sexpr{p.1.Austria.Hungary.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Belgium}}         & steel $\rightarrow$ guns		& \Sexpr{p.1.Belgium.ftest.1} 			& \Sexpr{p.1.Belgium.pvalue.1} 			&  \Sexpr{(p.1.Belgium.df.num.dem.1)}    	& 	 \Sexpr{p.1.Belgium.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Belgium.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.Belgium.ftest.2}  			& \Sexpr{p.1.Belgium.pvalue.2} 			&  \Sexpr{(p.1.Belgium.df.num.dem.2)}    	& 	 \Sexpr{p.1.Belgium.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Belgium}}         & butter $\rightarrow$ guns		& \Sexpr{p.1.Belgium.ftest.1} 			& \Sexpr{p.1.Belgium.pvalue.1} 			&  \Sexpr{(p.1.Belgium.df.num.dem.1)}    	& 	 \Sexpr{p.1.Belgium.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Belgium.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.Belgium.ftest.2}  			& \Sexpr{p.1.Belgium.pvalue.2} 			&  \Sexpr{(p.1.Belgium.df.num.dem.2)}    	& 	 \Sexpr{p.1.Belgium.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{France}}          & steel $\rightarrow$ guns		& \Sexpr{p.1.France.ftest.1} 			& \Sexpr{p.1.France.pvalue.1} 			&  \Sexpr{(p.1.France.df.num.dem.1)}    	& 	 \Sexpr{p.1.France.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.France.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.France.ftest.2}  			& \Sexpr{p.1.France.pvalue.2} 			&  \Sexpr{(p.1.France.df.num.dem.2)}    	& 	 \Sexpr{p.1.France.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{France}}          & butter $\rightarrow$ guns		& \Sexpr{p.1.France.ftest.1} 			& \Sexpr{p.1.France.pvalue.1} 			&  \Sexpr{(p.1.France.df.num.dem.1)}    	& 	 \Sexpr{p.1.France.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.France.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.France.ftest.2}  			& \Sexpr{p.1.France.pvalue.2} 			&  \Sexpr{(p.1.France.df.num.dem.2)}    	& 	 \Sexpr{p.1.France.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Germany}}         & steel $\rightarrow$ guns		& \Sexpr{p.1.Germany.ftest.1} 			& \Sexpr{p.1.Germany.pvalue.1} 			&  \Sexpr{(p.1.Germany.df.num.dem.1)}    	& 	 \Sexpr{p.1.Germany.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Germany.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.Germany.ftest.2}  			& \Sexpr{p.1.Germany.pvalue.2} 			&  \Sexpr{(p.1.Germany.df.num.dem.2)}    	& 	 \Sexpr{p.1.Germany.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Germany}}         & butter $\rightarrow$ guns		& \Sexpr{p.1.Germany.ftest.1} 			& \Sexpr{p.1.Germany.pvalue.1} 			&  \Sexpr{(p.1.Germany.df.num.dem.1)}    	& 	 \Sexpr{p.1.Germany.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Germany.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.Germany.ftest.2}  			& \Sexpr{p.1.Germany.pvalue.2} 			&  \Sexpr{(p.1.Germany.df.num.dem.2)}    	& 	 \Sexpr{p.1.Germany.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Italy}}           & steel $\rightarrow$ guns		& \Sexpr{p.1.Italy.ftest.1} 			& \Sexpr{p.1.Italy.pvalue.1} 			&  \Sexpr{(p.1.Italy.df.num.dem.1)}    	& 	 \Sexpr{p.1.Italy.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Italy.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.Italy.ftest.2}  			& \Sexpr{p.1.Italy.pvalue.2} 			&  \Sexpr{(p.1.Italy.df.num.dem.2)}    	& 	 \Sexpr{p.1.Italy.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Italy}}           & butter $\rightarrow$ guns		& \Sexpr{p.1.Italy.ftest.1} 			& \Sexpr{p.1.Italy.pvalue.1} 			&  \Sexpr{(p.1.Italy.df.num.dem.1)}    	& 	 \Sexpr{p.1.Italy.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Italy.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.Italy.ftest.2}  			& \Sexpr{p.1.Italy.pvalue.2} 			&  \Sexpr{(p.1.Italy.df.num.dem.2)}    	& 	 \Sexpr{p.1.Italy.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Russia}}          & steel $\rightarrow$ guns		& \Sexpr{p.1.Russia.ftest.1} 			& \Sexpr{p.1.Russia.pvalue.1}			&  \Sexpr{(p.1.Russia.df.num.dem.1)}    	& 	 \Sexpr{p.1.Russia.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Russia.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.Russia.ftest.2}  			& \Sexpr{p.1.Russia.pvalue.2} 			&  \Sexpr{(p.1.Russia.df.num.dem.2)}    	& 	 \Sexpr{p.1.Russia.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Russia}}          & butter $\rightarrow$ guns		& \Sexpr{p.1.Russia.ftest.1} 			& \Sexpr{p.1.Russia.pvalue.1}			&  \Sexpr{(p.1.Russia.df.num.dem.1)}    	& 	 \Sexpr{p.1.Russia.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Russia.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.Russia.ftest.2}  			& \Sexpr{p.1.Russia.pvalue.2} 			&  \Sexpr{(p.1.Russia.df.num.dem.2)}    	& 	 \Sexpr{p.1.Russia.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Spain}}           & steel $\rightarrow$ guns		& \Sexpr{p.1.Spain.ftest.1} 			& \Sexpr{p.1.Spain.pvalue.1} 			&  \Sexpr{(p.1.Spain.df.num.dem.1)}    	& 	 \Sexpr{p.1.Spain.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Spain.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.Spain.ftest.2}  			& \Sexpr{p.1.Spain.pvalue.2} 			&  \Sexpr{(p.1.Spain.df.num.dem.2)}    	& 	 \Sexpr{p.1.Spain.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Spain}}           & butter $\rightarrow$ guns		& \Sexpr{p.1.Spain.ftest.1} 			& \Sexpr{p.1.Spain.pvalue.1} 			&  \Sexpr{(p.1.Spain.df.num.dem.1)}    	& 	 \Sexpr{p.1.Spain.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Spain.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.Spain.ftest.2}  			& \Sexpr{p.1.Spain.pvalue.2} 			&  \Sexpr{(p.1.Spain.df.num.dem.2)}    	& 	 \Sexpr{p.1.Spain.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{United Kingdom}}  & steel $\rightarrow$ guns		& \Sexpr{p.1.United.Kingdom.ftest.1} 	& \Sexpr{p.1.United.Kingdom.pvalue.1} 	&  \Sexpr{(p.1.United.Kingdom.df.num.dem.1)} &  	\Sexpr{p.1.United.Kingdom.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.United.Kingdom.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.United.Kingdom.ftest.2}  	& \Sexpr{p.1.United.Kingdom.pvalue.2} 	&  \Sexpr{(p.1.United.Kingdom.df.num.dem.2)} &  	\Sexpr{p.1.United.Kingdom.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{United Kingdom}}  & butter $\rightarrow$ guns		& \Sexpr{p.1.United.Kingdom.ftest.1} 	& \Sexpr{p.1.United.Kingdom.pvalue.1} 	&  \Sexpr{(p.1.United.Kingdom.df.num.dem.1)} &  	\Sexpr{p.1.United.Kingdom.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.United.Kingdom.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.United.Kingdom.ftest.2}  	& \Sexpr{p.1.United.Kingdom.pvalue.2} 	&  \Sexpr{(p.1.United.Kingdom.df.num.dem.2)} &  	\Sexpr{p.1.United.Kingdom.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{United States}}   & steel $\rightarrow$ guns		& \Sexpr{p.1.United.States.ftest.1} 	& \Sexpr{p.1.United.States.pvalue.1}  	&  \Sexpr{(p.1.United.States.df.num.dem.1)}  &  	\Sexpr{p.1.United.States.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.United.States.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ steel		& \Sexpr{p.1.United.States.ftest.2}  	& \Sexpr{p.1.United.States.pvalue.2} 	&  \Sexpr{(p.1.United.States.df.num.dem.2)}  &  	\Sexpr{p.1.United.States.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{United States}}   & butter $\rightarrow$ guns		& \Sexpr{p.1.United.States.ftest.1} 	& \Sexpr{p.1.United.States.pvalue.1}  	&  \Sexpr{(p.1.United.States.df.num.dem.1)}  &  	\Sexpr{p.1.United.States.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.United.States.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.United.States.ftest.2}  	& \Sexpr{p.1.United.States.pvalue.2} 	&  \Sexpr{(p.1.United.States.df.num.dem.2)}  &  	\Sexpr{p.1.United.States.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
 \end{tabular}
 \\
 {\raggedright \small Table shows country-specific Granger-causality F-tests. Last column shows number of domestic lags used per every country-specific Granger model. Number of lags for endogenous variables \;=\; $\Sexpr{p.1}$. Number of lags for foreign variables \;=\; $\Sexpr{FLag.1}$. Max number of lags for estimating the country-specific VAR model \;=\; $\Sexpr{lag.max.1}$. Information criteria for optimal lag length \;=\; $\text{\Sexpr{ic.1}}$. Deterministic variables: $\text{\Sexpr{type.1.paper}}$. \par}
@@ -334,101 +370,101 @@ count <- comma(as.numeric(count)) # add comma
 \begin{tabular}{ccccccc|}
 \cline{2-7}
 \multicolumn{1}{c|}{}                               & \textbf{Granger Relationship} & \textbf{F-Test} 					& \textbf{P-Value} 				 & \textbf{DF} 								& 	\textbf{Adjusted R-sq} 		& {\bf Lags}  \\ \hline
-\multicolumn{1}{|c|}{\multirow{2}{*}{Argentina}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.Argentina.ftest.1} 	& \Sexpr{p.2.Argentina.pvalue.1} & \Sexpr{(p.2.Argentina.df.num.dem.1)} 	& 	\Sexpr{p.2.Argentina.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Argentina.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Argentina.ftest.2} 	& \Sexpr{p.2.Argentina.pvalue.2} & \Sexpr{(p.2.Argentina.df.num.dem.2)} 	& 	\Sexpr{p.2.Argentina.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Argentina}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.Argentina.ftest.1} 	& \Sexpr{p.2.Argentina.pvalue.1} & \Sexpr{(p.2.Argentina.df.num.dem.1)} 	& 	\Sexpr{p.2.Argentina.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Argentina.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Argentina.ftest.2} 	& \Sexpr{p.2.Argentina.pvalue.2} & \Sexpr{(p.2.Argentina.df.num.dem.2)} 	& 	\Sexpr{p.2.Argentina.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Australia}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.Australia.ftest.1} 	& \Sexpr{p.2.Australia.pvalue.1} & \Sexpr{(p.2.Australia.df.num.dem.1)} 	& 	\Sexpr{p.2.Australia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Australia.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Australia.ftest.2} 	& \Sexpr{p.2.Australia.pvalue.2} & \Sexpr{(p.2.Australia.df.num.dem.2)} 	& 	\Sexpr{p.2.Australia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Australia}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.Australia.ftest.1} 	& \Sexpr{p.2.Australia.pvalue.1} & \Sexpr{(p.2.Australia.df.num.dem.1)} 	& 	\Sexpr{p.2.Australia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Australia.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Australia.ftest.2} 	& \Sexpr{p.2.Australia.pvalue.2} & \Sexpr{(p.2.Australia.df.num.dem.2)} 	& 	\Sexpr{p.2.Australia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Austria}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Austria.ftest.1} 		& \Sexpr{p.2.Austria.pvalue.1} & \Sexpr{(p.2.Austria.df.num.dem.1)} 		& 	\Sexpr{p.2.Austria.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Austria.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Austria.ftest.2} 		& \Sexpr{p.2.Austria.pvalue.2} & \Sexpr{(p.2.Austria.df.num.dem.2)} 		& 	\Sexpr{p.2.Austria.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Austria}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Austria.ftest.1} 		& \Sexpr{p.2.Austria.pvalue.1} & \Sexpr{(p.2.Austria.df.num.dem.1)} 		& 	\Sexpr{p.2.Austria.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Austria.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Austria.ftest.2} 		& \Sexpr{p.2.Austria.pvalue.2} & \Sexpr{(p.2.Austria.df.num.dem.2)} 		& 	\Sexpr{p.2.Austria.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Belgium}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Belgium.ftest.1} 		& \Sexpr{p.2.Belgium.pvalue.1} & \Sexpr{(p.2.Belgium.df.num.dem.1)} 		& 	\Sexpr{p.2.Belgium.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Belgium.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Belgium.ftest.2} 		& \Sexpr{p.2.Belgium.pvalue.2} & \Sexpr{(p.2.Belgium.df.num.dem.2)} 		& 	\Sexpr{p.2.Belgium.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Belgium}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Belgium.ftest.1} 		& \Sexpr{p.2.Belgium.pvalue.1} & \Sexpr{(p.2.Belgium.df.num.dem.1)} 		& 	\Sexpr{p.2.Belgium.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Belgium.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Belgium.ftest.2} 		& \Sexpr{p.2.Belgium.pvalue.2} & \Sexpr{(p.2.Belgium.df.num.dem.2)} 		& 	\Sexpr{p.2.Belgium.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Brazil}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Brazil.ftest.1} 		& \Sexpr{p.2.Brazil.pvalue.1} & \Sexpr{(p.2.Brazil.df.num.dem.1)} 		& 	\Sexpr{p.2.Brazil.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Brazil.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Brazil.ftest.2} 		& \Sexpr{p.2.Brazil.pvalue.2} & \Sexpr{(p.2.Brazil.df.num.dem.2)} 		& 	\Sexpr{p.2.Brazil.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Brazil}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Brazil.ftest.1} 		& \Sexpr{p.2.Brazil.pvalue.1} & \Sexpr{(p.2.Brazil.df.num.dem.1)} 		& 	\Sexpr{p.2.Brazil.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Brazil.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Brazil.ftest.2} 		& \Sexpr{p.2.Brazil.pvalue.2} & \Sexpr{(p.2.Brazil.df.num.dem.2)} 		& 	\Sexpr{p.2.Brazil.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Bulgaria}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.Bulgaria.ftest.1} 		& \Sexpr{p.2.Bulgaria.pvalue.1} & \Sexpr{(p.2.Bulgaria.df.num.dem.1)} 		& 	\Sexpr{p.2.Bulgaria.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Bulgaria.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Bulgaria.ftest.2} 		& \Sexpr{p.2.Bulgaria.pvalue.2} & \Sexpr{(p.2.Bulgaria.df.num.dem.2)} 		& 	\Sexpr{p.2.Bulgaria.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Bulgaria}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.Bulgaria.ftest.1} 		& \Sexpr{p.2.Bulgaria.pvalue.1} & \Sexpr{(p.2.Bulgaria.df.num.dem.1)} 		& 	\Sexpr{p.2.Bulgaria.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Bulgaria.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Bulgaria.ftest.2} 		& \Sexpr{p.2.Bulgaria.pvalue.2} & \Sexpr{(p.2.Bulgaria.df.num.dem.2)} 		& 	\Sexpr{p.2.Bulgaria.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Canada}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Canada.ftest.1} 		& \Sexpr{p.2.Canada.pvalue.1} & \Sexpr{(p.2.Canada.df.num.dem.1)} 		& 	\Sexpr{p.2.Canada.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Canada.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Canada.ftest.2} 		& \Sexpr{p.2.Canada.pvalue.2} & \Sexpr{(p.2.Canada.df.num.dem.2)} 		& 	\Sexpr{p.2.Canada.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Canada}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Canada.ftest.1} 		& \Sexpr{p.2.Canada.pvalue.1} & \Sexpr{(p.2.Canada.df.num.dem.1)} 		& 	\Sexpr{p.2.Canada.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Canada.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Canada.ftest.2} 		& \Sexpr{p.2.Canada.pvalue.2} & \Sexpr{(p.2.Canada.df.num.dem.2)} 		& 	\Sexpr{p.2.Canada.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Chile}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Chile.ftest.1} 		& \Sexpr{p.2.Chile.pvalue.1} & \Sexpr{(p.2.Chile.df.num.dem.1)} 		& 	\Sexpr{p.2.Chile.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Chile.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Chile.ftest.2} 		& \Sexpr{p.2.Chile.pvalue.2} & \Sexpr{(p.2.Chile.df.num.dem.2)} 		& 	\Sexpr{p.2.Chile.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Chile}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Chile.ftest.1} 		& \Sexpr{p.2.Chile.pvalue.1} & \Sexpr{(p.2.Chile.df.num.dem.1)} 		& 	\Sexpr{p.2.Chile.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Chile.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Chile.ftest.2} 		& \Sexpr{p.2.Chile.pvalue.2} & \Sexpr{(p.2.Chile.df.num.dem.2)} 		& 	\Sexpr{p.2.Chile.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Colombia}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.Colombia.ftest.1} 		& \Sexpr{p.2.Colombia.pvalue.1} & \Sexpr{(p.2.Colombia.df.num.dem.1)} 		& 	\Sexpr{p.2.Colombia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Colombia.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Colombia.ftest.2} 		& \Sexpr{p.2.Colombia.pvalue.2} & \Sexpr{(p.2.Colombia.df.num.dem.2)} 		& 	\Sexpr{p.2.Colombia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Colombia}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.Colombia.ftest.1} 		& \Sexpr{p.2.Colombia.pvalue.1} & \Sexpr{(p.2.Colombia.df.num.dem.1)} 		& 	\Sexpr{p.2.Colombia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Colombia.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Colombia.ftest.2} 		& \Sexpr{p.2.Colombia.pvalue.2} & \Sexpr{(p.2.Colombia.df.num.dem.2)} 		& 	\Sexpr{p.2.Colombia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Egypt}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Egypt.ftest.1} 		& \Sexpr{p.2.Egypt.pvalue.1} & \Sexpr{(p.2.Egypt.df.num.dem.1)} 		& 	\Sexpr{p.2.Egypt.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Egypt.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Egypt.ftest.2} 		& \Sexpr{p.2.Egypt.pvalue.2} & \Sexpr{(p.2.Egypt.df.num.dem.2)} 		& 	\Sexpr{p.2.Egypt.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Egypt}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Egypt.ftest.1} 		& \Sexpr{p.2.Egypt.pvalue.1} & \Sexpr{(p.2.Egypt.df.num.dem.1)} 		& 	\Sexpr{p.2.Egypt.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Egypt.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Egypt.ftest.2} 		& \Sexpr{p.2.Egypt.pvalue.2} & \Sexpr{(p.2.Egypt.df.num.dem.2)} 		& 	\Sexpr{p.2.Egypt.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Finland}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Finland.ftest.1} 		& \Sexpr{p.2.Finland.pvalue.1} & \Sexpr{(p.2.Finland.df.num.dem.1)} 		& 	\Sexpr{p.2.Finland.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Finland.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Finland.ftest.2} 		& \Sexpr{p.2.Finland.pvalue.2} & \Sexpr{(p.2.Finland.df.num.dem.2)} 		& 	\Sexpr{p.2.Finland.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Finland}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Finland.ftest.1} 		& \Sexpr{p.2.Finland.pvalue.1} & \Sexpr{(p.2.Finland.df.num.dem.1)} 		& 	\Sexpr{p.2.Finland.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Finland.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Finland.ftest.2} 		& \Sexpr{p.2.Finland.pvalue.2} & \Sexpr{(p.2.Finland.df.num.dem.2)} 		& 	\Sexpr{p.2.Finland.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{France}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.France.ftest.1} 		& \Sexpr{p.2.France.pvalue.1} & \Sexpr{(p.2.France.df.num.dem.1)} 		& 	\Sexpr{p.2.France.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.France.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.France.ftest.2} 		& \Sexpr{p.2.France.pvalue.2} & \Sexpr{(p.2.France.df.num.dem.2)} 		& 	\Sexpr{p.2.France.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{France}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.France.ftest.1} 		& \Sexpr{p.2.France.pvalue.1} & \Sexpr{(p.2.France.df.num.dem.1)} 		& 	\Sexpr{p.2.France.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.France.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.France.ftest.2} 		& \Sexpr{p.2.France.pvalue.2} & \Sexpr{(p.2.France.df.num.dem.2)} 		& 	\Sexpr{p.2.France.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Greece}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Greece.ftest.1} 		& \Sexpr{p.2.Greece.pvalue.1} & \Sexpr{(p.2.Greece.df.num.dem.1)} 		& 	\Sexpr{p.2.Greece.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Greece.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Greece.ftest.2} 		& \Sexpr{p.2.Greece.pvalue.2} & \Sexpr{(p.2.Greece.df.num.dem.2)} 		& 	\Sexpr{p.2.Greece.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Greece}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Greece.ftest.1} 		& \Sexpr{p.2.Greece.pvalue.1} & \Sexpr{(p.2.Greece.df.num.dem.1)} 		& 	\Sexpr{p.2.Greece.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Greece.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Greece.ftest.2} 		& \Sexpr{p.2.Greece.pvalue.2} & \Sexpr{(p.2.Greece.df.num.dem.2)} 		& 	\Sexpr{p.2.Greece.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Hungary}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Hungary.ftest.1} 		& \Sexpr{p.2.Hungary.pvalue.1} & \Sexpr{(p.2.Hungary.df.num.dem.1)} 		& 	\Sexpr{p.2.Hungary.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Hungary.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Hungary.ftest.2} 		& \Sexpr{p.2.Hungary.pvalue.2} & \Sexpr{(p.2.Hungary.df.num.dem.2)} 		& 	\Sexpr{p.2.Hungary.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Hungary}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Hungary.ftest.1} 		& \Sexpr{p.2.Hungary.pvalue.1} & \Sexpr{(p.2.Hungary.df.num.dem.1)} 		& 	\Sexpr{p.2.Hungary.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Hungary.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Hungary.ftest.2} 		& \Sexpr{p.2.Hungary.pvalue.2} & \Sexpr{(p.2.Hungary.df.num.dem.2)} 		& 	\Sexpr{p.2.Hungary.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{India}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.India.ftest.1} 		& \Sexpr{p.2.India.pvalue.1} & \Sexpr{(p.2.India.df.num.dem.1)} 		& 	\Sexpr{p.2.India.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.India.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.India.ftest.2} 		& \Sexpr{p.2.India.pvalue.2} & \Sexpr{(p.2.India.df.num.dem.2)} 		& 	\Sexpr{p.2.India.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{India}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.India.ftest.1} 		& \Sexpr{p.2.India.pvalue.1} & \Sexpr{(p.2.India.df.num.dem.1)} 		& 	\Sexpr{p.2.India.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.India.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.India.ftest.2} 		& \Sexpr{p.2.India.pvalue.2} & \Sexpr{(p.2.India.df.num.dem.2)} 		& 	\Sexpr{p.2.India.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Israel}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Israel.ftest.1} 		& \Sexpr{p.2.Israel.pvalue.1} & \Sexpr{(p.2.Israel.df.num.dem.1)} 		& 	\Sexpr{p.2.Israel.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Israel.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Israel.ftest.2} 		& \Sexpr{p.2.Israel.pvalue.2} & \Sexpr{(p.2.Israel.df.num.dem.2)} 		& 	\Sexpr{p.2.Israel.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Israel}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Israel.ftest.1} 		& \Sexpr{p.2.Israel.pvalue.1} & \Sexpr{(p.2.Israel.df.num.dem.1)} 		& 	\Sexpr{p.2.Israel.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Israel.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Israel.ftest.2} 		& \Sexpr{p.2.Israel.pvalue.2} & \Sexpr{(p.2.Israel.df.num.dem.2)} 		& 	\Sexpr{p.2.Israel.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Italy}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Italy.ftest.1} 		& \Sexpr{p.2.Italy.pvalue.1} & \Sexpr{(p.2.Italy.df.num.dem.1)} 		& 	\Sexpr{p.2.Italy.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Italy.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Italy.ftest.2} 		& \Sexpr{p.2.Italy.pvalue.2} & \Sexpr{(p.2.Italy.df.num.dem.2)} 		& 	\Sexpr{p.2.Italy.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Italy}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Italy.ftest.1} 		& \Sexpr{p.2.Italy.pvalue.1} & \Sexpr{(p.2.Italy.df.num.dem.1)} 		& 	\Sexpr{p.2.Italy.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Italy.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Italy.ftest.2} 		& \Sexpr{p.2.Italy.pvalue.2} & \Sexpr{(p.2.Italy.df.num.dem.2)} 		& 	\Sexpr{p.2.Italy.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Japan}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Japan.ftest.1} 		& \Sexpr{p.2.Japan.pvalue.1} & \Sexpr{(p.2.Japan.df.num.dem.1)} 		& 	\Sexpr{p.2.Japan.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Japan.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Japan.ftest.2} 		& \Sexpr{p.2.Japan.pvalue.2} & \Sexpr{(p.2.Japan.df.num.dem.2)} 		& 	\Sexpr{p.2.Japan.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Japan}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Japan.ftest.1} 		& \Sexpr{p.2.Japan.pvalue.1} & \Sexpr{(p.2.Japan.df.num.dem.1)} 		& 	\Sexpr{p.2.Japan.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Japan.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Japan.ftest.2} 		& \Sexpr{p.2.Japan.pvalue.2} & \Sexpr{(p.2.Japan.df.num.dem.2)} 		& 	\Sexpr{p.2.Japan.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Luxembourg}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.Luxembourg.ftest.1} 		& \Sexpr{p.2.Luxembourg.pvalue.1} & \Sexpr{(p.2.Luxembourg.df.num.dem.1)} 		& 	\Sexpr{p.2.Luxembourg.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Luxembourg.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Luxembourg.ftest.2} 		& \Sexpr{p.2.Luxembourg.pvalue.2} & \Sexpr{(p.2.Luxembourg.df.num.dem.2)} 		& 	\Sexpr{p.2.Luxembourg.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Luxembourg}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.Luxembourg.ftest.1} 		& \Sexpr{p.2.Luxembourg.pvalue.1} & \Sexpr{(p.2.Luxembourg.df.num.dem.1)} 		& 	\Sexpr{p.2.Luxembourg.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Luxembourg.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Luxembourg.ftest.2} 		& \Sexpr{p.2.Luxembourg.pvalue.2} & \Sexpr{(p.2.Luxembourg.df.num.dem.2)} 		& 	\Sexpr{p.2.Luxembourg.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Mexico}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Mexico.ftest.1} 		& \Sexpr{p.2.Mexico.pvalue.1} & \Sexpr{(p.2.Mexico.df.num.dem.1)} 		& 	\Sexpr{p.2.Mexico.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Mexico.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Mexico.ftest.2} 		& \Sexpr{p.2.Mexico.pvalue.2} & \Sexpr{(p.2.Mexico.df.num.dem.2)} 		& 	\Sexpr{p.2.Mexico.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Mexico}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Mexico.ftest.1} 		& \Sexpr{p.2.Mexico.pvalue.1} & \Sexpr{(p.2.Mexico.df.num.dem.1)} 		& 	\Sexpr{p.2.Mexico.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Mexico.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Mexico.ftest.2} 		& \Sexpr{p.2.Mexico.pvalue.2} & \Sexpr{(p.2.Mexico.df.num.dem.2)} 		& 	\Sexpr{p.2.Mexico.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Netherlands}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.Netherlands.ftest.1} 		& \Sexpr{p.2.Netherlands.pvalue.1} & \Sexpr{(p.2.Netherlands.df.num.dem.1)} 		& 	\Sexpr{p.2.Netherlands.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Netherlands.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Netherlands.ftest.2} 		& \Sexpr{p.2.Netherlands.pvalue.2} & \Sexpr{(p.2.Netherlands.df.num.dem.2)} 		& 	\Sexpr{p.2.Netherlands.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Netherlands}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.Netherlands.ftest.1} 		& \Sexpr{p.2.Netherlands.pvalue.1} & \Sexpr{(p.2.Netherlands.df.num.dem.1)} 		& 	\Sexpr{p.2.Netherlands.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Netherlands.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Netherlands.ftest.2} 		& \Sexpr{p.2.Netherlands.pvalue.2} & \Sexpr{(p.2.Netherlands.df.num.dem.2)} 		& 	\Sexpr{p.2.Netherlands.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{North Korea}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.North.Korea.ftest.1} 		& \Sexpr{p.2.North.Korea.pvalue.1} & \Sexpr{(p.2.North.Korea.df.num.dem.1)} 		& 	\Sexpr{p.2.North.Korea.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.North.Korea.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.North.Korea.ftest.2} 		& \Sexpr{p.2.North.Korea.pvalue.2} & \Sexpr{(p.2.North.Korea.df.num.dem.2)} 		& 	\Sexpr{p.2.North.Korea.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{North Korea}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.North.Korea.ftest.1} 		& \Sexpr{p.2.North.Korea.pvalue.1} & \Sexpr{(p.2.North.Korea.df.num.dem.1)} 		& 	\Sexpr{p.2.North.Korea.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.North.Korea.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.North.Korea.ftest.2} 		& \Sexpr{p.2.North.Korea.pvalue.2} & \Sexpr{(p.2.North.Korea.df.num.dem.2)} 		& 	\Sexpr{p.2.North.Korea.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Norway}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Norway.ftest.1} 		& \Sexpr{p.2.Norway.pvalue.1} & \Sexpr{(p.2.Norway.df.num.dem.1)} 		& 	\Sexpr{p.2.Norway.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Norway.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Norway.ftest.2} 		& \Sexpr{p.2.Norway.pvalue.2} & \Sexpr{(p.2.Norway.df.num.dem.2)} 		& 	\Sexpr{p.2.Norway.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Norway}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Norway.ftest.1} 		& \Sexpr{p.2.Norway.pvalue.1} & \Sexpr{(p.2.Norway.df.num.dem.1)} 		& 	\Sexpr{p.2.Norway.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Norway.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Norway.ftest.2} 		& \Sexpr{p.2.Norway.pvalue.2} & \Sexpr{(p.2.Norway.df.num.dem.2)} 		& 	\Sexpr{p.2.Norway.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Poland}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Poland.ftest.1} 		& \Sexpr{p.2.Poland.pvalue.1} & \Sexpr{(p.2.Poland.df.num.dem.1)} 		& 	\Sexpr{p.2.Poland.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Poland.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Poland.ftest.2} 		& \Sexpr{p.2.Poland.pvalue.2} & \Sexpr{(p.2.Poland.df.num.dem.2)} 		& 	\Sexpr{p.2.Poland.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Poland}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Poland.ftest.1} 		& \Sexpr{p.2.Poland.pvalue.1} & \Sexpr{(p.2.Poland.df.num.dem.1)} 		& 	\Sexpr{p.2.Poland.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Poland.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Poland.ftest.2} 		& \Sexpr{p.2.Poland.pvalue.2} & \Sexpr{(p.2.Poland.df.num.dem.2)} 		& 	\Sexpr{p.2.Poland.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Portugal}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.Portugal.ftest.1} 		& \Sexpr{p.2.Portugal.pvalue.1} & \Sexpr{(p.2.Portugal.df.num.dem.1)} 		& 	\Sexpr{p.2.Portugal.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Portugal.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Portugal.ftest.2} 		& \Sexpr{p.2.Portugal.pvalue.2} & \Sexpr{(p.2.Portugal.df.num.dem.2)} 		& 	\Sexpr{p.2.Portugal.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Portugal}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.Portugal.ftest.1} 		& \Sexpr{p.2.Portugal.pvalue.1} & \Sexpr{(p.2.Portugal.df.num.dem.1)} 		& 	\Sexpr{p.2.Portugal.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Portugal.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Portugal.ftest.2} 		& \Sexpr{p.2.Portugal.pvalue.2} & \Sexpr{(p.2.Portugal.df.num.dem.2)} 		& 	\Sexpr{p.2.Portugal.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Romania}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Romania.ftest.1} 		& \Sexpr{p.2.Romania.pvalue.1} & \Sexpr{(p.2.Romania.df.num.dem.1)} 		& 	\Sexpr{p.2.Romania.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Romania.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Romania.ftest.2} 		& \Sexpr{p.2.Romania.pvalue.2} & \Sexpr{(p.2.Romania.df.num.dem.2)} 		& 	\Sexpr{p.2.Romania.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Romania}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Romania.ftest.1} 		& \Sexpr{p.2.Romania.pvalue.1} & \Sexpr{(p.2.Romania.df.num.dem.1)} 		& 	\Sexpr{p.2.Romania.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Romania.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Romania.ftest.2} 		& \Sexpr{p.2.Romania.pvalue.2} & \Sexpr{(p.2.Romania.df.num.dem.2)} 		& 	\Sexpr{p.2.Romania.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{South Africa}} & steel $\rightarrow$ guns		& \Sexpr{p.2.South.Africa.ftest.1} 		& \Sexpr{p.2.South.Africa.pvalue.1} & \Sexpr{(p.2.South.Africa.df.num.dem.1)} 		& 	\Sexpr{p.2.South.Africa.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.South.Africa.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.South.Africa.ftest.2} 		& \Sexpr{p.2.South.Africa.pvalue.2} & \Sexpr{(p.2.South.Africa.df.num.dem.2)} 		& 	\Sexpr{p.2.South.Africa.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{South Africa}} & butter $\rightarrow$ guns		& \Sexpr{p.2.South.Africa.ftest.1} 		& \Sexpr{p.2.South.Africa.pvalue.1} & \Sexpr{(p.2.South.Africa.df.num.dem.1)} 		& 	\Sexpr{p.2.South.Africa.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.South.Africa.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.South.Africa.ftest.2} 		& \Sexpr{p.2.South.Africa.pvalue.2} & \Sexpr{(p.2.South.Africa.df.num.dem.2)} 		& 	\Sexpr{p.2.South.Africa.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{South Korea}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.South.Korea.ftest.1} 		& \Sexpr{p.2.South.Korea.pvalue.1} & \Sexpr{(p.2.South.Korea.df.num.dem.1)} 		& 	\Sexpr{p.2.South.Korea.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.South.Korea.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.South.Korea.ftest.2} 		& \Sexpr{p.2.South.Korea.pvalue.2} & \Sexpr{(p.2.South.Korea.df.num.dem.2)} 		& 	\Sexpr{p.2.South.Korea.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{South Korea}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.South.Korea.ftest.1} 		& \Sexpr{p.2.South.Korea.pvalue.1} & \Sexpr{(p.2.South.Korea.df.num.dem.1)} 		& 	\Sexpr{p.2.South.Korea.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.South.Korea.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.South.Korea.ftest.2} 		& \Sexpr{p.2.South.Korea.pvalue.2} & \Sexpr{(p.2.South.Korea.df.num.dem.2)} 		& 	\Sexpr{p.2.South.Korea.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Spain}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Spain.ftest.1} 		& \Sexpr{p.2.Spain.pvalue.1} & \Sexpr{(p.2.Spain.df.num.dem.1)} 		& 	\Sexpr{p.2.Spain.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Spain.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Spain.ftest.2} 		& \Sexpr{p.2.Spain.pvalue.2} & \Sexpr{(p.2.Spain.df.num.dem.2)} 		& 	\Sexpr{p.2.Spain.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Spain}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Spain.ftest.1} 		& \Sexpr{p.2.Spain.pvalue.1} & \Sexpr{(p.2.Spain.df.num.dem.1)} 		& 	\Sexpr{p.2.Spain.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Spain.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Spain.ftest.2} 		& \Sexpr{p.2.Spain.pvalue.2} & \Sexpr{(p.2.Spain.df.num.dem.2)} 		& 	\Sexpr{p.2.Spain.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Taiwan}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Taiwan.ftest.1} 		& \Sexpr{p.2.Taiwan.pvalue.1} & \Sexpr{(p.2.Taiwan.df.num.dem.1)} 		& 	\Sexpr{p.2.Taiwan.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Taiwan.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Taiwan.ftest.2} 		& \Sexpr{p.2.Taiwan.pvalue.2} & \Sexpr{(p.2.Taiwan.df.num.dem.2)} 		& 	\Sexpr{p.2.Taiwan.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Taiwan}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Taiwan.ftest.1} 		& \Sexpr{p.2.Taiwan.pvalue.1} & \Sexpr{(p.2.Taiwan.df.num.dem.1)} 		& 	\Sexpr{p.2.Taiwan.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Taiwan.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Taiwan.ftest.2} 		& \Sexpr{p.2.Taiwan.pvalue.2} & \Sexpr{(p.2.Taiwan.df.num.dem.2)} 		& 	\Sexpr{p.2.Taiwan.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Turkey}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Turkey.ftest.1} 		& \Sexpr{p.2.Turkey.pvalue.1} & \Sexpr{(p.2.Turkey.df.num.dem.1)} 		& 	\Sexpr{p.2.Turkey.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Turkey.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Turkey.ftest.2} 		& \Sexpr{p.2.Turkey.pvalue.2} & \Sexpr{(p.2.Turkey.df.num.dem.2)} 		& 	\Sexpr{p.2.Turkey.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Turkey}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Turkey.ftest.1} 		& \Sexpr{p.2.Turkey.pvalue.1} & \Sexpr{(p.2.Turkey.df.num.dem.1)} 		& 	\Sexpr{p.2.Turkey.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Turkey.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Turkey.ftest.2} 		& \Sexpr{p.2.Turkey.pvalue.2} & \Sexpr{(p.2.Turkey.df.num.dem.2)} 		& 	\Sexpr{p.2.Turkey.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{United Kingdom}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.United.Kingdom.ftest.1} 		& \Sexpr{p.2.United.Kingdom.pvalue.1} & \Sexpr{(p.2.United.Kingdom.df.num.dem.1)} 		& 	\Sexpr{p.2.United.Kingdom.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.United.Kingdom.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              	& guns $\rightarrow$ steel		& \Sexpr{p.2.United.Kingdom.ftest.2} 		& \Sexpr{p.2.United.Kingdom.pvalue.2} & \Sexpr{(p.2.United.Kingdom.df.num.dem.2)} 		& 	\Sexpr{p.2.United.Kingdom.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{United Kingdom}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.United.Kingdom.ftest.1} 		& \Sexpr{p.2.United.Kingdom.pvalue.1} & \Sexpr{(p.2.United.Kingdom.df.num.dem.1)} 		& 	\Sexpr{p.2.United.Kingdom.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.United.Kingdom.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              	& guns $\rightarrow$ butter		& \Sexpr{p.2.United.Kingdom.ftest.2} 		& \Sexpr{p.2.United.Kingdom.pvalue.2} & \Sexpr{(p.2.United.Kingdom.df.num.dem.2)} 		& 	\Sexpr{p.2.United.Kingdom.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
 \end{tabular}}
 \\
@@ -446,14 +482,14 @@ count <- comma(as.numeric(count)) # add comma
 \begin{tabular}{ccccccc|}
 \cline{2-7}
 \multicolumn{1}{c|}{}                               & \textbf{Granger Relationship} & \textbf{F-Test} 					& \textbf{P-Value} 				 & \textbf{DF} 								& 	\textbf{Adjusted R-sq} 		& {\bf Lags}  \\ \hline
-\multicolumn{1}{|c|}{\multirow{2}{*}{China}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.China.ftest.1} 		& \Sexpr{p.2.China.pvalue.1} & \Sexpr{(p.2.China.df.num.dem.1)} 		& 	\Sexpr{p.2.China.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.China.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.China.ftest.2} 		& \Sexpr{p.2.China.pvalue.2} & \Sexpr{(p.2.China.df.num.dem.2)} 		& 	\Sexpr{p.2.China.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{China}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.China.ftest.1} 		& \Sexpr{p.2.China.pvalue.1} & \Sexpr{(p.2.China.df.num.dem.1)} 		& 	\Sexpr{p.2.China.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.China.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.China.ftest.2} 		& \Sexpr{p.2.China.pvalue.2} & \Sexpr{(p.2.China.df.num.dem.2)} 		& 	\Sexpr{p.2.China.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Russia}} 		& steel $\rightarrow$ guns		& \Sexpr{p.2.Russia.ftest.1} 		& \Sexpr{p.2.Russia.pvalue.1} & \Sexpr{(p.2.Russia.df.num.dem.1)} 		& 	\Sexpr{p.2.Russia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Russia.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ steel		& \Sexpr{p.2.Russia.ftest.2} 		& \Sexpr{p.2.Russia.pvalue.2} & \Sexpr{(p.2.Russia.df.num.dem.2)} 		& 	\Sexpr{p.2.Russia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Russia}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Russia.ftest.1} 		& \Sexpr{p.2.Russia.pvalue.1} & \Sexpr{(p.2.Russia.df.num.dem.1)} 		& 	\Sexpr{p.2.Russia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Russia.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Russia.ftest.2} 		& \Sexpr{p.2.Russia.pvalue.2} & \Sexpr{(p.2.Russia.df.num.dem.2)} 		& 	\Sexpr{p.2.Russia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{United States}} 	& steel $\rightarrow$ guns		& \Sexpr{p.2.United.States.of.America.ftest.1} 		& \Sexpr{p.2.United.States.pvalue.1} & \Sexpr{(p.2.United.States.of.America.df.num.dem.1)} 		& 	\Sexpr{p.2.United.States.of.America.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.United.States.of.America.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              	& guns $\rightarrow$ steel		& \Sexpr{p.2.United.States.of.America.ftest.2} 		& \Sexpr{p.2.United.States.pvalue.2} & \Sexpr{(p.2.United.States.of.America.df.num.dem.2)} 		& 	\Sexpr{p.2.United.States.of.America.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{United States}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.United.States.of.America.ftest.1} 		& \Sexpr{p.2.United.States.pvalue.1} & \Sexpr{(p.2.United.States.of.America.df.num.dem.1)} 		& 	\Sexpr{p.2.United.States.of.America.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.United.States.of.America.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              	& guns $\rightarrow$ butter		& \Sexpr{p.2.United.States.of.America.ftest.2} 		& \Sexpr{p.2.United.States.pvalue.2} & \Sexpr{(p.2.United.States.of.America.df.num.dem.2)} 		& 	\Sexpr{p.2.United.States.of.America.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
 \end{tabular}}
 \\
@@ -463,8 +499,8 @@ count <- comma(as.numeric(count)) # add comma
 
 
 % Notes
-%\linespread{2}
-%\newpage\theendnotes
+\linespread{2}
+\newpage\theendnotes
 
 
 \end{document}
@@ -488,7 +524,7 @@ GVAR (global vector autoregression) approach advanced in Pesaran, Schuermann and
 
 ``The GVAR (Global Vector AutoRegressive) model combines indi- vidual country vector error-correcting models, in which domestic variables are related to country-specific foreign variables in a consistent manner.'' % Mauro2013, 13
 
-``The version of the GVAR model that will be presented here is based on that of Dées, di Mauro, Pesaran, and Smith (2007, DdPS), which is estimated for 26 countries/regions, the euro area being treated as a single economy. The estimation sample extends that of DdPS by eight years, covering the period 1979–2011. This version also considerably extends the 11 country/ region models estimated over the shorter period 1979–1999 in Pesaran, Schuermann, and Weiner (2004, PSW), where the GVAR model was initially introduced'' % Mauro2013, 13
+``The version of the GVAR model that will be presented here is based on that of Dées, di Mauro, Pesaran, and Smith (2007, DdPS), which is estimated for 26 countries/regions, the euro area being treated as a single economy. The estimation sample extends that of DdPS by eight years, covering the period 1979-2011. This version also considerably extends the 11 country/ region models estimated over the shorter period 1979-1999 in Pesaran, Schuermann, and Weiner (2004, PSW), where the GVAR model was initially introduced'' % Mauro2013, 13
 
 ``The weak exogeneity assumption is the key feature of the GVAR modelling strategy, since it allows country models to be estimated individually and only at a later stage to be combined together.'' % Mauro2013, 13
 
