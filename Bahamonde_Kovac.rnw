@@ -80,7 +80,7 @@ We thank Tsung-wu Ho and Cristobal Quininao for their suggestions.}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % begin knitr stuff
-<<setup, include=FALSE, cache=TRUE>>=
+<<setup, include=FALSE, cache=F>>=
 if (!require("pacman")) install.packages("pacman"); library(pacman)
 p_load(knitr)
 
@@ -92,31 +92,31 @@ read_chunk('/Users/hectorbahamonde/research/Bahamonde_Kovac/Bahamonde_Kovac.R')
 @
 
 
-<<data:loadings, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
+<<data:loadings, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=F, eval=TRUE>>=
 
 @
 
-<<gvar:model:first:period, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
+<<gvar:model:first:period, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=F, eval=TRUE>>=
 
 @
 
-<<gvar:model:second:period, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
+<<gvar:model:second:period, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=F, eval=TRUE>>=
 
 @
 
-<<gvar:model:second:period:b, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
+<<gvar:model:second:period:b, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=F, eval=TRUE>>=
 
 @
 
-<<plot:d, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
+<<plot:d, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=F, eval=TRUE>>=
 
 @
 
-<<pvalues.plot:d, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
+<<pvalues.plot:d, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=F, eval=TRUE>>=
 
 @
 
-<<abstract, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
+<<abstract, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=F, eval=TRUE>>=
 
 @
 
@@ -205,7 +205,7 @@ Since we are substantively interested in weather ``guns'' \emph{cause} ``butter'
 In our case, the vector ${\mathbf x}_{it}$ contains country-year levels of ``military personnel,'' while vector ${\mathbf y}_{it}$ contains country-year levels of ``iron and steel production.'' Both variables were systematized by the Correlates of War Project, particularly, the National Material Capabilities dataset \parencite{Singer:1972aa}.\footnote{Version 5.0.} The dataset covers all countries in the world between 1816-2012. 
 
 
-We have truncated this time period into two parts, each related to a specific hypothesis. Namely, the first period is between \Sexpr{as.character(format(min(cow.d.1$Time), format="%Y"))} and \Sexpr{as.character(format(max(cow.d.1$Time), format="%Y"))}. The time spread is rather obvious---unification of Germany and the beginning of World War I. The Zeitgeist of that period is neatly summed up in the infamous Bismarck ``Blood and Iron'' speech: 
+We have truncated this time period into two parts, each related to a specific hypothesis. Namely, the first period is between \Sexpr{as.character(format(min(cow.d.1$Time), format="%Y"))} and \Sexpr{as.character(format(max(cow.d.1$Time), format="%Y"))}. The time spread is rather obvious---unification of Germany and the beginning of World War I. The Zeitgeist of that period is neatly summed up in the infamous Bismarck's ``Blood and Iron'' speech \textcite[1862]{Bismarck2020}: 
 
 \todo{pending reference}
 \begin{quote}
@@ -238,14 +238,14 @@ Between \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), 
 \todo{i'd rather keep the description of Fig 1 (explain logs, etc)}
 
 \clearpage
-<<plot:t:1, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=cow.d.1.plot.note, fig.align='center', fig.width=6, fig.height=6,dpi=1000,cache = TRUE, include = TRUE>>=
+<<plot:t:1, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=cow.d.1.plot.note, fig.align='center', fig.width=6, fig.height=6,dpi=1000,cache=F, include = TRUE>>=
 
 
 @
 
 \clearpage
 \afterpage{%
-<<plot:t:2, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap=cow.d.2.plot.note, fig.align='center', fig.width=6, fig.height=8,dpi=1000,cache = TRUE, include = TRUE>>=
+<<plot:t:2, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap=cow.d.2.plot.note, fig.align='center', fig.width=6, fig.height=8,dpi=1000,cache=F, include = TRUE>>=
 
 
 @
@@ -276,7 +276,7 @@ Every $W_{t}$ matrix weights all $K$ country-specific Granger regressions descri
 The plot shows that during the \text{$\Sexpr{paste(paste(year.min.t1, "-",paste(year.max.t1, sep=""), sep=""), sep = "")}$} period, in $\Sexpr{percent.steel.causes.guns.t1}$\% of the countries economic power Granger-caused military power. Yet, interestingly, this percentage drops to $\Sexpr{percent.steel.causes.guns.t2}$\% and $\Sexpr{percent.steel.causes.guns.t2.b}$\% for the great power during the $\Sexpr{paste(paste(year.min.t2, "-",paste(year.max.t2, sep=""), sep=""), sep = "")}$ period. On the other hand, in the same second period in $\Sexpr{round(100-(percent.steel.causes.guns.t2+percent.steel.causes.guns.t2.b/2), 0)}$\% of the countries military power Granger-caused economic power. 
 
 
-<<pvalues.plot, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=p.value.plot.note, fig.align='center', fig.width=12, fig.height=6,dpi=1000,cache = TRUE, include = TRUE>>=
+<<pvalues.plot, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=p.value.plot.note, fig.align='center', fig.width=12, fig.height=6,dpi=1000,cache=F, include = TRUE>>=
 
 
 @
@@ -302,7 +302,7 @@ However, future iterations of this project are necessary to be fully confident i
 \printbibliography
 
 
-<<bib:export, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=TRUE, eval=TRUE>>=
+<<bib:export, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=F, eval=TRUE>>=
 
 @
 
@@ -322,9 +322,7 @@ However, future iterations of this project are necessary to be fully confident i
 % WORD COUNT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
-\newpage
-\pagenumbering{gobble}
-<<wordcount, echo=FALSE, cache=TRUE>>=
+<<wordcount, echo=FALSE, cache=FALSE>>=
 library(knitr)
 
 comma <- function (x, ...) {
