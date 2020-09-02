@@ -163,10 +163,10 @@ Another way of classifying power is through the so called ``faces of power.'' Su
 The third approach of looking at power is to look at a particular domain of state interaction. Subsequently, each domain has its unique sources of power and causal mechanisms how that power functions. As stated, \textcite{mann1986a} determined economic, military, political, and ideological power domains. 
 
 
-\todo{added. check.}The present research is related to first and third approach of studying power, hinting therefore, also towards the possibility of a synthesizing approach to conceptualize power. We look at capabilities of states, hence, we understand power as ``power to.'' Moreover, we are also testing the relations between economic and military power factors. Thus, state capabilities can be either economic, military, political and cultural. In future research we wish to test all those relations, nevertheless, this paper is only focused on testing the economic power prerequisite assumption.
+The present research is related to first and third approach of studying power, hinting therefore, also towards the possibility of a synthesizing approach to conceptualize power. We look at capabilities of states, hence, we understand power as ``power to.'' Moreover, we are also testing the relations between economic and military power factors. Thus, state capabilities can be either economic, military, political and cultural. In future research we wish to test all those relations, nevertheless, this paper is only focused on testing the economic power prerequisite assumption.
 
 
-The latter was the biggest constraining factor in our analysis. We had to balance the wish for long time span with the wish for big number of states included. In future iterations, as well as for robustness checks we may consider different time spans, which subsequently would change also the amount of states included---e.g. instead of taking \todo{note is not 1945} \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), format="%Y"))} as one of the starting points, consider 1971 or 1973, when the Bretton Woods International Monetary system collapsed, as well as when a big chunk of de-colonialization had already happened.
+The latter was the biggest constraining factor in our analysis. We had to balance the wish for long time span with the wish for big number of states included. In future iterations, as well as for robustness checks we may consider different time spans, which subsequently would change also the amount of states included---e.g. instead of taking \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), format="%Y"))} as one of the starting points, consider 1971 or 1973, when the Bretton Woods International Monetary system collapsed, as well as when a big chunk of de-colonialization had already happened.
 
 Moreover, in the current state of the project, we only look at two variables, one measuring military power (military personnel) and one economic power (iron and steel production). We will be adding two more variables, one for each power factor, in the next iteration---military expenditure and energy consumption. However, the global variable, or the variable that determines the structure of international relations, where a state operates in is the bilateral trade between countries. It may not be the best proxy for a structure, but it is the only one in a dyadic format with a time span we can take advantage of. Nevertheless, in the future iterations of the project, particularly for the time after World War II, a different variable may be used.
 
@@ -174,7 +174,7 @@ Moreover, in the current state of the project, we only look at two variables, on
 \section{Modeling ``Butter and Guns'' in a Global Setting: Presenting the GVAR Methodology}
 
 
-\todo{added. check.}To our knowledge, so far GVAR has not been used or introduced in Political Science. Although the method has been widely used in economics, its characteristics are appealing also for Political Science. Three such features come to mind. First, as already stated, GVAR enables a panel time series analysis of a big N and big T dataset. Second, unlike PVAR, it generates results for individual countries, or other units, hence, the particularities and complexities of politics are considered. Finally, it enables to model the effects of agency, structure, as well as their interaction. Still, for all its advantages, GVAR has one important shortcoming. Namely, there must not be any gaps in the data. 
+To our knowledge, so far GVAR has not been used or introduced in Political Science. Although the method has been widely used in economics, its characteristics are appealing also for Political Science. Three such features come to mind. First, as already stated, GVAR enables a panel time series analysis of a big N and big T dataset. Second, unlike PVAR, it generates results for individual countries, or other units, hence, the particularities and complexities of politics are considered. Finally, it enables to model the effects of agency, structure, as well as their interaction. Still, for all its advantages, GVAR has one important shortcoming. Namely, there must not be any gaps in the data. 
 
 \subsection{GVAR: Country-specific Equations and Granger-causality Tests}
 
@@ -191,6 +191,15 @@ where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of endogenous variab
 \end{equation}
 
 where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of domestic (i.e. endogenous) variables, ${\mathbf W}_{t}$ is a $k_{i} \; \times \; 1$ vector of weakly-exogenous foreign variables, and ${\mathbf u}_{it}$ is a serially uncorrelated and cross-sectionally weakly dependent process. As it becomes apparent, the inclusion of foreign variables ${\mathbf W}_{t}$ in \autoref{eq:gvar} is one of the main characteristics of the GVAR approach, and the main difference with the VAR equation described in \autoref{eq:var}. In simple, the Global vector autoregressive GVAR model in \autoref{eq:gvar} explains ${\mathbf x}_{i,t}$ as a function of past values ${\mathbf x}_{i,t-p}$ lagged $p$ times, at the same time that it weights these dynamics by weakly-exogenous foreign variables ${\mathbf W}_{t-p}$ (weights which are captured by parameters $\bm{\Lambda}_{ni}$).
+
+\afterpage{%
+<<plot:t:1, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=cow.d.1.plot.note, fig.align='center', fig.width=6, fig.height=6,dpi=1000,cache=F, include = TRUE>>=
+
+
+@
+\clearpage
+}
+
 
 Since we are substantively interested in weather ``guns'' \emph{cause} ``butter'' or the other way around, in this paper we estimate country-specific bivariate Granger-causality tests within the GVAR framework.\footnote{We acknowledge that without proper experimentation and randomization there cannot be proper causation. Consequently, and following the Granger methodology, we employ a rather lose definition of ``causation'' and explore if lagged values of a variable \emph{forecast} another variable.} The Granger-causality method was introduced in \textcite{Granger1969} and it seeks to investigate if some variable $X$ Granger-causes another variable $Y$, or the other way around. A variable $X$ is said to Granger-cause $Y$ if predictions of $Y$ based on lagged values of $Y$ and lagged values of $X$ perform better than explaining $Y$ just with its own past values. Since Granger-causality tests are usually estimated by fitting VAR equations (\autoref{eq:var}) we now derive the Granger-causality test within the GVAR framework. The substantive advantage of GVAR Granger-causality tests over regular Granger-causality tests is that estimates are weighted by the global economy, situating the domestic dynamics within the global context. More formally, we estimate the following GVAR Granger-causality system for every country $i$ with $p$ lags as follows:
 
@@ -211,18 +220,25 @@ We have truncated this time period into two parts, each related to a specific hy
 Germany is not looking to Prussia's liberalism, but to its power; Bavaria, W\"{u}rttemberg, Baden may indulge liberalism, and yet no one will assign them Prussia's role; Prussia has to coalesce and concentrate its power for the opportune moment, which has already been missed several times; Prussia's borders according to the Vienna Treaties are not favorable for a healthy, vital state; it is not by speeches and majority resolutions that the great questions of the time are decided---that was the big mistake of 1848 and 1849---but by iron and blood.
 \end{quote}
 
+
+\afterpage{%
+<<plot:t:2, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=cow.d.2.plot.note, fig.align='center', fig.width=6, fig.height=8,dpi=1000,cache=F, include = TRUE>>=
+
+
+@
+\clearpage
+}
+
 As history has shown, by iron he did not mean economy, but military power \parencite{hobsbawm1987a,kissinger1994a,schroeder1976a}. Therefore, our hypotheses are: 
 
 \begin{hyp}\label{h:I}
 Between \Sexpr{as.character(format(min(cow.d.1$Time), format="%Y"))} and \Sexpr{as.character(format(max(cow.d.1$Time), format="%Y"))} military power Granger causes economic power.
 \end{hyp}
 
-\todo{liked is referring to Granger, no ``prerequisite''}
-
 In the future versions of the paper we may include only the very few numbers of states, whose data goes all the way back to 1816. Furthermore, we also may take advantage of imputing some data points for some states in order to enhance the number of states also in this period---for both versions 1816-\Sexpr{as.character(format(max(cow.d.1$Time), format="%Y"))} and \Sexpr{as.character(format(min(cow.d.1$Time), format="%Y"))}-\Sexpr{as.character(format(max(cow.d.1$Time), format="%Y"))}.
 
 \autoref{fig:plot:t:1} portrays the values of the two variables used in our model by country between \Sexpr{as.character(format(min(cow.d.1$Time), format="%Y"))
-} and \Sexpr{as.character(format(max(cow.d.1$Time), format="%Y"))}.\todo{data are already cited} The second period of our analysis takes place between \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), format="%Y"))} and \Sexpr{as.character(format(max(max(cow.d.2$Time), max(cow.d.2.B$Time)), format="%Y"))}. The beginning of this framework was generated based on the balance between the competing objective of time length and amount of states included in our model. As stated earlier, here we have opted more in favor of greater time span, whereas in the future iterations and as a sort of robustness checks, we will also use a different starting points, such as: 1971 (Nixon Shock) or 1973 (the end of Bretton Woods System), 1946 (the end of World War II), 1991 (the end of Cold War), and 1980 (oil crisis). Moreover, we will also consider imputation in all these formats.
+} and \Sexpr{as.character(format(max(cow.d.1$Time), format="%Y"))}. The second period of our analysis takes place between \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), format="%Y"))} and \Sexpr{as.character(format(max(max(cow.d.2$Time), max(cow.d.2.B$Time)), format="%Y"))}. The beginning of this framework was generated based on the balance between the competing objective of time length and amount of states included in our model. As stated earlier, here we have opted more in favor of greater time span, whereas in the future iterations and as a sort of robustness checks, we will also use a different starting points, such as: 1971 (Nixon Shock) or 1973 (the end of Bretton Woods System), 1946 (the end of World War II), 1991 (the end of Cold War), and 1980 (oil crisis). Moreover, we will also consider imputation in all these formats.
 
 Nevertheless, we suspect that the nature of relations between economic and military power would be reversed in this period. This is not due to the technological advancement of the military, but rather due to the changed nature of the economy. The latter became finance driven, which is detached from the real economy. Namely, exponential growth of trade, Foreign Direct Investments, and monetary transactions altogether all attribute to the growth of monetary velocity \parencite{cagan1987a}, the creation of international banking consortia---by 1971 90\% of 50 world's biggest banks had become a part of broader and larger conglomerates \parencite{ganoe1972a}, and ``by the end of 1970s financial flow size dwarfed trade flows by 25:1 and they were much more volatile'' \parencite{gilpin2011a} therefore, today 99\% of all financial transactions are short term-speculative transactions. All this contributes to the fact that the economy is not only adjacent to the strategic interactions of states, but in fact has become its own domain of power relations among states.\footnote{On the issue, see \textcite{luttwak1990a,csurgai2009a,blackwill2016a}.} Subsequently, we hypothesize: 
 
@@ -234,23 +250,6 @@ Between \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), 
 
 \autoref{fig:plot:t:2} displays the values of the two variables used in our model by country from \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), format="%Y"))} and \Sexpr{as.character(format(max(max(cow.d.2$Time), max(cow.d.2.B$Time)), format="%Y"))}.
 
-\todo{i'd rather keep the description of Fig 1 (explain logs, etc)}
-
-\afterpage{%
-<<plot:t:1, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=cow.d.1.plot.note, fig.align='center', fig.width=6, fig.height=6,dpi=1000,cache=F, include = TRUE>>=
-
-
-@
-\clearpage
-}
-
-\afterpage{%
-<<plot:t:2, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=cow.d.2.plot.note, fig.align='center', fig.width=6, fig.height=8,dpi=1000,cache=F, include = TRUE>>=
-
-
-@
-\clearpage
-}
 
 When it comes to the foreign or global variable that determines the structure of international relations in our model, we have opted for dyadic trade data, which is available also for the period in 19th century. This variable was constructed by the same project but in the Trade dataset \parencite{Barbieri:2009aa,Barbieri:2016aa}\footnote{Version 4.0.} and was used to construct the weight matrix ${\mathbf W}$. The matrix is a square matrix which has all $K$ countries in both its columns and rows with zeros as diagonal elements. The matrix represents bilateral trade among two countries measured by the \emph{flow1} and the \emph{flow2} variables. The former measures imports from a country (\emph{importer1}) to another country (\emph{importer2}), and the latter measures the reverse dyad, i.e. imports from \emph{importer2} to \emph{importer1}. More formally, ${\mathbf W}$ contains $t$ sub-matrices (one sub-matrix per year) with dimensions $k \; \times \; k$ for a total of ${\mathbf K}$ countries such that,
 
@@ -269,9 +268,12 @@ ${\mathbf W}_{t} =
 
 Every $W_{t}$ matrix weights all $K$ country-specific Granger regressions described in \autoref{eq:gvar:granger}. Every $K$ system is weighted by the other $K-1$ countries. And as \autoref{eq:gvar:granger} shows, the GVAR methodology also considers $p$ lags of the ${\mathbf W}$ matrix. Following the literature on Granger-causality tests we focus our attention model-specific f-tests (one per country) which tests if all variables in the model are jointly significant. Then null is that there is no Granger causality.
 
+
+
+
 \section{Results}
 
-\autoref{fig:pvalues.plot} shows country-specific p-values of the Granger-causality f-tests obtained when fitting \autoref{eq:gvar:granger} (detailed results shown in \autoref{t:1}, \autoref{t:2} and \autoref{t:2b})\todo{change the brackets?}. 
+\autoref{fig:pvalues.plot} shows country-specific p-values of the Granger-causality f-tests obtained when fitting \autoref{eq:gvar:granger} (detailed results shown in the Appendix section, particularly \autoref{t:1}, \autoref{t:2} and \autoref{t:2b}). 
 
 
 The plot shows that during the \text{$\Sexpr{paste(paste(year.min.t1, "-",paste(year.max.t1, sep=""), sep=""), sep = "")}$} period, in $\Sexpr{percent.steel.causes.guns.t1}$\% of the countries economic power Granger-caused military power. Yet, interestingly, this percentage drops to $\Sexpr{percent.steel.causes.guns.t2}$\% and $\Sexpr{percent.steel.causes.guns.t2.b}$\% for the great power during the $\Sexpr{paste(paste(year.min.t2, "-",paste(year.max.t2, sep=""), sep=""), sep = "")}$ period. On the other hand, in the same second period in $\Sexpr{round(100-(percent.steel.causes.guns.t2+percent.steel.causes.guns.t2.b/2), 0)}$\% of the countries military power Granger-caused economic power. 
