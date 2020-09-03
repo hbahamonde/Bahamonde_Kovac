@@ -1,1 +1,1 @@
-Work in progress. Please don't cite. Download the last version of the paper \href{https://github.com/hbahamonde/Bahamonde_Kovac/raw/master/Bahamonde_Kovac.pdf}{\texttt{{\color{red}here}}}.
+work in progress

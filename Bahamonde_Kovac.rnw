@@ -65,7 +65,7 @@ We thank Tsung-wu Ho and Cristobal Quininao for their suggestions.}}
 \keywords{time series; IPE; GVAR; IR}
 
 \begin{center}
-\input{/Users/hectorbahamonde/research/Bahamonde_Kovac/status.txt}\unskip
+Work in progress. Please don't cite. Download the last version of the paper \href{https://github.com/hbahamonde/Bahamonde_Kovac/raw/master/Bahamonde_Kovac.pdf}{\texttt{{\color{red}here}}}.
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
