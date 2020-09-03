@@ -187,10 +187,10 @@ Global vector auto-regressive models (GVAR) are a special category of vector aut
 where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of endogenous variables which are lagged $p$ times on the right-hand side, and where $E({\mathbf u}_{it})=0$. Now, following \textcite[14]{Mauro2013}, define a GVAR model with $p$ lags for country $i$ as follows,
 
 \begin{equation}\label{eq:gvar}
-{\mathbf x}_{it} =  \bm{\alpha}_{i} +  \bm{\Phi}_{i} {\mathbf x}_{i,t-p} +  \bm{\Lambda}_{1i} {\mathbf W}_{t} + \bm{\Lambda}_{2i} {\mathbf W}_{t-p} + {\mathbf u}_{it}
+{\mathbf x}_{it} =  \bm{\alpha}_{i} +  \bm{\Phi}_{i} {\mathbf x}_{i,t-p} +  \bm{\Lambda}_{1i} {\mathbf W}_{x, t} + \bm{\Lambda}_{2i} {\mathbf W}_{x, t-p} + {\mathbf u}_{it}
 \end{equation}
 
-where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of domestic (i.e. endogenous) variables, ${\mathbf W}_{t}$ is a $k_{i} \; \times \; 1$ vector of weakly-exogenous foreign variables, and ${\mathbf u}_{it}$ is a serially uncorrelated and cross-sectionally weakly dependent process. As it becomes apparent, the inclusion of foreign variables ${\mathbf W}_{t}$ in \autoref{eq:gvar} is one of the main characteristics of the GVAR approach, and the main difference with the VAR equation described in \autoref{eq:var}. In simple, the Global vector autoregressive GVAR model in \autoref{eq:gvar} explains ${\mathbf x}_{i,t}$ as a function of past values ${\mathbf x}_{i,t-p}$ lagged $p$ times, at the same time that it weights these dynamics by weakly-exogenous foreign variables ${\mathbf W}_{t-p}$ (weights which are captured by parameters $\bm{\Lambda}_{ni}$).
+where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of domestic (i.e. endogenous) variables, ${\mathbf W}_{t}$ is a $k_{i} \; \times \; 1$ vector of weakly-exogenous foreign variables, and ${\mathbf u}_{it}$ is a serially uncorrelated and cross-sectionally weakly dependent process. As it becomes apparent, the inclusion of foreign variables ${\mathbf W}_{t}$ in \autoref{eq:gvar} is one of the main characteristics of the GVAR approach, and the main difference with the VAR equation described in \autoref{eq:var}. In simple, the Global vector autoregressive GVAR model in \autoref{eq:gvar} explains ${\mathbf x}_{i,t}$ as a function of past values ${\mathbf x}_{i,t-p}$ lagged $p$ times, at the same time that it weights these dynamics by weakly-exogenous foreign variables ${\mathbf W}_{t-p}$ (weights which are captured by parameters $\bm{\Lambda}_{ni}$). Note that the exogeneity of $x$ is obtained by multiplying this term by the weights matrix ${\mathbf W}_{t}$, both with its current values and $p$ lagged values.
 
 \afterpage{%
 <<plot:t:1, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=cow.d.1.plot.note, fig.align='center', fig.width=6, fig.height=6,dpi=1000,cache=F, include = TRUE>>=
@@ -205,13 +205,12 @@ Since we are substantively interested in weather ``guns'' \emph{cause} ``butter'
 
 \begin{align}\label{eq:gvar:granger}
 \begin{aligned}
-{\mathbf x}_{it} &=  \bm{\alpha}_{i} +  \bm{\Phi}_{1i} {\mathbf y}_{i,t-p} + \bm{\Phi}_{2i} {\mathbf x}_{i,t-p} + \bm{\Lambda}_{1i} {\mathbf W}_{t} + \bm{\Lambda}_{2i} {\mathbf W}_{t-p} + \bm{\Lambda}_{3i} {\mathbf W}_{t} + \bm{\Lambda}_{4i} {\mathbf W}_{t-p} + {\mathbf u}_{it}\\
-{\mathbf y}_{it} &=  \bm{\alpha}_{i} +  \bm{\Phi}_{1i} {\mathbf x}_{i,t-p} + \bm{\Phi}_{2i} {\mathbf y}_{i,t-p} + \bm{\Lambda}_{1i} {\mathbf W}_{t} + \bm{\Lambda}_{2i} {\mathbf W}_{t-p} + \bm{\Lambda}_{3i} {\mathbf W}_{t} + \bm{\Lambda}_{4i} {\mathbf W}_{t-p} + {\mathbf u}_{it}
+{\mathbf x}_{it} &=  \bm{\alpha}_{i} +  \bm{\Phi}_{1i} {\mathbf y}_{i,t-p} + \bm{\Phi}_{2i} {\mathbf x}_{i,t-p} + \bm{\Lambda}_{1i} {\mathbf W}_{x, t} + \bm{\Lambda}_{2i} {\mathbf W}_{x, t-p} + \bm{\Lambda}_{3i} {\mathbf W}_{y, t} + \bm{\Lambda}_{4i} {\mathbf W}_{y, t-p} + {\mathbf u}_{it}\\
+{\mathbf y}_{it} &=  \bm{\alpha}_{i} +  \bm{\Phi}_{1i} {\mathbf x}_{i,t-p} + \bm{\Phi}_{2i} {\mathbf y}_{i,t-p} + \bm{\Lambda}_{1i} {\mathbf W}_{y, t} + \bm{\Lambda}_{2i} {\mathbf W}_{y, t-p} + \bm{\Lambda}_{3i} {\mathbf W}_{x, t} + \bm{\Lambda}_{4i} {\mathbf W}_{x, t-p} + {\mathbf u}_{it}
 \end{aligned}
 \end{align}
 
-
-In our case, the vector ${\mathbf x}_{it}$ contains country-year levels of ``military personnel,'' while vector ${\mathbf y}_{it}$ contains country-year levels of ``iron and steel production.'' Both variables were systematized by the Correlates of War Project, particularly, the National Material Capabilities dataset \parencite{Singer:1972aa}.\footnote{Version 5.0.} The dataset covers all countries in the world between 1816-2012. 
+Likewise, note that the exogeneity of $x$ and $y$ is obtained by multiplying each by the weights matrix ${\mathbf W}_{t}$, both with its current values and $p$ lagged values. Particularly, the vector ${\mathbf x}_{it}$ contains country-year levels of ``military personnel,'' while vector ${\mathbf y}_{it}$ contains country-year levels of ``iron and steel production.'' Both variables were systematized by the Correlates of War Project, particularly, the National Material Capabilities dataset \parencite{Singer:1972aa}.\footnote{Version 5.0.} The dataset covers all countries in the world between 1816-2012. 
 
 
 We have truncated this time period into two parts, each related to a specific hypothesis. Namely, the first period is between \Sexpr{as.character(format(min(cow.d.1$Time), format="%Y"))} and \Sexpr{as.character(format(max(cow.d.1$Time), format="%Y"))}. The time spread is rather obvious---unification of Germany and the beginning of World War I. The Zeitgeist of that period is neatly summed up in the infamous Bismarck's ``Blood and Iron'' speech \textcite[1862]{Bismarck1862a}: 
