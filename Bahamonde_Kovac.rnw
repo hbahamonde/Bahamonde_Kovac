@@ -172,9 +172,9 @@ The paper proceeds as follows. First, \autoref{Conceptualizing:Power} discusses 
 \section{Introducing the GVAR Methodology\label{methods}}
 
 % fix this
-GVAR was introduced in \textcite{pesaran2004a}. It ``was developed in the aftermath of the 1997 Asian financial crisis to quantify the effects of macroeconomic developments on the losses of major financial institutions.'' The main feature of GVAR is that it ``take[s] into account the various interlinkages in the global economy in the context of a truly multicountry setting'' \parencite[139]{Pesaran2004} by incorporating a large number of panels (``big \emph{N}'') for long time-spans (``big \emph{T}'') which are weighted by exogenous factors such as bilateral trade. 
+GVAR was introduced in \textcite{pesaran2004a}. It ``was developed in the aftermath of the 1997 Asian financial crisis to quantify the effects of macroeconomic developments on the losses of major financial institutions'' \parencite[1]{Mauro2013}. The main feature of GVAR is that it ``take[s] into account the various interlinkages in the global economy in the context of a truly multicountry setting'' \parencite[139]{Pesaran2004} by incorporating a large number of panels (``big \emph{N}'') for long time-spans (``big \emph{T}'') which are weighted by exogenous factors such as bilateral trade. 
 
-While GVAR has been widely used in economics \parencite{Favero2013,mauro2013a,chudik2016a,Eickmeier2015} its characteristics are also appealing for political science. Therefore, it is ideal for testing relations between economic and military power in a truly global setting. Yet, to our knowledge, the GVAR method has not been used or introduced in political science so far. In the rest of the paper we do so by rephrasing the famous dilemma about whether governments should allocate resources to finance ``guns'' (military power) or ``butter'' (economic power or economic development in general).
+While GVAR has been widely used in economics \parencite{Favero2013,mauro2013a,chudik2016a,Eickmeier2015} its characteristics are also appealing for political scientists. Yet, to our knowledge, the GVAR method has not been used or introduced in political science so far. We do so in this paper and test relations between economic and military power in a truly global setting. In the rest of the paper we rephrase the famous dilemma about whether governments should allocate resources to finance ``guns'' (military power) or ``butter'' (economic power or economic development in general).
 %On particularities of GVAR and how they relate to other time series methods see \textcite{mauro2013a,bouvet2013a,canova2013a,schnuecker2017a,alzuabi2020a}.
 
 Global vector auto-regressive models (GVAR) are a special category of vector auto-regressive models (VAR). Following \textcite[164]{Box-Steffensmeier:2014fe}, define a VAR model as follows,
@@ -189,9 +189,14 @@ where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of endogenous variab
 {\mathbf x}_{it} =  \bm{\alpha}_{i} +  \bm{\Phi}_{i} {\mathbf x}_{i,t-p} +  \bm{\Lambda}_{1i} {\mathbf W}_{x, t} + \bm{\Lambda}_{2i} {\mathbf W}_{x, t-p} + {\mathbf u}_{it}
 \end{equation}
 
-where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of domestic (i.e. endogenous) variables, ${\mathbf W}_{t}$ is a $k_{i} \; \times \; 1$ vector of weakly-exogenous foreign variables, and ${\mathbf u}_{it}$ is a serially uncorrelated and cross-sectionally weakly dependent process. 
+where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of domestic (i.e. endogenous) variables, ${\mathbf W}_{t}$ is a $k_{i} \; \times \; 1$ vector of weakly-exogenous foreign variables, and ${\mathbf u}_{it}$ is a serially uncorrelated and cross-sectionally weakly dependent process. Typically, the choice of the lag orders of every GVAR system is selected according to the Akaike information criterion \parencite[19]{Mauro2013}.
 
-As it becomes apparent, the inclusion of foreign variables ${\mathbf W}_{t}$ in \autoref{eq:gvar} is one of the main characteristics of the GVAR approach, and the main difference with the VAR equation described in \autoref{eq:var}. As explained by others ``[t]hrough the use of foreign variables, the GVAR is able to account for bilateral inter-relationships amongst countries, and therefore control for spillovers on the basis of cross-country exposure.''\footnote{\textcite[17]{fund2016a}.} We detail in \autoref{data} that to construct ${\mathbf W}_{t}$ we employ bilateral trade---but the particular choice of exogenous variable depends on the application. In simple, the Global vector autoregressive GVAR model in \autoref{eq:gvar} explains ${\mathbf x}_{i,t}$ as a function of past values ${\mathbf x}_{i,t-p}$ lagged $p$ times, at the same time that it weights these dynamics by weakly-exogenous foreign variables ${\mathbf W}_{t-p}$ (weights which are captured by parameters $\bm{\Lambda}_{ni}$). Note that the exogeneity of $x$ is obtained by multiplying this term by the weights matrix ${\mathbf W}_{t}$, both with its current values and $p$ lagged values.
+As it becomes apparent, the inclusion of foreign variables ${\mathbf W}_{t}$ in \autoref{eq:gvar} is one of the main characteristics of the GVAR approach, and the main difference with the VAR equation described in \autoref{eq:var}. As explained by others ``[t]hrough the use of foreign variables, the GVAR is able to account for bilateral inter-relationships amongst countries, and therefore control for spillovers on the basis of cross-country exposure.''\footnote{\textcite[17]{fund2016a}.} 
+
+\todo{explain here issue about exogeneity and big economies}
+
+
+We detail in \autoref{data} that to construct ${\mathbf W}_{t}$ we employ bilateral trade---but the particular choice of exogenous variable depends on the empirical application. In simple, the Global vector autoregressive GVAR model in \autoref{eq:gvar} explains ${\mathbf x}_{i,t}$ as a function of past values ${\mathbf x}_{i,t-p}$ lagged $p$ times, at the same time that it weights these dynamics by weakly-exogenous foreign variables ${\mathbf W}_{t-p}$ (weights which are captured by parameters $\bm{\Lambda}_{ni}$).
 
 
 
@@ -206,10 +211,7 @@ As it becomes apparent, the inclusion of foreign variables ${\mathbf W}_{t}$ in 
 
 \paragraph{Granger-causality tests} Since we are substantively interested in weather ``guns'' (Granger) \emph{cause} ``butter'' or the other way around, in this paper we estimate country-specific bivariate Granger-causality tests within the GVAR framework.\footnote{We acknowledge that without proper experimentation and randomization there cannot be proper causation. Consequently, and following the Granger methodology, we employ a rather lose definition of ``causation'' and explore if lagged values of a variable \emph{forecast} another variable.} The Granger-causality method was introduced by \textcite{Granger1969} and seeks to investigate if some variable $X$ (Granger) ``causes'' another variable $Y$, or the other way around. A variable $X$ is said to ``Granger-cause'' $Y$ if predictions of $Y$ based on lagged values of $Y$ and lagged values of $X$ perform better than explaining $Y$ just with its own past values. 
 
-Since Granger-causality tests are usually estimated via VAR equations (\autoref{eq:var}) we now derive the Granger-causality test within the GVAR framework. The substantive advantage of GVAR Granger-causality tests over regular Granger-causality tests is that estimates are weighted by the global economy (${\mathbf W}_{t}$ in \autoref{eq:gvar}), situating the domestic dynamics within the global context. More formally, we estimate a GVAR Granger-causality system for every country $i$ with $p$ lags as shown in \autoref{eq:gvar:granger}. Likewise, note that the exogeneity of $x$ and $y$ are obtained by multiplying each by the weights matrix ${\mathbf W}_{t}$, both with its current values and $p$ lags. 
-
-More formally, we estimate the following GVAR Granger-causality tests:
-
+Since Granger-causality tests are usually estimated via VAR equations (\autoref{eq:var}) we now derive the Granger-causality test within the GVAR framework. The substantive advantage of GVAR Granger-causality tests over regular Granger-causality tests is that estimates are weighted by the global economy (${\mathbf W}_{t}$ in \autoref{eq:gvar}), situating the domestic dynamics within the global context. More formally, we estimate a GVAR Granger-causality system for every country $i$ with $p$ lags as shown in \autoref{eq:gvar:granger}:
 
 \begin{align}\label{eq:gvar:granger}
 \begin{aligned}
@@ -221,25 +223,29 @@ More formally, we estimate the following GVAR Granger-causality tests:
 where the only added complexity is the introduction of a second variable ($y$), but the lag and weight structure remains the same as in \autoref{eq:gvar}. 
 
 
-\section{Data\label{data}}
+\section{Data: The Art of Possible\label{data}}
 
-We operationalize military and economic power using variables from the Correlates of War Project, particularly, the National Material Capabilities dataset \parencite{Singer:1972aa}.\footnote{Version 5.0.} To proxy for military power we use the ``military personnel'' variable and to proxy for economic power we use the ``iron and steel production'' variable. \autoref{fig:plot:t:1} portrays the values of the two variables used in our model by country between \Sexpr{as.character(format(min(cow.d.1$Time), format="%Y"))} and \Sexpr{as.character(format(max(cow.d.1$Time), format="%Y"))}. Let military power be ${\mathbf x}_{it}$ and economic power be ${\mathbf y}_{it}$ in \autoref{eq:gvar:granger}. To construct the weight matrix ${\mathbf W}$ we use the \emph{Bilateral Trade Data} from the same database that is used when operationalizing the domestic variables \parencite{barbieri2016a}. This dataset covers all countries in the world between 1816-2012. Since we are interested in analyzing the longest ($T$) \emph{and} the widest ($N$) dataset possible, using the COW dataset seemed the most obvious choice.
+We operationalize military and economic power using variables from the Correlates of War Project, particularly, the National Material Capabilities dataset \parencite{Singer:1972aa}.\footnote{Version 5.0.} The dataset covers all countries in the world between 1816-2012. Since we are interested in analyzing the longest $T$ \emph{and} the widest $N$ possible, using the COW dataset seemed the most obvious choice. To proxy military power we use the ``military personnel'' variable and to proxy economic power we use the ``iron and steel production'' variable.\todo{justify both, but mostly steel} Let military power be ${\mathbf x}_{it}$ and economic power be ${\mathbf y}_{it}$ in \autoref{eq:gvar:granger}. 
 
-Relatedly, in order to maximize the extension of the dataset, it was necessary to split it in two. Since wars typically not only redraw country borders but also end, merge or split countries, the most efficient way of having the least missing data possible was partitioning the dataset in two. We believe that while GVAR methods offer interesting properties for scholars in international relations in general, there is the inevitable issue of missingness: not all countries remain observed, especially, during long periods of times. The biggest concern is that the ones that do remain observed are systematically different from the ones that do not. For instance, it is reasonable to expect that countries that cease to exist were weaker economically, politically and militarily. Missing data is not a new problem and there are several ways to cope with this issue\todo{cite something}, for instance, multiple imputation. However we leave possible solutions for this problem for future research. 
 
-While the need for splitting the dataset in two was empirical, the cut points were decided based on theory and history. The hope is to take theoretical advantage of an empirical problem. 
-In fact, both timespans conform our two working hypotheses. The first period is between \Sexpr{as.character(format(min(cow.d.1$Time), format="%Y"))} and \Sexpr{as.character(format(max(cow.d.1$Time), format="%Y"))}. The time spread is rather obvious---unification of Germany and the beginning of World War I. The second period of our analysis takes place between \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), format="%Y"))} and \Sexpr{as.character(format(max(max(cow.d.2$Time), max(cow.d.2.B$Time)), format="%Y"))}. \todo{briefly justify second period in one sentence} As it is evident, there is a considerable gap between \Sexpr{as.character(format(max(cow.d.1$Time), format="%Y"))} and \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), format="%Y"))}. At the risk of sounding repetitive, a country needs to remain available for the whole time. Even if just one year is missing then that particular country cannot be considered. To be sure, balanced panels are not a GVAR requirement but rather a general statistical need in most TS-PD models.
+% extension of the dataset
+In order to maximize the extension of the dataset, it was necessary to split it in two. Since wars typically not only redraw country borders but also end, merge or split countries, the most efficient way of having the least missing data possible was partitioning the dataset in two. The first period goes between \Sexpr{as.character(format(min(cow.d.1$Time), format="%Y"))} and \Sexpr{as.character(format(max(cow.d.1$Time), format="%Y"))} (\autoref{fig:plot:t:1}). The second period goes between \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), format="%Y"))} and \Sexpr{as.character(format(max(max(cow.d.2$Time), max(cow.d.2.B$Time)), format="%Y"))} (\autoref{fig:plot:t:2}). 
 
-With these two timespan, we hypothesize the following:
+% limitations
+We believe that while GVAR methods offer interesting properties for political scientists and for international relations scholars in particular, there is the inevitable issue of missingness: not all countries remain observed, especially during long periods of times. The biggest concern is that the ones that do remain observed are systematically different from the ones that do not. For instance, it is reasonable to expect that countries that cease to exist were weaker economically, politically and militarily. We believe these issues, while inconvenient, do not threat our statistical inference with selection bias. This paper does not address country survival. In fact, it seeks to shed light on military and economic dynamics of \emph{all} countries who actually survive for the longest timespan possible. Finally, missing data is not a new problem in applied research. There are several ways to cope with this issue\todo{cite something}, for instance, multiple imputation. However we leave possible solutions for future research. 
+
+% gaps
+Moving forward, there is a considerable gap between \Sexpr{as.character(format(max(cow.d.1$Time), format="%Y"))} and \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), format="%Y"))}. At the risk of sounding repetitive, it is worth emphasizing that a country needs to remain available for the \emph{whole} time. Even if just one year is missing then that particular country cannot be considered. While we believe this limitation is an important one, balanced panels are not just a GVAR requirement but rather a general statistical need in most TS-PD models. We encourage analysts to deal with this issue by also finding substantive reasons for splitting the data, as we do next.
+
+% H
+While the need for splitting the dataset in two was empirical, the decision was complemented with both theoretical and historical reasons. The hope is to take theoretical advantage of an empirical problem. The first timespan seeks to capture the international dynamics of the German unification and the beginning of World War I. The second time span corresponds to the post World Ward II international scenario. \todo{check} In order to maximize our analytical leverage respect to the partitioned dataset, we conform the next two working hypotheses: 
 
 \begin{hyp}\label{h:I}
-Between \Sexpr{as.character(format(min(cow.d.1$Time), format="%Y"))} and \Sexpr{as.character(format(max(cow.d.1$Time), format="%Y"))} military power Granger causes economic power.
+Between \Sexpr{as.character(format(min(cow.d.1$Time), format="%Y"))} and \Sexpr{as.character(format(max(cow.d.1$Time), format="%Y"))} military power Granger-causes economic power.
 \end{hyp}
 
-and
-
 \begin{hyp}\label{h:II}
-Between \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), format="%Y"))} and \Sexpr{as.character(format(max(max(cow.d.2$Time), max(cow.d.2.B$Time)), format="%Y"))} economic power Granger causes military power.
+Between \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), format="%Y"))} and \Sexpr{as.character(format(max(max(cow.d.2$Time), max(cow.d.2.B$Time)), format="%Y"))} economic power Granger-causes military power.
 \end{hyp}
 
 
@@ -252,23 +258,18 @@ Between \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), 
 }
 
 
- % HERE
+\todo{add brief justification for both H}
+
+\todo{Luxembourg in  plot:t:2 has NAs due to log: add white noise}
+
+
+The main added value of GVAR methods is the inclusion of a foreign or global variable which acts as a weight ${\mathbf W}$ in \autoref{eq:gvar} and \autoref{eq:gvar:granger}. The idea is to account for shock transmissions across economies. In this application we have opted for dyadic trade data. This variable was constructed by the same project but in the Trade dataset \parencite{Barbieri:2009aa,Barbieri:2016aa}.\footnote{Version 4.0.} 
+
+\todo{add here country splitting, and address endo-exo geneity}
 
 
 
-
-
-Nevertheless, we suspect that the nature of relations between economic and military power would be reversed in this period. This is not due to the technological advancement of the military, but rather due to the changed nature of the economy. The latter became finance driven, which is detached from the real economy. Namely, exponential growth of trade, Foreign Direct Investments, and monetary transactions altogether all attribute to the growth of monetary velocity \parencite{cagan1987a}, the creation of international banking consortia---by 1971 90\% of 50 world's biggest banks had become a part of broader and larger conglomerates \parencite{ganoe1972a}, and ``by the end of 1970s financial flow size dwarfed trade flows by 25:1 and they were much more volatile'' \parencite{gilpin2011a} therefore, today 99\% of all financial transactions are short term-speculative transactions. All this contributes to the fact that the economy is not only adjacent to the strategic interactions of states, but in fact has become its own domain of power relations among states.\footnote{On the issue, see \textcite{luttwak1990a,csurgai2009a,blackwill2016a}.} Subsequently, we hypothesize: 
-
-
-
-
-
-\autoref{fig:plot:t:2} displays the values of the two variables used in our model by country from \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), format="%Y"))} and \Sexpr{as.character(format(max(max(cow.d.2$Time), max(cow.d.2.B$Time)), format="%Y"))}.
-
-
-When it comes to the foreign or global variable that determines the structure of international relations in our model, we have opted for dyadic trade data, which is available also for the period in 19th century. This variable was constructed by the same project but in the Trade dataset \parencite{Barbieri:2009aa,Barbieri:2016aa}\footnote{Version 4.0.} and was used to construct the weight matrix ${\mathbf W}$. The matrix is a square matrix which has all $K$ countries in both its columns and rows with zeros as diagonal elements. The matrix represents bilateral trade among two countries measured by the \emph{flow1} and the \emph{flow2} variables. The former measures imports from a country (\emph{importer1}) to another country (\emph{importer2}), and the latter measures the reverse dyad, i.e. imports from \emph{importer2} to \emph{importer1}. More formally, ${\mathbf W}$ contains $t$ sub-matrices (one sub-matrix per year) with dimensions $k \; \times \; k$ for a total of ${\mathbf K}$ countries such that,
-
+Moving forward, the weight variable ${\mathbf W}$ is a square matrix which has all ${\mathbf K}$ countries in both its columns and rows with zeros as diagonal elements. The matrix represents bilateral trade among two countries measured by the \emph{flow1} and the \emph{flow2} variables. The former measures imports from a country (\emph{importer1}) to another country (\emph{importer2}) and the latter measures the reverse dyad, i.e. imports from \emph{importer2} to \emph{importer1}. In addition to that, ${\mathbf W}$ contains ${\mathbf T}$ sub-matrices, one sub-matrix per every year $t$. Each sub-matrix $t$ has dimensions $k \; \times \; k$ for a total of ${\mathbf K}$ countries such that,
 
 \begin{center}
 ${\mathbf W}_{t} = 
@@ -282,17 +283,18 @@ ${\mathbf W}_{t} =
 \end{bmatrix}$
 \end{center}
 
-Every $W_{t}$ matrix weights all $K$ country-specific Granger regressions described in \autoref{eq:gvar:granger}. Every $K$ system is weighted by the other $K-1$ countries. And as \autoref{eq:gvar:granger} shows, the GVAR methodology also considers $p$ lags of the ${\mathbf W}$ matrix. Following the literature on Granger-causality tests we focus our attention model-specific f-tests (one per country) which tests if all variables in the model are jointly significant. Then null is that there is no Granger causality.
+Every $W_{t}$ matrix weights all ${\mathbf K}$ country-specific Granger regressions described in \autoref{eq:gvar:granger}. Every $k$ system is weighted by the other ${\mathbf K}-1$ sub-matrices of dyadic trade. As \autoref{eq:gvar:granger} shows, the GVAR methodology also considers $p$ lags of the ${\mathbf W}$ matrix.
+
+Following the literature on Granger-causality tests we focus our attention model-specific f-tests (one per country) which tests if all variables in the model are jointly significant. Then null is that there is no Granger causality.\footnote{All GVAR Granger-causality tests were done using the \texttt{GVARX} \texttt{R} package, version \Sexpr{packageDescription("GVARX")$Version} and implemented by \textcite{Tsung-wu:2020aa}. The package performs estimations and inferences of Global Vector Autoregression models based on \textcite{Pesaran2004} and \textcite{Dees2007}.}
 
 
+\section{Results: GVAR Granger-causality Tests}
 
+The GVAR method handles a large number of panels. Thus we considered that showing a table containing all the ${\mathbf K}\times$ 2 f-tests (one f-test per each country-specific Granger-causality relationship as in \autoref{eq:gvar:granger}) would not communicate our results effectively. We think that in this application it is more informative getting a general sense of the possible causal mechanisms among all countries rather than analyzing each Granger equation individually. Hence in \autoref{fig:pvalues.plot} we show country-specific p-values of all Granger-causality f-tests obtained when fitting \autoref{eq:gvar:granger}.\footnote{We owe this point to Tsung-wu Ho. Country-specific results are shown in the Appendix section, particularly \autoref{t:1}, \autoref{t:2} and \autoref{t:2b}.} \autoref{fig:pvalues.plot} is organized in panels. Columns represent the time period and rows represent the Granger-causality relationship as shown in \autoref{eq:gvar:granger}. The figure conveys in colors the statistical significances of every country-specific f-test. In gray are shown the p-values that are larger than $.1$. 
 
-\section{Results}
+% HERE
 
-\autoref{fig:pvalues.plot} shows country-specific p-values of the Granger-causality f-tests obtained when fitting \autoref{eq:gvar:granger} (detailed results shown in the Appendix section, particularly \autoref{t:1}, \autoref{t:2} and \autoref{t:2b}). 
-
-
-The plot shows that during the \text{$\Sexpr{paste(paste(year.min.t1, "-",paste(year.max.t1, sep=""), sep=""), sep = "")}$} period, in $\Sexpr{percent.steel.causes.guns.t1}$\% of the countries economic power Granger-caused military power. Yet, interestingly, this percentage drops to $\Sexpr{percent.steel.causes.guns.t2}$\% and $\Sexpr{percent.steel.causes.guns.t2.b}$\% for the great power during the $\Sexpr{paste(paste(year.min.t2, "-",paste(year.max.t2, sep=""), sep=""), sep = "")}$ period. On the other hand, in the same second period in $\Sexpr{round(100-(percent.steel.causes.guns.t2+percent.steel.causes.guns.t2.b/2), 0)}$\% of the countries military power Granger-caused economic power. 
+From a substantive point of view, \autoref{fig:pvalues.plot} shows that during the \text{$\Sexpr{paste(paste(year.min.t1, "-",paste(year.max.t1, sep=""), sep=""), sep = "")}$} period, in $\Sexpr{percent.steel.causes.guns.t1}$\% of the countries economic power Granger-caused military power. Yet, interestingly, this percentage drops to $\Sexpr{percent.steel.causes.guns.t2}$\% and $\Sexpr{percent.steel.causes.guns.t2.b}$\% for the great power during the $\Sexpr{paste(paste(year.min.t2, "-",paste(year.max.t2, sep=""), sep=""), sep = "")}$ period. On the other hand, in the same second period in $\Sexpr{round(100-(percent.steel.causes.guns.t2+percent.steel.causes.guns.t2.b/2), 0)}$\% of the countries military power Granger-caused economic power. 
 
 
 <<pvalues.plot, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=p.value.plot.note, fig.align='center', fig.width=12, fig.height=6,dpi=1000,cache=F, include = TRUE>>=
