@@ -193,9 +193,6 @@ where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of domestic (i.e. en
 
 As it becomes apparent, the inclusion of foreign variables ${\mathbf W}_{t}$ in \autoref{eq:gvar} is one of the main characteristics of the GVAR approach, and the main difference with the VAR equation described in \autoref{eq:var}. As explained by others ``[t]hrough the use of foreign variables, the GVAR is able to account for bilateral inter-relationships amongst countries, and therefore control for spillovers on the basis of cross-country exposure.''\footnote{\textcite[17]{fund2016a}.} 
 
-\todo{explain here issue about exogeneity and big economies}
-
-
 We detail in \autoref{data} that to construct ${\mathbf W}_{t}$ we employ bilateral trade---but the particular choice of exogenous variable depends on the empirical application. In simple, the Global vector autoregressive GVAR model in \autoref{eq:gvar} explains ${\mathbf x}_{i,t}$ as a function of past values ${\mathbf x}_{i,t-p}$ lagged $p$ times, at the same time that it weights these dynamics by weakly-exogenous foreign variables ${\mathbf W}_{t-p}$ (weights which are captured by parameters $\bm{\Lambda}_{ni}$).
 
 
@@ -211,7 +208,7 @@ We detail in \autoref{data} that to construct ${\mathbf W}_{t}$ we employ bilate
 
 \paragraph{Granger-causality tests} Since we are substantively interested in weather ``guns'' (Granger) \emph{cause} ``butter'' or the other way around, in this paper we estimate country-specific bivariate Granger-causality tests within the GVAR framework.\footnote{We acknowledge that without proper experimentation and randomization there cannot be proper causation. Consequently, and following the Granger methodology, we employ a rather lose definition of ``causation'' and explore if lagged values of a variable \emph{forecast} another variable.} The Granger-causality method was introduced by \textcite{Granger1969} and seeks to investigate if some variable $X$ (Granger) ``causes'' another variable $Y$, or the other way around. A variable $X$ is said to ``Granger-cause'' $Y$ if predictions of $Y$ based on lagged values of $Y$ and lagged values of $X$ perform better than explaining $Y$ just with its own past values. 
 
-Since Granger-causality tests are usually estimated via VAR equations (\autoref{eq:var}) we now derive the Granger-causality test within the GVAR framework. The substantive advantage of GVAR Granger-causality tests over regular Granger-causality tests is that estimates are weighted by the global economy (${\mathbf W}_{t}$ in \autoref{eq:gvar}), situating the domestic dynamics within the global context. More formally, we estimate a GVAR Granger-causality system for every country $i$ with $p$ lags as shown in \autoref{eq:gvar:granger}:
+Since Granger-causality tests are usually estimated via VAR equations (\autoref{eq:var}) we now derive the Granger-causality test within the GVAR framework. The substantive advantage of GVAR Granger-causality test over regular Granger-causality test is that estimates are weighted by the global economy (${\mathbf W}_{t}$ in \autoref{eq:gvar}), situating the domestic dynamics within the global context. More formally, we estimate a GVAR Granger-causality system for every country $i$ with $p$ lags as shown in \autoref{eq:gvar:granger}:
 
 \begin{align}\label{eq:gvar:granger}
 \begin{aligned}
@@ -265,9 +262,7 @@ Between \Sexpr{as.character(format(min(min(cow.d.2$Time), min(cow.d.2.B$Time)), 
 
 The main added value of GVAR methods is the inclusion of a foreign or global variable which acts as a weight ${\mathbf W}$ in \autoref{eq:gvar} and \autoref{eq:gvar:granger}. The idea is to account for shock transmissions across economies. In this application we have opted for dyadic trade data. This variable was constructed by the same project but in the Trade dataset \parencite{Barbieri:2009aa,Barbieri:2016aa}.\footnote{Version 4.0.} 
 
-\todo{add here country splitting, and address endo-exo geneity}
-
-
+Foreign variables are by definition exogenous. However, in many applications, especially in political science and international relations, there might be economic or military superpowers so influential to other countries that cannot be considered exogenous. More on the contrary, it should be quite natural to find that some economies based on asymmetric inter-dependence or post-colonial influence are highly correlated with the economy of the hegemon\todo{term correct?}. For instance, di Mauro and Smith run separate GVAR analyses on the United States \parencite[236]{Mauro2013}. We encounter similar non-exogeneity issues with China, Russia and the United States for the $\Sexpr{year.min.t2}$-$\Sexpr{year.max.t2}$ period. Due to multicollinearity and matrix non-invertibility issues, the GVAR models analyzed in this paper were mathematically impossible to perform having China, Russia and the United States along with the rest of the economies. For these reasons these three economic and military superpowers were analyzed separately. 
 
 Moving forward, the weight variable ${\mathbf W}$ is a square matrix which has all ${\mathbf K}$ countries in both its columns and rows with zeros as diagonal elements. The matrix represents bilateral trade among two countries measured by the \emph{flow1} and the \emph{flow2} variables. The former measures imports from a country (\emph{importer1}) to another country (\emph{importer2}) and the latter measures the reverse dyad, i.e. imports from \emph{importer2} to \emph{importer1}. In addition to that, ${\mathbf W}$ contains ${\mathbf T}$ sub-matrices, one sub-matrix per every year $t$. Each sub-matrix $t$ has dimensions $k \; \times \; k$ for a total of ${\mathbf K}$ countries such that,
 
@@ -290,7 +285,7 @@ Following the literature on Granger-causality tests we focus our attention model
 
 \section{Results: GVAR Granger-causality Tests}
 
-The GVAR method handles a large number of panels. Thus we considered that showing a table containing all the ${\mathbf K}\times$ 2 f-tests (one f-test per each country-specific Granger-causality relationship as in \autoref{eq:gvar:granger}) would not communicate our results effectively. We think that in this application it is more informative getting a general sense of the possible causal mechanisms among all countries rather than analyzing each Granger equation individually. Hence in \autoref{fig:pvalues.plot} we show country-specific p-values of all Granger-causality f-tests obtained when fitting \autoref{eq:gvar:granger}.\footnote{We owe this point to Tsung-wu Ho. Country-specific results are shown in the Appendix section, particularly \autoref{t:1}, \autoref{t:2} and \autoref{t:2b}.} \autoref{fig:pvalues.plot} is organized in panels. Columns represent the time period and rows represent the Granger-causality relationship as shown in \autoref{eq:gvar:granger}. The figure conveys in colors the statistical significances of every country-specific f-test. In gray are shown the p-values that are larger than $.1$. 
+The GVAR method handles a large number of panels. Thus we considered that showing a table containing all the ${\mathbf K}\times$ 2 f-tests (one f-test per each country-specific Granger-causality relationship as in \autoref{eq:gvar:granger}) would not communicate our results effectively. We think that in this application it is more informative getting a general sense of the possible causal mechanisms among all countries rather than analyzing each Granger equation individually. Hence in \autoref{fig:pvalues.plot} we show country-specific p-values of all Granger-causality f-tests obtained when fitting \autoref{eq:gvar:granger}.\footnote{We owe this point to Tsung-wu Ho. Country-specific results are shown in the Appendix section, particularly \autoref{t:1}, \autoref{t:2} and \autoref{t:2b}.} \autoref{fig:pvalues.plot} is organized in panels. Columns represent the time period and rows represent the Granger-causality relationship as shown in \autoref{eq:gvar:granger}. The figure conveys in colors the statistical significances of every country-specific f-test. In gray are shown the p-values that are larger than $.1$. \todo{explain we put all countries together and cite example}
 
 % HERE
 
@@ -543,8 +538,6 @@ count <- comma(as.numeric(count)) # add comma
 {\raggedright \small Table shows country-specific Granger-causality F-tests. Last column shows number of domestic lags used per every country-specific Granger model. Number of lags for endogenous variables \;=\; $\Sexpr{p.2}$. Number of lags for foreign variables \;=\; $\Sexpr{FLag.2}$. Max number of lags for estimating the country-specific VAR model \;=\; $\Sexpr{lag.max.2}$. Information criteria for optimal lag length \;=\; $\text{\Sexpr{ic.2}}$. Deterministic variables: $\text{\Sexpr{type.2.paper}}$. \par}
 \end{center}
 \end{table}
-
-
 
 
 
