@@ -2396,6 +2396,12 @@ p_load(reshape)
 cow.d.2.log = cow.d.2
 names(cow.d.2.log)[3] <- "Guns"
 names(cow.d.2.log)[4] <- "Steel"
+
+
+# Luxembourg, Guns
+cow.d.2.log$Guns[cow.d.2.log$ID=="Luxembourg"] <- cow.d.2.log$Guns[cow.d.2.log$ID=="Luxembourg"]+2# There were some zeroes which were causing issues when taking the log for the plots. Monotonic transformation (log of 1 is 0, so change is really small)
+
+# And now we take the logs and there are no issues
 cow.d.2.log$Guns = log(cow.d.2.log$Guns)
 cow.d.2.log$Steel = log(cow.d.2.log$Steel)
 
