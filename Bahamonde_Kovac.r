@@ -301,10 +301,6 @@ year.max.t2 = as.character(format(as.Date(max(cow.d.2$Time), "%Y", tz = "GMT"),"
 # plm::is.pbalanced(cow.d.2)    
 
 
-# Plot the data
-# Pending
-
-
 # Import CVSs
 y.1955 = data.frame(read.csv("/Users/hectorbahamonde/research/Bahamonde_Kovac/matrix/trade_year_1955.csv"))
 y.1956 = data.frame(read.csv("/Users/hectorbahamonde/research/Bahamonde_Kovac/matrix/trade_year_1956.csv"))
@@ -2405,7 +2401,6 @@ cow.d.2.log$Guns[cow.d.2.log$ID=="Luxembourg"] <- cow.d.2.log$Guns[cow.d.2.log$I
 cow.d.2.log$Guns = log(cow.d.2.log$Guns)
 cow.d.2.log$Steel = log(cow.d.2.log$Steel)
 
-
 cow.d.2.log <- melt(cow.d.2.log, id.vars = c("ID", "Time"))
 
 p_load(ggplot2)
@@ -2454,11 +2449,325 @@ cow.d.2.plot.note <- paste(
 ## ----
 
 
+
+################
+# Simulation
+################
+
+# https://www.rdocumentation.org/packages/tsDyn/versions/0.8-1/topics/VAR.sim
+cat("\014")
+rm(list=ls())
+graphics.off()
+
+if (!require("pacman")) install.packages("pacman"); library(pacman) 
+
+
+## ---- var:sim:d ----
+p_load(tsDyn)
+
+# Simulation presented in Enders2014 p. 289
+parameters.1 = 0.7
+parameters.2 = 0.2
+parameters = rep(c(parameters.1,parameters.2), 2)
+years.sim = 250
+parameters.m <- matrix(parameters, 2)
+
+# var sims
+set.seed(1);country.1 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(2);country.2 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(3);country.3 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(4);country.4 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(5);country.5 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(6);country.6 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(7);country.7 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(8);country.8 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(9);country.9 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(10);country.10 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(11);country.11 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(12);country.12 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(13);country.13 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(14);country.14 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(15);country.15 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(16);country.16 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(17);country.17 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(18);country.18 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(19);country.19 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(20);country.20 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(21);country.21 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(22);country.22 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(23);country.23 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(24);country.24 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(25);country.25 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(26);country.26 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(27);country.27 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(28);country.28 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(29);country.29 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(30);country.30 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(31);country.31 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(32);country.32 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(33);country.33 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(34);country.34 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(35);country.35 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(36);country.36 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(37);country.37 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(38);country.38 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(39);country.39 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(40);country.40 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(41);country.41 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(42);country.42 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(43);country.43 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(44);country.44 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(45);country.45 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(46);country.46 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(47);country.47 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(48);country.48 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(49);country.49 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(50);country.50 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(51);country.51 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(52);country.52 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(53);country.53 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(54);country.54 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(55);country.55 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(56);country.56 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(57);country.57 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(58);country.58 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(59);country.59 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(60);country.60 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(61);country.61 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(62);country.62 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(63);country.63 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(64);country.64 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(65);country.65 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(66);country.66 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(67);country.67 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(68);country.68 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(69);country.69 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(70);country.70 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(71);country.71 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(72);country.72 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(73);country.73 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(74);country.74 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(75);country.75 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(76);country.76 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(77);country.77 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(78);country.78 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(79);country.79 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(80);country.80 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(81);country.81 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(82);country.82 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(83);country.83 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(84);country.84 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(85);country.85 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(86);country.86 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(87);country.87 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(88);country.88 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(89);country.89 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(90);country.90 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(91);country.91 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(92);country.92 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(93);country.93 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(94);country.94 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(95);country.95 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(96);country.96 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(97);country.97 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(98);country.98 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(99);country.99 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(100);country.100 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(101);country.101 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(102);country.102 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(103);country.103 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(104);country.104 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(105);country.105 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(106);country.106 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(107);country.107 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(108);country.108 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(109);country.109 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(110);country.110 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(111);country.111 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(112);country.112 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(113);country.113 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(114);country.114 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(115);country.115 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(116);country.116 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(117);country.117 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(118);country.118 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(119);country.119 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+set.seed(120);country.120 <- VAR.sim(B=parameters.m,n=years.sim,include="none")
+
+# df's
+country.1.d = data.frame(x = country.1[,1], y = country.1[,2],Country = "1",Time = 1:years.sim)
+country.2.d = data.frame(x = country.2[,1], y = country.2[,2],Country = "2",Time = 1:years.sim)
+country.3.d = data.frame(x = country.3[,1], y = country.3[,2],Country = "3",Time = 1:years.sim)
+country.4.d = data.frame(x = country.4[,1], y = country.4[,2],Country = "4",Time = 1:years.sim)
+country.5.d = data.frame(x = country.5[,1], y = country.5[,2],Country = "5",Time = 1:years.sim)
+country.6.d = data.frame(x = country.6[,1], y = country.6[,2],Country = "6",Time = 1:years.sim)
+country.7.d = data.frame(x = country.7[,1], y = country.7[,2],Country = "7",Time = 1:years.sim)
+country.8.d = data.frame(x = country.8[,1], y = country.8[,2],Country = "8",Time = 1:years.sim)
+country.9.d = data.frame(x = country.9[,1], y = country.9[,2],Country = "9",Time = 1:years.sim)
+country.10.d = data.frame(x = country.10[,1], y = country.10[,2],Country = "10",Time = 1:years.sim)
+country.11.d = data.frame(x = country.11[,1], y = country.11[,2],Country = "11",Time = 1:years.sim)
+country.12.d = data.frame(x = country.12[,1], y = country.12[,2],Country = "12",Time = 1:years.sim)
+country.13.d = data.frame(x = country.13[,1], y = country.13[,2],Country = "13",Time = 1:years.sim)
+country.14.d = data.frame(x = country.14[,1], y = country.14[,2],Country = "14",Time = 1:years.sim)
+country.15.d = data.frame(x = country.15[,1], y = country.15[,2],Country = "15",Time = 1:years.sim)
+country.16.d = data.frame(x = country.16[,1], y = country.16[,2],Country = "16",Time = 1:years.sim)
+country.17.d = data.frame(x = country.17[,1], y = country.17[,2],Country = "17",Time = 1:years.sim)
+country.18.d = data.frame(x = country.18[,1], y = country.18[,2],Country = "18",Time = 1:years.sim)
+country.19.d = data.frame(x = country.19[,1], y = country.19[,2],Country = "19",Time = 1:years.sim)
+country.20.d = data.frame(x = country.20[,1], y = country.20[,2],Country = "20",Time = 1:years.sim)
+country.21.d = data.frame(x = country.21[,1], y = country.21[,2],Country = "21",Time = 1:years.sim)
+country.22.d = data.frame(x = country.22[,1], y = country.22[,2],Country = "22",Time = 1:years.sim)
+country.23.d = data.frame(x = country.23[,1], y = country.23[,2],Country = "23",Time = 1:years.sim)
+country.24.d = data.frame(x = country.24[,1], y = country.24[,2],Country = "24",Time = 1:years.sim)
+country.25.d = data.frame(x = country.25[,1], y = country.25[,2],Country = "25",Time = 1:years.sim)
+country.26.d = data.frame(x = country.26[,1], y = country.26[,2],Country = "26",Time = 1:years.sim)
+country.27.d = data.frame(x = country.27[,1], y = country.27[,2],Country = "27",Time = 1:years.sim)
+country.28.d = data.frame(x = country.28[,1], y = country.28[,2],Country = "28",Time = 1:years.sim)
+country.29.d = data.frame(x = country.29[,1], y = country.29[,2],Country = "29",Time = 1:years.sim)
+country.30.d = data.frame(x = country.30[,1], y = country.30[,2],Country = "30",Time = 1:years.sim)
+country.31.d = data.frame(x = country.31[,1], y = country.31[,2],Country = "31",Time = 1:years.sim)
+country.32.d = data.frame(x = country.32[,1], y = country.32[,2],Country = "32",Time = 1:years.sim)
+country.33.d = data.frame(x = country.33[,1], y = country.33[,2],Country = "33",Time = 1:years.sim)
+country.34.d = data.frame(x = country.34[,1], y = country.34[,2],Country = "34",Time = 1:years.sim)
+country.35.d = data.frame(x = country.35[,1], y = country.35[,2],Country = "35",Time = 1:years.sim)
+country.36.d = data.frame(x = country.36[,1], y = country.36[,2],Country = "36",Time = 1:years.sim)
+country.37.d = data.frame(x = country.37[,1], y = country.37[,2],Country = "37",Time = 1:years.sim)
+country.38.d = data.frame(x = country.38[,1], y = country.38[,2],Country = "38",Time = 1:years.sim)
+country.39.d = data.frame(x = country.39[,1], y = country.39[,2],Country = "39",Time = 1:years.sim)
+country.40.d = data.frame(x = country.40[,1], y = country.40[,2],Country = "40",Time = 1:years.sim)
+country.41.d = data.frame(x = country.41[,1], y = country.41[,2],Country = "41",Time = 1:years.sim)
+country.42.d = data.frame(x = country.42[,1], y = country.42[,2],Country = "42",Time = 1:years.sim)
+country.43.d = data.frame(x = country.43[,1], y = country.43[,2],Country = "43",Time = 1:years.sim)
+country.44.d = data.frame(x = country.44[,1], y = country.44[,2],Country = "44",Time = 1:years.sim)
+country.45.d = data.frame(x = country.45[,1], y = country.45[,2],Country = "45",Time = 1:years.sim)
+country.46.d = data.frame(x = country.46[,1], y = country.46[,2],Country = "46",Time = 1:years.sim)
+country.47.d = data.frame(x = country.47[,1], y = country.47[,2],Country = "47",Time = 1:years.sim)
+country.48.d = data.frame(x = country.48[,1], y = country.48[,2],Country = "48",Time = 1:years.sim)
+country.49.d = data.frame(x = country.49[,1], y = country.49[,2],Country = "49",Time = 1:years.sim)
+country.50.d = data.frame(x = country.50[,1], y = country.50[,2],Country = "50",Time = 1:years.sim)
+country.51.d = data.frame(x = country.51[,1], y = country.51[,2],Country = "51",Time = 1:years.sim)
+country.52.d = data.frame(x = country.52[,1], y = country.52[,2],Country = "52",Time = 1:years.sim)
+country.53.d = data.frame(x = country.53[,1], y = country.53[,2],Country = "53",Time = 1:years.sim)
+country.54.d = data.frame(x = country.54[,1], y = country.54[,2],Country = "54",Time = 1:years.sim)
+country.55.d = data.frame(x = country.55[,1], y = country.55[,2],Country = "55",Time = 1:years.sim)
+country.56.d = data.frame(x = country.56[,1], y = country.56[,2],Country = "56",Time = 1:years.sim)
+country.57.d = data.frame(x = country.57[,1], y = country.57[,2],Country = "57",Time = 1:years.sim)
+country.58.d = data.frame(x = country.58[,1], y = country.58[,2],Country = "58",Time = 1:years.sim)
+country.59.d = data.frame(x = country.59[,1], y = country.59[,2],Country = "59",Time = 1:years.sim)
+country.60.d = data.frame(x = country.60[,1], y = country.60[,2],Country = "60",Time = 1:years.sim)
+country.61.d = data.frame(x = country.61[,1], y = country.61[,2],Country = "61",Time = 1:years.sim)
+country.62.d = data.frame(x = country.62[,1], y = country.62[,2],Country = "62",Time = 1:years.sim)
+country.63.d = data.frame(x = country.63[,1], y = country.63[,2],Country = "63",Time = 1:years.sim)
+country.64.d = data.frame(x = country.64[,1], y = country.64[,2],Country = "64",Time = 1:years.sim)
+country.65.d = data.frame(x = country.65[,1], y = country.65[,2],Country = "65",Time = 1:years.sim)
+country.66.d = data.frame(x = country.66[,1], y = country.66[,2],Country = "66",Time = 1:years.sim)
+country.67.d = data.frame(x = country.67[,1], y = country.67[,2],Country = "67",Time = 1:years.sim)
+country.68.d = data.frame(x = country.68[,1], y = country.68[,2],Country = "68",Time = 1:years.sim)
+country.69.d = data.frame(x = country.69[,1], y = country.69[,2],Country = "69",Time = 1:years.sim)
+country.70.d = data.frame(x = country.70[,1], y = country.70[,2],Country = "70",Time = 1:years.sim)
+country.71.d = data.frame(x = country.71[,1], y = country.71[,2],Country = "71",Time = 1:years.sim)
+country.72.d = data.frame(x = country.72[,1], y = country.72[,2],Country = "72",Time = 1:years.sim)
+country.73.d = data.frame(x = country.73[,1], y = country.73[,2],Country = "73",Time = 1:years.sim)
+country.74.d = data.frame(x = country.74[,1], y = country.74[,2],Country = "74",Time = 1:years.sim)
+country.75.d = data.frame(x = country.75[,1], y = country.75[,2],Country = "75",Time = 1:years.sim)
+country.76.d = data.frame(x = country.76[,1], y = country.76[,2],Country = "76",Time = 1:years.sim)
+country.77.d = data.frame(x = country.77[,1], y = country.77[,2],Country = "77",Time = 1:years.sim)
+country.78.d = data.frame(x = country.78[,1], y = country.78[,2],Country = "78",Time = 1:years.sim)
+country.79.d = data.frame(x = country.79[,1], y = country.79[,2],Country = "79",Time = 1:years.sim)
+country.80.d = data.frame(x = country.80[,1], y = country.80[,2],Country = "80",Time = 1:years.sim)
+country.81.d = data.frame(x = country.81[,1], y = country.81[,2],Country = "81",Time = 1:years.sim)
+country.82.d = data.frame(x = country.82[,1], y = country.82[,2],Country = "82",Time = 1:years.sim)
+country.83.d = data.frame(x = country.83[,1], y = country.83[,2],Country = "83",Time = 1:years.sim)
+country.84.d = data.frame(x = country.84[,1], y = country.84[,2],Country = "84",Time = 1:years.sim)
+country.85.d = data.frame(x = country.85[,1], y = country.85[,2],Country = "85",Time = 1:years.sim)
+country.86.d = data.frame(x = country.86[,1], y = country.86[,2],Country = "86",Time = 1:years.sim)
+country.87.d = data.frame(x = country.87[,1], y = country.87[,2],Country = "87",Time = 1:years.sim)
+country.88.d = data.frame(x = country.88[,1], y = country.88[,2],Country = "88",Time = 1:years.sim)
+country.89.d = data.frame(x = country.89[,1], y = country.89[,2],Country = "89",Time = 1:years.sim)
+country.90.d = data.frame(x = country.90[,1], y = country.90[,2],Country = "90",Time = 1:years.sim)
+country.91.d = data.frame(x = country.91[,1], y = country.91[,2],Country = "91",Time = 1:years.sim)
+country.92.d = data.frame(x = country.92[,1], y = country.92[,2],Country = "92",Time = 1:years.sim)
+country.93.d = data.frame(x = country.93[,1], y = country.93[,2],Country = "93",Time = 1:years.sim)
+country.94.d = data.frame(x = country.94[,1], y = country.94[,2],Country = "94",Time = 1:years.sim)
+country.95.d = data.frame(x = country.95[,1], y = country.95[,2],Country = "95",Time = 1:years.sim)
+country.96.d = data.frame(x = country.96[,1], y = country.96[,2],Country = "96",Time = 1:years.sim)
+country.97.d = data.frame(x = country.97[,1], y = country.97[,2],Country = "97",Time = 1:years.sim)
+country.98.d = data.frame(x = country.98[,1], y = country.98[,2],Country = "98",Time = 1:years.sim)
+country.99.d = data.frame(x = country.99[,1], y = country.99[,2],Country = "99",Time = 1:years.sim)
+country.100.d = data.frame(x = country.100[,1], y = country.100[,2],Country = "100",Time = 1:years.sim)
+country.101.d = data.frame(x = country.101[,1], y = country.101[,2],Country = "101",Time = 1:years.sim)
+country.102.d = data.frame(x = country.102[,1], y = country.102[,2],Country = "102",Time = 1:years.sim)
+country.103.d = data.frame(x = country.103[,1], y = country.103[,2],Country = "103",Time = 1:years.sim)
+country.104.d = data.frame(x = country.104[,1], y = country.104[,2],Country = "104",Time = 1:years.sim)
+country.105.d = data.frame(x = country.105[,1], y = country.105[,2],Country = "105",Time = 1:years.sim)
+country.106.d = data.frame(x = country.106[,1], y = country.106[,2],Country = "106",Time = 1:years.sim)
+country.107.d = data.frame(x = country.107[,1], y = country.107[,2],Country = "107",Time = 1:years.sim)
+country.108.d = data.frame(x = country.108[,1], y = country.108[,2],Country = "108",Time = 1:years.sim)
+country.109.d = data.frame(x = country.109[,1], y = country.109[,2],Country = "109",Time = 1:years.sim)
+country.110.d = data.frame(x = country.110[,1], y = country.110[,2],Country = "110",Time = 1:years.sim)
+country.111.d = data.frame(x = country.111[,1], y = country.111[,2],Country = "111",Time = 1:years.sim)
+country.112.d = data.frame(x = country.112[,1], y = country.112[,2],Country = "112",Time = 1:years.sim)
+country.113.d = data.frame(x = country.113[,1], y = country.113[,2],Country = "113",Time = 1:years.sim)
+country.114.d = data.frame(x = country.114[,1], y = country.114[,2],Country = "114",Time = 1:years.sim)
+country.115.d = data.frame(x = country.115[,1], y = country.115[,2],Country = "115",Time = 1:years.sim)
+country.116.d = data.frame(x = country.116[,1], y = country.116[,2],Country = "116",Time = 1:years.sim)
+country.117.d = data.frame(x = country.117[,1], y = country.117[,2],Country = "117",Time = 1:years.sim)
+country.118.d = data.frame(x = country.118[,1], y = country.118[,2],Country = "118",Time = 1:years.sim)
+country.119.d = data.frame(x = country.119[,1], y = country.119[,2],Country = "119",Time = 1:years.sim)
+country.120.d = data.frame(x = country.120[,1], y = country.120[,2],Country = "120",Time = 1:years.sim)
+
+country.var.d = rbind(country.1.d, country.2.d, country.3.d, country.4.d, country.5.d, country.6.d, country.7.d, country.8.d, country.9.d, country.10.d, country.11.d, country.12.d, country.13.d, country.14.d, country.15.d, country.16.d, country.17.d, country.18.d, country.19.d, country.20.d, country.21.d, country.22.d, country.23.d, country.24.d, country.25.d, country.26.d, country.27.d, country.28.d, country.29.d, country.30.d, country.31.d, country.32.d, country.33.d, country.34.d, country.35.d, country.36.d, country.37.d, country.38.d, country.39.d, country.40.d, country.41.d, country.42.d, country.43.d, country.44.d, country.45.d, country.46.d, country.47.d, country.48.d, country.49.d, country.50.d, country.51.d, country.52.d, country.53.d, country.54.d, country.55.d, country.56.d, country.57.d, country.58.d, country.59.d, country.60.d, country.61.d, country.62.d, country.63.d, country.64.d, country.65.d, country.66.d, country.67.d, country.68.d, country.69.d, country.70.d, country.71.d, country.72.d, country.73.d, country.74.d, country.75.d, country.76.d, country.77.d, country.78.d, country.79.d, country.80.d, country.81.d, country.82.d, country.83.d, country.84.d, country.85.d, country.86.d, country.87.d, country.88.d, country.89.d, country.90.d, country.91.d, country.92.d, country.93.d, country.94.d, country.95.d, country.96.d, country.97.d, country.98.d, country.99.d, country.100.d, country.101.d, country.102.d, country.103.d, country.104.d, country.105.d, country.106.d, country.107.d, country.108.d, country.109.d, country.110.d, country.111.d, country.112.d, country.113.d, country.114.d, country.115.d, country.116.d, country.117.d, country.118.d, country.119.d, country.120.d)
+
+p_load(ggplot2,reshape)
+
+
+country.var.d = melt(country.var.d, id.vars = c("Country", "Time"))
+
+country.var.d$Country = factor(country.var.d$Country, levels = c( "1",  "2",  "3",  "4",  "5",  "6",  "7",  "8",  "9",  "10",  "11",  "12",  "13",  "14",  "15",  "16",  "17",  "18",  "19",  "20",  "21",  "22",  "23",  "24",  "25",  "26",  "27",  "28",  "29",  "30",  "31",  "32",  "33",  "34",  "35",  "36",  "37",  "38",  "39",  "40",  "41",  "42",  "43",  "44",  "45",  "46",  "47",  "48",  "49",  "50",  "51",  "52",  "53",  "54",  "55",  "56",  "57",  "58",  "59",  "60",  "61",  "62",  "63",  "64",  "65",  "66",  "67",  "68",  "69",  "70",  "71",  "72",  "73",  "74",  "75",  "76",  "77",  "78",  "79",  "80",  "81",  "82",  "83",  "84",  "85",  "86",  "87",  "88",  "89",  "90",  "91",  "92",  "93",  "94",  "95",  "96",  "97",  "98",  "99",  "100",  "101",  "102",  "103",  "104",  "105",  "106",  "107",  "108",  "109",  "110",  "111",  "112",  "113",  "114",  "115",  "116",  "117",  "118",  "119",  "120"))
+
+
+sim.var.plot = ggplot(country.var.d,
+                      aes(x = Time, y = value, colour = variable)) +
+        geom_line(alpha=0.5) +
+        facet_wrap(~ Country, ncol = 6, scales="free_y") +
+        xlab("Year") + 
+        ylab("Simulated VAR Processes") +
+        theme_bw() +
+        theme(legend.position="bottom", legend.direction="horizontal")  +
+        theme(axis.text.y = element_text(size=3), 
+              axis.text.x = element_text(size=3), 
+              axis.title.y = element_text(size=6), 
+              axis.title.x = element_text(size=6), 
+              legend.text=element_text(size=6), 
+              legend.title=element_text(size=0),
+              plot.title = element_text(size=3),
+              legend.position="bottom",
+              legend.key.size = unit(0.5,"cm"),
+              legend.spacing.x = unit(0.3, 'cm'),
+              strip.text.x = element_text(size = 4))
+## ---- 
+
+
+# plot
+## ---- plot:var:sim ----
+sim.var.plot
+sim.var.plot.note <- paste(
+        paste(paste("Simulated VAR Processes:", paste(years.sim, paste("years", ",", sep = ""),  sep = " "), paste(length(unique(country.var.d$Country)), "countries.", sep = " "))),
+        "\\\\\\hspace{\\textwidth}", 
+        paste("{\\bf Note}:", paste("The figure shows", length(unique(country.var.d$Country)), "simulated VAR processes (countries). Each process lasts for", years.sim, "years. Following \\textcite[286]{Enders2014}, we set in \\autoref{eq:var:enders} $\\alpha_{10}=\\alpha_{20} = 0, \\beta_{11}=\\beta_{22}=$", parameters.1, "and $\\beta_{12}=\\beta_{21} =$", paste(parameters.2, ".", sep = ""))),
+        "\n")
+## ---- 
+
+
+# Sim W
+
+
+
+
+
 ################
 # ABSTRACT
 ################
-
-
 
 ## ---- abstract ----
 fileConn <- file ("abstract.txt")
