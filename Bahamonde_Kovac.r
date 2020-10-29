@@ -2451,7 +2451,7 @@ cow.d.2.plot.note <- paste(
 
 
 ################
-# Simulation
+# Simulation: 120 countries, 200 years
 ################
 
 # https://www.rdocumentation.org/packages/tsDyn/versions/0.8-1/topics/VAR.sim
@@ -2469,7 +2469,7 @@ p_load(tsDyn)
 parameters.1 = 0.7
 parameters.2 = 0.2
 parameters = rep(c(parameters.1,parameters.2), 2)
-years.sim = 250
+years.sim = 200
 parameters.m <- matrix(parameters, 2)
 
 # var sims
@@ -2718,18 +2718,28 @@ country.120.d = data.frame(x = country.120[,1], y = country.120[,2],Country = "1
 
 country.var.d = rbind(country.1.d, country.2.d, country.3.d, country.4.d, country.5.d, country.6.d, country.7.d, country.8.d, country.9.d, country.10.d, country.11.d, country.12.d, country.13.d, country.14.d, country.15.d, country.16.d, country.17.d, country.18.d, country.19.d, country.20.d, country.21.d, country.22.d, country.23.d, country.24.d, country.25.d, country.26.d, country.27.d, country.28.d, country.29.d, country.30.d, country.31.d, country.32.d, country.33.d, country.34.d, country.35.d, country.36.d, country.37.d, country.38.d, country.39.d, country.40.d, country.41.d, country.42.d, country.43.d, country.44.d, country.45.d, country.46.d, country.47.d, country.48.d, country.49.d, country.50.d, country.51.d, country.52.d, country.53.d, country.54.d, country.55.d, country.56.d, country.57.d, country.58.d, country.59.d, country.60.d, country.61.d, country.62.d, country.63.d, country.64.d, country.65.d, country.66.d, country.67.d, country.68.d, country.69.d, country.70.d, country.71.d, country.72.d, country.73.d, country.74.d, country.75.d, country.76.d, country.77.d, country.78.d, country.79.d, country.80.d, country.81.d, country.82.d, country.83.d, country.84.d, country.85.d, country.86.d, country.87.d, country.88.d, country.89.d, country.90.d, country.91.d, country.92.d, country.93.d, country.94.d, country.95.d, country.96.d, country.97.d, country.98.d, country.99.d, country.100.d, country.101.d, country.102.d, country.103.d, country.104.d, country.105.d, country.106.d, country.107.d, country.108.d, country.109.d, country.110.d, country.111.d, country.112.d, country.113.d, country.114.d, country.115.d, country.116.d, country.117.d, country.118.d, country.119.d, country.120.d)
 
+# rename colnames
+colnames(country.var.d) <- c("x", "y", "ID", "Time")
+
+# reorder colnames
+country.var.d = country.var.d[, c("ID", "Time", "x", "y")]
+
+# Reformat time variable
+country.var.d$Time = as.character(country.var.d$Time)
+country.var.d$Time = as.Date(country.var.d$Time,"%Y")
+country.var.d$Time <- as.POSIXct(country.var.d$Time, origin=min(country.var.d$Time), tz = "GMT",  tryFormats ="%Y", optional = T)
+
+# plot
 p_load(ggplot2,reshape)
+country.var.d.plot = melt(country.var.d, id.vars = c("ID", "Time"))
+
+country.var.d.plot$ID = factor(country.var.d.plot$ID, levels = c( "1",  "2",  "3",  "4",  "5",  "6",  "7",  "8",  "9",  "10",  "11",  "12",  "13",  "14",  "15",  "16",  "17",  "18",  "19",  "20",  "21",  "22",  "23",  "24",  "25",  "26",  "27",  "28",  "29",  "30",  "31",  "32",  "33",  "34",  "35",  "36",  "37",  "38",  "39",  "40",  "41",  "42",  "43",  "44",  "45",  "46",  "47",  "48",  "49",  "50",  "51",  "52",  "53",  "54",  "55",  "56",  "57",  "58",  "59",  "60",  "61",  "62",  "63",  "64",  "65",  "66",  "67",  "68",  "69",  "70",  "71",  "72",  "73",  "74",  "75",  "76",  "77",  "78",  "79",  "80",  "81",  "82",  "83",  "84",  "85",  "86",  "87",  "88",  "89",  "90",  "91",  "92",  "93",  "94",  "95",  "96",  "97",  "98",  "99",  "100",  "101",  "102",  "103",  "104",  "105",  "106",  "107",  "108",  "109",  "110",  "111",  "112",  "113",  "114",  "115",  "116",  "117",  "118",  "119",  "120"))
 
 
-country.var.d = melt(country.var.d, id.vars = c("Country", "Time"))
-
-country.var.d$Country = factor(country.var.d$Country, levels = c( "1",  "2",  "3",  "4",  "5",  "6",  "7",  "8",  "9",  "10",  "11",  "12",  "13",  "14",  "15",  "16",  "17",  "18",  "19",  "20",  "21",  "22",  "23",  "24",  "25",  "26",  "27",  "28",  "29",  "30",  "31",  "32",  "33",  "34",  "35",  "36",  "37",  "38",  "39",  "40",  "41",  "42",  "43",  "44",  "45",  "46",  "47",  "48",  "49",  "50",  "51",  "52",  "53",  "54",  "55",  "56",  "57",  "58",  "59",  "60",  "61",  "62",  "63",  "64",  "65",  "66",  "67",  "68",  "69",  "70",  "71",  "72",  "73",  "74",  "75",  "76",  "77",  "78",  "79",  "80",  "81",  "82",  "83",  "84",  "85",  "86",  "87",  "88",  "89",  "90",  "91",  "92",  "93",  "94",  "95",  "96",  "97",  "98",  "99",  "100",  "101",  "102",  "103",  "104",  "105",  "106",  "107",  "108",  "109",  "110",  "111",  "112",  "113",  "114",  "115",  "116",  "117",  "118",  "119",  "120"))
-
-
-sim.var.plot = ggplot(country.var.d,
+sim.var.plot = ggplot(country.var.d.plot,
                       aes(x = Time, y = value, colour = variable)) +
         geom_line(alpha=0.5) +
-        facet_wrap(~ Country, ncol = 6, scales="free_y") +
+        facet_wrap(~ ID, ncol = 6, scales="free_y") +
         xlab("Year") + 
         ylab("Simulated VAR Processes") +
         theme_bw() +
@@ -2759,9 +2769,247 @@ sim.var.plot.note <- paste(
 ## ---- 
 
 
-# Sim W
+## ---- w:sim ----
+# Sim W: 1-point-increasing average of dyadic trade
+m1 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m1[, ] <- c(rnorm(120,1,1))}; diag(m1) <- 0
+m2 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m2[i,] <- c(rnorm(120,2,1))}; diag(m2) <- 0
+m3 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m3[i,] <- c(rnorm(120,3,1))}; diag(m3) <- 0
+m4 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m4[i,] <- c(rnorm(120,4,1))}; diag(m4) <- 0
+m5 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m5[i,] <- c(rnorm(120,5,1))}; diag(m5) <- 0
+m6 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m6[i,] <- c(rnorm(120,6,1))}; diag(m6) <- 0
+m7 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m7[i,] <- c(rnorm(120,7,1))}; diag(m7) <- 0
+m8 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m8[i,] <- c(rnorm(120,8,1))}; diag(m8) <- 0
+m9 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m9[i,] <- c(rnorm(120,9,1))}; diag(m9) <- 0
+m10 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m10[i,] <- c(rnorm(120,10,1))}; diag(m10) <- 0
+m11 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m11[i,] <- c(rnorm(120,11,1))}; diag(m11) <- 0
+m12 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m12[i,] <- c(rnorm(120,12,1))}; diag(m12) <- 0
+m13 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m13[i,] <- c(rnorm(120,13,1))}; diag(m13) <- 0
+m14 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m14[i,] <- c(rnorm(120,14,1))}; diag(m14) <- 0
+m15 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m15[i,] <- c(rnorm(120,15,1))}; diag(m15) <- 0
+m16 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m16[i,] <- c(rnorm(120,16,1))}; diag(m16) <- 0
+m17 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m17[i,] <- c(rnorm(120,17,1))}; diag(m17) <- 0
+m18 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m18[i,] <- c(rnorm(120,18,1))}; diag(m18) <- 0
+m19 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m19[i,] <- c(rnorm(120,19,1))}; diag(m19) <- 0
+m20 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m20[i,] <- c(rnorm(120,20,1))}; diag(m20) <- 0
+m21 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m21[i,] <- c(rnorm(120,21,1))}; diag(m21) <- 0
+m22 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m22[i,] <- c(rnorm(120,22,1))}; diag(m22) <- 0
+m23 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m23[i,] <- c(rnorm(120,23,1))}; diag(m23) <- 0
+m24 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m24[i,] <- c(rnorm(120,24,1))}; diag(m24) <- 0
+m25 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m25[i,] <- c(rnorm(120,25,1))}; diag(m25) <- 0
+m26 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m26[i,] <- c(rnorm(120,26,1))}; diag(m26) <- 0
+m27 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m27[i,] <- c(rnorm(120,27,1))}; diag(m27) <- 0
+m28 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m28[i,] <- c(rnorm(120,28,1))}; diag(m28) <- 0
+m29 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m29[i,] <- c(rnorm(120,29,1))}; diag(m29) <- 0
+m30 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m30[i,] <- c(rnorm(120,30,1))}; diag(m30) <- 0
+m31 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m31[i,] <- c(rnorm(120,31,1))}; diag(m31) <- 0
+m32 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m32[i,] <- c(rnorm(120,32,1))}; diag(m32) <- 0
+m33 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m33[i,] <- c(rnorm(120,33,1))}; diag(m33) <- 0
+m34 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m34[i,] <- c(rnorm(120,34,1))}; diag(m34) <- 0
+m35 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m35[i,] <- c(rnorm(120,35,1))}; diag(m35) <- 0
+m36 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m36[i,] <- c(rnorm(120,36,1))}; diag(m36) <- 0
+m37 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m37[i,] <- c(rnorm(120,37,1))}; diag(m37) <- 0
+m38 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m38[i,] <- c(rnorm(120,38,1))}; diag(m38) <- 0
+m39 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m39[i,] <- c(rnorm(120,39,1))}; diag(m39) <- 0
+m40 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m40[i,] <- c(rnorm(120,40,1))}; diag(m40) <- 0
+m41 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m41[i,] <- c(rnorm(120,41,1))}; diag(m41) <- 0
+m42 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m42[i,] <- c(rnorm(120,42,1))}; diag(m42) <- 0
+m43 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m43[i,] <- c(rnorm(120,43,1))}; diag(m43) <- 0
+m44 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m44[i,] <- c(rnorm(120,44,1))}; diag(m44) <- 0
+m45 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m45[i,] <- c(rnorm(120,45,1))}; diag(m45) <- 0
+m46 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m46[i,] <- c(rnorm(120,46,1))}; diag(m46) <- 0
+m47 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m47[i,] <- c(rnorm(120,47,1))}; diag(m47) <- 0
+m48 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m48[i,] <- c(rnorm(120,48,1))}; diag(m48) <- 0
+m49 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m49[i,] <- c(rnorm(120,49,1))}; diag(m49) <- 0
+m50 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m50[i,] <- c(rnorm(120,50,1))}; diag(m50) <- 0
+m51 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m51[i,] <- c(rnorm(120,51,1))}; diag(m51) <- 0
+m52 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m52[i,] <- c(rnorm(120,52,1))}; diag(m52) <- 0
+m53 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m53[i,] <- c(rnorm(120,53,1))}; diag(m53) <- 0
+m54 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m54[i,] <- c(rnorm(120,54,1))}; diag(m54) <- 0
+m55 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m55[i,] <- c(rnorm(120,55,1))}; diag(m55) <- 0
+m56 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m56[i,] <- c(rnorm(120,56,1))}; diag(m56) <- 0
+m57 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m57[i,] <- c(rnorm(120,57,1))}; diag(m57) <- 0
+m58 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m58[i,] <- c(rnorm(120,58,1))}; diag(m58) <- 0
+m59 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m59[i,] <- c(rnorm(120,59,1))}; diag(m59) <- 0
+m60 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m60[i,] <- c(rnorm(120,60,1))}; diag(m60) <- 0
+m61 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m61[i,] <- c(rnorm(120,61,1))}; diag(m61) <- 0
+m62 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m62[i,] <- c(rnorm(120,62,1))}; diag(m62) <- 0
+m63 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m63[i,] <- c(rnorm(120,63,1))}; diag(m63) <- 0
+m64 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m64[i,] <- c(rnorm(120,64,1))}; diag(m64) <- 0
+m65 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m65[i,] <- c(rnorm(120,65,1))}; diag(m65) <- 0
+m66 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m66[i,] <- c(rnorm(120,66,1))}; diag(m66) <- 0
+m67 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m67[i,] <- c(rnorm(120,67,1))}; diag(m67) <- 0
+m68 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m68[i,] <- c(rnorm(120,68,1))}; diag(m68) <- 0
+m69 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m69[i,] <- c(rnorm(120,69,1))}; diag(m69) <- 0
+m70 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m70[i,] <- c(rnorm(120,70,1))}; diag(m70) <- 0
+m71 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m71[i,] <- c(rnorm(120,71,1))}; diag(m71) <- 0
+m72 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m72[i,] <- c(rnorm(120,72,1))}; diag(m72) <- 0
+m73 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m73[i,] <- c(rnorm(120,73,1))}; diag(m73) <- 0
+m74 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m74[i,] <- c(rnorm(120,74,1))}; diag(m74) <- 0
+m75 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m75[i,] <- c(rnorm(120,75,1))}; diag(m75) <- 0
+m76 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m76[i,] <- c(rnorm(120,76,1))}; diag(m76) <- 0
+m77 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m77[i,] <- c(rnorm(120,77,1))}; diag(m77) <- 0
+m78 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m78[i,] <- c(rnorm(120,78,1))}; diag(m78) <- 0
+m79 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m79[i,] <- c(rnorm(120,79,1))}; diag(m79) <- 0
+m80 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m80[i,] <- c(rnorm(120,80,1))}; diag(m80) <- 0
+m81 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m81[i,] <- c(rnorm(120,81,1))}; diag(m81) <- 0
+m82 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m82[i,] <- c(rnorm(120,82,1))}; diag(m82) <- 0
+m83 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m83[i,] <- c(rnorm(120,83,1))}; diag(m83) <- 0
+m84 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m84[i,] <- c(rnorm(120,84,1))}; diag(m84) <- 0
+m85 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m85[i,] <- c(rnorm(120,85,1))}; diag(m85) <- 0
+m86 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m86[i,] <- c(rnorm(120,86,1))}; diag(m86) <- 0
+m87 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m87[i,] <- c(rnorm(120,87,1))}; diag(m87) <- 0
+m88 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m88[i,] <- c(rnorm(120,88,1))}; diag(m88) <- 0
+m89 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m89[i,] <- c(rnorm(120,89,1))}; diag(m89) <- 0
+m90 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m90[i,] <- c(rnorm(120,90,1))}; diag(m90) <- 0
+m91 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m91[i,] <- c(rnorm(120,91,1))}; diag(m91) <- 0
+m92 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m92[i,] <- c(rnorm(120,92,1))}; diag(m92) <- 0
+m93 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m93[i,] <- c(rnorm(120,93,1))}; diag(m93) <- 0
+m94 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m94[i,] <- c(rnorm(120,94,1))}; diag(m94) <- 0
+m95 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m95[i,] <- c(rnorm(120,95,1))}; diag(m95) <- 0
+m96 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m96[i,] <- c(rnorm(120,96,1))}; diag(m96) <- 0
+m97 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m97[i,] <- c(rnorm(120,97,1))}; diag(m97) <- 0
+m98 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m98[i,] <- c(rnorm(120,98,1))}; diag(m98) <- 0
+m99 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m99[i,] <- c(rnorm(120,99,1))}; diag(m99) <- 0
+m100 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m100[i,] <- c(rnorm(120,100,1))}; diag(m100) <- 0
+m101 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m101[i,] <- c(rnorm(120,101,1))}; diag(m101) <- 0
+m102 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m102[i,] <- c(rnorm(120,102,1))}; diag(m102) <- 0
+m103 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m103[i,] <- c(rnorm(120,103,1))}; diag(m103) <- 0
+m104 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m104[i,] <- c(rnorm(120,104,1))}; diag(m104) <- 0
+m105 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m105[i,] <- c(rnorm(120,105,1))}; diag(m105) <- 0
+m106 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m106[i,] <- c(rnorm(120,106,1))}; diag(m106) <- 0
+m107 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m107[i,] <- c(rnorm(120,107,1))}; diag(m107) <- 0
+m108 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m108[i,] <- c(rnorm(120,108,1))}; diag(m108) <- 0
+m109 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m109[i,] <- c(rnorm(120,109,1))}; diag(m109) <- 0
+m110 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m110[i,] <- c(rnorm(120,110,1))}; diag(m110) <- 0
+m111 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m111[i,] <- c(rnorm(120,111,1))}; diag(m111) <- 0
+m112 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m112[i,] <- c(rnorm(120,112,1))}; diag(m112) <- 0
+m113 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m113[i,] <- c(rnorm(120,113,1))}; diag(m113) <- 0
+m114 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m114[i,] <- c(rnorm(120,114,1))}; diag(m114) <- 0
+m115 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m115[i,] <- c(rnorm(120,115,1))}; diag(m115) <- 0
+m116 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m116[i,] <- c(rnorm(120,116,1))}; diag(m116) <- 0
+m117 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m117[i,] <- c(rnorm(120,117,1))}; diag(m117) <- 0
+m118 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m118[i,] <- c(rnorm(120,118,1))}; diag(m118) <- 0
+m119 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m119[i,] <- c(rnorm(120,119,1))}; diag(m119) <- 0
+m120 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m120[i,] <- c(rnorm(120,120,1))}; diag(m120) <- 0
+m121 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m121[i,] <- c(rnorm(120,121,1))}; diag(m121) <- 0
+m122 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m122[i,] <- c(rnorm(120,122,1))}; diag(m122) <- 0
+m123 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m123[i,] <- c(rnorm(120,123,1))}; diag(m123) <- 0
+m124 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m124[i,] <- c(rnorm(120,124,1))}; diag(m124) <- 0
+m125 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m125[i,] <- c(rnorm(120,125,1))}; diag(m125) <- 0
+m126 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m126[i,] <- c(rnorm(120,126,1))}; diag(m126) <- 0
+m127 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m127[i,] <- c(rnorm(120,127,1))}; diag(m127) <- 0
+m128 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m128[i,] <- c(rnorm(120,128,1))}; diag(m128) <- 0
+m129 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m129[i,] <- c(rnorm(120,129,1))}; diag(m129) <- 0
+m130 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m130[i,] <- c(rnorm(120,130,1))}; diag(m130) <- 0
+m131 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m131[i,] <- c(rnorm(120,131,1))}; diag(m131) <- 0
+m132 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m132[i,] <- c(rnorm(120,132,1))}; diag(m132) <- 0
+m133 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m133[i,] <- c(rnorm(120,133,1))}; diag(m133) <- 0
+m134 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m134[i,] <- c(rnorm(120,134,1))}; diag(m134) <- 0
+m135 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m135[i,] <- c(rnorm(120,135,1))}; diag(m135) <- 0
+m136 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m136[i,] <- c(rnorm(120,136,1))}; diag(m136) <- 0
+m137 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m137[i,] <- c(rnorm(120,137,1))}; diag(m137) <- 0
+m138 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m138[i,] <- c(rnorm(120,138,1))}; diag(m138) <- 0
+m139 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m139[i,] <- c(rnorm(120,139,1))}; diag(m139) <- 0
+m140 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m140[i,] <- c(rnorm(120,140,1))}; diag(m140) <- 0
+m141 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m141[i,] <- c(rnorm(120,141,1))}; diag(m141) <- 0
+m142 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m142[i,] <- c(rnorm(120,142,1))}; diag(m142) <- 0
+m143 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m143[i,] <- c(rnorm(120,143,1))}; diag(m143) <- 0
+m144 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m144[i,] <- c(rnorm(120,144,1))}; diag(m144) <- 0
+m145 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m145[i,] <- c(rnorm(120,145,1))}; diag(m145) <- 0
+m146 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m146[i,] <- c(rnorm(120,146,1))}; diag(m146) <- 0
+m147 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m147[i,] <- c(rnorm(120,147,1))}; diag(m147) <- 0
+m148 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m148[i,] <- c(rnorm(120,148,1))}; diag(m148) <- 0
+m149 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m149[i,] <- c(rnorm(120,149,1))}; diag(m149) <- 0
+m150 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m150[i,] <- c(rnorm(120,150,1))}; diag(m150) <- 0
+m151 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m151[i,] <- c(rnorm(120,151,1))}; diag(m151) <- 0
+m152 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m152[i,] <- c(rnorm(120,152,1))}; diag(m152) <- 0
+m153 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m153[i,] <- c(rnorm(120,153,1))}; diag(m153) <- 0
+m154 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m154[i,] <- c(rnorm(120,154,1))}; diag(m154) <- 0
+m155 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m155[i,] <- c(rnorm(120,155,1))}; diag(m155) <- 0
+m156 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m156[i,] <- c(rnorm(120,156,1))}; diag(m156) <- 0
+m157 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m157[i,] <- c(rnorm(120,157,1))}; diag(m157) <- 0
+m158 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m158[i,] <- c(rnorm(120,158,1))}; diag(m158) <- 0
+m159 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m159[i,] <- c(rnorm(120,159,1))}; diag(m159) <- 0
+m160 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m160[i,] <- c(rnorm(120,160,1))}; diag(m160) <- 0
+m161 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m161[i,] <- c(rnorm(120,161,1))}; diag(m161) <- 0
+m162 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m162[i,] <- c(rnorm(120,162,1))}; diag(m162) <- 0
+m163 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m163[i,] <- c(rnorm(120,163,1))}; diag(m163) <- 0
+m164 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m164[i,] <- c(rnorm(120,164,1))}; diag(m164) <- 0
+m165 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m165[i,] <- c(rnorm(120,165,1))}; diag(m165) <- 0
+m166 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m166[i,] <- c(rnorm(120,166,1))}; diag(m166) <- 0
+m167 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m167[i,] <- c(rnorm(120,167,1))}; diag(m167) <- 0
+m168 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m168[i,] <- c(rnorm(120,168,1))}; diag(m168) <- 0
+m169 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m169[i,] <- c(rnorm(120,169,1))}; diag(m169) <- 0
+m170 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m170[i,] <- c(rnorm(120,170,1))}; diag(m170) <- 0
+m171 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m171[i,] <- c(rnorm(120,171,1))}; diag(m171) <- 0
+m172 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m172[i,] <- c(rnorm(120,172,1))}; diag(m172) <- 0
+m173 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m173[i,] <- c(rnorm(120,173,1))}; diag(m173) <- 0
+m174 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m174[i,] <- c(rnorm(120,174,1))}; diag(m174) <- 0
+m175 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m175[i,] <- c(rnorm(120,175,1))}; diag(m175) <- 0
+m176 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m176[i,] <- c(rnorm(120,176,1))}; diag(m176) <- 0
+m177 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m177[i,] <- c(rnorm(120,177,1))}; diag(m177) <- 0
+m178 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m178[i,] <- c(rnorm(120,178,1))}; diag(m178) <- 0
+m179 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m179[i,] <- c(rnorm(120,179,1))}; diag(m179) <- 0
+m180 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m180[i,] <- c(rnorm(120,180,1))}; diag(m180) <- 0
+m181 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m181[i,] <- c(rnorm(120,181,1))}; diag(m181) <- 0
+m182 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m182[i,] <- c(rnorm(120,182,1))}; diag(m182) <- 0
+m183 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m183[i,] <- c(rnorm(120,183,1))}; diag(m183) <- 0
+m184 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m184[i,] <- c(rnorm(120,184,1))}; diag(m184) <- 0
+m185 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m185[i,] <- c(rnorm(120,185,1))}; diag(m185) <- 0
+m186 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m186[i,] <- c(rnorm(120,186,1))}; diag(m186) <- 0
+m187 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m187[i,] <- c(rnorm(120,187,1))}; diag(m187) <- 0
+m188 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m188[i,] <- c(rnorm(120,188,1))}; diag(m188) <- 0
+m189 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m189[i,] <- c(rnorm(120,189,1))}; diag(m189) <- 0
+m190 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m190[i,] <- c(rnorm(120,190,1))}; diag(m190) <- 0
+m191 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m191[i,] <- c(rnorm(120,191,1))}; diag(m191) <- 0
+m192 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m192[i,] <- c(rnorm(120,192,1))}; diag(m192) <- 0
+m193 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m193[i,] <- c(rnorm(120,193,1))}; diag(m193) <- 0
+m194 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m194[i,] <- c(rnorm(120,194,1))}; diag(m194) <- 0
+m195 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m195[i,] <- c(rnorm(120,195,1))}; diag(m195) <- 0
+m196 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m196[i,] <- c(rnorm(120,196,1))}; diag(m196) <- 0
+m197 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m197[i,] <- c(rnorm(120,197,1))}; diag(m197) <- 0
+m198 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m198[i,] <- c(rnorm(120,198,1))}; diag(m198) <- 0
+m199 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m199[i,] <- c(rnorm(120,199,1))}; diag(m199) <- 0
+m200 <- matrix(NA, nrow=120, ncol=120); for(i in 1:120){m200[i,] <- c(rnorm(120,200,1))}; diag(m200) <- 0
 
 
+
+# W
+sim.w.matrix = list(as.matrix(m1), as.matrix(m2), as.matrix(m3), as.matrix(m4), as.matrix(m5), as.matrix(m6), as.matrix(m7), as.matrix(m8), as.matrix(m9), as.matrix(m10), as.matrix(m11), as.matrix(m12), as.matrix(m13), as.matrix(m14), as.matrix(m15), as.matrix(m16), as.matrix(m17), as.matrix(m18), as.matrix(m19), as.matrix(m20), as.matrix(m21), as.matrix(m22), as.matrix(m23), as.matrix(m24), as.matrix(m25), as.matrix(m26), as.matrix(m27), as.matrix(m28), as.matrix(m29), as.matrix(m30), as.matrix(m31), as.matrix(m32), as.matrix(m33), as.matrix(m34), as.matrix(m35), as.matrix(m36), as.matrix(m37), as.matrix(m38), as.matrix(m39), as.matrix(m40), as.matrix(m41), as.matrix(m42), as.matrix(m43), as.matrix(m44), as.matrix(m45), as.matrix(m46), as.matrix(m47), as.matrix(m48), as.matrix(m49), as.matrix(m50), as.matrix(m51), as.matrix(m52), as.matrix(m53), as.matrix(m54), as.matrix(m55), as.matrix(m56), as.matrix(m57), as.matrix(m58), as.matrix(m59), as.matrix(m60), as.matrix(m61), as.matrix(m62), as.matrix(m63), as.matrix(m64), as.matrix(m65), as.matrix(m66), as.matrix(m67), as.matrix(m68), as.matrix(m69), as.matrix(m70), as.matrix(m71), as.matrix(m72), as.matrix(m73), as.matrix(m74), as.matrix(m75), as.matrix(m76), as.matrix(m77), as.matrix(m78), as.matrix(m79), as.matrix(m80), as.matrix(m81), as.matrix(m82), as.matrix(m83), as.matrix(m84), as.matrix(m85), as.matrix(m86), as.matrix(m87), as.matrix(m88), as.matrix(m89), as.matrix(m90), as.matrix(m91), as.matrix(m92), as.matrix(m93), as.matrix(m94), as.matrix(m95), as.matrix(m96), as.matrix(m97), as.matrix(m98), as.matrix(m99), as.matrix(m100), as.matrix(m101), as.matrix(m102), as.matrix(m103), as.matrix(m104), as.matrix(m105), as.matrix(m106), as.matrix(m107), as.matrix(m108), as.matrix(m109), as.matrix(m110), as.matrix(m111), as.matrix(m112), as.matrix(m113), as.matrix(m114), as.matrix(m115), as.matrix(m116), as.matrix(m117), as.matrix(m118), as.matrix(m119), as.matrix(m120), as.matrix(m121), as.matrix(m122), as.matrix(m123), as.matrix(m124), as.matrix(m125), as.matrix(m126), as.matrix(m127), as.matrix(m128), as.matrix(m129), as.matrix(m130), as.matrix(m131), as.matrix(m132), as.matrix(m133), as.matrix(m134), as.matrix(m135), as.matrix(m136), as.matrix(m137), as.matrix(m138), as.matrix(m139), as.matrix(m140), as.matrix(m141), as.matrix(m142), as.matrix(m143), as.matrix(m144), as.matrix(m145), as.matrix(m146), as.matrix(m147), as.matrix(m148), as.matrix(m149), as.matrix(m150), as.matrix(m151), as.matrix(m152), as.matrix(m153), as.matrix(m154), as.matrix(m155), as.matrix(m156), as.matrix(m157), as.matrix(m158), as.matrix(m159), as.matrix(m160), as.matrix(m161), as.matrix(m162), as.matrix(m163), as.matrix(m164), as.matrix(m165), as.matrix(m166), as.matrix(m167), as.matrix(m168), as.matrix(m169), as.matrix(m170), as.matrix(m171), as.matrix(m172), as.matrix(m173), as.matrix(m174), as.matrix(m175), as.matrix(m176), as.matrix(m177), as.matrix(m178), as.matrix(m179), as.matrix(m180), as.matrix(m181), as.matrix(m182), as.matrix(m183), as.matrix(m184), as.matrix(m185), as.matrix(m186), as.matrix(m187), as.matrix(m188), as.matrix(m189), as.matrix(m190), as.matrix(m191), as.matrix(m192), as.matrix(m193), as.matrix(m194), as.matrix(m195), as.matrix(m196), as.matrix(m197), as.matrix(m198), as.matrix(m199), as.matrix(m200))
+## ----
+
+
+
+
+# Sims: different packages
+
+
+## GVAR
+p_load(GVARX)
+
+
+p.1.sim=2 # The number of lag for Xt matrix
+FLag.1.sim=2 # The number of lag for foreign variables in country-specific VAR
+lag.max.sim=5 # The maximal number of lag for estimating country-specific VAR
+type.sim="none" # Model specification for VAR. As in package vars, we have four selection: "none","const","trend", "both".
+ic.sim="AIC" # Information criteria for optimal lag.As in package vars, we have four selection: "AIC", "HQ", "SC", and "FPE".
+
+# determinsitic component for the paper
+type.sim.paper = as.character(ifelse(type.sim=="both", as.character("Trend and constant"), ifelse(type.sim == "trend", as.character("Trend"), ifelse(type.sim == "constant", "Constant", NA ))))
+
+
+options(scipen=9999999)
+mainOUTPUT.sim = GVECMest(
+        data = country.var.d,
+        p = p.1.sim,
+        FLag = FLag.1.sim,
+        lag.max = lag.max.sim,
+        type = type.sim,
+        ic = ic.sim,
+        weight.matrix=sim.w.matrix)
+
+
+summary(mainOUTPUT.sim$gvecm[[2]]) 
 
 
 
