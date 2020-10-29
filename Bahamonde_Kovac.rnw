@@ -120,6 +120,11 @@ read_chunk('/Users/hectorbahamonde/research/Bahamonde_Kovac/Bahamonde_Kovac.R')
 
 @
 
+
+<<w:sim, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=F, eval=TRUE>>=
+
+@
+
 <<abstract, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=F, eval=TRUE>>=
 
 @

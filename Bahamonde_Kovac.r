@@ -65,12 +65,6 @@ p_load(foreign)
 mnc.d <- read.dta("/Users/hectorbahamonde/research/Bahamonde_Kovac/NMC_5_0.dta") 
 
 
-## NOTES IGOR MEETING
-# 1. Do a separate model using "pec" with "milper"
-# 2. Ask chinese guy if it is possible to get one number thing.
-# 4. PVAR with control variable (W as a control variable). 
-# irst-mil, ... do all of them. 
-
 # load Trade-COW
 p_load(foreign)
 trade.d <- read.csv("/Users/hectorbahamonde/research/Bahamonde_Kovac/National_COW_4.0.csv") 
@@ -134,10 +128,6 @@ rownames(cow.d.1) <- NULL
 ## Checking if panels are balanced
 # p_load(plm)
 # plm::is.pbalanced(cow.d.1)    
-
-
-# Plot the data
-# Pending
 
 
 # Import CVSs
