@@ -23,8 +23,16 @@
 \thanks{\href{mailto:hector.bahamonde@uoh.cl}{hector.bahamonde@uoh.cl}; \href{http://www.hectorbahamonde.com}{\texttt{www.HectorBahamonde.com}}.}}
 
 
-
 \author[2]{
+
+\textsc{Natalia Bahamonde}
+\thanks{\href{mailto:natalia.bahamonde@pucv.cl}{natalia.bahamonde@pucv.cl}; 
+\href{http://www.estadistica.cl/?page_id=12584}{\texttt{http://www.estadistica.cl/?page_id=12584}}. \\
+We thank Paul Poast, Jonathan Markowitz, Rosella Cappella Zielinski, Tsung-wu Ho and Cristobal Quininao for their suggestions.}}
+
+
+
+\author[3]{
 
 \textsc{Igor Kovac}
 \thanks{\href{mailto:kovacir@mail.uc.edu}{kovacir@mail.uc.edu}; 
@@ -33,7 +41,8 @@ We thank Paul Poast, Jonathan Markowitz, Rosella Cappella Zielinski, Tsung-wu Ho
 
 
 \affil[1]{Assistant Professor, O$'$Higgins University (Chile)}
-\affil[2]{PhD Candidate in Political Science, University of Cincinnati}
+\affil[2]{Associate Professor, O$'$Higgins University (Chile)}
+\affil[3]{PhD Candidate in Political Science, University of Cincinnati}
 
 
 \date{\today}
@@ -116,14 +125,6 @@ read_chunk('/Users/hectorbahamonde/research/Bahamonde_Kovac/Bahamonde_Kovac.R')
 
 @
 
-<<var:sim:d, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=F, eval=TRUE>>=
-
-@
-
-
-<<w:sim, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=F, eval=TRUE>>=
-
-@
 
 <<abstract, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=F, eval=TRUE>>=
 
