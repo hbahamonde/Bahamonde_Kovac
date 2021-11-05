@@ -31,7 +31,7 @@ trade$flow2[trade$flow2 ==  -9] <- 0
 p_load(dplyr)
 p_load(igraph)
 
-setwd("~/research/Bahamonde_Kovac/matrix")
+setwd("/Users/hectorbahamonde/research/Bahamonde_Kovac/matrix")
 
 sequence <- seq.int(min(trade$year),max(trade$year),1)
 
