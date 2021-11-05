@@ -631,6 +631,18 @@ wm.2.b = list(as.matrix(y.1955.b), as.matrix(y.1956.b), as.matrix(y.1957.b), as.
 # "tests for the joint significance of the estimated regression parameters, the ir,j's, were based on F statistic" (Freeman1983, 346)
 # https://stats.stackexchange.com/questions/131261/granger-causality-interpretation-using-r/132527
 
+########################################################
+# Saving Data
+########################################################
+
+write.csv(cow.d.1,"/Users/hectorbahamonde/research/Bahamonde_Kovac/cow_1.csv", row.names = FALSE)
+write.csv(cow.d.2,"/Users/hectorbahamonde/research/Bahamonde_Kovac/cow_2.csv", row.names = FALSE)
+write.csv(cow.d.2.B,"/Users/hectorbahamonde/research/Bahamonde_Kovac/cow_2_B.csv", row.names = FALSE)
+
+save(wm.1, file = "/Users/hectorbahamonde/research/Bahamonde_Kovac/wm_1.RData")
+save(wm.2, file = "/Users/hectorbahamonde/research/Bahamonde_Kovac/wm_2.RData")
+save(wm.2.b, file = "/Users/hectorbahamonde/research/Bahamonde_Kovac/wm_2_B.RData")
+
 
 ########################################################
 # First Period
