@@ -349,12 +349,6 @@ However, future iterations of this project are necessary to be fully confident i
 \printbibliography
 
 
-<<bib:export, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=F, eval=TRUE>>=
-
-@
-
-
-
 % EndNotes
 %\newpage
 %\pagenumbering{Roman}
