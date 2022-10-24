@@ -310,6 +310,8 @@ From a substantive point of view, \autoref{fig:pvalues.plot} shows that during t
 
 \section{Simulations}
 
+\todo{pending}
+
 In this section we compare different methods for analyzing big-N and big-T datasets. First, we take the VAR exampled provided by \textcite[286]{Enders2014},
 
 \begin{align}\label{eq:var:enders}
