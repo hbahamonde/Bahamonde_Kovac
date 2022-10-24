@@ -20,15 +20,15 @@
 \author[1]{
 
 \textsc{H\'ector Bahamonde}
-\thanks{\href{mailto:hector.bahamonde@uoh.cl}{hector.bahamonde@uoh.cl}; \href{http://www.hectorbahamonde.com}{\texttt{www.HectorBahamonde.com}}.}}
+\thanks{\href{mailto:hibano@utu.fi}{hibano@utu.fi}; \href{http://www.hectorbahamonde.com}{\texttt{www.HectorBahamonde.com}}.}}
 
 
 \author[2]{
 
-\textsc{Natalia Bahamonde}
-\thanks{\href{mailto:natalia.bahamonde@pucv.cl}{natalia.bahamonde@pucv.cl}; 
-\href{http://www.estadistica.cl/?page_id=12584}{\texttt{http://www.estadistica.cl/?page_id=12584}}. \\
-We thank Paul Poast, Jonathan Markowitz, Rosella Cappella Zielinski, Tsung-wu Ho and Cristobal Quininao for their suggestions.}}
+\textsc{Heikki Kauppi}
+\thanks{\href{mailto:heikki.kauppi@utu.fi}{heikki.kauppi@utu.fi}; 
+\href{https://www.utu.fi/fi/ihmiset/heikki-kauppi}{\texttt{https://www.utu.fi/fi/ihmiset/heikki-kauppi}}. \\
+Authors in alphabetical order. All authors contributed equally. We thank Paul Poast, Jonathan Markowitz, Rosella Cappella Zielinski, Tsung-wu Ho and Cristobal Quininao for their suggestions.}}
 
 
 
@@ -36,13 +36,19 @@ We thank Paul Poast, Jonathan Markowitz, Rosella Cappella Zielinski, Tsung-wu Ho
 
 \textsc{Igor Kovac}
 \thanks{\href{mailto:kovacir@mail.uc.edu}{kovacir@mail.uc.edu}; 
-\href{https://igorkovac.com}{\texttt{https://igorkovac.com}}. \\
-We thank Paul Poast, Jonathan Markowitz, Rosella Cappella Zielinski, Tsung-wu Ho and Cristobal Quininao for their suggestions.}}
+\href{https://igorkovac.com}{\texttt{https://igorkovac.com}}.}}
 
 
-\affil[1]{Assistant Professor, O$'$Higgins University (Chile)}
-\affil[2]{Associate Professor, O$'$Higgins University (Chile)}
+\author[4]{
+
+\textsc{Wilma Nissilä}
+\thanks{\href{mailto:wilma.v.nissila@utu.fi}{wilma.v.nissila@utu.fi}; 
+\href{https://igorkovac.com}{\texttt{https://igorkovac.com}}.}}
+
+\affil[1]{Senior Researcher, University of Turku}
+\affil[2]{Associate Professor in Economics, University of Turku}
 \affil[3]{PhD Candidate in Political Science, University of Cincinnati}
+\affil[4]{PhD Candidate in Economics, University of Turku}
 
 
 \date{\today}
@@ -276,12 +282,12 @@ Moving forward, the weight variable ${\mathbf W}$ is a square matrix which has a
 \begin{center}
 ${\mathbf W}_{t} = 
 \begin{bmatrix}
-	  			& {\mathbf i_{1}} & {\mathbf i_{2}} 	& {\mathbf i_{3}} 	& \hdots & {\mathbf i_{K}} 	\\ 
-{\mathbf i_{1}} &  0      			&  f_{21} 	&  f_{31} & \hdots &  i_{K1} 			\\ 
-{\mathbf i_{2}} &  f_{12} & 0      			& f_{32} 	& \hdots & i_{K2} 			\\ 
-{\mathbf i_{3}} & f_{13} & f_{23}  	&    0      		& \hdots & i_{K3} 			\\
-\vdots			& \vdots			& \vdots			&    \vdots    	&\ddots	& \vdots 			\\
-{\mathbf i_{K}}     & f_{1K}			& f_{2K}			&    f_{3K}    &	\hdots	& i_{KK} 			\\
+          & {\mathbf i_{1}} & {\mathbf i_{2}}   & {\mathbf i_{3}}   & \hdots & {\mathbf i_{K}}  \\ 
+{\mathbf i_{1}} &  0            &  f_{21}   &  f_{31} & \hdots &  i_{K1}      \\ 
+{\mathbf i_{2}} &  f_{12} & 0           & f_{32}  & \hdots & i_{K2}       \\ 
+{\mathbf i_{3}} & f_{13} & f_{23}   &    0          & \hdots & i_{K3}       \\
+\vdots      & \vdots      & \vdots      &    \vdots     &\ddots & \vdots      \\
+{\mathbf i_{K}}     & f_{1K}      & f_{2K}      &    f_{3K}    &  \hdots  & i_{KK}      \\
 \end{bmatrix}$
 \end{center}
 
@@ -310,6 +316,8 @@ From a substantive point of view, \autoref{fig:pvalues.plot} shows that during t
 
 \section{Simulations}
 
+\todo{pending}
+
 In this section we compare different methods for analyzing big-N and big-T datasets. First, we take the VAR exampled provided by \textcite[286]{Enders2014},
 
 \begin{align}\label{eq:var:enders}
@@ -319,18 +327,7 @@ In this section we compare different methods for analyzing big-N and big-T datas
 \end{aligned}
 \end{align}
 
-and simulate a VAR data-generating process by setting $\alpha_{10}=\alpha_{20} = 0$, $\beta_{11}=\beta_{22} = \Sexpr{parameters.1}$ and $\beta_{12}=\beta_{21} = \Sexpr{parameters.2}$. Next, we derive the panel representation of \autoref{eq:var:enders} generating a dataset of 30 countries following the same VAR process. 
-
-
-\afterpage{%
-<<plot:var:sim, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap=sim.var.plot.note, fig.align='center', fig.width=8, fig.height=11,dpi=4000,cache=F, include = TRUE>>=
-
-
-@
-\clearpage
-}
-
-
+and simulate a VAR data-generating process by setting $\alpha_{10}=\alpha_{20} = 0$, $\beta_{11}=\beta_{22} = NUM OF PARs$ and $\beta_{12}=\beta_{21} = NUM OF PARs$. Next, we derive the panel representation of \autoref{eq:var:enders} generating a dataset of 30 countries following the same VAR process. 
 
 
 \section{Discussion\label{Discussion}}
@@ -349,12 +346,6 @@ However, future iterations of this project are necessary to be fully confident i
 \printbibliography
 
 
-<<bib:export, echo=FALSE, comment=NA, warning=FALSE, message=FALSE, include = FALSE, cache=F, eval=TRUE>>=
-
-@
-
-
-
 % EndNotes
 %\newpage
 %\pagenumbering{Roman}
@@ -370,6 +361,8 @@ However, future iterations of this project are necessary to be fully confident i
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 <<wordcount, echo=FALSE, cache=FALSE>>=
+
+
 library(knitr)
 
 comma <- function (x, ...) {
@@ -390,6 +383,8 @@ count <- regmatches(sum.row, regexpr(pattern, sum.row) )
 # extract digits
 
 count <- comma(as.numeric(count)) # add comma
+
+
 @
 
 
@@ -424,33 +419,33 @@ count <- comma(as.numeric(count)) # add comma
 \begin{center}
 \begin{tabular}{ccccccc|}
 \cline{2-7}
-\multicolumn{1}{c|}{}                                  & \textbf{Granger Relationship} 	& \textbf{F-Test} 						& \textbf{P-Value} 					   & \textbf{DF} 								& 	\textbf{Adjusted R-sq} 					 & {\bf Lags}  \\ \hline
-\multicolumn{1}{|c|}{\multirow{2}{*}{Austria-Hungary}} & butter $\rightarrow$ guns		& \Sexpr{p.1.Austria.Hungary.ftest.1} 	& \Sexpr{p.1.Austria.Hungary.pvalue.1} & \Sexpr{(p.1.Austria.Hungary.df.num.dem.1)}& 	\Sexpr{p.1.Austria.Hungary.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Austria.Hungary.lags}}} \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.Austria.Hungary.ftest.2} 	& \Sexpr{p.1.Austria.Hungary.pvalue.2} & \Sexpr{(p.1.Austria.Hungary.df.num.dem.2)}& 	\Sexpr{p.1.Austria.Hungary.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{c|}{}                                  & \textbf{Granger Relationship}  & \textbf{F-Test}             & \textbf{P-Value}             & \textbf{DF}                &   \textbf{Adjusted R-sq}           & {\bf Lags}  \\ \hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Austria-Hungary}} & butter $\rightarrow$ guns    & \Sexpr{p.1.Austria.Hungary.ftest.1}   & \Sexpr{p.1.Austria.Hungary.pvalue.1} & \Sexpr{(p.1.Austria.Hungary.df.num.dem.1)}&  \Sexpr{p.1.Austria.Hungary.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Austria.Hungary.lags}}} \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter    & \Sexpr{p.1.Austria.Hungary.ftest.2}   & \Sexpr{p.1.Austria.Hungary.pvalue.2} & \Sexpr{(p.1.Austria.Hungary.df.num.dem.2)}&  \Sexpr{p.1.Austria.Hungary.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Belgium}}         & butter $\rightarrow$ guns		& \Sexpr{p.1.Belgium.ftest.1} 			& \Sexpr{p.1.Belgium.pvalue.1} 			&  \Sexpr{(p.1.Belgium.df.num.dem.1)}    	& 	 \Sexpr{p.1.Belgium.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Belgium.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.Belgium.ftest.2}  			& \Sexpr{p.1.Belgium.pvalue.2} 			&  \Sexpr{(p.1.Belgium.df.num.dem.2)}    	& 	 \Sexpr{p.1.Belgium.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Belgium}}         & butter $\rightarrow$ guns    & \Sexpr{p.1.Belgium.ftest.1}       & \Sexpr{p.1.Belgium.pvalue.1}      &  \Sexpr{(p.1.Belgium.df.num.dem.1)}     &    \Sexpr{p.1.Belgium.rsq.1}    & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Belgium.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter    & \Sexpr{p.1.Belgium.ftest.2}       & \Sexpr{p.1.Belgium.pvalue.2}      &  \Sexpr{(p.1.Belgium.df.num.dem.2)}     &    \Sexpr{p.1.Belgium.rsq.2}    & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{France}}          & butter $\rightarrow$ guns		& \Sexpr{p.1.France.ftest.1} 			& \Sexpr{p.1.France.pvalue.1} 			&  \Sexpr{(p.1.France.df.num.dem.1)}    	& 	 \Sexpr{p.1.France.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.France.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.France.ftest.2}  			& \Sexpr{p.1.France.pvalue.2} 			&  \Sexpr{(p.1.France.df.num.dem.2)}    	& 	 \Sexpr{p.1.France.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{France}}          & butter $\rightarrow$ guns    & \Sexpr{p.1.France.ftest.1}      & \Sexpr{p.1.France.pvalue.1}       &  \Sexpr{(p.1.France.df.num.dem.1)}      &    \Sexpr{p.1.France.rsq.1}     & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.France.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter    & \Sexpr{p.1.France.ftest.2}        & \Sexpr{p.1.France.pvalue.2}       &  \Sexpr{(p.1.France.df.num.dem.2)}      &    \Sexpr{p.1.France.rsq.2}     & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Germany}}         & butter $\rightarrow$ guns		& \Sexpr{p.1.Germany.ftest.1} 			& \Sexpr{p.1.Germany.pvalue.1} 			&  \Sexpr{(p.1.Germany.df.num.dem.1)}    	& 	 \Sexpr{p.1.Germany.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Germany.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.Germany.ftest.2}  			& \Sexpr{p.1.Germany.pvalue.2} 			&  \Sexpr{(p.1.Germany.df.num.dem.2)}    	& 	 \Sexpr{p.1.Germany.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Germany}}         & butter $\rightarrow$ guns    & \Sexpr{p.1.Germany.ftest.1}       & \Sexpr{p.1.Germany.pvalue.1}      &  \Sexpr{(p.1.Germany.df.num.dem.1)}     &    \Sexpr{p.1.Germany.rsq.1}    & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Germany.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter    & \Sexpr{p.1.Germany.ftest.2}       & \Sexpr{p.1.Germany.pvalue.2}      &  \Sexpr{(p.1.Germany.df.num.dem.2)}     &    \Sexpr{p.1.Germany.rsq.2}    & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Italy}}           & butter $\rightarrow$ guns		& \Sexpr{p.1.Italy.ftest.1} 			& \Sexpr{p.1.Italy.pvalue.1} 			&  \Sexpr{(p.1.Italy.df.num.dem.1)}    	& 	 \Sexpr{p.1.Italy.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Italy.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.Italy.ftest.2}  			& \Sexpr{p.1.Italy.pvalue.2} 			&  \Sexpr{(p.1.Italy.df.num.dem.2)}    	& 	 \Sexpr{p.1.Italy.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Italy}}           & butter $\rightarrow$ guns    & \Sexpr{p.1.Italy.ftest.1}       & \Sexpr{p.1.Italy.pvalue.1}      &  \Sexpr{(p.1.Italy.df.num.dem.1)}     &    \Sexpr{p.1.Italy.rsq.1}    & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Italy.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter    & \Sexpr{p.1.Italy.ftest.2}       & \Sexpr{p.1.Italy.pvalue.2}      &  \Sexpr{(p.1.Italy.df.num.dem.2)}     &    \Sexpr{p.1.Italy.rsq.2}    & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Russia}}          & butter $\rightarrow$ guns		& \Sexpr{p.1.Russia.ftest.1} 			& \Sexpr{p.1.Russia.pvalue.1}			&  \Sexpr{(p.1.Russia.df.num.dem.1)}    	& 	 \Sexpr{p.1.Russia.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Russia.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.Russia.ftest.2}  			& \Sexpr{p.1.Russia.pvalue.2} 			&  \Sexpr{(p.1.Russia.df.num.dem.2)}    	& 	 \Sexpr{p.1.Russia.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Russia}}          & butter $\rightarrow$ guns    & \Sexpr{p.1.Russia.ftest.1}      & \Sexpr{p.1.Russia.pvalue.1}     &  \Sexpr{(p.1.Russia.df.num.dem.1)}      &    \Sexpr{p.1.Russia.rsq.1}     & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Russia.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter    & \Sexpr{p.1.Russia.ftest.2}        & \Sexpr{p.1.Russia.pvalue.2}       &  \Sexpr{(p.1.Russia.df.num.dem.2)}      &    \Sexpr{p.1.Russia.rsq.2}     & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Spain}}           & butter $\rightarrow$ guns		& \Sexpr{p.1.Spain.ftest.1} 			& \Sexpr{p.1.Spain.pvalue.1} 			&  \Sexpr{(p.1.Spain.df.num.dem.1)}    	& 	 \Sexpr{p.1.Spain.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Spain.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.Spain.ftest.2}  			& \Sexpr{p.1.Spain.pvalue.2} 			&  \Sexpr{(p.1.Spain.df.num.dem.2)}    	& 	 \Sexpr{p.1.Spain.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Spain}}           & butter $\rightarrow$ guns    & \Sexpr{p.1.Spain.ftest.1}       & \Sexpr{p.1.Spain.pvalue.1}      &  \Sexpr{(p.1.Spain.df.num.dem.1)}     &    \Sexpr{p.1.Spain.rsq.1}    & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.Spain.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter    & \Sexpr{p.1.Spain.ftest.2}       & \Sexpr{p.1.Spain.pvalue.2}      &  \Sexpr{(p.1.Spain.df.num.dem.2)}     &    \Sexpr{p.1.Spain.rsq.2}    & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{United Kingdom}}  & butter $\rightarrow$ guns		& \Sexpr{p.1.United.Kingdom.ftest.1} 	& \Sexpr{p.1.United.Kingdom.pvalue.1} 	&  \Sexpr{(p.1.United.Kingdom.df.num.dem.1)} &  	\Sexpr{p.1.United.Kingdom.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.United.Kingdom.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.United.Kingdom.ftest.2}  	& \Sexpr{p.1.United.Kingdom.pvalue.2} 	&  \Sexpr{(p.1.United.Kingdom.df.num.dem.2)} &  	\Sexpr{p.1.United.Kingdom.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{United Kingdom}}  & butter $\rightarrow$ guns    & \Sexpr{p.1.United.Kingdom.ftest.1}  & \Sexpr{p.1.United.Kingdom.pvalue.1}   &  \Sexpr{(p.1.United.Kingdom.df.num.dem.1)} &    \Sexpr{p.1.United.Kingdom.rsq.1}    & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.United.Kingdom.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter    & \Sexpr{p.1.United.Kingdom.ftest.2}    & \Sexpr{p.1.United.Kingdom.pvalue.2}   &  \Sexpr{(p.1.United.Kingdom.df.num.dem.2)} &    \Sexpr{p.1.United.Kingdom.rsq.2}    & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{United States}}   & butter $\rightarrow$ guns		& \Sexpr{p.1.United.States.ftest.1} 	& \Sexpr{p.1.United.States.pvalue.1}  	&  \Sexpr{(p.1.United.States.df.num.dem.1)}  &  	\Sexpr{p.1.United.States.rsq.1} 		& \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.United.States.lags}}}  \\ 
-\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter		& \Sexpr{p.1.United.States.ftest.2}  	& \Sexpr{p.1.United.States.pvalue.2} 	&  \Sexpr{(p.1.United.States.df.num.dem.2)}  &  	\Sexpr{p.1.United.States.rsq.2} 		& \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{United States}}   & butter $\rightarrow$ guns    & \Sexpr{p.1.United.States.ftest.1}   & \Sexpr{p.1.United.States.pvalue.1}    &  \Sexpr{(p.1.United.States.df.num.dem.1)}  &    \Sexpr{p.1.United.States.rsq.1}     & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.1.United.States.lags}}}  \\ 
+\multicolumn{1}{|c|}{}                                 & guns $\rightarrow$ butter    & \Sexpr{p.1.United.States.ftest.2}   & \Sexpr{p.1.United.States.pvalue.2}  &  \Sexpr{(p.1.United.States.df.num.dem.2)}  &    \Sexpr{p.1.United.States.rsq.2}     & \multicolumn{1}{|c|}{} \\\hline
 \end{tabular}
 \\
 {\raggedright \small Table shows country-specific Granger-causality F-tests. Last column shows number of domestic lags used per every country-specific Granger model. Number of lags for endogenous variables \;=\; $\Sexpr{p.1}$. Number of lags for foreign variables \;=\; $\Sexpr{FLag.1}$. Max number of lags for estimating the country-specific VAR model \;=\; $\Sexpr{lag.max.1}$. Information criteria for optimal lag length \;=\; $\text{\Sexpr{ic.1}}$. Deterministic variables: $\text{\Sexpr{type.1.paper}}$. \par}
@@ -458,111 +453,107 @@ count <- comma(as.numeric(count)) # add comma
 \end{table}
 
 
-
-
-
-
 \begin{table}[H]\caption{Bivariate Global Granger Causality Tests of the World Political Economy, $\Sexpr{year.min.t2}$-$\Sexpr{year.max.t2}$}\label{t:2}
 \begin{center}
 \scalebox{0.6}{
 \begin{tabular}{ccccccc|}
 \cline{2-7}
-\multicolumn{1}{c|}{}                               & \textbf{Granger Relationship} & \textbf{F-Test} 					& \textbf{P-Value} 				 & \textbf{DF} 								& 	\textbf{Adjusted R-sq} 		& {\bf Lags}  \\ \hline
-\multicolumn{1}{|c|}{\multirow{2}{*}{Argentina}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.Argentina.ftest.1} 	& \Sexpr{p.2.Argentina.pvalue.1} & \Sexpr{(p.2.Argentina.df.num.dem.1)} 	& 	\Sexpr{p.2.Argentina.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Argentina.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Argentina.ftest.2} 	& \Sexpr{p.2.Argentina.pvalue.2} & \Sexpr{(p.2.Argentina.df.num.dem.2)} 	& 	\Sexpr{p.2.Argentina.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{c|}{}                               & \textbf{Granger Relationship} & \textbf{F-Test}           & \textbf{P-Value}         & \textbf{DF}                &   \textbf{Adjusted R-sq}    & {\bf Lags}  \\ \hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Argentina}}  & butter $\rightarrow$ guns   & \Sexpr{p.2.Argentina.ftest.1}   & \Sexpr{p.2.Argentina.pvalue.1} & \Sexpr{(p.2.Argentina.df.num.dem.1)}   &   \Sexpr{p.2.Argentina.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Argentina.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Argentina.ftest.2}   & \Sexpr{p.2.Argentina.pvalue.2} & \Sexpr{(p.2.Argentina.df.num.dem.2)}   &   \Sexpr{p.2.Argentina.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Australia}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.Australia.ftest.1} 	& \Sexpr{p.2.Australia.pvalue.1} & \Sexpr{(p.2.Australia.df.num.dem.1)} 	& 	\Sexpr{p.2.Australia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Australia.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Australia.ftest.2} 	& \Sexpr{p.2.Australia.pvalue.2} & \Sexpr{(p.2.Australia.df.num.dem.2)} 	& 	\Sexpr{p.2.Australia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Australia}}  & butter $\rightarrow$ guns   & \Sexpr{p.2.Australia.ftest.1}   & \Sexpr{p.2.Australia.pvalue.1} & \Sexpr{(p.2.Australia.df.num.dem.1)}   &   \Sexpr{p.2.Australia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Australia.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Australia.ftest.2}   & \Sexpr{p.2.Australia.pvalue.2} & \Sexpr{(p.2.Australia.df.num.dem.2)}   &   \Sexpr{p.2.Australia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Austria}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Austria.ftest.1} 		& \Sexpr{p.2.Austria.pvalue.1} & \Sexpr{(p.2.Austria.df.num.dem.1)} 		& 	\Sexpr{p.2.Austria.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Austria.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Austria.ftest.2} 		& \Sexpr{p.2.Austria.pvalue.2} & \Sexpr{(p.2.Austria.df.num.dem.2)} 		& 	\Sexpr{p.2.Austria.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Austria}}    & butter $\rightarrow$ guns   & \Sexpr{p.2.Austria.ftest.1}     & \Sexpr{p.2.Austria.pvalue.1} & \Sexpr{(p.2.Austria.df.num.dem.1)}     &   \Sexpr{p.2.Austria.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Austria.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Austria.ftest.2}     & \Sexpr{p.2.Austria.pvalue.2} & \Sexpr{(p.2.Austria.df.num.dem.2)}     &   \Sexpr{p.2.Austria.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Belgium}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Belgium.ftest.1} 		& \Sexpr{p.2.Belgium.pvalue.1} & \Sexpr{(p.2.Belgium.df.num.dem.1)} 		& 	\Sexpr{p.2.Belgium.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Belgium.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Belgium.ftest.2} 		& \Sexpr{p.2.Belgium.pvalue.2} & \Sexpr{(p.2.Belgium.df.num.dem.2)} 		& 	\Sexpr{p.2.Belgium.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Belgium}}    & butter $\rightarrow$ guns   & \Sexpr{p.2.Belgium.ftest.1}     & \Sexpr{p.2.Belgium.pvalue.1} & \Sexpr{(p.2.Belgium.df.num.dem.1)}     &   \Sexpr{p.2.Belgium.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Belgium.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Belgium.ftest.2}     & \Sexpr{p.2.Belgium.pvalue.2} & \Sexpr{(p.2.Belgium.df.num.dem.2)}     &   \Sexpr{p.2.Belgium.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Brazil}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Brazil.ftest.1} 		& \Sexpr{p.2.Brazil.pvalue.1} & \Sexpr{(p.2.Brazil.df.num.dem.1)} 		& 	\Sexpr{p.2.Brazil.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Brazil.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Brazil.ftest.2} 		& \Sexpr{p.2.Brazil.pvalue.2} & \Sexpr{(p.2.Brazil.df.num.dem.2)} 		& 	\Sexpr{p.2.Brazil.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Brazil}}     & butter $\rightarrow$ guns   & \Sexpr{p.2.Brazil.ftest.1}    & \Sexpr{p.2.Brazil.pvalue.1} & \Sexpr{(p.2.Brazil.df.num.dem.1)}     &   \Sexpr{p.2.Brazil.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Brazil.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Brazil.ftest.2}    & \Sexpr{p.2.Brazil.pvalue.2} & \Sexpr{(p.2.Brazil.df.num.dem.2)}     &   \Sexpr{p.2.Brazil.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Bulgaria}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.Bulgaria.ftest.1} 		& \Sexpr{p.2.Bulgaria.pvalue.1} & \Sexpr{(p.2.Bulgaria.df.num.dem.1)} 		& 	\Sexpr{p.2.Bulgaria.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Bulgaria.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Bulgaria.ftest.2} 		& \Sexpr{p.2.Bulgaria.pvalue.2} & \Sexpr{(p.2.Bulgaria.df.num.dem.2)} 		& 	\Sexpr{p.2.Bulgaria.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Bulgaria}}   & butter $\rightarrow$ guns   & \Sexpr{p.2.Bulgaria.ftest.1}    & \Sexpr{p.2.Bulgaria.pvalue.1} & \Sexpr{(p.2.Bulgaria.df.num.dem.1)}     &   \Sexpr{p.2.Bulgaria.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Bulgaria.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Bulgaria.ftest.2}    & \Sexpr{p.2.Bulgaria.pvalue.2} & \Sexpr{(p.2.Bulgaria.df.num.dem.2)}     &   \Sexpr{p.2.Bulgaria.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Canada}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Canada.ftest.1} 		& \Sexpr{p.2.Canada.pvalue.1} & \Sexpr{(p.2.Canada.df.num.dem.1)} 		& 	\Sexpr{p.2.Canada.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Canada.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Canada.ftest.2} 		& \Sexpr{p.2.Canada.pvalue.2} & \Sexpr{(p.2.Canada.df.num.dem.2)} 		& 	\Sexpr{p.2.Canada.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Canada}}     & butter $\rightarrow$ guns   & \Sexpr{p.2.Canada.ftest.1}    & \Sexpr{p.2.Canada.pvalue.1} & \Sexpr{(p.2.Canada.df.num.dem.1)}     &   \Sexpr{p.2.Canada.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Canada.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Canada.ftest.2}    & \Sexpr{p.2.Canada.pvalue.2} & \Sexpr{(p.2.Canada.df.num.dem.2)}     &   \Sexpr{p.2.Canada.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Chile}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Chile.ftest.1} 		& \Sexpr{p.2.Chile.pvalue.1} & \Sexpr{(p.2.Chile.df.num.dem.1)} 		& 	\Sexpr{p.2.Chile.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Chile.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Chile.ftest.2} 		& \Sexpr{p.2.Chile.pvalue.2} & \Sexpr{(p.2.Chile.df.num.dem.2)} 		& 	\Sexpr{p.2.Chile.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Chile}}    & butter $\rightarrow$ guns   & \Sexpr{p.2.Chile.ftest.1}     & \Sexpr{p.2.Chile.pvalue.1} & \Sexpr{(p.2.Chile.df.num.dem.1)}     &   \Sexpr{p.2.Chile.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Chile.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Chile.ftest.2}     & \Sexpr{p.2.Chile.pvalue.2} & \Sexpr{(p.2.Chile.df.num.dem.2)}     &   \Sexpr{p.2.Chile.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Colombia}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.Colombia.ftest.1} 		& \Sexpr{p.2.Colombia.pvalue.1} & \Sexpr{(p.2.Colombia.df.num.dem.1)} 		& 	\Sexpr{p.2.Colombia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Colombia.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Colombia.ftest.2} 		& \Sexpr{p.2.Colombia.pvalue.2} & \Sexpr{(p.2.Colombia.df.num.dem.2)} 		& 	\Sexpr{p.2.Colombia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Colombia}}   & butter $\rightarrow$ guns   & \Sexpr{p.2.Colombia.ftest.1}    & \Sexpr{p.2.Colombia.pvalue.1} & \Sexpr{(p.2.Colombia.df.num.dem.1)}     &   \Sexpr{p.2.Colombia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Colombia.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Colombia.ftest.2}    & \Sexpr{p.2.Colombia.pvalue.2} & \Sexpr{(p.2.Colombia.df.num.dem.2)}     &   \Sexpr{p.2.Colombia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Egypt}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Egypt.ftest.1} 		& \Sexpr{p.2.Egypt.pvalue.1} & \Sexpr{(p.2.Egypt.df.num.dem.1)} 		& 	\Sexpr{p.2.Egypt.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Egypt.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Egypt.ftest.2} 		& \Sexpr{p.2.Egypt.pvalue.2} & \Sexpr{(p.2.Egypt.df.num.dem.2)} 		& 	\Sexpr{p.2.Egypt.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Egypt}}    & butter $\rightarrow$ guns   & \Sexpr{p.2.Egypt.ftest.1}     & \Sexpr{p.2.Egypt.pvalue.1} & \Sexpr{(p.2.Egypt.df.num.dem.1)}     &   \Sexpr{p.2.Egypt.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Egypt.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Egypt.ftest.2}     & \Sexpr{p.2.Egypt.pvalue.2} & \Sexpr{(p.2.Egypt.df.num.dem.2)}     &   \Sexpr{p.2.Egypt.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Finland}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Finland.ftest.1} 		& \Sexpr{p.2.Finland.pvalue.1} & \Sexpr{(p.2.Finland.df.num.dem.1)} 		& 	\Sexpr{p.2.Finland.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Finland.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Finland.ftest.2} 		& \Sexpr{p.2.Finland.pvalue.2} & \Sexpr{(p.2.Finland.df.num.dem.2)} 		& 	\Sexpr{p.2.Finland.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Finland}}    & butter $\rightarrow$ guns   & \Sexpr{p.2.Finland.ftest.1}     & \Sexpr{p.2.Finland.pvalue.1} & \Sexpr{(p.2.Finland.df.num.dem.1)}     &   \Sexpr{p.2.Finland.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Finland.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Finland.ftest.2}     & \Sexpr{p.2.Finland.pvalue.2} & \Sexpr{(p.2.Finland.df.num.dem.2)}     &   \Sexpr{p.2.Finland.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{France}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.France.ftest.1} 		& \Sexpr{p.2.France.pvalue.1} & \Sexpr{(p.2.France.df.num.dem.1)} 		& 	\Sexpr{p.2.France.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.France.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.France.ftest.2} 		& \Sexpr{p.2.France.pvalue.2} & \Sexpr{(p.2.France.df.num.dem.2)} 		& 	\Sexpr{p.2.France.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{France}}     & butter $\rightarrow$ guns   & \Sexpr{p.2.France.ftest.1}    & \Sexpr{p.2.France.pvalue.1} & \Sexpr{(p.2.France.df.num.dem.1)}     &   \Sexpr{p.2.France.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.France.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.France.ftest.2}    & \Sexpr{p.2.France.pvalue.2} & \Sexpr{(p.2.France.df.num.dem.2)}     &   \Sexpr{p.2.France.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Greece}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Greece.ftest.1} 		& \Sexpr{p.2.Greece.pvalue.1} & \Sexpr{(p.2.Greece.df.num.dem.1)} 		& 	\Sexpr{p.2.Greece.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Greece.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Greece.ftest.2} 		& \Sexpr{p.2.Greece.pvalue.2} & \Sexpr{(p.2.Greece.df.num.dem.2)} 		& 	\Sexpr{p.2.Greece.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Greece}}     & butter $\rightarrow$ guns   & \Sexpr{p.2.Greece.ftest.1}    & \Sexpr{p.2.Greece.pvalue.1} & \Sexpr{(p.2.Greece.df.num.dem.1)}     &   \Sexpr{p.2.Greece.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Greece.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Greece.ftest.2}    & \Sexpr{p.2.Greece.pvalue.2} & \Sexpr{(p.2.Greece.df.num.dem.2)}     &   \Sexpr{p.2.Greece.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Hungary}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Hungary.ftest.1} 		& \Sexpr{p.2.Hungary.pvalue.1} & \Sexpr{(p.2.Hungary.df.num.dem.1)} 		& 	\Sexpr{p.2.Hungary.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Hungary.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Hungary.ftest.2} 		& \Sexpr{p.2.Hungary.pvalue.2} & \Sexpr{(p.2.Hungary.df.num.dem.2)} 		& 	\Sexpr{p.2.Hungary.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Hungary}}    & butter $\rightarrow$ guns   & \Sexpr{p.2.Hungary.ftest.1}     & \Sexpr{p.2.Hungary.pvalue.1} & \Sexpr{(p.2.Hungary.df.num.dem.1)}     &   \Sexpr{p.2.Hungary.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Hungary.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Hungary.ftest.2}     & \Sexpr{p.2.Hungary.pvalue.2} & \Sexpr{(p.2.Hungary.df.num.dem.2)}     &   \Sexpr{p.2.Hungary.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{India}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.India.ftest.1} 		& \Sexpr{p.2.India.pvalue.1} & \Sexpr{(p.2.India.df.num.dem.1)} 		& 	\Sexpr{p.2.India.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.India.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.India.ftest.2} 		& \Sexpr{p.2.India.pvalue.2} & \Sexpr{(p.2.India.df.num.dem.2)} 		& 	\Sexpr{p.2.India.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{India}}    & butter $\rightarrow$ guns   & \Sexpr{p.2.India.ftest.1}     & \Sexpr{p.2.India.pvalue.1} & \Sexpr{(p.2.India.df.num.dem.1)}     &   \Sexpr{p.2.India.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.India.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.India.ftest.2}     & \Sexpr{p.2.India.pvalue.2} & \Sexpr{(p.2.India.df.num.dem.2)}     &   \Sexpr{p.2.India.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Israel}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Israel.ftest.1} 		& \Sexpr{p.2.Israel.pvalue.1} & \Sexpr{(p.2.Israel.df.num.dem.1)} 		& 	\Sexpr{p.2.Israel.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Israel.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Israel.ftest.2} 		& \Sexpr{p.2.Israel.pvalue.2} & \Sexpr{(p.2.Israel.df.num.dem.2)} 		& 	\Sexpr{p.2.Israel.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Israel}}     & butter $\rightarrow$ guns   & \Sexpr{p.2.Israel.ftest.1}    & \Sexpr{p.2.Israel.pvalue.1} & \Sexpr{(p.2.Israel.df.num.dem.1)}     &   \Sexpr{p.2.Israel.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Israel.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Israel.ftest.2}    & \Sexpr{p.2.Israel.pvalue.2} & \Sexpr{(p.2.Israel.df.num.dem.2)}     &   \Sexpr{p.2.Israel.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Italy}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Italy.ftest.1} 		& \Sexpr{p.2.Italy.pvalue.1} & \Sexpr{(p.2.Italy.df.num.dem.1)} 		& 	\Sexpr{p.2.Italy.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Italy.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Italy.ftest.2} 		& \Sexpr{p.2.Italy.pvalue.2} & \Sexpr{(p.2.Italy.df.num.dem.2)} 		& 	\Sexpr{p.2.Italy.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Italy}}    & butter $\rightarrow$ guns   & \Sexpr{p.2.Italy.ftest.1}     & \Sexpr{p.2.Italy.pvalue.1} & \Sexpr{(p.2.Italy.df.num.dem.1)}     &   \Sexpr{p.2.Italy.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Italy.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Italy.ftest.2}     & \Sexpr{p.2.Italy.pvalue.2} & \Sexpr{(p.2.Italy.df.num.dem.2)}     &   \Sexpr{p.2.Italy.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Japan}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Japan.ftest.1} 		& \Sexpr{p.2.Japan.pvalue.1} & \Sexpr{(p.2.Japan.df.num.dem.1)} 		& 	\Sexpr{p.2.Japan.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Japan.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Japan.ftest.2} 		& \Sexpr{p.2.Japan.pvalue.2} & \Sexpr{(p.2.Japan.df.num.dem.2)} 		& 	\Sexpr{p.2.Japan.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Japan}}    & butter $\rightarrow$ guns   & \Sexpr{p.2.Japan.ftest.1}     & \Sexpr{p.2.Japan.pvalue.1} & \Sexpr{(p.2.Japan.df.num.dem.1)}     &   \Sexpr{p.2.Japan.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Japan.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Japan.ftest.2}     & \Sexpr{p.2.Japan.pvalue.2} & \Sexpr{(p.2.Japan.df.num.dem.2)}     &   \Sexpr{p.2.Japan.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Luxembourg}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.Luxembourg.ftest.1} 		& \Sexpr{p.2.Luxembourg.pvalue.1} & \Sexpr{(p.2.Luxembourg.df.num.dem.1)} 		& 	\Sexpr{p.2.Luxembourg.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Luxembourg.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Luxembourg.ftest.2} 		& \Sexpr{p.2.Luxembourg.pvalue.2} & \Sexpr{(p.2.Luxembourg.df.num.dem.2)} 		& 	\Sexpr{p.2.Luxembourg.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Luxembourg}}   & butter $\rightarrow$ guns   & \Sexpr{p.2.Luxembourg.ftest.1}    & \Sexpr{p.2.Luxembourg.pvalue.1} & \Sexpr{(p.2.Luxembourg.df.num.dem.1)}     &   \Sexpr{p.2.Luxembourg.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Luxembourg.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Luxembourg.ftest.2}    & \Sexpr{p.2.Luxembourg.pvalue.2} & \Sexpr{(p.2.Luxembourg.df.num.dem.2)}     &   \Sexpr{p.2.Luxembourg.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Mexico}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Mexico.ftest.1} 		& \Sexpr{p.2.Mexico.pvalue.1} & \Sexpr{(p.2.Mexico.df.num.dem.1)} 		& 	\Sexpr{p.2.Mexico.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Mexico.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Mexico.ftest.2} 		& \Sexpr{p.2.Mexico.pvalue.2} & \Sexpr{(p.2.Mexico.df.num.dem.2)} 		& 	\Sexpr{p.2.Mexico.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Mexico}}     & butter $\rightarrow$ guns   & \Sexpr{p.2.Mexico.ftest.1}    & \Sexpr{p.2.Mexico.pvalue.1} & \Sexpr{(p.2.Mexico.df.num.dem.1)}     &   \Sexpr{p.2.Mexico.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Mexico.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Mexico.ftest.2}    & \Sexpr{p.2.Mexico.pvalue.2} & \Sexpr{(p.2.Mexico.df.num.dem.2)}     &   \Sexpr{p.2.Mexico.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Netherlands}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.Netherlands.ftest.1} 		& \Sexpr{p.2.Netherlands.pvalue.1} & \Sexpr{(p.2.Netherlands.df.num.dem.1)} 		& 	\Sexpr{p.2.Netherlands.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Netherlands.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Netherlands.ftest.2} 		& \Sexpr{p.2.Netherlands.pvalue.2} & \Sexpr{(p.2.Netherlands.df.num.dem.2)} 		& 	\Sexpr{p.2.Netherlands.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Netherlands}}  & butter $\rightarrow$ guns   & \Sexpr{p.2.Netherlands.ftest.1}     & \Sexpr{p.2.Netherlands.pvalue.1} & \Sexpr{(p.2.Netherlands.df.num.dem.1)}     &   \Sexpr{p.2.Netherlands.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Netherlands.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Netherlands.ftest.2}     & \Sexpr{p.2.Netherlands.pvalue.2} & \Sexpr{(p.2.Netherlands.df.num.dem.2)}     &   \Sexpr{p.2.Netherlands.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{North Korea}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.North.Korea.ftest.1} 		& \Sexpr{p.2.North.Korea.pvalue.1} & \Sexpr{(p.2.North.Korea.df.num.dem.1)} 		& 	\Sexpr{p.2.North.Korea.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.North.Korea.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.North.Korea.ftest.2} 		& \Sexpr{p.2.North.Korea.pvalue.2} & \Sexpr{(p.2.North.Korea.df.num.dem.2)} 		& 	\Sexpr{p.2.North.Korea.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{North Korea}}  & butter $\rightarrow$ guns   & \Sexpr{p.2.North.Korea.ftest.1}     & \Sexpr{p.2.North.Korea.pvalue.1} & \Sexpr{(p.2.North.Korea.df.num.dem.1)}     &   \Sexpr{p.2.North.Korea.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.North.Korea.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.North.Korea.ftest.2}     & \Sexpr{p.2.North.Korea.pvalue.2} & \Sexpr{(p.2.North.Korea.df.num.dem.2)}     &   \Sexpr{p.2.North.Korea.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Norway}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Norway.ftest.1} 		& \Sexpr{p.2.Norway.pvalue.1} & \Sexpr{(p.2.Norway.df.num.dem.1)} 		& 	\Sexpr{p.2.Norway.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Norway.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Norway.ftest.2} 		& \Sexpr{p.2.Norway.pvalue.2} & \Sexpr{(p.2.Norway.df.num.dem.2)} 		& 	\Sexpr{p.2.Norway.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Norway}}     & butter $\rightarrow$ guns   & \Sexpr{p.2.Norway.ftest.1}    & \Sexpr{p.2.Norway.pvalue.1} & \Sexpr{(p.2.Norway.df.num.dem.1)}     &   \Sexpr{p.2.Norway.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Norway.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Norway.ftest.2}    & \Sexpr{p.2.Norway.pvalue.2} & \Sexpr{(p.2.Norway.df.num.dem.2)}     &   \Sexpr{p.2.Norway.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Poland}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Poland.ftest.1} 		& \Sexpr{p.2.Poland.pvalue.1} & \Sexpr{(p.2.Poland.df.num.dem.1)} 		& 	\Sexpr{p.2.Poland.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Poland.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Poland.ftest.2} 		& \Sexpr{p.2.Poland.pvalue.2} & \Sexpr{(p.2.Poland.df.num.dem.2)} 		& 	\Sexpr{p.2.Poland.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Poland}}     & butter $\rightarrow$ guns   & \Sexpr{p.2.Poland.ftest.1}    & \Sexpr{p.2.Poland.pvalue.1} & \Sexpr{(p.2.Poland.df.num.dem.1)}     &   \Sexpr{p.2.Poland.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Poland.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Poland.ftest.2}    & \Sexpr{p.2.Poland.pvalue.2} & \Sexpr{(p.2.Poland.df.num.dem.2)}     &   \Sexpr{p.2.Poland.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Portugal}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.Portugal.ftest.1} 		& \Sexpr{p.2.Portugal.pvalue.1} & \Sexpr{(p.2.Portugal.df.num.dem.1)} 		& 	\Sexpr{p.2.Portugal.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Portugal.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Portugal.ftest.2} 		& \Sexpr{p.2.Portugal.pvalue.2} & \Sexpr{(p.2.Portugal.df.num.dem.2)} 		& 	\Sexpr{p.2.Portugal.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Portugal}}   & butter $\rightarrow$ guns   & \Sexpr{p.2.Portugal.ftest.1}    & \Sexpr{p.2.Portugal.pvalue.1} & \Sexpr{(p.2.Portugal.df.num.dem.1)}     &   \Sexpr{p.2.Portugal.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Portugal.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Portugal.ftest.2}    & \Sexpr{p.2.Portugal.pvalue.2} & \Sexpr{(p.2.Portugal.df.num.dem.2)}     &   \Sexpr{p.2.Portugal.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Romania}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Romania.ftest.1} 		& \Sexpr{p.2.Romania.pvalue.1} & \Sexpr{(p.2.Romania.df.num.dem.1)} 		& 	\Sexpr{p.2.Romania.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Romania.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Romania.ftest.2} 		& \Sexpr{p.2.Romania.pvalue.2} & \Sexpr{(p.2.Romania.df.num.dem.2)} 		& 	\Sexpr{p.2.Romania.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Romania}}    & butter $\rightarrow$ guns   & \Sexpr{p.2.Romania.ftest.1}     & \Sexpr{p.2.Romania.pvalue.1} & \Sexpr{(p.2.Romania.df.num.dem.1)}     &   \Sexpr{p.2.Romania.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Romania.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Romania.ftest.2}     & \Sexpr{p.2.Romania.pvalue.2} & \Sexpr{(p.2.Romania.df.num.dem.2)}     &   \Sexpr{p.2.Romania.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{South Africa}} & butter $\rightarrow$ guns		& \Sexpr{p.2.South.Africa.ftest.1} 		& \Sexpr{p.2.South.Africa.pvalue.1} & \Sexpr{(p.2.South.Africa.df.num.dem.1)} 		& 	\Sexpr{p.2.South.Africa.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.South.Africa.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.South.Africa.ftest.2} 		& \Sexpr{p.2.South.Africa.pvalue.2} & \Sexpr{(p.2.South.Africa.df.num.dem.2)} 		& 	\Sexpr{p.2.South.Africa.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{South Africa}} & butter $\rightarrow$ guns   & \Sexpr{p.2.South.Africa.ftest.1}    & \Sexpr{p.2.South.Africa.pvalue.1} & \Sexpr{(p.2.South.Africa.df.num.dem.1)}     &   \Sexpr{p.2.South.Africa.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.South.Africa.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.South.Africa.ftest.2}    & \Sexpr{p.2.South.Africa.pvalue.2} & \Sexpr{(p.2.South.Africa.df.num.dem.2)}     &   \Sexpr{p.2.South.Africa.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{South Korea}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.South.Korea.ftest.1} 		& \Sexpr{p.2.South.Korea.pvalue.1} & \Sexpr{(p.2.South.Korea.df.num.dem.1)} 		& 	\Sexpr{p.2.South.Korea.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.South.Korea.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.South.Korea.ftest.2} 		& \Sexpr{p.2.South.Korea.pvalue.2} & \Sexpr{(p.2.South.Korea.df.num.dem.2)} 		& 	\Sexpr{p.2.South.Korea.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{South Korea}}  & butter $\rightarrow$ guns   & \Sexpr{p.2.South.Korea.ftest.1}     & \Sexpr{p.2.South.Korea.pvalue.1} & \Sexpr{(p.2.South.Korea.df.num.dem.1)}     &   \Sexpr{p.2.South.Korea.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.South.Korea.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.South.Korea.ftest.2}     & \Sexpr{p.2.South.Korea.pvalue.2} & \Sexpr{(p.2.South.Korea.df.num.dem.2)}     &   \Sexpr{p.2.South.Korea.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Spain}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Spain.ftest.1} 		& \Sexpr{p.2.Spain.pvalue.1} & \Sexpr{(p.2.Spain.df.num.dem.1)} 		& 	\Sexpr{p.2.Spain.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Spain.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Spain.ftest.2} 		& \Sexpr{p.2.Spain.pvalue.2} & \Sexpr{(p.2.Spain.df.num.dem.2)} 		& 	\Sexpr{p.2.Spain.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Spain}}    & butter $\rightarrow$ guns   & \Sexpr{p.2.Spain.ftest.1}     & \Sexpr{p.2.Spain.pvalue.1} & \Sexpr{(p.2.Spain.df.num.dem.1)}     &   \Sexpr{p.2.Spain.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Spain.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Spain.ftest.2}     & \Sexpr{p.2.Spain.pvalue.2} & \Sexpr{(p.2.Spain.df.num.dem.2)}     &   \Sexpr{p.2.Spain.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Taiwan}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Taiwan.ftest.1} 		& \Sexpr{p.2.Taiwan.pvalue.1} & \Sexpr{(p.2.Taiwan.df.num.dem.1)} 		& 	\Sexpr{p.2.Taiwan.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Taiwan.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Taiwan.ftest.2} 		& \Sexpr{p.2.Taiwan.pvalue.2} & \Sexpr{(p.2.Taiwan.df.num.dem.2)} 		& 	\Sexpr{p.2.Taiwan.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Taiwan}}     & butter $\rightarrow$ guns   & \Sexpr{p.2.Taiwan.ftest.1}    & \Sexpr{p.2.Taiwan.pvalue.1} & \Sexpr{(p.2.Taiwan.df.num.dem.1)}     &   \Sexpr{p.2.Taiwan.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Taiwan.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Taiwan.ftest.2}    & \Sexpr{p.2.Taiwan.pvalue.2} & \Sexpr{(p.2.Taiwan.df.num.dem.2)}     &   \Sexpr{p.2.Taiwan.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Turkey}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Turkey.ftest.1} 		& \Sexpr{p.2.Turkey.pvalue.1} & \Sexpr{(p.2.Turkey.df.num.dem.1)} 		& 	\Sexpr{p.2.Turkey.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Turkey.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Turkey.ftest.2} 		& \Sexpr{p.2.Turkey.pvalue.2} & \Sexpr{(p.2.Turkey.df.num.dem.2)} 		& 	\Sexpr{p.2.Turkey.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Turkey}}     & butter $\rightarrow$ guns   & \Sexpr{p.2.Turkey.ftest.1}    & \Sexpr{p.2.Turkey.pvalue.1} & \Sexpr{(p.2.Turkey.df.num.dem.1)}     &   \Sexpr{p.2.Turkey.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Turkey.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Turkey.ftest.2}    & \Sexpr{p.2.Turkey.pvalue.2} & \Sexpr{(p.2.Turkey.df.num.dem.2)}     &   \Sexpr{p.2.Turkey.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{United Kingdom}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.United.Kingdom.ftest.1} 		& \Sexpr{p.2.United.Kingdom.pvalue.1} & \Sexpr{(p.2.United.Kingdom.df.num.dem.1)} 		& 	\Sexpr{p.2.United.Kingdom.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.United.Kingdom.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              	& guns $\rightarrow$ butter		& \Sexpr{p.2.United.Kingdom.ftest.2} 		& \Sexpr{p.2.United.Kingdom.pvalue.2} & \Sexpr{(p.2.United.Kingdom.df.num.dem.2)} 		& 	\Sexpr{p.2.United.Kingdom.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{United Kingdom}}   & butter $\rightarrow$ guns   & \Sexpr{p.2.United.Kingdom.ftest.1}    & \Sexpr{p.2.United.Kingdom.pvalue.1} & \Sexpr{(p.2.United.Kingdom.df.num.dem.1)}     &   \Sexpr{p.2.United.Kingdom.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.United.Kingdom.lags}}} \\ 
+\multicolumn{1}{|c|}{}                                & guns $\rightarrow$ butter   & \Sexpr{p.2.United.Kingdom.ftest.2}    & \Sexpr{p.2.United.Kingdom.pvalue.2} & \Sexpr{(p.2.United.Kingdom.df.num.dem.2)}     &   \Sexpr{p.2.United.Kingdom.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
 \end{tabular}}
 \\
@@ -577,15 +568,15 @@ count <- comma(as.numeric(count)) # add comma
 \scalebox{1}{
 \begin{tabular}{ccccccc|}
 \cline{2-7}
-\multicolumn{1}{c|}{}                               & \textbf{Granger Relationship} & \textbf{F-Test} 					& \textbf{P-Value} 				 & \textbf{DF} 								& 	\textbf{Adjusted R-sq} 		& {\bf Lags}  \\ \hline
-\multicolumn{1}{|c|}{\multirow{2}{*}{China}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.China.ftest.1} 		& \Sexpr{p.2.China.pvalue.1} & \Sexpr{(p.2.China.df.num.dem.1)} 		& 	\Sexpr{p.2.China.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.China.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.China.ftest.2} 		& \Sexpr{p.2.China.pvalue.2} & \Sexpr{(p.2.China.df.num.dem.2)} 		& 	\Sexpr{p.2.China.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{c|}{}                               & \textbf{Granger Relationship} & \textbf{F-Test}           & \textbf{P-Value}         & \textbf{DF}                &   \textbf{Adjusted R-sq}    & {\bf Lags}  \\ \hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{China}}    & butter $\rightarrow$ guns   & \Sexpr{p.2.China.ftest.1}     & \Sexpr{p.2.China.pvalue.1} & \Sexpr{(p.2.China.df.num.dem.1)}     &   \Sexpr{p.2.China.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.China.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.China.ftest.2}     & \Sexpr{p.2.China.pvalue.2} & \Sexpr{(p.2.China.df.num.dem.2)}     &   \Sexpr{p.2.China.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{Russia}} 		& butter $\rightarrow$ guns		& \Sexpr{p.2.Russia.ftest.1} 		& \Sexpr{p.2.Russia.pvalue.1} & \Sexpr{(p.2.Russia.df.num.dem.1)} 		& 	\Sexpr{p.2.Russia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Russia.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter		& \Sexpr{p.2.Russia.ftest.2} 		& \Sexpr{p.2.Russia.pvalue.2} & \Sexpr{(p.2.Russia.df.num.dem.2)} 		& 	\Sexpr{p.2.Russia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Russia}}     & butter $\rightarrow$ guns   & \Sexpr{p.2.Russia.ftest.1}    & \Sexpr{p.2.Russia.pvalue.1} & \Sexpr{(p.2.Russia.df.num.dem.1)}     &   \Sexpr{p.2.Russia.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.Russia.lags}}} \\ 
+\multicolumn{1}{|c|}{}                              & guns $\rightarrow$ butter   & \Sexpr{p.2.Russia.ftest.2}    & \Sexpr{p.2.Russia.pvalue.2} & \Sexpr{(p.2.Russia.df.num.dem.2)}     &   \Sexpr{p.2.Russia.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
-\multicolumn{1}{|c|}{\multirow{2}{*}{United States}} 	& butter $\rightarrow$ guns		& \Sexpr{p.2.United.States.of.America.ftest.1} 		& \Sexpr{p.2.United.States.pvalue.1} & \Sexpr{(p.2.United.States.of.America.df.num.dem.1)} 		& 	\Sexpr{p.2.United.States.of.America.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.United.States.of.America.lags}}} \\ 
-\multicolumn{1}{|c|}{}                              	& guns $\rightarrow$ butter		& \Sexpr{p.2.United.States.of.America.ftest.2} 		& \Sexpr{p.2.United.States.pvalue.2} & \Sexpr{(p.2.United.States.of.America.df.num.dem.2)} 		& 	\Sexpr{p.2.United.States.of.America.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{United States}}  & butter $\rightarrow$ guns   & \Sexpr{p.2.United.States.of.America.ftest.1}    & \Sexpr{p.2.United.States.pvalue.1} & \Sexpr{(p.2.United.States.of.America.df.num.dem.1)}    &   \Sexpr{p.2.United.States.of.America.rsq.1} & \multicolumn{1}{|c|}{\multirow{2}{*}{\Sexpr{p.2.United.States.of.America.lags}}} \\ 
+\multicolumn{1}{|c|}{}                                & guns $\rightarrow$ butter   & \Sexpr{p.2.United.States.of.America.ftest.2}    & \Sexpr{p.2.United.States.pvalue.2} & \Sexpr{(p.2.United.States.of.America.df.num.dem.2)}    &   \Sexpr{p.2.United.States.of.America.rsq.2} & \multicolumn{1}{|c|}{} \\\hline
 \cline{2-7}
 \end{tabular}}
 \\
@@ -597,7 +588,6 @@ count <- comma(as.numeric(count)) # add comma
 % Notes
 \linespread{2}
 \newpage\theendnotes
-
 
 \end{document}
 
