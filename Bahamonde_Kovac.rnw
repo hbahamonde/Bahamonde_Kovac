@@ -27,8 +27,7 @@
 
 \textsc{Heikki Kauppi}
 \thanks{\href{mailto:heikki.kauppi@utu.fi}{heikki.kauppi@utu.fi}; 
-\href{https://www.utu.fi/fi/ihmiset/heikki-kauppi}{\texttt{https://www.utu.fi/fi/ihmiset/heikki-kauppi}}. \\
-Authors in alphabetical order. All authors contributed equally. We thank Paul Poast, Jonathan Markowitz, Rosella Cappella Zielinski, Tsung-wu Ho and Cristobal Quininao for their suggestions.}}
+\href{https://www.utu.fi/fi/ihmiset/heikki-kauppi}{\texttt{https://www.utu.fi/fi/ihmiset/heikki-kauppi}}.}}
 
 
 
@@ -41,16 +40,17 @@ Authors in alphabetical order. All authors contributed equally. We thank Paul Po
 
 \author[4]{
 
-\textsc{Wilma Nissilä}
+\textsc{Wilma Nissil{\"a}}
 \thanks{\href{mailto:wilma.v.nissila@utu.fi}{wilma.v.nissila@utu.fi}; 
-\href{https://igorkovac.com}{\texttt{https://igorkovac.com}}.}}
+\href{https://www.utu.fi/fi/ihmiset/wilma-nissila}{\texttt{https://www.utu.fi/fi/ihmiset/wilma-nissila}}.\\
+Authors named in alphabetical order. All authors contributed equally. We thank Paul Poast, Jonathan Markowitz, Rosella Cappella Zielinski, Tsung-wu Ho and Cristobal Quininao for their suggestions.}}
 
 \affil[1]{Senior Researcher, University of Turku}
 \affil[2]{Associate Professor in Economics, University of Turku}
 \affil[3]{PhD Candidate in Political Science, University of Cincinnati}
 \affil[4]{PhD Candidate in Economics, University of Turku}
 
-
+\vspace{5cm}
 \date{\today}
 
 %----------------------------------------------------------------------------------------
@@ -73,15 +73,20 @@ Authors in alphabetical order. All authors contributed equally. We thank Paul Po
 %----------------------------------------------------------------------------------------
 % ABSTRACT
 %----------------------------------------------------------------------------------------
+\begin{center}
+{\color{blue}Work in progress. Please don't cite. Download the last version of the paper} \href{https://github.com/hbahamonde/Bahamonde_Kovac/raw/master/Bahamonde_Kovac.pdf}{\texttt{{\color{red}here}}}.
+\end{center}
+
+\vspace{3cm}
+\keywords{time series; international political economy; GVAR; international relations}
+\vspace{3cm}
+
+
+\clearpage
+\newpage
 \begin{abstract}
 {\small\input{/Users/hectorbahamonde/research/Bahamonde_Kovac/abstract.txt}\unskip}
 \end{abstract}
-
-\keywords{time series; IPE; GVAR; IR}
-
-\begin{center}
-Work in progress. Please don't cite. Download the last version of the paper \href{https://github.com/hbahamonde/Bahamonde_Kovac/raw/master/Bahamonde_Kovac.pdf}{\texttt{{\color{red}here}}}.
-\end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CONTENT
@@ -151,21 +156,18 @@ read_chunk('/Users/hectorbahamonde/research/Bahamonde_Kovac/Bahamonde_Kovac.R')
 
 \epigraph{\emph{``Power is the ultimate aphrodisiac''}}{\textcite{kissinger1973a}}
 
-\todo{assumed? yet, we are using proxies. I think we should change optics here. That's not the problem we're tackling. What we try to do is to examine the ``origins'' of power. }
 
 
-Since the dawn of social and political science, \emph{power} has been a key concept of multiple research projects \parencite{lasswell1950a}. In recent decades a prevailing notion became present in international relations, which sometimes takes the shape of a latent assumption \parencite{kennedy1989a,luttwak1990a,fukuyama1992a,nau1995a,kirshner1997a,gilpin2001a,brooks2005a,ikenberry2011a}. The argument is neatly summed by Organski, who claimed that economic power is a prerequisite for all other power capabilities: without a strong economy a dominant state stagnates and declines \parencite[299-306]{organski1958a}. However, this claim has never been properly tested. For instance, \textcite[Ch. 3]{mearsheimer2001a} dedicates a whole chapter to explain how latent power matters to military power,\footnote{They described it as perhaps the most fundamental power, whereas \textcite[245-70, 249]{elster1976a} is even more assertive arguing that power is the most important single idea in political theory.}. Yet his explanation remains untested. 
+Since the dawn of social and political science, ``power'' has been a key notion in the discipline \parencite{lasswell1950a}. In international relations, power is conceptualized as a latent\todo{Igor: latent sounds too ambiguous.} idea \parencite{kennedy1989a,luttwak1990a,fukuyama1992a,nau1995a,kirshner1997a,gilpin2001a,brooks2005a,ikenberry2011a}. The argument is neatly summed by Organski who explains that economic power is a prerequisite for all other forms of power, i.e., without a strong economy a dominant state stagnates and declines \parencite[299-306]{organski1958a}. However, this claim has never been properly tested. For instance, \textcite[Ch. 3]{mearsheimer2001a} dedicates a whole chapter to explain how latent power matters to military power. Thus, does military power causes economic power? Or is it the other way around? We believe that if the literature makes assumptions about the nature of power while proposing causal mechanisms between different power factors---military, economic, political and cultural \parencite{mann1986a}---then it should also provide empirical evidence about those. 
 
-We believe that if the literature offers assumptions about the nature of power while proposing causal mechanisms between power factors---military, economic, political and cultural \parencite{mann1986a}---then it should also provide empirical evidence about those. We focus one of these assumptions, particularly, that economic power is a \emph{prerequisite} of all other power factors. 
+This paper contributes to the literature by introducing Global Vector Autoregression (GVAR) methods to international relations. While panel-data methods handle well numerous panels (countries) within relatively short time spans, and time-series methods do the same but for longer time spans but for small panels (usually just one), GVAR perform statistically well in both big \emph{N} and long \emph{T} settings. To motivate the advantages of the GVAR method, we leverage the endogeneity of military and economic powers as an application. In particularly, we show how Granger-causality tests \parencite{granger1969a}, within the framework of GVAR methods, might help to disentangle endogenous hypotheses testing in international relations and international political economy. 
 
-This paper contributes to the literature by introducing Global Vector Autoregression (GVAR) methods to international relations. While panel-data methods handle well numerous panels (countries) within relatively short timespan, and time-series methods do the same but for longer timespan but for small panels (usually just one), GVAR perform statistically well with both big \emph{N} and long \emph{T}. In particularly, we show how Granger-causality tests \parencite{granger1969a} within the framework of GVAR methods should shed some light on the power prerequisite assumption. In this paper we focus solely on the (Granger) causal relation between \emph{economic} and \emph{military} powers. We hypothesize that pre-WWI it was military power that Granger-caused economic power---greater military led to greater economic power. Conversely, we expect that post WWII economic power Granger-caused military power. 
-
-The paper proceeds as follows. First, \autoref{Conceptualizing:Power} discusses the concept of power by particularly focusing on the relationship between economic and military power. In \autoref{methods} we present actual time-series data on economic and military power for the maximum possible number of available panels. The section also shows Granger-causality tests within the GVAR framework. We also show some simulations.\todo{did we?} Finally in \autoref{Discussion} we propose future research avenues regarding this scientific inquiry.\todo{did we?}
+The paper proceeds as follows. \todo{pending} %First, \autoref{Conceptualizing:Power} discusses the concept of power by particularly focusing on the relationship between economic and military power. In \autoref{methods} we present actual time-series data on economic and military power for the maximum possible number of available panels. The section also shows Granger-causality tests within the GVAR framework. We also show some simulations.\todo{did we?} Finally in \autoref{Discussion} we propose future research avenues regarding this scientific inquiry.\todo{did we?}
 
 
-\section{Conceptualizing Power\label{Conceptualizing:Power}}
+\section{Brief Conceptualization of Power\label{Conceptualizing:Power}}
 
-\todo{re do}
+\todo{Igor's part}
 
 %Dimensions of power see it as either \emph{agential}, \emph{structural} or \emph{relational} \parencite{qin2018a}. ``Power to'' refers to the possession of the resources by a specific actor. Hence, it is linked with capabilities of states, which can be latent or already manifested. Namely, the more of a certain capability a state has, the more powerful it is. This is a straightforward logic; hence politicians and strategists like to operate with it \parencite{deibel2007a}. ``Power over'' refers to influence and control over outcomes or over other actors and their behavior \parencite{hart1976a}.  As such, it bears a structural element, where the structure of international relations is favorable for certain states. ``Power with'' sees power residing in relations between A and B and therefore, both can draw from it. Thus, different type of relations lead to different levels of power in those relations. In fact, it is argued that the only way power is found is through the process of determining a consensus of goals and values among diverse interests \parencite{arendt1970a}. Deriving from these three dimensions of power Barnett and Duvall have presented their systemic, precise, and general typology of power \parencite{barnett2005a}. 
 
@@ -199,13 +201,13 @@ Global vector auto-regressive models (GVAR) are a special category of vector aut
 {\mathbf x}_{it} =  \bm{\alpha}_{i} +  \bm{\Phi}_{i} {\mathbf x}_{i,t-p} +  {\mathbf u}_{it}
 \end{equation}
 
-where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of endogenous variables which are lagged $p$ times on the right-hand side, and where $E({\mathbf u}_{it})=0$. Now, following \textcite[14]{Mauro2013}, define a GVAR model with $p$ lags for country $i$ as follows,
+where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of endogenous variables which are lagged $p$ times on the right-hand side, and where $E({\mathbf u}_{it})=0$. Now, following \textcite[p. 16; (eq. 2.3)]{Mauro2013} and \textcite[p. 167; (eq. 2)]{Chudik2016}, define a GVAR model with $p$ lags for country $i$ as follows,
 
 \begin{equation}\label{eq:gvar}
-{\mathbf x}_{it} =  \bm{\alpha}_{i} +  \bm{\Phi}_{i} {\mathbf x}_{i,t-p} +  \bm{\Lambda}_{1i} {\mathbf W}_{x, t} + \bm{\Lambda}_{2i} {\mathbf W}_{x, t-p} + {\mathbf u}_{it}
+{\mathbf x}_{it} = \bm{\alpha}_{i}0 + \bm{\beta}1\text{{\bf x}}_{it-1} + \bm{\beta}\text{p}\text{{\bf x}}_{it-p} +  \bm{\Lambda}1{\mathbf W}^{\star}_{it-1} + \bm{\Lambda}\text{p}{\mathbf W}^{\star}_{it-p} + {\mathbf e}_{it}
 \end{equation}
 
-where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of domestic (i.e. endogenous) variables, ${\mathbf W}_{t}$ is a $k_{i} \; \times \; 1$ vector of weakly-exogenous foreign variables, and ${\mathbf u}_{it}$ is a serially uncorrelated and cross-sectionally weakly dependent process. Typically, the choice of the lag orders of every GVAR system is selected according to the Akaike information criterion \parencite[19]{Mauro2013}. Also individual country-specific models of the form of \autoref{eq:gvar} ``allow for cointegration among domestic variables as well as between domestic and country-specific cross-section averages of foreign variables'' \parencite[179]{Chudik2016}.
+where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of domestic (i.e. endogenous) variables, ${\mathbf W}^{\star}_{t}$ is a $k_{i} \; \times \; 1$ vector of weakly-exogenous foreign variables, and ${\mathbf e}_{it}$ is a serially uncorrelated and cross-sectionally weakly dependent process. Typically, the choice of the lag orders of every GVAR system is selected according to the Akaike information criterion \parencite[19]{Mauro2013}. Also individual country-specific models of the form of \autoref{eq:gvar} ``allow for cointegration among domestic variables as well as between domestic and country-specific cross-section averages of foreign variables'' \parencite[179]{Chudik2016}.
 
 As it becomes apparent, the inclusion of foreign variables ${\mathbf W}_{t}$ in \autoref{eq:gvar} is one of the main characteristics of the GVAR approach, and the main difference with the VAR equation described in \autoref{eq:var}. As explained by others ``[t]hrough the use of foreign variables, the GVAR is able to account for bilateral inter-relationships amongst countries, and therefore control for spillovers on the basis of cross-country exposure.''\footnote{\textcite[17]{fund2016a}.} 
 
