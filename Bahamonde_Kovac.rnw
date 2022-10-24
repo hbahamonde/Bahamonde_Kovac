@@ -327,7 +327,15 @@ In this section we compare different methods for analyzing big-N and big-T datas
 \end{aligned}
 \end{align}
 
+<<<<<<< HEAD
 and simulate a VAR data-generating process by setting $\alpha_{10}=\alpha_{20} = 0$, $\beta_{11}=\beta_{22} = NUM OF PARs$ and $\beta_{12}=\beta_{21} = NUM OF PARs$. Next, we derive the panel representation of \autoref{eq:var:enders} generating a dataset of 30 countries following the same VAR process. 
+=======
+and simulate a VAR data-generating process by setting $\alpha_{10}=\alpha_{20} = 0$, $\beta_{11}=\beta_{22} = \Sexpr{parameters.1}$ and $\beta_{12}=\beta_{21} = \Sexpr{parameters.2}$. Next, we derive the panel representation of \autoref{eq:var:enders} generating a dataset of 30 countries following the same VAR process. 
+
+
+
+
+>>>>>>> master
 
 
 \section{Discussion\label{Discussion}}
