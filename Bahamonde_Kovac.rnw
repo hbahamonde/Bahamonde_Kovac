@@ -198,18 +198,34 @@ While GVAR has been widely used in economics \parencite{Favero2013,mauro2013a,Ch
 Global vector auto-regressive models (GVAR) are a special category of vector auto-regressive models (VAR). Following \textcite[164]{Box-Steffensmeier:2014fe}, define a VAR model as follows,
 
 \begin{equation}\label{eq:var}
-{\mathbf x}_{it} =  \bm{\alpha}_{i} +  \bm{\Phi}_{i} {\mathbf x}_{i,t-p} +  {\mathbf u}_{it}
+{\mathbf x}_{it} =  \bm{\alpha}_{i} +  \bm{\beta}_{i} {\mathbf x}_{i,t-p} +  {\mathbf e}_{it}
 \end{equation}
 
-where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of endogenous variables which are lagged $p$ times on the right-hand side, and where $E({\mathbf u}_{it})=0$. Now, following \textcite[p. 16; (eq. 2.3)]{Mauro2013} and \textcite[p. 167; (eq. 2)]{Chudik2016}, define a GVAR model with $p$ lags for country $i$ as follows,
+where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of endogenous variables which are lagged $p$ times, and where $E({\mathbf e}_{it})=0$, that is, is a serially uncorrelated and cross-sectionally weakly dependent process \parencite[14]{Mauro2013}. Now, following \textcite[p. 16; eq. 2.3]{Mauro2013} and \textcite[p. 167; eq. 2]{Chudik2016}, define a GVAR model with $p$ lags for every country $i$ at time $t$ as follows,
 
 \begin{equation}\label{eq:gvar}
-{\mathbf x}_{it} = \bm{\alpha}_{i}0 + \bm{\beta}1\text{{\bf x}}_{it-1} + \bm{\beta}\text{p}\text{{\bf x}}_{it-p} +  \bm{\Lambda}1{\mathbf W}^{\star}_{it-1} + \bm{\Lambda}\text{p}{\mathbf W}^{\star}_{it-p} + {\mathbf e}_{it}
+{\mathbf x}_{it} = \bm{\alpha}_{i0} + \bm{\alpha}_{i1}t + \bm{\beta}_{i1}\text{{\bf x}}_{i,t-1} + \bm{\beta}_{i2}\text{{\bf x}}_{i,t-p} + \bm{\Lambda}_{i0}{\mathbf x}^{\star}_{it} + \bm{\Lambda}_{i1}{\mathbf x}^{\star}_{i,t-1} + \bm{\Lambda}_{i2}{\mathbf x}^{\star}_{i,t-p} + {\mathbf e}_{it}
 \end{equation}
 
-where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of domestic (i.e. endogenous) variables, ${\mathbf W}^{\star}_{t}$ is a $k_{i} \; \times \; 1$ vector of weakly-exogenous foreign variables, and ${\mathbf e}_{it}$ is a serially uncorrelated and cross-sectionally weakly dependent process. Typically, the choice of the lag orders of every GVAR system is selected according to the Akaike information criterion \parencite[19]{Mauro2013}. Also individual country-specific models of the form of \autoref{eq:gvar} ``allow for cointegration among domestic variables as well as between domestic and country-specific cross-section averages of foreign variables'' \parencite[179]{Chudik2016}.
+% now Phi is beta, following your notation
+% it does include alpha as intercepts? (taken from GVAR handbook)
+% it includes your notation on the p lag 
+% I follow the x* notation
+% innovation is epsilon as you suggested.
 
-As it becomes apparent, the inclusion of foreign variables ${\mathbf W}_{t}$ in \autoref{eq:gvar} is one of the main characteristics of the GVAR approach, and the main difference with the VAR equation described in \autoref{eq:var}. As explained by others ``[t]hrough the use of foreign variables, the GVAR is able to account for bilateral inter-relationships amongst countries, and therefore control for spillovers on the basis of cross-country exposure.''\footnote{\textcite[17]{fund2016a}.} 
+where ${\mathbf x}_{it}$ is a $k_{i} \; \times \; 1$ vector of domestic (i.e. endogenous) variables, ${\mathbf x}^{\star}_{t}$ is a $k_{i} \; \times \; 1$ vector of weakly-exogenous foreign variables, and ${\mathbf e}_{it}$ is a serially uncorrelated and cross-sectionally weakly dependent process. Importantly, 
+
+\begin{equation}\label{eq:starX}
+{\mathbf x}^{\star}_{it} = {\mathbf W}^{'}_{i}{\mathbf x}_{t}
+\end{equation}
+
+where ${\mathbf W}^{'}_{i}$ is a $k \times k^{\star}$ matrix of country-specific weights, ``typically constructed using data on bilateral foreign trade or capital flows'' \parencite[167]{Chudik2016}. 
+
+Typically, the choice of the lag orders of every GVAR system is selected according to the Akaike information criterion \parencite[19]{Mauro2013}. Also individual country-specific models of the form of \autoref{eq:gvar} ``allow for cointegration among domestic variables as well as between domestic and country-specific cross-section averages of foreign variables'' \parencite[179]{Chudik2016}.
+
+As it becomes apparent, the inclusion of foreign variables ${\mathbf x}^{\star}_{it}$ in \autoref{eq:gvar} is one of the main characteristics of the GVAR approach, and the main difference with the VAR equation described in \autoref{eq:var}. As explained by others ``[t]hrough the use of foreign variables, the GVAR is able to account for bilateral inter-relationships amongst countries, and therefore control for spillovers on the basis of cross-country exposure.''\footnote{\textcite[17]{fund2016a}.} 
+
+% HERE
 
 We detail in \autoref{data} that to construct ${\mathbf W}_{t}$ we employ bilateral trade---but the particular choice of exogenous variable depends on the empirical application. In simple, the Global vector autoregressive GVAR model in \autoref{eq:gvar} explains ${\mathbf x}_{i,t}$ as a function of past values ${\mathbf x}_{i,t-p}$ lagged $p$ times, at the same time that it weights these dynamics by weakly-exogenous foreign variables ${\mathbf W}_{t-p}$ (weights which are captured by parameters $\bm{\Lambda}_{ni}$).
 
